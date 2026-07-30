@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sketch'n go - Subscription based design services</title>
+  <title>Sketch'n go - 360° Software, Backoffice & Communication Agency</title>
   <meta name="description"
-    content="We are design subscription agency, we do graphic design, UX/UI design, motion design and front-end development services on an ongoing basis." />
+    content="We engineer custom backoffice software, ERPs, stock & inventory control, HR portals, full-stack web platforms, animated explainer videos, and 360° growth marketing campaigns." />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="icon" type="image/image/svg+xml" href="assets/mini_logo.svg">
@@ -16,20 +16,22 @@
 
 <body class="scroll-smooth">
   <div class="isolate bg-background">
-    <div class="w-full mx-auto bg-background 2xl:max-w-7xl" data-aos="slide-down">
+    
+    {/* Header / Navbar */}
+    <div className="w-full mx-auto bg-background 2xl:max-w-7xl" data-aos="slide-down">
       <div x-data="{ open: false }"
         class="relative flex flex-col w-full p-8 bg-background lg:items-center lg:justify-between lg:flex-row lg:px-6 xl:px-8 transition-all">
         <div class="flex flex-row items-center justify-between lg:justify-start transition-all">
           <div class="flex">
             <a href="#main" class="-m-1.5 p-1.5 inline-flex items-center">
               <span class="sr-only">Sketchngo</span>
-              <img class="h-6 hidden md:flex" src="assets/logo.svg" alt="design subscription agency">
+              <img class="h-6 hidden md:flex" src="assets/logo.svg" alt="Sketchngo agency">
               <img class="h-8 flex md:hidden animate-spin-slow hover:ease-in-out" src="assets/mini_logo.svg"
-                alt="unlimited design services">
+                alt="Sketchngo agency">
             </a>
           </div>
           <button @click="open = !open" name="navmenu"
-            class=" inline-flex items-center justify-center p-2 text-gray-400 hover:text-primary  focus:outline-none focus:text-white lg:hidden">
+            class="inline-flex items-center justify-center p-2 text-gray-400 hover:text-primary focus:outline-none focus:text-white lg:hidden">
             <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
               <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round"
                 stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -38,29 +40,31 @@
             </svg>
           </button>
         </div>
-        <!-- logo states-->
 
-        <!-- Navbar-->
+        {/* Navbar Links */}
         <nav :class="{'flex': open, 'hidden': !open}"
-          class="gap-6 lg:gap-8 xl:gap-12 mt-8 lg:mt-0 bg-background  font-normal text-base flex-col items-left flex-grow lg:pb-0 lg:flex lg:justify-end lg:flex-row hidden transition-all">
-          <a class=" text-gray-300  hover:text-white lg:ml-auto transition-colors" href="#recentwork">
+          class="gap-6 lg:gap-8 xl:gap-12 mt-8 lg:mt-0 bg-background font-normal text-base flex-col items-left flex-grow lg:pb-0 lg:flex lg:justify-end lg:flex-row hidden transition-all">
+          <a class="text-gray-300 hover:text-white lg:ml-auto transition-colors" href="#recentwork">
             Recent work
           </a>
-          <a class=" text-gray-300  hover:text-white transition-colors" href="#services">
+          <a class="text-gray-300 hover:text-white transition-colors" href="#services">
             Services
           </a>
-          <a class=" text-gray-300  hover:text-white transition-colors" href="#pricing">
+          <a class="text-gray-300 hover:text-white transition-colors" href="#benefits">
+            Benefits
+          </a>
+          <a class="text-gray-300 hover:text-white transition-colors" href="#pricing">
             Pricing
           </a>
-          <a class=" text-gray-300  hover:text-white transition-colors" href="#faqs">
+          <a class="text-gray-300 hover:text-white transition-colors" href="#faqs">
             FAQs
           </a>
           <div class="items-center gap-2 list-none lg:ml-auto">
-            <a href="https://calendly.com/sketchngo/30min"
+            <a href="https://calendly.com/sketchngo/30min" target="_blank" rel="noopener noreferrer"
               class="items-center text-primary font-normal text-lg rounded-lg inline-flex hover:translate-x-1 transition">
               <p>Book 30 min call</p>
               <svg xmlns="http://www.w3.org/2000/svg" class="inline w-auto h-6 ml-2 animate-bounceright"
-                viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                   d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
                   clip-rule="evenodd" />
@@ -71,31 +75,30 @@
       </div>
     </div>
 
-    <!-- Hero section -->
+    {/* Hero section */}
     <main id="main" class="">
       <div class="relative px-6 lg:px-0 w-full">
         <div class="text-center md:mt-20 lg:mt-32">
           <div class="grid gap-10 mx-auto md:max-w-3xl xl:max-w-4xl">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-normal tracking-normal text-gray-100 "
+            <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-normal tracking-normal text-gray-100"
               data-aos="fade-up" data-aos-delay="20" data-aos-duration="500" data-aos-easing="ease-in-out">
-              Design on Demand,<br> Done Differently</h1>
+              End-to-End Business Software &amp;<br> Growth Engine</h1>
             <p class="mx-auto text-lg leading-8 text-gray-300 font-normal max-w-2xl" data-aos="fade-up"
-              data-aos-delay="20" data-aos-duration="500" data-aos-easing="ease-in-out">Design that fits your vision, one project at a time.
-              From branding to web design and motion graphics—no contracts, just results.
+              data-aos-delay="20" data-aos-duration="500" data-aos-easing="ease-in-out">
+              We engineer custom backoffice ERPs, stock &amp; inventory control systems, HR portals, full-stack web platforms, animated explainer videos, and 360° marketing campaigns—no bloated agency retainers, just measurable business outcomes.
             </p>
             <div class="grid w-full sm:w-auto md:flex gap-6 text-center mx-auto" data-aos="fade-up" data-aos-delay="40"
               data-aos-duration="500" data-aos-easing="ease-in-out">
               <div class="inline-flex w-full md:w-auto">
                 <a href="#pricing"
-                  class="w-full px-8 py-4 bg-primary font-normal text-lg text-background rounded-md hover:shadow-[0_0_10px] hover:shadow-primary transition">Start Your Project</a>
+                  class="w-full px-8 py-4 bg-primary font-normal text-lg text-background rounded-md hover:shadow-[0_0_10px] hover:shadow-primary transition">Scope Your Business System</a>
               </div>
               <div class="inline-flex mx-auto">
-                <a href="https://www.figma.com/proto/vdA7g9Ib6sqi9TZH0epRA9/Portfolio?page-id=0%3A1&type=design&node-id=121-2&viewport=530%2C246%2C0.22&scaling=min-zoom"
-                  target="_blank"
+                <a href="#recentwork"
                   class="items-center px-8 py-4 text-white font-normal text-lg rounded-md inline-flex hover:translate-x-1 transition">
-                  <p>Explore Our Work</p>
+                  <p>Explore Case Studies &amp; Work</p>
                   <svg xmlns="http://www.w3.org/2000/svg" class="inline w-auto h-6 ml-2 animate-bounceright"
-                    viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                    viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
                       d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
                       clip-rule="evenodd" />
@@ -112,7 +115,7 @@
                     d="M17.8132 1.63827C17.4365 0.667034 16.669 0.82034 15.8374 0.985126C15.3407 1.08864 13.1316 1.73527 9.63624 5.42094C8.18573 6.95058 7.22887 8.17006 6.59888 9.10009C6.21404 8.62759 5.77314 8.12208 5.31013 7.65887C3.8862 6.23532 2.29825 5.2577 2.2315 5.21662C1.56513 4.80926 0.695214 5.01887 0.286699 5.68473C-0.1213 6.35058 0.087665 7.22191 0.753001 7.63082C0.76661 7.63939 2.13024 8.48248 3.30825 9.66081C4.50961 10.8623 5.5981 12.4871 5.60881 12.5029C5.87382 12.9013 6.31878 13.1338 6.78689 13.1338C6.86725 13.1338 6.94838 13.1271 7.02913 13.1131C7.5816 13.0171 8.02539 12.604 8.16071 12.0597C8.16412 12.0466 8.72543 10.4953 11.6905 7.36916C14.0788 4.85041 15.6714 4.04989 16.2232 3.82783C16.2285 3.82693 16.2323 3.82654 16.2395 3.82506C16.2368 3.8257 16.2574 3.81622 16.2906 3.80126C16.3854 3.76572 16.4361 3.75212 16.439 3.75141C16.4118 3.75818 16.3977 3.75986 16.3977 3.75986L16.3968 3.75495C16.6521 3.64357 17.1302 3.43789 17.1406 3.43351C17.8604 3.13779 18.0944 2.36359 17.8132 1.63827Z"
                     class="fill-primary" />
                 </svg>
-                <p class="text-left">Pay for what you need, when you need it. No strings attached</p>
+                <p class="text-left">Pay for what you need, when you need it. 100% transparent milestone pricing.</p>
               </div>
               <div class="flex gap-2 text-gray-400 items-baseline md:mx-auto">
                 <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,7 +123,7 @@
                     d="M17.8132 1.63827C17.4365 0.667034 16.669 0.82034 15.8374 0.985126C15.3407 1.08864 13.1316 1.73527 9.63624 5.42094C8.18573 6.95058 7.22887 8.17006 6.59888 9.10009C6.21404 8.62759 5.77314 8.12208 5.31013 7.65887C3.8862 6.23532 2.29825 5.2577 2.2315 5.21662C1.56513 4.80926 0.695214 5.01887 0.286699 5.68473C-0.1213 6.35058 0.087665 7.22191 0.753001 7.63082C0.76661 7.63939 2.13024 8.48248 3.30825 9.66081C4.50961 10.8623 5.5981 12.4871 5.60881 12.5029C5.87382 12.9013 6.31878 13.1338 6.78689 13.1338C6.86725 13.1338 6.94838 13.1271 7.02913 13.1131C7.5816 13.0171 8.02539 12.604 8.16071 12.0597C8.16412 12.0466 8.72543 10.4953 11.6905 7.36916C14.0788 4.85041 15.6714 4.04989 16.2232 3.82783C16.2285 3.82693 16.2323 3.82654 16.2395 3.82506C16.2368 3.8257 16.2574 3.81622 16.2906 3.80126C16.3854 3.76572 16.4361 3.75212 16.439 3.75141C16.4118 3.75818 16.3977 3.75986 16.3977 3.75986L16.3968 3.75495C16.6521 3.64357 17.1302 3.43789 17.1406 3.43351C17.8604 3.13779 18.0944 2.36359 17.8132 1.63827Z"
                     class="fill-primary" />
                 </svg>
-                <p class="text-left">5-day money-back guarantee on all projects</p>
+                <p class="text-left">Full-stack software &amp; 360° growth strategy under one team.</p>
               </div>
             </div>
           </div>
@@ -128,7 +131,7 @@
       </div>
     </main>
 
-    <!--Services preview -->
+    {/* Services preview */}
     <div class="bg-background my-6 md:my-0 px-6 md:px-10 xl:px-20 py-4 md:py-10 xl:py-20 font-normal">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-10 xl:max-w-[1920px] mx-auto">
         <div class="relative overflow-hidden rounded-xl hover:scale-95 transition duration-500 ease-in-out"
@@ -136,9 +139,9 @@
           data-aos-anchor-placement="center-bottom">
           <img
             class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-96 hover:scale-125 transition duration-500 ease-in-out"
-            src="assets/1.webp" alt="Branding">
+            src="assets/6.webp" alt="Backoffice ERP">
           <h3 class="absolute rounded-lg px-5 py-2 bg-background text-2xl text-white top-5 left-5">
-            Branding
+            Backoffice &amp; Stock ERP
           </h3>
         </div>
         <div class="relative overflow-hidden rounded-xl hover:scale-95 transition duration-500 ease-in-out"
@@ -146,9 +149,9 @@
           data-aos-anchor-placement="center-bottom">
           <img
             class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-96 hover:scale-125 transition duration-500 ease-in-out"
-            src="assets/3.webp" alt="user experince and user interface design">
+            src="assets/3.webp" alt="Full-Stack Apps">
           <h3 class="absolute rounded-lg px-5 py-2 bg-background text-2xl text-white top-5 left-5">
-            UX/UI
+            Full-Stack Apps &amp; UX/UI
           </h3>
         </div>
         <div class="relative overflow-hidden rounded-xl hover:scale-95 transition duration-500 ease-in-out"
@@ -156,48 +159,48 @@
           data-aos-anchor-placement="center-bottom">
           <img
             class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-96 hover:scale-125 transition duration-500 ease-in-out"
-            src="assets/2.webp" alt="motion design and animated explainer videos">
+            src="assets/2.webp" alt="Explainer Motion">
           <h3 class="absolute rounded-lg px-5 py-2 bg-background text-2xl text-white top-5 left-5">
-            Explainer videos
+            Explainer Motion &amp; Growth
           </h3>
         </div>
       </div>
     </div>
 
-    <!-- Steps to get onboard section-->
+    {/* Big White Statement section */}
     <div class="bg-white px-6 md:px-20 xl:px-48 py-12 md:py-20 xl:py-36 font-normal">
       <div class="xl:max-w-7xl mx-auto">
         <h1 class="text-background text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl mb-6" data-aos="fade-up"
           data-aos-duration="500" data-aos-easing="ease-in-out">
-          Need a reliable designer but not ready for a full-time hire?
+          Need a reliable software engineering &amp; growth team without full-time overhead?
         </h1>
-        <p class="text-lg text-gray-500 xl:max-w-4xl pb-3" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+        <p class="text-lg text-gray-700 xl:max-w-4xl pb-3" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
           data-aos-duration="500" data-aos-easing="ease-in-out">
-          Finding a dependable freelancer or in-house designer can be overwhelming and costly, especially when time is tight and the stakes are high.
+          Finding dependable software architects, backoffice developers, and growth marketers can be overwhelming and costly—especially when your daily operations, inventory accuracy, and client retention depend on seamless software.
         </p>
-        <p class="text-lg text-gray-500 xl:max-w-4xl" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500"
+        <p class="text-lg text-gray-700 xl:max-w-4xl" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500"
           data-aos-easing="ease-in-out">
-          That's where we come in. Unlike traditional design agencies, we don’t lock you into expensive subscriptions or long-term commitments. With our project-based model, you get the same high-quality, professional design, but only pay for what you need—when you need it. Save money, and focus on growth without the ongoing overhead.
+          That's where Sketchngo comes in. Unlike traditional single-service agencies, we don’t lock you into bloated monthly retainers or fragmented freelancers. With our milestone-based project scopes and fractional team models, you get senior software engineers, backoffice architects, motion designers, and growth strategists dedicated to your business. Streamline internal operations, eliminate manual friction, and scale faster.
         </p>
       </div>
     </div>
 
-    <!-- Benefits section-->
-    <div class="bg-primary px-6 md:px-20 xl:px-48 py-12 md:py-20 xl:py-36 font-normal">
+    {/* Benefits section */}
+    <div id="benefits" class="bg-primary px-6 md:px-20 xl:px-48 py-12 md:py-20 xl:py-36 font-normal">
       <div class="grid lg:grid-cols-3 gap-6 xl:max-w-7xl mx-auto">
-        <div class="">
+        <div className="">
           <h1 class="text-background text-5xl md:text-6xl xl:text-7xl mb-3" data-aos="fade-up" data-aos-duration="500"
             data-aos-easing="ease-in-out">
             Our benefits
           </h1>
           <p class="text-lg text-background mb-6" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500"
             data-aos-easing="ease-in-out">
-            You won't need to look elsewhere for your design needs. We've got you covered!
+            You won't need to look elsewhere for your business software, backoffice tools, or marketing execution. We've got your entire ecosystem covered!
           </p>
         </div>
         <div class="col-span-2 gap-6 grid sm:grid-cols-2 2xl:grid-cols-3 xl:max-w-8xl mx-auto ">
           <div
-            class="bg-white p-6 sm:col-span-2 rounded-xl group hover:bg-background hover:scale-[1.02] transition duration-200 "
+            class="bg-white p-6 sm:col-span-2 rounded-xl group hover:bg-background hover:scale-[1.02] transition duration-200"
             data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd"
@@ -211,10 +214,10 @@
                 class="fill-background group-hover:fill-primary transition" />
             </svg>
             <h4 class="pt-4 text-xl font-normal text-background group-hover:text-white transition">
-              High-quality, professional design work tailored to your business needs.
+              Custom backoffice software, stock ERPs &amp; HR portals engineered specifically around your business operations.
             </h4>
           </div>
-          <div class="bg-white p-6 rounded-xl group hover:bg-background hover:scale-[1.02] transition duration-200 "
+          <div class="bg-white p-6 rounded-xl group hover:bg-background hover:scale-[1.02] transition duration-200"
             data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd"
@@ -225,10 +228,10 @@
                 class="fill-background group-hover:fill-primary transition" />
             </svg>
             <h4 class="pt-4 text-xl font-normal text-background group-hover:text-white transition">
-              Unlimited revisions & fast turnaround times.
+              Fast development sprint velocity &amp; rapid feature iterations.
             </h4>
           </div>
-          <div class="bg-white p-6 rounded-xl group hover:bg-background hover:scale-[1.02] transition duration-200 "
+          <div class="bg-white p-6 rounded-xl group hover:bg-background hover:scale-[1.02] transition duration-200"
             data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd"
@@ -236,18 +239,18 @@
                 class="fill-background group-hover:fill-primary transition" />
             </svg>
             <h4 class="pt-4 text-xl font-normal text-background group-hover:text-white transition">
-              Access to a dedicated designer who will work with you throughout the process.
+              Access to senior full-stack developers, system architects &amp; visual designers.
             </h4>
           </div>
-          <div class="bg-white p-6 rounded-xl group hover:bg-background hover:scale-[1.02] transition duration-200 "
+          <div class="bg-white p-6 rounded-xl group hover:bg-background hover:scale-[1.02] transition duration-200"
             data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M6.66665 6.25C5.51605 6.25 4.58331 7.18274 4.58331 8.33333C4.58331 9.48393 5.51605 10.4167 6.66665 10.4167H33.3333C34.4839 10.4167 35.4166 9.48393 35.4166 8.33333C35.4166 7.18274 34.4839 6.25 33.3333 6.25H6.66665ZM2.08331 8.33333C2.08331 10.4313 3.49289 12.2 5.41665 12.7441V31.6667C5.41665 32.8822 5.89953 34.048 6.75907 34.9076C7.61861 35.7671 8.7844 36.25 9.99998 36.25H30C31.2156 36.25 32.3813 35.7671 33.2409 34.9076C34.1004 34.048 34.5833 32.8822 34.5833 31.6667V12.7441C36.5071 12.2 37.9166 10.4313 37.9166 8.33333C37.9166 5.80203 35.8646 3.75 33.3333 3.75H6.66665C4.13534 3.75 2.08331 5.80203 2.08331 8.33333ZM7.91665 31.6667V12.9167H32.0833V31.6667C32.0833 32.2192 31.8638 32.7491 31.4731 33.1398C31.0824 33.5305 30.5525 33.75 30 33.75H9.99998C9.44745 33.75 8.91754 33.5305 8.52684 33.1398C8.13614 32.7491 7.91665 32.2192 7.91665 31.6667ZM13.3333 17.0833C12.643 17.0833 12.0833 17.643 12.0833 18.3333C12.0833 19.0237 12.643 19.5833 13.3333 19.5833H26.6666C27.357 19.5833 27.9166 19.0237 27.9166 18.3333C27.9166 17.643 27.357 17.0833 26.6666 17.0833H13.3333Z"
                 class="fill-background group-hover:fill-primary transition" />
             </svg>
-            <h4 class="pt-4 text-xl font-normal text-background  group-hover:text-white transition">
-              Flexible project based pricing.
+            <h4 class="pt-4 text-xl font-normal text-background group-hover:text-white transition">
+              Transparent milestone project scopes or fractional monthly team support.
             </h4>
           </div>
           <div class="bg-white p-6 rounded-xl group hover:bg-background hover:scale-[1.02] transition duration-200"
@@ -257,87 +260,90 @@
                 d="M8.33333 17.9166C7.18274 17.9166 6.25 18.8494 6.25 20V33.3333C6.25 34.4839 7.18274 35.4166 8.33333 35.4166H31.6667C32.8173 35.4166 33.75 34.4839 33.75 33.3333V20C33.75 18.8494 32.8173 17.9166 31.6667 17.9166H8.33333ZM3.75 20C3.75 17.4687 5.80203 15.4166 8.33333 15.4166H31.6667C34.198 15.4166 36.25 17.4687 36.25 20V33.3333C36.25 35.8646 34.198 37.9166 31.6667 37.9166H8.33333C5.80203 37.9166 3.75 35.8646 3.75 33.3333V20Z"
                 class="fill-background group-hover:fill-primary transition" />
               <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M20 4.58337C18.1214 4.58337 16.3197 5.32965 14.9913 6.65803C13.6629 7.98642 12.9167 9.78809 12.9167 11.6667V16.6667C12.9167 17.3571 12.357 17.9167 11.6667 17.9167C10.9763 17.9167 10.4167 17.3571 10.4167 16.6667V11.6667C10.4167 9.12505 11.4263 6.68749 13.2236 4.89027C15.0208 3.09304 17.4583 2.08337 20 2.08337C21.4878 2.08337 22.9551 2.42976 24.2858 3.09511C25.6165 3.76046 26.774 4.72649 27.6667 5.91671L27.6737 5.92602L27.6736 5.92605C28.2664 6.73199 28.739 7.61975 29.0767 8.56153C29.3097 9.21138 28.9717 9.92706 28.3218 10.16C27.672 10.393 26.9563 10.0551 26.7233 9.40522C26.468 8.69312 26.111 8.02178 25.6632 7.41208C25.0039 6.53448 24.1496 5.8221 23.1678 5.33118C22.1842 4.8394 21.0997 4.58337 20 4.58337Z"
+                d="M20 4.58337C18.1214 4.58337 16.3197 5.32965 14.9913 6.65803C13.6629 7.98642 12.9167 9.78809 12.9167 11.6667V16.6667C12.9167 17.3571 12.357 17.9167 10.4167 17.9167C10.9763 17.9167 10.4167 17.3571 10.4167 16.6667V11.6667C10.4167 9.12505 11.4263 6.68749 13.2236 4.89027C15.0208 3.09304 17.4583 2.08337 20 2.08337C21.4878 2.08337 22.9551 2.42976 24.2858 3.09511C25.6165 3.76046 26.774 4.72649 27.6667 5.91671L27.6737 5.92602L27.6736 5.92605C28.2664 6.73199 28.739 7.61975 29.0767 8.56153C29.3097 9.21138 28.9717 9.92706 28.3218 10.16C27.672 10.393 26.9563 10.0551 26.7233 9.40522C26.468 8.69312 26.111 8.02178 25.6632 7.41208C25.0039 6.53448 24.1496 5.8221 23.1678 5.33118C22.1842 4.8394 21.0997 4.58337 20 4.58337Z"
                 class="fill-background group-hover:fill-primary transition" />
             </svg>
             <h4 class="pt-4 text-xl font-normal text-background group-hover:text-white transition">
-              No long-term commitment.
+              Zero long-term lock-in contracts—complete source code &amp; system ownership.
             </h4>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Maquee section-->
+    {/* Marquee section */}
     <div class="bg-background scroll-smooth py-6 md:py-10">
       <marquee scrollamount="12" class="overflow-x-hidden">
         <div class="whitespace-nowrap inline-flex gap-12 items-center">
           <span class="text-5xl md:text-8xl font-extralight text-white">Sketch'n go</span>
-          <img class="h-12 md:h-20 animate-spin-slow" src="assets/mini_logo.svg" alt="design subscription services">
-          <span class="text-5xl md:text-8xl font-extralight text-white">Design on Demand, Done Differently</span>
+          <img class="h-12 md:h-20 animate-spin-slow" src="assets/mini_logo.svg" alt="Sketchngo agency">
+          <span class="text-5xl md:text-8xl font-extralight text-white">360° Software, Backoffice &amp; Communication Agency</span>
+          <img class="h-12 md:h-20 animate-spin-slow" src="assets/mini_logo.svg" alt="Sketchngo agency">
         </div>
       </marquee>
     </div>
 
-    <!-- Steps to get onboard section-->
+    {/* Steps to get onboard section */}
     <div class="bg-white px-6 md:px-20 xl:px-48 py-12 md:py-20 xl:py-36 font-normal">
       <div class="xl:max-w-7xl mx-auto">
         <h1 class="max-w-xl lg:max-w-2xl text-background text-5xl md:text-5xl xl:text-6xl 2xl:text-7xl mb-6"
           data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
-          Fast and easy way to get onboard
+          Fast and simple way to get onboard
         </h1>
-        <p class="max-w-md text-lg text-background xl:max-w-4xl pb-3 " data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+        <p class="max-w-md text-lg text-gray-700 xl:max-w-4xl pb-3" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
           data-aos-duration="500" data-aos-easing="ease-in-out">
-          Getting things done is more important. So we decided to keep it simple.
+          Engineering complex software shouldn't be complicated. We keep our process simple and transparent.
         </p>
       </div>
-      <div class="xl:max-w-7xl mx-auto grid lg:grid-cols-3 gap-6 md:gap-12 my-12 ">
-        <div class="">
-          <h3 class=" text-2xl lg:text-3xl mb-2 lg:mb-4 text-background font-normal" data-aos="fade-up"
+      <div class="xl:max-w-7xl mx-auto grid lg:grid-cols-3 gap-6 md:gap-12 my-12">
+        <div className="">
+          <h3 class="text-2xl lg:text-3xl mb-2 lg:mb-4 text-background font-normal" data-aos="fade-up"
             data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-            Start Your Project
+            1. Scope &amp; Architecture
           </h3>
-          <p class="max-w-md text-lg text-gray-500" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500"
+          <p class="max-w-md text-lg text-gray-700" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500"
             data-aos-easing="ease-in-out">
-            Choose the type of project you need help with—whether it's branding, web design, marketing materials, or something else—and let’s dive in.
+            Audit your internal backoffice workflows, inventory management, app requirements, or marketing goals to build a clear project roadmap.
           </p>
         </div>
-        <div class="">
+        <div className="">
           <h3 class="text-2xl lg:text-3xl mb-2 lg:mb-4 text-background font-normal" data-aos="fade-up"
             data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-            Collaborate
+            2. Build &amp; Collaborate
           </h3>
-          <p class="max-w-md text-lg text-gray-500" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500"
+          <p class="max-w-md text-lg text-gray-700" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500"
             data-aos-easing="ease-in-out">
-            Submit your design requests, and we’ll get to work! You’ll collaborate with your dedicated designer, ensuring your vision is brought to life.          </p>
+            Work directly with your dedicated software engineers and designers with transparent milestone updates and sprint reviews.
+          </p>
         </div>
-        <div class="">
+        <div className="">
           <h3 class="text-2xl lg:text-3xl mb-2 lg:mb-4 text-background font-normal" data-aos="fade-up"
             data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-            Revise & Perfect </h3>
-          <p class="max-w-md text-lg text-gray-500" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500"
+            3. Deploy &amp; Scale
+          </h3>
+          <p class="max-w-md text-lg text-gray-700" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500"
             data-aos-easing="ease-in-out">
-            We’ll fine-tune your design until it’s exactly what you envisioned. Unlimited revisions until you’re completely happy!          </p>
+            Launch your backoffice platform, web app, or campaign with full handover, team training, and continuous optimization support.
+          </p>
         </div>
       </div>
     </div>
 
-    <!-- Portfolio section-->
+    {/* Portfolio section */}
     <div id="recentwork" class="bg-background px-6 md:px-20 xl:px-48 py-12 md:py-20 xl:py-36 font-normal">
       <div class="grid gap-6 md:gap-12 xl:gap-24 xl:max-w-7xl mx-auto">
         <div class="max-w-2xl">
           <h1 class="text-white text-5xl md:text-6xl xl:text-7xl mb-3" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-            Recent work
+            Recent Systems &amp; Work
           </h1>
           <p class="text-lg text-white mb-6" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-            Explore our showcase of exceptional design projects. See how we turn ideas into stunning visual
-            masterpieces.
+            Explore our showcase of custom backoffice tools, inventory ERPs, client portals, animated explainer videos, and growth campaigns built for high-performing businesses.
           </p>
           <div class="flex" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
             <a href="https://www.figma.com/proto/vdA7g9Ib6sqi9TZH0epRA9/Portfolio?page-id=0%3A1&type=design&node-id=121-2&viewport=530%2C246%2C0.22&scaling=min-zoom"
-              target="_blank"
-              class="w-full md:w-auto px-8 py-4 bg-white font-normal text-lg text-background rounded-md hover:shadow-[0_0_10px] hover:shadow-primary transition">View
-              recent work<svg xmlns="http://www.w3.org/2000/svg" class="inline w-auto h-6 fill-background ml-1"
+              target="_blank" rel="noopener noreferrer"
+              class="w-full md:w-auto px-8 py-4 bg-white font-normal text-lg text-background rounded-md hover:shadow-[0_0_10px] hover:shadow-primary transition">Explore all case studies
+              <svg xmlns="http://www.w3.org/2000/svg" class="inline w-auto h-6 fill-background ml-1"
                 viewBox="0 0 20 20">
                 <path fill-rule="evenodd"
                   d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
@@ -347,230 +353,280 @@
           </div>
         </div>
         <div class="grid gap-6 lg:gap-12 md:grid-cols-2">
-          <div class="relative overflow-hidden rounded-xl transition duration-500 ease-in-out"data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
-            <img
-              class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-[36rem] hover:scale-105 transition duration-500 ease-in-out"
-              src="assets/4.webp" alt="clubhouse alternative">
+          <div class="relative overflow-hidden rounded-xl transition duration-500 ease-in-out" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            <img class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-[36rem] hover:scale-105 transition duration-500 ease-in-out"
+              src="assets/6.webp" alt="backoffice stock inventory system">
           </div>
-          <div class="relative overflow-hidden rounded-xl transition duration-500 ease-in-out"data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-            <img
-              class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-[36rem] hover:scale-105 transition duration-500 ease-in-out"
-              src="assets/5.webp" alt="co-working space booking and remote work spaces">
+          <div class="relative overflow-hidden rounded-xl transition duration-500 ease-in-out" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
+            <img class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-[36rem] hover:scale-105 transition duration-500 ease-in-out"
+              src="assets/5.webp" alt="hr management app portal">
           </div>
-          <div class="relative overflow-hidden rounded-xl transition duration-500 ease-in-out"data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
-            <img
-              class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-[36rem] hover:scale-105 transition duration-500 ease-in-out"
-              src="assets/6.webp" alt="school web and mobile app dashboard design">
+          <div class="relative overflow-hidden rounded-xl transition duration-500 ease-in-out" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            <img class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-[36rem] hover:scale-105 transition duration-500 ease-in-out"
+              src="assets/4.webp" alt="co-working app client portal">
           </div>
-          <div class="relative overflow-hidden rounded-xl transition duration-500 ease-in-out"data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-            <img
-              class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-[36rem] hover:scale-105 transition duration-500 ease-in-out"
+          <div class="relative overflow-hidden rounded-xl transition duration-500 ease-in-out" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
+            <img class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-[36rem] hover:scale-105 transition duration-500 ease-in-out"
               src="assets/7.webp" alt="logo design">
           </div>
-          <div class="relative overflow-hidden rounded-xl transition duration-500 ease-in-out"data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
-            <img
-              class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-[36rem] hover:scale-105 transition duration-500 ease-in-out"
+          <div class="relative overflow-hidden rounded-xl transition duration-500 ease-in-out" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            <img class="object-cover inset-0 object-center w-full h-56 md:h-64 xl:h-[36rem] hover:scale-105 transition duration-500 ease-in-out"
               src="assets/8.webp" alt="brand style design">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Services section-->
+    {/* Services section */}
     <div id="services" class="bg-white px-6 md:px-20 xl:px-48 py-12 md:py-20 xl:py-36 font-normal">
       <div class="xl:max-w-7xl mb-6 mx-auto">
         <h1 class="max-w-xl lg:max-w-2xl text-background text-5xl md:text-5xl xl:text-6xl 2xl:text-7xl mb-6" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
-          Branding, websites, app promo animation & more..
+          Backoffice, Web Apps, Branding, Explainer Motion &amp; Growth
         </h1>
-        <p class="max-w-lg text-lg text-background xl:max-w-4xl pb-3 " data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-          We offer a full suite of design services to meet all of your business needs. So you can rely on us as
-          your
-          one-stop-shop for all things design.
+        <p class="max-w-lg text-lg text-gray-700 xl:max-w-4xl pb-3 " data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
+          We offer a complete 360° suite of software engineering, backoffice tools, and communication services. So you can rely on us as your one-stop-shop for all your business needs.
         </p>
       </div>
+
       <div class="grid lg:grid-cols-2 items-start gap-12 mb-6 xl:max-w-7xl mx-auto">
-        <div class="grid gap-6">
-          <h3 class=" text-2xl lg:text-3xl text-background font-normal" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
-            UX/UI Design
-          </h3>
-          <div class="grid gap-2" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-            <div class="flex items-center gap-2">
-              <img src="assets/check 1.svg" alt="check_mark">
-              <p>No-code website builders | Webflow, Framer, Bubble.io</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <img src="assets/check 1.svg" alt="check_mark">
-              <p>Website</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <img src="assets/check 1.svg" alt="check_mark">
-              <p>Mobile app</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <img src="assets/check 1.svg" alt="check_mark">
-              <p>User flow diagram</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <img src="assets/check 1.svg" alt="check_mark">
-              <p>Wireframe</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <img src="assets/check 1.svg" alt="check_mark">
-              <p>Prototype</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <img src="assets/check 1.svg" alt="check_mark">
-              <p>Landing page</p>
-            </div>
-          </div>
-        </div>
+        
+        {/* Category 1: Backoffice */}
         <div class="grid gap-6">
           <div class="flex gap-2 items-end" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
             <h3 class="text-2xl lg:text-3xl text-background font-normal">
-              Promo video & Animation
+              Backoffice &amp; Operations Software
             </h3>
-            <div >
-              <p class="px-3 py-1 bg-background text-white text-md rounded-full animate-bounceleft">new
-              </p>
+            <div>
+              <p class="px-3 py-1 bg-background text-white text-md rounded-full animate-bounceleft">Core</p>
             </div>
           </div>
           <div class="grid gap-2" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
             <div class="flex items-center gap-2">
-              <img class="inline" src="assets/check 1.svg" alt="check_mark">
-              <p>Product/app demo</p>
-              <p class="text-center float-righ px-3 py-0 md:py-1 text-background bg-primary text-sm rounded-full">
-                Popular
-                for startups</p>
+              <img src="assets/check 1.svg" alt="check_mark">
+              <p class="text-gray-900 font-normal">Custom ERP &amp; Resource Planning Systems</p>
             </div>
             <div class="flex items-center gap-2">
               <img src="assets/check 1.svg" alt="check_mark">
-              <p>Animated explainer videos</p>
+              <p class="text-gray-900 font-normal">HR Management &amp; Employee Onboarding Portals</p>
+            </div>
+            <div class="flex items-center gap-2 justify-between">
+              <div class="flex items-center gap-2">
+                <img src="assets/check 1.svg" alt="check_mark">
+                <p class="text-gray-900 font-normal">Real-Time Stock &amp; Warehouse Inventory Sync</p>
+              </div>
+              <p class="px-3 py-0 md:py-1 text-background bg-primary text-sm rounded-full shrink-0">Popular</p>
             </div>
             <div class="flex items-center gap-2">
               <img src="assets/check 1.svg" alt="check_mark">
-              <p>Motion graphics : intro/outro, logo animation, icons animation, etc..</p>
-              </p>
+              <p class="text-gray-900 font-normal">Executive Performance &amp; Analytics Dashboards</p>
             </div>
             <div class="flex items-center gap-2">
               <img src="assets/check 1.svg" alt="check_mark">
-              <p>Post production & video editing</p>
-              </p>
+              <p class="text-gray-900 font-normal">Automated Invoicing &amp; Financial Workflows</p>
             </div>
             <div class="flex items-center gap-2">
               <img src="assets/check 1.svg" alt="check_mark">
-              <p>Rive.app / Lottifiles</p>
-              <p class="text-center float-righ px-3 py-0 md:py-1 text-white bg-background text-sm rounded-full">
-                🔥🔥🔥</p>
+              <p class="text-gray-900 font-normal">Role-Based Permissions &amp; Enterprise RBAC</p>
             </div>
           </div>
         </div>
+
+        {/* Category 2: Web Apps */}
         <div class="grid gap-6">
-          <h3 class=" text-2xl lg:text-3xl text-background font-normal" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
-            Branding
+          <h3 class="text-2xl lg:text-3xl text-background font-normal" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            Full-Stack Apps &amp; UX/UI Design
           </h3>
           <div class="grid gap-2" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
             <div class="flex items-center gap-2">
               <img src="assets/check 1.svg" alt="check_mark">
-              <p>Logo</p>
+              <p class="text-gray-900 font-normal">Custom Web Applications &amp; SaaS Platforms</p>
             </div>
             <div class="flex items-center gap-2">
               <img src="assets/check 1.svg" alt="check_mark">
-              <p>Brand Guidelines & Identity Systems</p>
-            </div>
-            <div class="flex items-start gap-2">
-              <img src="assets/check 1.svg" alt="check_mark">
-              <p>Stationery : Business Cards, Letterhead, Envelopes, Stamp, Product Catalog...</p>
+              <p class="text-gray-900 font-normal">Client Self-Service Portals &amp; Dashboards</p>
             </div>
             <div class="flex items-center gap-2">
               <img src="assets/check 1.svg" alt="check_mark">
-              <p>Trade Show Booth, Signage/Billboards</p>
+              <p class="text-gray-900 font-normal">Mobile App Development (iOS &amp; Android)</p>
             </div>
             <div class="flex items-center gap-2">
               <img src="assets/check 1.svg" alt="check_mark">
-              <p>Pitch/slide decks for startups</p>
+              <p class="text-gray-900 font-normal">User Flow Diagrams &amp; System Architecture</p>
             </div>
             <div class="flex items-center gap-2">
               <img src="assets/check 1.svg" alt="check_mark">
-              <p>Brochure, Poster, Social media graphics...</p>
+              <p class="text-gray-900 font-normal">Interactive Figma Wireframes &amp; Design Systems</p>
             </div>
             <div class="flex items-center gap-2">
               <img src="assets/check 1.svg" alt="check_mark">
-              <p>Email templates</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <img src="assets/check 1.svg" alt="check_mark">
-              <p>Packaging</p>
+              <p class="text-gray-900 font-normal">Webflow, Framer &amp; Custom Web Platforms</p>
             </div>
           </div>
         </div>
+
+        {/* Category 3: Promo Video */}
+        <div class="grid gap-6">
+          <div class="flex gap-2 items-end" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            <h3 class="text-2xl lg:text-3xl text-background font-normal">
+              Promo Video &amp; Animation
+            </h3>
+            <div>
+              <p class="px-3 py-1 bg-background text-white text-md rounded-full animate-bounceleft">new</p>
+            </div>
+          </div>
+          <div class="grid gap-2" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
+            <div class="flex items-center gap-2 justify-between">
+              <div class="flex items-center gap-2">
+                <img class="inline" src="assets/check 1.svg" alt="check_mark">
+                <p class="text-gray-900 font-normal">Product / Software Demo Videos</p>
+              </div>
+              <p class="px-3 py-0 md:py-1 text-background bg-primary text-sm rounded-full shrink-0">Popular for startups</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/check 1.svg" alt="check_mark">
+              <p class="text-gray-900 font-normal">2D &amp; 3D Animated Explainer Videos</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/check 1.svg" alt="check_mark">
+              <p class="text-gray-900 font-normal">Motion Graphics: Intro/Outro, Animated Logos &amp; UI Icons</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/check 1.svg" alt="check_mark">
+              <p class="text-gray-900 font-normal">Post Production &amp; Professional Video Editing</p>
+            </div>
+            <div class="flex items-center gap-2 justify-between">
+              <div class="flex items-center gap-2">
+                <img src="assets/check 1.svg" alt="check_mark">
+                <p class="text-gray-900 font-normal">Rive.app &amp; Lottiefiles Web Animations</p>
+              </div>
+              <p class="px-3 py-0 md:py-1 text-white bg-background text-sm rounded-full shrink-0">🔥🔥🔥</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Category 4: Branding */}
+        <div class="grid gap-6">
+          <h3 class="text-2xl lg:text-3xl text-background font-normal" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            Branding &amp; 360° Growth Marketing
+          </h3>
+          <div class="grid gap-2" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
+            <div class="flex items-center gap-2">
+              <img src="assets/check 1.svg" alt="check_mark">
+              <p class="text-gray-900 font-normal">Logo &amp; Complete Visual Identity Systems</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/check 1.svg" alt="check_mark">
+              <p class="text-gray-900 font-normal">Brand Guidelines &amp; Design System Libraries</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/check 1.svg" alt="check_mark">
+              <p class="text-gray-900 font-normal">Investor &amp; Startup Pitch Decks</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/check 1.svg" alt="check_mark">
+              <p class="text-gray-900 font-normal">Omni-Channel Lead Funnels &amp; CRM Workflows</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/check 1.svg" alt="check_mark">
+              <p class="text-gray-900 font-normal">Social Media Strategy &amp; Performance Ad Creatives</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/check 1.svg" alt="check_mark">
+              <p class="text-gray-900 font-normal">Automated WhatsApp &amp; Email Sequence Workflows</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Pricing section-->
+    {/* Pricing section */}
     <div id="pricing" class="text-white bg-background px-6 md:px-20 xl:px-48 py-12 md:py-20 xl:py-36 font-normal grid gap-16">
       <div class="xl:max-w-7xl place-items-stretch">
         <h1 class="max-w-xl lg:max-w-2xl text-white font-normal text-5xl md:text-5xl xl:text-6xl 2xl:text-7xl mb-6" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
-          Pay-As-You-Go Design
+          Transparent Milestone Scopes
         </h1>
-        <p class="lg:max-w-3xl" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-          We keep things simple and straightforward. Pay only for what you need, with no long-term commitments. Our project-based approach ensures flexibility and transparency, giving you the best value for your investment.
+        <p class="lg:max-w-3xl text-gray-300" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
+          We keep pricing straightforward. Choose fixed-scope milestone deliverables or dedicated fractional team support—no hidden fees, no long-term lock-in.
         </p>
       </div>
-      <div class="grid gap-6">
-        <div class="grid lg:grid-cols-4 items-center lg:gap-6 gap-2 place-items-stretch xl:max-w-7xl">
-          <h3 class="text-2xl font-bold data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out"">
-            Branding
+
+      <div class="grid gap-8">
+        
+        {/* Row 1 */}
+        <div class="grid lg:grid-cols-4 items-center lg:gap-6 gap-2 place-items-stretch xl:max-w-7xl pb-6 border-b border-gray-800">
+          <h3 class="text-2xl font-bold" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            Backoffice &amp; Operations ERP
           </h3>
-          <H6 class="text-xl font-thin data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out"">
-            Starting at $20
-          </H6>
-          <div class="grid lg:col-span-2 gap-2 text-sm data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out""> 
-            <p class="flex items-start gap-2">
-              Give your brand the spark it needs to stand out.
-              Logo, colors, typography, and everything that makes your brand unforgettable.
+          <h6 class="text-xl font-thin text-primary" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            Custom Milestone Scope
+          </h6>
+          <div class="grid lg:col-span-2 gap-2 text-sm text-gray-300" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out"> 
+            <p>
+              Streamline internal business operations. Custom stock &amp; warehouse inventory sync, HR portals, automated invoicing, and executive dashboards.
             </p>
           </div>
-      </div>
-      <div class="grid lg:grid-cols-4 items-center lg:gap-6 gap-2 place-items-stretch xl:max-w-7xl">
-        <h3 class="text-2xl font-bold data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out"">
-          Web Design
-        </h3>
-        <H6 class="text-xl font-thin data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out"">
-          Starting at $50
-        </H6>
-        <div class="grid lg:col-span-2 gap-2 text-sm data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out""> 
-          <p class="flex items-start gap-2">
-            Your site, your story—built to make an impact. Custom design, mobile-friendly, SEO basics, and everything you need to shine online.
-          </p>
         </div>
-    </div>
-      <div class="grid lg:grid-cols-4 items-center lg:gap-6 gap-2 place-items-stretch xl:max-w-7xl">
-        <h3 class="text-2xl font-bold data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out"">
-          Motion design
-        </h3>
-        <H6 class="text-xl font-thin data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out"">
-          Starting at $120
-        </H6>
-        <div class="grid lg:col-span-2 gap-2 text-sm data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out""> 
-          <p class="flex items-start gap-2">
-            Turn heads with animations that pop.
-            Custom-made visuals, sound, and storytelling that move your audience—literally.</p>
+
+        {/* Row 2 */}
+        <div class="grid lg:grid-cols-4 items-center lg:gap-6 gap-2 place-items-stretch xl:max-w-7xl pb-6 border-b border-gray-800">
+          <h3 class="text-2xl font-bold" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            Full-Stack Web &amp; Apps
+          </h3>
+          <h6 class="text-xl font-thin text-primary" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            Custom Milestone Scope
+          </h6>
+          <div class="grid lg:col-span-2 gap-2 text-sm text-gray-300" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out"> 
+            <p>
+              Turn your business model into scalable software. SaaS platforms, client self-service portals, custom web apps, and API integrations.
+            </p>
+          </div>
         </div>
-    </div>
-  
+
+        {/* Row 3 */}
+        <div class="grid lg:grid-cols-4 items-center lg:gap-6 gap-2 place-items-stretch xl:max-w-7xl pb-6 border-b border-gray-800">
+          <h3 class="text-2xl font-bold" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            Explainer &amp; Motion
+          </h3>
+          <h6 class="text-xl font-thin text-primary" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            Custom Milestone Scope
+          </h6>
+          <div class="grid lg:col-span-2 gap-2 text-sm text-gray-300" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out"> 
+            <p>
+              Captivate your audience with high-converting 2D/3D animated product videos, motion graphics, and UI animations.
+            </p>
+          </div>
+        </div>
+
+        {/* Row 4 */}
+        <div class="grid lg:grid-cols-4 items-center lg:gap-6 gap-2 place-items-stretch xl:max-w-7xl pb-6 border-b border-gray-800">
+          <h3 class="text-2xl font-bold" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            360° Growth Marketing
+          </h3>
+          <h6 class="text-xl font-thin text-primary" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+            Custom Milestone Scope
+          </h6>
+          <div class="grid lg:col-span-2 gap-2 text-sm text-gray-300" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out"> 
+            <p>
+              Omni-channel marketing campaigns, lead funnels, social media content, and automated CRM workflows that drive client acquisition.
+            </p>
+          </div>
+        </div>
+
       </div>
+
       <div>
-        <a class="mb-4 md:mr-4  inline-flex px-8 py-4 bg-primary font-normal text-lg text-background rounded-md hover:shadow-[0_0_10px] hover:shadow-white transition"
-          href="https://buy.stripe.com/7sI9CifK75lD8g0288">
-          Get a Custom Quote
+        <a class="mb-4 md:mr-4 inline-flex px-8 py-4 bg-primary font-normal text-lg text-background rounded-md hover:shadow-[0_0_10px] hover:shadow-white transition"
+          href="https://calendly.com/sketchngo/30min" target="_blank" rel="noopener noreferrer">
+          Request Custom Proposal &amp; Roadmap
         </a>
       </div>
     </div>
 
-    <!-- faqs section-->
+    {/* faqs section */}
     <div id="faqs" class="bg-white px-6 md:px-20 xl:px-48 py-12 md:py-20 xl:py-36 font-normal">
       <div class="grid lg:grid-cols-3 xl:max-w-7xl mx-auto gap-6 md:gap-10">
-        <div class="xl:max-w-7xl ">
+        <div class="xl:max-w-7xl">
           <h1 class="max-w-xl lg:max-w-2xl text-background text-5xl md:text-5xl xl:text-6xl 2xl:text-7xl" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
             FAQs
           </h1>
@@ -579,110 +635,85 @@
           <ul class="flex flex-col gap-6">
             <li class="grid gap-2 bg-white" x-data="accordion(1)" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
               <h3 @click="handleClick()"
-                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer">
-                <span>How does project-based pricing work?</span>
+                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer text-background">
+                <span>What types of backoffice and custom software do you build?</span>
                 <img :class="handleRotate()" class="h-6 w-auto transform transition-transform duration-300 ease-in-out"
-                  src="assets/Chevron.svg" alt="design subscription services agency">
+                  src="assets/Chevron.svg" alt="chevron">
               </h3>
               <div x-ref="tab" :style="handleToggle()"
                 class="overflow-hidden max-h-0 opacity-0 duration-300 ease-in-out transition-all">
-                <p class="text-gray-900">
-                  Each project has a fixed price, depending on its scope. You pay only for the work you need, with no hidden fees or recurring costs.                </p>
+                <p class="text-gray-900 leading-relaxed text-base pt-2">
+                  We design and develop custom internal tools tailored strictly to your operational workflows. This includes Inventory &amp; Stock Control Systems, HR Management Portals, Custom ERPs, Executive Performance Dashboards, Client Self-Service Portals, and automated billing workflows.
+                </p>
               </div>
             </li>
             <li class="grid gap-2 bg-white" x-data="accordion(2)" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
               <h3 @click="handleClick()"
-                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer">
-                <span>What types of projects do you handle?</span>
+                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer text-background">
+                <span>How does your 360° agency model work?</span>
                 <img :class="handleRotate()" class="h-6 w-auto transform transition-transform duration-300 ease-in-out"
-                  src="assets/Chevron.svg" alt="design subscription services agency">
+                  src="assets/Chevron.svg" alt="chevron">
               </h3>
               <div x-ref="tab" :style="handleToggle()"
                 class="overflow-hidden max-h-0 opacity-0 duration-300 ease-in-out transition-all">
-                <p class="text-gray-900">
-                  We handle a wide range of design work, from logos and branding to websites, app interfaces, and marketing materials. If you have a specific design in mind, reach out and let’s chat about how we can help.                </p>
+                <p class="text-gray-900 leading-relaxed text-base pt-2">
+                  Unlike single-focus agencies, we partner with your business end-to-end. We handle internal operations tools (backoffice, stock, HR), customer apps, brand visual media (explainer videos), and client acquisition marketing under one dedicated execution team.
+                </p>
               </div>
             </li>
             <li class="grid gap-2 bg-white" x-data="accordion(3)" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
               <h3 @click="handleClick()"
-                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer">
-                <span>What’s the turnaround time?</span>
+                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer text-background">
+                <span>How are milestone project scopes structured?</span>
                 <img :class="handleRotate()" class="h-6 w-auto transform transition-transform duration-300 ease-in-out"
-                  src="assets/Chevron.svg" alt="design subscription services agency">
+                  src="assets/Chevron.svg" alt="chevron">
               </h3>
               <div x-ref="tab" :style="handleToggle()"
                 class="overflow-hidden max-h-0 opacity-0 duration-300 ease-in-out transition-all">
-                <p class="text-gray-900">
-                  Timelines vary based on the project, but we aim for quick turnarounds, and we’ll give you a clear estimate upfront.                </p>
+                <p class="text-gray-900 leading-relaxed text-base pt-2">
+                  Each project has a transparent fixed milestone scope depending on requirements. You pay only for the work you need, with no hidden fees or unexpected costs.
+                </p>
               </div>
             </li>
             <li class="grid gap-2 bg-white" x-data="accordion(4)" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
               <h3 @click="handleClick()"
-                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer">
-                <span>Can I make changes once the design is delivered?</span>
+                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer text-background">
+                <span>What is the typical turnaround time for custom software or videos?</span>
                 <img :class="handleRotate()" class="h-6 w-auto transform transition-transform duration-300 ease-in-out"
-                  src="assets/Chevron.svg" alt="design subscription services agency">
+                  src="assets/Chevron.svg" alt="chevron">
               </h3>
               <div x-ref="tab" :style="handleToggle()"
                 class="overflow-hidden max-h-0 opacity-0 duration-300 ease-in-out transition-all">
-                <p class="text-gray-900">
-                  Absolutely! We offer unlimited revisions until you’re completely satisfied with the final design.
+                <p class="text-gray-900 leading-relaxed text-base pt-2">
+                  Timelines vary based on scope: initial backoffice tools or MVPs take 3–5 weeks, full-suite web platforms take 6–10 weeks, and branding/explainer video campaigns take 1–3 weeks. We provide a clear roadmap and timeline upfront before work starts.
                 </p>
               </div>
             </li>
             <li class="grid gap-2 bg-white" x-data="accordion(5)" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
               <h3 @click="handleClick()"
-                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer">
-                <span>Which programs are used for design?</span>
+                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer text-background">
+                <span>Do we own the source code and design assets?</span>
                 <img :class="handleRotate()" class="h-6 w-auto transform transition-transform duration-300 ease-in-out"
-                  src="assets/Chevron.svg" alt="design subscription services agency">
+                  src="assets/Chevron.svg" alt="chevron">
               </h3>
               <div x-ref="tab" :style="handleToggle()"
                 class="overflow-hidden max-h-0 opacity-0 duration-300 ease-in-out transition-all">
-                <p class="text-gray-900">
-                  Figma, Adobe Suite, and Blender are commonly used for design requests.
+                <p class="text-gray-900 leading-relaxed text-base pt-2">
+                  Yes, 100%! Upon project handover, you get complete ownership of all custom source code, design system assets, database schemas, and media files.
                 </p>
               </div>
             </li>
             <li class="grid gap-2 bg-white" x-data="accordion(6)" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
               <h3 @click="handleClick()"
-                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer">
-                <span>How do I get started?</span>
+                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer text-background">
+                <span>Do you offer ongoing software updates and maintenance?</span>
                 <img :class="handleRotate()" class="h-6 w-auto transform transition-transform duration-300 ease-in-out"
-                  src="assets/Chevron.svg" alt="design subscription services agency">
+                  src="assets/Chevron.svg" alt="chevron">
               </h3>
               <div x-ref="tab" :style="handleToggle()"
                 class="overflow-hidden max-h-0 opacity-0 duration-300 ease-in-out transition-all">
-                <p class="text-gray-900">
-                  Simply reach out, and we’ll discuss your project’s details, timeline, and pricing. From there, we’ll kick things off right away!
-                </p>
-              </div>
-            </li>
-            <li class="grid gap-2 bg-white" x-data="accordion(7)" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-              <h3 @click="handleClick()"
-                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer">
-                <span>What if I don't like the design?</span>
-                <img :class="handleRotate()" class="h-6 w-auto transform transition-transform duration-300 ease-in-out"
-                  src="assets/Chevron.svg" alt="design subscription services agency">
-              </h3>
-              <div x-ref="tab" :style="handleToggle()"
-                class="overflow-hidden max-h-0 opacity-0 duration-300 ease-in-out transition-all">
-                <p class="text-gray-900">
-                  No problem! The design will be revised until you're 100% satisfied.
-                </p>
-              </div>
-            </li>
-            <li class="grid gap-2 bg-white" x-data="accordion(9)" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="500" data-aos-easing="ease-in-out">
-              <h3 @click="handleClick()"
-                class="flex flex-row items-center justify-between text-xl xl:text-2xl font-medium cursor-pointer">
-                <span>Is there a refund policy?</span>
-                <img :class="handleRotate()" class="h-6 w-auto transform transition-transform duration-300 ease-in-out"
-                  src="assets/Chevron.svg" alt="design subscription services agency">
-              </h3>
-              <div x-ref="tab" :style="handleToggle()"
-                class="overflow-hidden max-h-0 opacity-0 duration-300 ease-in transition-all">
-                <p class="text-gray-900">
-                  Due to the high quality of work, there will be no -outneed for refunds.
+                <p class="text-gray-900 leading-relaxed text-base pt-2">
+                  Yes! We provide post-launch maintenance, cloud infrastructure management, security updates, and continuous feature expansion through dedicated monthly support scopes or fractional team models.
                 </p>
               </div>
             </li>
@@ -691,31 +722,30 @@
       </div>
     </div>
 
-    <!-- Calendly-->
+    {/* Calendly banner */}
     <div class="bg-primary px-6 md:px-20 xl:px-48 py-8 md:py-12 xl:py-8 font-normal">
       <div class="grid lg:grid-cols-3 gap-6 xl:max-w-7xl mx-auto items-center" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
-        <div class="col-span-2 ">
+        <div class="col-span-2">
           <h1 class="text-background text-2xl md:text-3xl xl:text-4xl">
-            Confused? Book a 30 minutes call now!
+            Confused about your software or growth scope? Book a 30 minutes strategy call now!
           </h1>
         </div>
         <div class="ml-auto">
           <a class="inline-flex md:w-auto px-8 py-4 bg-background font-normal text-lg text-white rounded-md hover:shadow-[0_0_10px] hover:shadow-background transition"
-            href="https://calendly.com/sketchngo/30min">
+            href="https://calendly.com/sketchngo/30min" target="_blank" rel="noopener noreferrer">
             Book 30 min call
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Footer -->
-    <div
-      class="text-white bg-background px-6 md:px-10 xl:px-48 py-6 pt-12 md:pt-20 xl:pt-36 md:pb-10 xl:pb-16 font-normal">
+    {/* Footer */}
+    <div className="text-white bg-background px-6 md:px-10 xl:px-48 py-6 pt-12 md:pt-20 xl:pt-36 md:pb-10 xl:pb-16 font-normal">
       <div class="grid md:grid-cols-2 gap-6 max-w-7xl mx-auto" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
         <div class="grid gap-6">
           <div>
             <h1 class="max-w-xl lg:max-w-2xl text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
-              Let's build your business together
+              Let's build your business software &amp; growth together
             </h1>
           </div>
           <div class="grid lg:flex gap-3 md:gap-4 items-center">
@@ -726,17 +756,15 @@
               </a>
             </div>
             <div>
-              <p class="inline-flex text-gray-400 text-md md:max-w-[300px]">We will contact you to discuss the
-                project
-                and select the best team</p>
+              <p class="inline-flex text-gray-400 text-md md:max-w-[300px]">We will contact you to audit your backoffice, custom software, or marketing goals and assemble the best team</p>
             </div>
           </div>
         </div>
         <div class="grid gap-6 pt-2 items-stretch justify-start md:justify-end">
           <div class="grid gap-2">
             <div class="flex gap-2">
-              <div class="">
-                <a class="hover:text-primary" href="mailto:hello@sketchngo.co?subject = Feedback&body = Message">
+              <div>
+                <a class="hover:text-primary" href="mailto:hello@sketchngo.co">
                   hello@sketchngo.co
                 </a>
               </div>
@@ -744,40 +772,35 @@
                 <p class="font-medium text-gray-500">|</p>
               </div>
               <div class="font-medium">
-                <a class="hover:text-primary" href="https://wa.me/25436155">+ 216 25 436 155</a>
+                <a class="hover:text-primary" href="https://wa.me/21625436155" target="_blank" rel="noopener noreferrer">+ 216 25 436 155</a>
               </div>
             </div>
             <div class="flex gap-2">
-              <div class="font-medium text-gray-400">
-                Terms & Conditions
-              </div>
+              <div class="font-medium text-gray-400">Terms &amp; Conditions</div>
               <div>
                 <p class="font-medium text-gray-500">|</p>
               </div>
-              <div class="font-medium text-gray-400">
-                Privacy policy
-              </div>
+              <div class="font-medium text-gray-400">Privacy policy</div>
             </div>
           </div>
           <div class="font-medium flex gap-4 md:gap-6 items-center">
-            <a class="hover:text-indigo-700" href="https://www.linkedin.com/company/sketchngo/">linkedin</a>
-            <a class="hover:text-sky-400" href="https://twitter.com/Sketchngodesign">twitter</a>
-            <a class="hover:text-blue-700"
-              href="https://www.facebook.com/people/Sketch-ngo/100092321876626/">facebook</a>
-            <a class="hover:text-pink-700" href="https://www.instagram.com/sketchngodesign/">instagram</a>
-            <a class="hover:text-rose-500" href="https://www.tiktok.com/@sketchngo">tiktok</a>
+            <a class="hover:text-indigo-700" href="https://www.linkedin.com/company/sketchngo/" target="_blank" rel="noopener noreferrer">linkedin</a>
+            <a class="hover:text-sky-400" href="https://twitter.com/Sketchngodesign" target="_blank" rel="noopener noreferrer">twitter</a>
+            <a class="hover:text-blue-700" href="https://www.facebook.com/people/Sketch-ngo/100092321876626/" target="_blank" rel="noopener noreferrer">facebook</a>
+            <a class="hover:text-pink-700" href="https://www.instagram.com/sketchngodesign/" target="_blank" rel="noopener noreferrer">instagram</a>
+            <a class="hover:text-rose-500" href="https://www.tiktok.com/@sketchngo" target="_blank" rel="noopener noreferrer">tiktok</a>
           </div>
         </div>
       </div>
-      <div class="block gap-3 md:flex mt-6 md:mt-10 xl:mt-16 max-w-7xl md:mx-auto">
-        <p>sketch'n go<span class="ml-3 text-gray-500">Copyright © All rights reserved 2023.</span></p>
+      <div class="block gap-3 md:flex mt-6 md:mt-10 xl:mt-16 max-w-7xl md:mx-auto text-sm text-gray-400">
+        <p>sketch'n go<span class="ml-3 text-gray-500">Copyright © All rights reserved 2026.</span></p>
         <p>Made with ❤️ in Djerba.</p>
       </div>
     </div>
 
   </div>
 
-  <!-- JavaScript -->
+  {/* JavaScript */}
   <script>
     document.addEventListener('alpine:init', () => {
       Alpine.store('accordion', {

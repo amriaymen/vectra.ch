@@ -1,0 +1,114 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+  font-family: 'TT Firs Neue Trl Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/TT Firs Neue Trial Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'TT Firs Neue Trl ExtraLight';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('/fonts/TT Firs Neue Trial ExtraLight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'TT Firs Neue Trl Medium';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/TT Firs Neue Trial Medium.woff') format('woff');
+}
+
+:root {
+  --color-background: #121519;
+  --color-primary: #D9FF41;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-background);
+  color: #F8FAFC;
+  font-family: 'TT Firs Neue Trl Regular', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.font-extralight {
+  font-family: 'TT Firs Neue Trl ExtraLight', sans-serif;
+}
+
+.font-medium {
+  font-family: 'TT Firs Neue Trl Medium', sans-serif;
+}
+
+/* Visible keyboard focus on every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #121519;
+}
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D9FF41;
+}
+
+/*
+ * Scroll reveal — progressive enhancement.
+ *
+ * The hidden state applies ONLY inside `.reveal-ready`, a class added by a tiny
+ * inline script in the layout. No JS means no class means everything is visible:
+ * without this gate, a JS failure would leave every section permanently
+ * invisible. Uses `opacity`, never `display:none`, so the text is in the DOM for
+ * crawlers either way.
+ */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 500ms ease-out,
+    transform 500ms ease-out;
+}
+.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Never start hidden when motion is unwanted — no fade, no travel. */
+  .reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
