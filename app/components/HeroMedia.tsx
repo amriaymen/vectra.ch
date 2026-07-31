@@ -24,7 +24,7 @@ export default function HeroMedia({
   sources: string[];
   label: string;
 }) {
-  const [showVideo, setShowVideo] = useState(false);
+  const [showVideo, setShowVideo] = useState(true);
   const [loaded, setLoaded] = useState(false);
   const wrapper = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
