@@ -56,6 +56,31 @@ const de: Dictionary = {
     home: 'Vectra — Startseite',
   },
 
+  solutionsMenu: {
+    col1Title: 'Schlüsselfertige Produkte',
+    col1Badge: 'Sofort Einsatzbereit',
+    col1Desc: 'Sofort einsatzbereite Software für Schweizer Institutionen.',
+    products: [
+      { name: 'Schoolze', desc: 'Schulverwaltung & Elternportal', href: '/de/products/schoolze' },
+      { name: 'SB Pointage', desc: 'Zeiterfassung, Absenzen & Lohnbuchhaltung', href: '/de/products/sb-pointage' },
+      { name: 'Spotbase', desc: 'Raum- & Sportanlagenreservationen', href: '/de/products/spotbase' },
+    ],
+    col2Title: 'Fixpreis-Projekte',
+    col2Badge: 'Massgeschneidert',
+    col2Desc: 'Massgeschneiderte Systeme mit garantierten Meilensteinen.',
+    customItems: [
+      { name: 'Massgeschneiderte Managementsysteme', desc: 'Unternehmensarchitektur für Ihre Institution', href: '/de/solutions/gestion-scolaire' },
+      { name: 'KI-Offerte Generieren', desc: 'Sofortige Offerte und Zeitschätzung in 3 Minuten', href: '/de#scope' },
+    ],
+    col3Title: 'Unbeschränkte Abonnements',
+    col3Badge: 'Fractional Team',
+    col3Desc: 'Flexibler Zugang zu einem engagierten Senior-Team.',
+    subItems: [
+      { name: 'Dediziertes Team auf Anfrage', desc: 'Senior Entwickler, Motion Designer & Architekten', href: '/de#pricing' },
+      { name: 'Flexible Abonnemente', desc: 'Monatliche Kündigung oder Pausierung ohne Bindung', href: '/de#pricing' },
+    ],
+  },
+
   hero: {
     kicker: herkunft.kicker,
     titleLine1: 'Wir bauen das System,',

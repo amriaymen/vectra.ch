@@ -116,18 +116,61 @@ export default function MobileNav({
         </div>
 
         <nav aria-label={t.nav.menuTitle} className="flex-1 overflow-y-auto px-6 py-4">
-          <p className="mb-2 text-sm uppercase tracking-[0.15em] text-gray-500">
-            {t.nav.solutions}
+          {/* Funnel 1: Products */}
+          <p className="mb-2 text-xs uppercase tracking-[0.15em] text-primary font-semibold flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            {t.solutionsMenu.col1Title}
           </p>
-          <ul className="mb-8 grid">
-            {hubs.map((hub) => (
-              <li key={hub.href} className="border-b border-line/60">
+          <ul className="mb-6 grid">
+            {t.solutionsMenu.products.map((item) => (
+              <li key={item.href} className="border-b border-line/40">
                 <a
-                  href={hub.href}
+                  href={item.href}
                   onClick={close}
-                  className="flex min-h-[56px] items-center text-lg text-gray-200 transition-colors hover:text-primary"
+                  className="flex min-h-[44px] flex-col justify-center py-2 text-base text-gray-200 transition-colors hover:text-primary"
                 >
-                  {hub.label}
+                  <span className="font-medium">{item.name}</span>
+                  <span className="text-xs text-gray-400">{item.desc}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Funnel 2: Fixed Projects */}
+          <p className="mb-2 text-xs uppercase tracking-[0.15em] text-blue-400 font-semibold flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+            {t.solutionsMenu.col2Title}
+          </p>
+          <ul className="mb-6 grid">
+            {t.solutionsMenu.customItems.map((item) => (
+              <li key={item.href} className="border-b border-line/40">
+                <a
+                  href={item.href}
+                  onClick={close}
+                  className="flex min-h-[44px] flex-col justify-center py-2 text-base text-gray-200 transition-colors hover:text-primary"
+                >
+                  <span className="font-medium">{item.name}</span>
+                  <span className="text-xs text-gray-400">{item.desc}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Funnel 3: Subscriptions */}
+          <p className="mb-2 text-xs uppercase tracking-[0.15em] text-emerald-400 font-semibold flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            {t.solutionsMenu.col3Title}
+          </p>
+          <ul className="mb-6 grid">
+            {t.solutionsMenu.subItems.map((item) => (
+              <li key={item.href} className="border-b border-line/40">
+                <a
+                  href={item.href}
+                  onClick={close}
+                  className="flex min-h-[44px] flex-col justify-center py-2 text-base text-gray-200 transition-colors hover:text-primary"
+                >
+                  <span className="font-medium">{item.name}</span>
+                  <span className="text-xs text-gray-400">{item.desc}</span>
                 </a>
               </li>
             ))}

@@ -69,7 +69,7 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
         </a>
 
         <nav aria-label={t.nav.menuTitle} className="hidden items-center gap-7 lg:flex">
-          <SolutionsMenu label={t.nav.solutions} items={hubs} />
+          <SolutionsMenu label={t.nav.solutions} menu={t.solutionsMenu} />
           {links.map((link) => (
             <a
               key={link.href}
