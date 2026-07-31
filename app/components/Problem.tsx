@@ -19,15 +19,16 @@ export default function Problem({ t }: { t: Dictionary }) {
 
   return (
     <Section tone="light">
-      <h2 className="max-w-5xl text-3xl leading-[1.12] tracking-tight md:text-4xl lg:text-5xl">
-        {t.problem.title}
-      </h2>
-
-      <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:gap-12 lg:items-center">
-        {/* Left Column: Problem Copy */}
+      <div className="grid gap-8 lg:grid-cols-12 lg:gap-12 lg:items-center">
+        {/* Left Column: Title + Content */}
         <div className="space-y-6 lg:col-span-7">
-          <p className="text-lg leading-relaxed text-gray-600">{t.problem.body1}</p>
-          <p className="text-lg leading-relaxed text-gray-600">{t.problem.body2}</p>
+          <h2 className="text-3xl leading-[1.12] tracking-tight md:text-4xl lg:text-5xl">
+            {t.problem.title}
+          </h2>
+          <div className="space-y-6 pt-2">
+            <p className="text-lg leading-relaxed text-gray-600">{t.problem.body1}</p>
+            <p className="text-lg leading-relaxed text-gray-600">{t.problem.body2}</p>
+          </div>
         </div>
 
         {/* Right Column: Optimized Vertical Video Showcase */}
