@@ -29,17 +29,41 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
       innerClassName="py-4 md:py-5"
     >
       <div className="flex items-center justify-between gap-8">
-        <a href={`/${locale}`} className="inline-flex items-center gap-2.5 group">
+        {/*
+          Logo lockup, proportioned against the monogram rather than by eye.
+          The artwork is 1423.26 × 1186.05 (1.2:1) and its rounded square module
+          is 474.42 — exactly 40% of the mark's height. At a 28px mark that
+          module is 11.2px, which is where gap-3 (12px) comes from.
+
+          `font-medium` is load-bearing: it is the local class in globals.css
+          that swaps in the real TT Firs Neue Medium file. The previous
+          `font-bold` asked for weight 700, which is not among the three faces
+          we ship (200/400/500), so the browser synthesised it — smeared stems
+          that fought the crisp geometry of the mark.
+        */}
+        <a href={`/${locale}`} className="group inline-flex items-center gap-3">
           <span className="sr-only">{t.nav.home}</span>
           <Image
             className="h-7 w-auto transition-transform group-hover:scale-105"
             src="/assets/logo.svg"
-            alt="Vectra"
-            width={32}
+            // Decorative: the wordmark beside it already says "Vectra", and the
+            // link has an sr-only label. Alt text here would announce it twice.
+            alt=""
+            width={34}
             height={28}
             priority
           />
-          <span className="text-xl font-bold tracking-tight text-white transition-colors group-hover:text-primary">
+          {/*
+            leading-none so items-center centres the glyphs, not the line box —
+            "Vectra" has no descenders, so the box would otherwise sit the caps low.
+
+            aria-hidden because the sr-only label above already names the link.
+            Without it the accessible name reads "Vectra — home Vectra".
+          */}
+          <span
+            aria-hidden="true"
+            className="hidden sm:inline font-medium text-2xl leading-none tracking-tight text-white transition-colors group-hover:text-primary"
+          >
             Vectra
           </span>
         </a>
