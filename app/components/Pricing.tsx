@@ -63,7 +63,10 @@ export default function Pricing({ t }: { t: Dictionary }) {
             return (
               <div
                 key={tier.id}
-                className={`flex flex-col rounded-xl border bg-surface p-6 md:p-8 ${
+                // Anchor target so the Solutions menu can deep-link each tier
+                // individually — its entries previously all pointed at #pricing.
+                id={`tier-${tier.id}`}
+                className={`flex flex-col scroll-mt-28 rounded-xl border bg-surface p-6 md:p-8 ${
                   tier.featured ? 'border-primary' : 'border-line'
                 }`}
               >

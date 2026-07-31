@@ -3,18 +3,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import LocaleSwitcher from './LocaleSwitcher';
+import type { SolutionsMenuModel } from '../lib/nav';
 import { COMPANY, type Dictionary, type Locale } from '../data';
 
 export default function MobileNav({
   t,
   locale,
   links,
-  hubs,
+  solutions,
 }: {
   t: Dictionary;
   locale: Locale;
   links: { href: string; label: string }[];
-  hubs: { href: string; label: string; detail: string }[];
+  /** Same model the desktop dropdown renders, so the two cannot drift. */
+  solutions: SolutionsMenuModel;
 }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -116,65 +118,56 @@ export default function MobileNav({
         </div>
 
         <nav aria-label={t.nav.menuTitle} className="flex-1 overflow-y-auto px-6 py-4">
-          {/* Funnel 1: Products */}
-          <p className="mb-2 text-xs uppercase tracking-[0.15em] text-primary font-semibold flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            {t.solutionsMenu.col1Title}
-          </p>
-          <ul className="mb-6 grid">
-            {t.solutionsMenu.products.map((item) => (
-              <li key={item.href} className="border-b border-line/40">
-                <a
-                  href={item.href}
-                  onClick={close}
-                  className="flex min-h-[44px] flex-col justify-center py-2 text-base text-gray-200 transition-colors hover:text-primary"
-                >
-                  <span className="font-medium">{item.name}</span>
-                  <span className="text-xs text-gray-400">{item.desc}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          {/* The three funnels, from the same model the desktop panel renders. */}
+          {solutions.columns.map((column) => (
+            <div key={column.key} className="mb-6">
+              <p
+                className={`mb-1 text-xs font-medium uppercase tracking-[0.15em] ${
+                  column.tone === 'primary'
+                    ? 'text-primary'
+                    : column.tone === 'accent'
+                      ? 'text-accent'
+                      : 'text-gray-400'
+                }`}
+              >
+                {column.title}
+              </p>
+              <p className="mb-3 text-xs leading-relaxed text-gray-500">{column.desc}</p>
 
-          {/* Funnel 2: Fixed Projects */}
-          <p className="mb-2 text-xs uppercase tracking-[0.15em] text-blue-400 font-semibold flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
-            {t.solutionsMenu.col2Title}
-          </p>
-          <ul className="mb-6 grid">
-            {t.solutionsMenu.customItems.map((item) => (
-              <li key={item.href} className="border-b border-line/40">
-                <a
-                  href={item.href}
-                  onClick={close}
-                  className="flex min-h-[44px] flex-col justify-center py-2 text-base text-gray-200 transition-colors hover:text-primary"
-                >
-                  <span className="font-medium">{item.name}</span>
-                  <span className="text-xs text-gray-400">{item.desc}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          {/* Funnel 3: Subscriptions */}
-          <p className="mb-2 text-xs uppercase tracking-[0.15em] text-emerald-400 font-semibold flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            {t.solutionsMenu.col3Title}
-          </p>
-          <ul className="mb-6 grid">
-            {t.solutionsMenu.subItems.map((item) => (
-              <li key={item.href} className="border-b border-line/40">
-                <a
-                  href={item.href}
-                  onClick={close}
-                  className="flex min-h-[44px] flex-col justify-center py-2 text-base text-gray-200 transition-colors hover:text-primary"
-                >
-                  <span className="font-medium">{item.name}</span>
-                  <span className="text-xs text-gray-400">{item.desc}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+              <ul className="grid">
+                {column.items.map((item) => (
+                  <li key={item.key} className="border-b border-line/40">
+                    <a
+                      href={item.href}
+                      onClick={close}
+                      className="flex min-h-[44px] flex-col justify-center py-2 text-base text-gray-200 transition-colors hover:text-primary"
+                    >
+                      <span className="flex items-baseline justify-between gap-3">
+                        <span className="font-medium">{item.name}</span>
+                        {item.status && (
+                          <span
+                            className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] leading-none ${
+                              item.status === 'available'
+                                ? 'border-primary/40 text-primary'
+                                : 'border-line text-gray-500'
+                            }`}
+                          >
+                            {item.status === 'available'
+                              ? solutions.labels.available
+                              : solutions.labels.running}
+                          </span>
+                        )}
+                        {item.price && (
+                          <span className="shrink-0 text-xs text-gray-500">{item.price}</span>
+                        )}
+                      </span>
+                      <span className="text-xs text-gray-400">{item.desc}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           <ul className="grid">
             {links.map((link) => (

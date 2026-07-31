@@ -56,29 +56,22 @@ const fr: Dictionary = {
     home: 'Vectra — accueil',
   },
 
+  /* Libellés uniquement — les URL sont dérivées dans app/lib/nav.ts. */
   solutionsMenu: {
-    col1Title: "Produits Prêts à l'Emploi",
-    col1Badge: "SaaS Clé en Main",
-    col1Desc: "Logiciels institutionnels immédiatement déployables.",
-    products: [
-      { name: 'Schoolze', desc: 'Gestion scolaire & portail parents', href: '/fr/products/schoolze' },
-      { name: 'SB Pointage', desc: 'Pointage RH, congés & calcul de paie', href: '/fr/products/sb-pointage' },
-      { name: 'Spotbase', desc: "Réservation d'installations & sports", href: '/fr/products/spotbase' },
-    ],
-    col2Title: 'Projets à Prix Fixe',
-    col2Badge: 'Sur Mesure',
-    col2Desc: "Systèmes d'exploitation sur mesure avec jalons garantis.",
-    customItems: [
-      { name: 'Systèmes de Gestion sur Mesure', desc: 'Architecture adaptée à votre fonctionnement réel', href: '/fr/solutions/gestion-scolaire' },
-      { name: 'Générer un Devis avec IA', desc: 'Cadrage et estimation instantanée en 3 minutes', href: '/fr#scope' },
-    ],
-    col3Title: 'Abonnements Illimités',
-    col3Badge: 'Fractional Team',
-    col3Desc: 'Accès flexible à une équipe senior dédiée.',
-    subItems: [
-      { name: 'Équipe Dédiée à la Demande', desc: 'Ingénieurs, motion designers & architectes seniors', href: '/fr#pricing' },
-      { name: 'Abonnement Sans Engagement', desc: 'Ressources agiles avec pause ou annulation mensuelle', href: '/fr#pricing' },
-    ],
+    ready: {
+      title: 'Ça existe déjà',
+      desc: 'Prenez sous licence un système déjà en production. Rien à développer.',
+    },
+    built: {
+      title: 'Nous devons le faire construire',
+      desc: 'Cadré sur votre fonctionnement, à prix fixe par jalon.',
+    },
+    team: {
+      title: 'Nous avons besoin d’une équipe',
+      desc: 'Une capacité de design et de développement continue, de mois en mois.',
+    },
+    ctaLabel: 'Rédiger un cadrage en une minute',
+    ctaNote: 'Vous hésitez entre les trois ?',
   },
 
   hero: {

@@ -49,29 +49,29 @@ const en = {
     home: 'Vectra — home',
   },
 
+  /*
+   * Labels only. Every href is derived in app/lib/nav.ts from the config path
+   * helpers — authoring URLs here is what produced `/en/solutions/gestion-scolaire`,
+   * a French slug on an English page.
+   *
+   * Column titles are buyer statements, not our pricing labels: someone arrives
+   * thinking "we do attendance by hand", not "I'd like a fixed-price engagement".
+   */
   solutionsMenu: {
-    col1Title: 'Ready-to-Use Products',
-    col1Badge: 'Turnkey SaaS',
-    col1Desc: 'Instantly deployable institutional software.',
-    products: [
-      { name: 'Schoolze', desc: 'School management & parent portal', href: '/en/products/schoolze' },
-      { name: 'SB Pointage', desc: 'HR time-tracking & payroll calculation', href: '/en/products/sb-pointage' },
-      { name: 'Spotbase', desc: 'Facility & sports venue booking', href: '/en/products/spotbase' },
-    ],
-    col2Title: 'Fixed Project Pricing',
-    col2Badge: 'Custom Scope',
-    col2Desc: 'Tailored operational systems with fixed milestones.',
-    customItems: [
-      { name: 'Custom Operational Systems', desc: 'Bespoke architecture built for your workflow', href: '/en/solutions/gestion-scolaire' },
-      { name: 'Generate Instant AI Scope', desc: 'Instant project estimate in 3 minutes', href: '/en#scope' },
-    ],
-    col3Title: 'Unlimited Subscriptions',
-    col3Badge: 'Fractional Team',
-    col3Desc: 'Flexible access to a senior dedicated team.',
-    subItems: [
-      { name: 'On-Demand Senior Team', desc: 'Senior engineers, motion designers & architects', href: '/en#pricing' },
-      { name: 'No-Contract Subscription', desc: 'Agile fractional model with monthly pause or cancel', href: '/en#pricing' },
-    ],
+    ready: {
+      title: 'Something already exists',
+      desc: 'Licence a system that is already running. Nothing to build.',
+    },
+    built: {
+      title: 'We need it built',
+      desc: 'Scoped to your workflow, at a fixed price per milestone.',
+    },
+    team: {
+      title: 'We need a team',
+      desc: 'Continuous design and engineering capacity, month to month.',
+    },
+    ctaLabel: 'Draft a scope in about a minute',
+    ctaNote: 'Not sure which of the three fits?',
   },
 
   hero: {

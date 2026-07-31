@@ -3,7 +3,8 @@ import Section from './Section';
 import MobileNav from './MobileNav';
 import LocaleSwitcher from './LocaleSwitcher';
 import SolutionsMenu from './SolutionsMenu';
-import { HUBS, hubPath, type Dictionary, type Locale } from '../data';
+import { buildSolutionsMenu } from '../lib/nav';
+import type { Dictionary, Locale } from '../data';
 
 export default function Header({ t, locale }: { t: Dictionary; locale: Locale }) {
   // Absolute, locale-prefixed anchors. Bare '#work' silently did nothing on
@@ -15,11 +16,9 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
     { href: `/${locale}#faqs`, label: t.nav.faqs },
   ];
 
-  const hubs = HUBS.map((hub) => ({
-    href: hubPath(locale, hub),
-    label: t.hubs[hub].navLabel,
-    detail: t.hubs[hub].navDetail,
-  }));
+  // One model for desktop and mobile, with every href derived from the config
+  // path helpers rather than authored per locale.
+  const solutions = buildSolutionsMenu(locale, t);
 
   return (
     <Section
@@ -69,7 +68,7 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
         </a>
 
         <nav aria-label={t.nav.menuTitle} className="hidden items-center gap-7 lg:flex">
-          <SolutionsMenu label={t.nav.solutions} menu={t.solutionsMenu} />
+          <SolutionsMenu label={t.nav.solutions} menu={solutions} />
           {links.map((link) => (
             <a
               key={link.href}
@@ -88,7 +87,7 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
           </a>
         </nav>
 
-        <MobileNav t={t} locale={locale} links={links} hubs={hubs} />
+        <MobileNav t={t} locale={locale} links={links} solutions={solutions} />
       </div>
     </Section>
   );
