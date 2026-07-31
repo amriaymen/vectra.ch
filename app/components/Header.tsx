@@ -29,24 +29,19 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
       innerClassName="py-4 md:py-5"
     >
       <div className="flex items-center justify-between gap-8">
-        <a href={`/${locale}`} className="inline-flex items-center">
+        <a href={`/${locale}`} className="inline-flex items-center gap-2.5 group">
           <span className="sr-only">{t.nav.home}</span>
           <Image
-            className="hidden h-6 w-auto md:block"
+            className="h-7 w-auto transition-transform group-hover:scale-105"
             src="/assets/logo.svg"
             alt="Vectra"
-            width={148}
-            height={24}
-            priority
-          />
-          <Image
-            className="h-8 w-auto md:hidden"
-            src="/assets/mini_logo.svg"
-            alt="Vectra"
             width={32}
-            height={32}
+            height={28}
             priority
           />
+          <span className="text-xl font-bold tracking-tight text-white transition-colors group-hover:text-primary">
+            Vectra
+          </span>
         </a>
 
         <nav aria-label={t.nav.menuTitle} className="hidden items-center gap-7 lg:flex">
