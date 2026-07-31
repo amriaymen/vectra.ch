@@ -60,6 +60,11 @@ export async function generateMetadata({
       description: t.meta.description,
       images: ['/assets/6.webp'],
     },
+    icons: {
+      icon: [{ url: '/assets/logo.svg', type: 'image/svg+xml' }],
+      shortcut: '/assets/logo.svg',
+      apple: '/assets/logo.svg',
+    },
   };
 }
 
