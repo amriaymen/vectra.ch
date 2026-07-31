@@ -27,6 +27,7 @@ export default function HeroMedia({
   const [showVideo, setShowVideo] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const wrapper = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (!sources.length) return;
@@ -61,6 +62,17 @@ export default function HeroMedia({
     return () => observer.disconnect();
   }, [sources]);
 
+  useEffect(() => {
+    if (!showVideo) return;
+    const vid = videoRef.current;
+    if (vid) {
+      vid.play().catch(() => {});
+    }
+    // Safety fallback: ensure skeleton fades off even if CDN/browser buffers silently
+    const timer = setTimeout(() => setLoaded(true), 1500);
+    return () => clearTimeout(timer);
+  }, [showVideo]);
+
   return (
     // A wide, short strip rather than a tall panel — 11rem/12rem matches the
     // proportions of the Swiss competitor's hero media, which is what made it
@@ -89,14 +101,17 @@ export default function HeroMedia({
 
       {showVideo && (
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          preload="none"
+          preload="auto"
           aria-hidden="true"
           tabIndex={-1}
           onCanPlay={() => setLoaded(true)}
+          onLoadedData={() => setLoaded(true)}
+          onPlay={() => setLoaded(true)}
           className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${
             loaded ? 'opacity-100' : 'opacity-0'
           }`}
