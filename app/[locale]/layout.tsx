@@ -139,6 +139,21 @@ export default function LocaleLayout({
     // design. Without this, the mismatch warning can abort hydration for the
     // subtree and no client component below would run.
     <html lang={LOCALE_TAGS[locale].html} className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        {/*
+          The Medium face now renders the logo wordmark, so it is on the critical
+          path. Without this preload, `font-display: swap` shows the brand name
+          in a fallback system font on every cold load, then swaps — a visible
+          flash on the one word that must not look wrong.
+        */}
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff"
+          href="/fonts/TT%20Firs%20Neue%20Trial%20Medium.woff"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="bg-background font-sans text-white antialiased selection:bg-primary selection:text-background">
         {/*
           Gates the scroll-reveal hidden state. Runs before content paints, so
