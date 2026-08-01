@@ -210,7 +210,7 @@ export default function CaseStudyPage({ params }: { params: { locale: string; sl
       </Section>
 
       <CtaBanner t={t} />
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
 
       <script
         type="application/ld+json"

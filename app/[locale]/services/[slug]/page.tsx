@@ -210,7 +210,7 @@ export default function ServicePage({ params }: { params: { locale: string; slug
 
       <Faq items={copy.faqs} title={t.faqs.title} id={`faq-${service}`} />
       <CtaBanner t={t} />
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
 
       <script
         type="application/ld+json"

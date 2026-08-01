@@ -1,9 +1,10 @@
+import Link from 'next/link';
 import Section from './Section';
-import { COMPANY, type Dictionary } from '../data';
+import { COMPANY, type Dictionary, type Locale } from '../data';
 
 const SOCIAL_LABELS = ['LinkedIn', 'X', 'Facebook', 'Instagram', 'TikTok'];
 
-export default function Footer({ t }: { t: Dictionary }) {
+export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: Locale }) {
   /*
    * Show a phone number only once it is a Swiss one. A +216 number sitting
    * beside Swiss positioning reads as a contradiction to exactly the buyer we
@@ -67,13 +68,20 @@ export default function Footer({ t }: { t: Dictionary }) {
             ))}
           </nav>
 
-          {/*
-            TODO: these three pages do not exist yet. A .ch site selling to Swiss
-            customers needs a real privacy policy (nLPD) and an Impressum. They
-            were previously non-clickable <div>s, which is worse than absent —
-            keeping them as plain text until the pages exist is deliberate.
-          */}
-          <p className="text-sm text-gray-500">{t.footer.legal}</p>
+          {/* Legal Navigation Links */}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-400">
+            <Link className="transition-colors hover:text-primary" href={`/${locale}/legal/terms`}>
+              {locale === 'de' ? 'AGB' : locale === 'en' ? 'Terms' : 'Conditions'}
+            </Link>
+            <span>·</span>
+            <Link className="transition-colors hover:text-primary" href={`/${locale}/legal/privacy`}>
+              {locale === 'de' ? 'Datenschutz' : locale === 'en' ? 'Privacy' : 'Confidentialité'}
+            </Link>
+            <span>·</span>
+            <Link className="transition-colors hover:text-primary" href={`/${locale}/legal/impressum`}>
+              {locale === 'de' ? 'Impressum' : locale === 'en' ? 'Legal Notice' : 'Mentions légales'}
+            </Link>
+          </div>
         </div>
       </div>
 

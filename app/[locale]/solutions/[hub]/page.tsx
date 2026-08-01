@@ -241,7 +241,7 @@ export default function HubPage({ params }: { params: { locale: string; hub: str
 
       <Faq items={copy.faqs} title={t.faqs.title} id={`faq-${hub}`} />
       <CtaBanner t={t} />
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
 
       <script
         type="application/ld+json"

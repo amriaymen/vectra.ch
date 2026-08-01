@@ -14,6 +14,10 @@ import ScopeForm from '../components/ScopeForm';
 import Faq from '../components/Faq';
 import CtaBanner from '../components/CtaBanner';
 import Footer from '../components/Footer';
+import EngagementModels from '../components/EngagementModels';
+import WhoWeServe from '../components/WhoWeServe';
+import DecisionMatrix from '../components/DecisionMatrix';
+import WhyVectra from '../components/WhyVectra';
 import { LOCALE_TAGS, SITE_URL, getContent, isLocale, type Locale } from '../data';
 
 export default function Home({ params }: { params: { locale: string } }) {
@@ -39,12 +43,12 @@ export default function Home({ params }: { params: { locale: string } }) {
     <div id="page-shell" className="isolate bg-background text-white">
       <Header t={t} locale={locale} />
       <Hero t={t} />
-      <TrustStrip t={t} />
-      <Problem t={t} />
-      <Tracks t={t} />
+      <EngagementModels t={t} />
+      <WhoWeServe t={t} />
       <Products t={t} locale={locale} />
       <Testimonials t={t} />
-      <Benefits t={t} />
+      <DecisionMatrix t={t} />
+      <WhyVectra t={t} />
       <Process t={t} />
       <Pricing t={t} />
       {/* Directly after pricing: the threshold question is what a public buyer
@@ -53,7 +57,7 @@ export default function Home({ params }: { params: { locale: string } }) {
       <ScopeForm t={t} locale={locale} />
       <Faq items={t.faqs.items} title={t.faqs.title} />
       <CtaBanner t={t} />
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

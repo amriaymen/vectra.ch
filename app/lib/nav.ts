@@ -54,23 +54,10 @@ export function buildSolutionsMenu(locale: Locale, t: Dictionary): SolutionsMenu
   const m = t.solutionsMenu;
   const onRequest = t.pricing.onRequest;
 
-  /** Lowest non-null figure, or the honest "on request" fallback. */
-  const cheapest = (values: (number | null)[], suffix = '') => {
-    const set = values.filter((v): v is number => v !== null);
-    return set.length ? `${t.pricing.from} ${formatCHF(Math.min(...set))}${suffix}` : onRequest;
-  };
-
-  // ── 1. Something already exists ──────────────────────────────────────────
-  // All four products, each with its domain and an honest status. A `running`
-  // system is real and in production but not licensable, so it gets no
-  // purchase language here either — the nav must not promise what the product
-  // page refuses.
   const ready: MenuColumn = {
     key: 'ready',
     title: m.ready.title,
     desc: m.ready.desc,
-    // PRODUCTS carries no price yet, so this reads "On request" rather than
-    // inventing a licence fee. Add a `from` field there and it lights up.
     price: onRequest,
     tone: 'primary',
     items: PRODUCTS.map((product) => ({
@@ -82,15 +69,11 @@ export function buildSolutionsMenu(locale: Locale, t: Dictionary): SolutionsMenu
     })),
   };
 
-  // ── 2. We need it built ──────────────────────────────────────────────────
-  // The four domain hubs. A custom build is scoped by sector, so this is where
-  // domains belong — and it restores the internal links to pages that were
-  // orphaned when the hubs left the nav.
   const built: MenuColumn = {
     key: 'built',
     title: m.built.title,
     desc: m.built.desc,
-    price: cheapest(PROJECT_TRACKS.map((track) => track.from)),
+    price: onRequest,
     tone: 'accent',
     items: HUBS.map((hub) => ({
       key: hub,
@@ -100,31 +83,21 @@ export function buildSolutionsMenu(locale: Locale, t: Dictionary): SolutionsMenu
     })),
   };
 
-  // ── 3. We need a team ────────────────────────────────────────────────────
-  // Three real tiers with distinct anchors, replacing two entries that both
-  // pointed at #pricing and made the column read as padding.
   const team: MenuColumn = {
     key: 'team',
     title: m.team.title,
     desc: m.team.desc,
-    price: cheapest(
-      SUBSCRIPTION_TIERS.map((tier) => tier.monthly),
-      t.pricing.perMonth,
-    ),
+    price: onRequest,
     tone: 'neutral',
-    items: SUBSCRIPTION_TIERS.map((tier) => {
-      const copy = t.pricing.tiers[tier.id as keyof typeof t.pricing.tiers];
-      return {
-        key: tier.id,
-        name: copy.name,
-        desc: copy.detail,
-        href: `/${locale}#tier-${tier.id}`,
-        price:
-          tier.monthly === null
-            ? onRequest
-            : `${formatCHF(tier.monthly)}${t.pricing.perMonth}`,
-      };
-    }),
+    items: [
+      {
+        key: 'subscription',
+        name: t.pricing.models.subscription.name,
+        desc: t.pricing.models.subscription.detail,
+        href: `/${locale}#pricing`,
+        price: onRequest,
+      },
+    ],
   };
 
   return {
@@ -133,8 +106,8 @@ export function buildSolutionsMenu(locale: Locale, t: Dictionary): SolutionsMenu
     labels: {
       available: t.products.statusAvailable,
       running: t.products.statusRunning,
-      from: t.pricing.from,
-      perMonth: t.pricing.perMonth,
+      from: 'Dès',
+      perMonth: '/mois',
     },
   };
 }

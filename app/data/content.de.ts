@@ -26,634 +26,664 @@ const herkunft = {
  */
 const de: Dictionary = {
   meta: {
-    title: 'Vectra | Managementsysteme & Kommunikation für Schweizer Institutionen',
+    title: 'Vectra | Management Systems & Communication for Swiss Institutions',
     description:
-      `${herkunft.descriptionOpener} Managementsysteme — Schulverwaltung, HR und Lohnbuchhaltung, Raumreservationen — gehostet in der Schweiz. Plus Marke, Erklärvideos und Kampagnen. Fixpreis-Meilensteine.`,
+      `${herkunft.descriptionOpener} Management systems — school administration, HR and payroll, facility booking — hosted in Switzerland. Plus brand, explainer video and campaigns. Fixed-price milestones.`,
     keywords: [
-      'Schulverwaltungssoftware Schweiz',
-      'HR und Lohnsystem Schweiz',
-      'Raumreservationssoftware',
-      'Massgeschneiderte Systementwicklung',
-      'Web-Applikationsentwicklung Schweiz',
-      'Erklärvideo Agentur',
+      'school management software Switzerland',
+      'HR and payroll system Switzerland',
+      'facility booking software',
+      'custom management system development',
+      'web application development Switzerland',
+      'explainer video agency',
       'Vectra',
     ],
-    ogAlt: 'Vectra — Managementsysteme und Kommunikation für Schweizer Institutionen',
+    ogAlt: 'Vectra — management systems and communication for Swiss institutions',
   },
 
   nav: {
-    services: 'Dienstleistungen',
-    solutions: 'Lösungen',
-    work: 'Referenzen',
-    process: 'Prozess',
-    pricing: 'Preise',
+    services: 'Services',
+    solutions: 'Ways to work',
+    work: 'Work',
+    process: 'Process',
+    pricing: 'Pricing',
     faqs: 'FAQs',
-    cta: 'Offerte anfragen',
-    openMenu: 'Menü öffnen',
-    closeMenu: 'Menü schliessen',
-    menuTitle: 'Seiten-Navigation',
-    language: 'Sprache',
-    home: 'Vectra — Startseite',
+    cta: 'Estimate My Project',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    menuTitle: 'Site navigation',
+    language: 'Language',
+    home: 'Vectra — home',
   },
 
-  /* Nur Beschriftungen — die URLs werden in app/lib/nav.ts abgeleitet. */
+  /*
+   * Labels only. Every href is derived in app/lib/nav.ts from the config path
+   * helpers — authoring URLs here is what produced `/en/solutions/gestion-scolaire`,
+   * a French slug on an English page.
+   *
+   * Column titles are buyer statements, not our pricing labels: someone arrives
+   * thinking "we do attendance by hand", not "I'd like a fixed-price engagement".
+   */
   solutionsMenu: {
     ready: {
-      title: 'Es gibt es bereits',
-      desc: 'Lizenzieren Sie ein System, das bereits produktiv läuft. Nichts zu entwickeln.',
+      title: 'Something already exists',
+      desc: 'Licence a system that is already running. Nothing to build.',
     },
     built: {
-      title: 'Wir brauchen eine Eigenentwicklung',
-      desc: 'Auf Ihre Abläufe zugeschnitten, zum Fixpreis pro Meilenstein.',
+      title: 'We need it built',
+      desc: 'Scoped to your workflow, at a fixed price per milestone.',
     },
     team: {
-      title: 'Wir brauchen ein Team',
-      desc: 'Laufende Design- und Entwicklungskapazität, Monat für Monat.',
+      title: 'We need a team',
+      desc: 'Continuous design and engineering capacity, month to month.',
     },
-    ctaLabel: 'Offerte in rund einer Minute erstellen',
-    ctaNote: 'Unsicher, welches der drei passt?',
+    ctaLabel: 'Draft a scope in about a minute',
+    ctaNote: 'Not sure which of the three fits?',
   },
 
   hero: {
     kicker: herkunft.kicker,
-    titleLine1: 'Wir bauen das System,',
-    titleLine2: 'dann machen wir es begehrenswert.',
-    body: 'Vectra entwickelt die Software, auf der Institutionen laufen — Schulverwaltung, HR & Lohnbuchhaltung, Raumreservationen — und produziert die Marke, Videos und Kampagnen, die sie erfolgreich machen. Ihre Daten bleiben in der Schweiz.',
-    primaryCta: 'Fixpreis-Offerte anfragen',
-    secondaryCta: 'Unsere Referenzen',
-    mediaLabel: 'Das Schulverwaltungsportal Schoolze im Einsatz',
+    titleLine1: 'We build the system,',
+    titleLine2: 'then we make people want it.',
+    body: 'Swiss software studio building operational systems, custom applications and the communication that drives adoption.',
+    primaryCta: 'Estimate My Project',
+    secondaryCta: 'See what we build',
+    mediaLabel: 'The Schoolze school management portal in use',
+  },
+
+  engagementModels: {
+    title: 'Choose how you\'d like to work with us.',
+    items: [
+      { step: '①', title: 'License Software', desc: 'Use one of our existing platforms.\nSchool Management\nSports Booking\nHR & Payroll' },
+      { step: '②', title: 'Build Custom Software', desc: 'Need something unique?\n\nWe\'ll design and build it.' },
+      { step: '③', title: 'Ongoing Partnership', desc: 'Need continuous design, engineering and growth?\n\nMonthly subscription.' }
+    ]
+  },
+
+  whoWeServe: {
+    title: 'We specialize in operational software.',
+    list: ['Education', 'Sports', 'Workforce', 'Public Sector'],
+    footer: 'We also build custom software for startups and businesses.'
+  },
+
+  decisionMatrix: {
+    title: 'Is Vectra right for you?',
+    subtitle: 'Choose the path that fits your situation:',
+    columns: ['If you...', 'Choose...'],
+    rows: [
+      { condition: 'Need software that\'s already built', choice: 'License one of our products' },
+      { condition: 'Need software tailored to your organization', choice: 'Custom project' },
+      { condition: 'Need continuous design, development, or growth support', choice: 'Subscription' }
+    ]
+  },
+
+  whyVectra: {
+    title: 'Why organizations choose Vectra',
+    items: [
+      { label: 'Fixed-price milestones', detail: 'Every milestone is quoted before it starts. No open-ended hourly billing.' },
+      { label: 'Swiss-hosted infrastructure', detail: 'Swiss hosting. Swiss jurisdiction. Your data never leaves Switzerland.' },
+      { label: 'You own your code', detail: 'Source code, schemas and design files transfer to you from day one.' },
+      { label: 'Direct access to senior engineers', detail: 'You work with the engineers doing the work. No account managers.' },
+      { label: 'One team for software and adoption', detail: 'The team that built the system explains it. The story matches the product.' }
+    ],
+    trustSignals: [
+      { label: 'Swiss registration', detail: 'CHE-XXX.XXX.XXX' },
+      { label: 'Insurance', detail: 'Professional indemnity up to CHF 5M' },
+      { label: 'Tech Stack', detail: 'Next.js, Node, PostgreSQL' }
+    ]
   },
 
   trust: [
     {
-      // Bewusst an erster Stelle: für eine Schule oder Gemeinde entscheidet
-      // diese Frage, ob überhaupt weitergelesen wird.
-      label: 'Ihre Daten bleiben in der Schweiz',
+      // First, deliberately: for a school or commune this is the question that
+      // decides whether they keep reading.
+      label: 'Your data stays in Switzerland',
       detail:
-        'Gehostet bei einem Schweizer Anbieter, unter Schweizer Jurisdiktion. Kein US-Hyperscaler, keine Übermittlung ins Ausland.',
+        'Hosted with a Swiss provider, under Swiss jurisdiction. No US hyperscaler and no transfer abroad.',
     },
     {
-      label: 'Nach den Regeln Ihres Kantons',
+      label: 'Built to your canton’s rules',
       detail:
-        'Schulen und Gemeinden unterstehen dem kantonalen Datenschutzgesetz, nicht dem Bundesgesetz. Wir bauen nach den Vorgaben Ihres Kantons.',
+        'Schools and communes answer to cantonal data protection law, not the federal act. We build to your canton’s requirements.',
     },
     {
-      label: 'Fixpreis-Meilensteine',
-      detail: 'Jeder Meilenstein wird vor Start offeriert. Keine unbegrenzte Abrechnung nach Aufwand.',
+      label: 'Fixed-price milestones',
+      detail: 'Every milestone is quoted before it starts. No open-ended hourly billing.',
     },
     {
-      label: 'Der Code gehört Ihnen',
-      detail: 'Quellcode, Datenbankschemas und Design-Dateien gehen vom ersten Tag an in Ihren Besitz über.',
+      label: 'You own the code',
+      detail: 'Source code, schemas and design files transfer to you from day one.',
     },
   ],
 
   problem: {
-    title: 'Die meisten Institutionen brauchen zwei Partner: Einen, der das System baut, und einen, der es erklären kann.',
+    title: 'Most institutions need two vendors: one who can build the system, one who can explain it.',
     body1:
-      'Ein Software-Team und eine Kommunikationsagentur separat zu beauftragen, bedeutet, zweimal für denselben Kontext zu bezahlen – und mit der Kluft dazwischen zu leben: Ein System, das funktioniert, aber niemand nutzt, oder eine Kampagne, die etwas verspricht, das die Software nicht kann.',
+      'Hiring a software team and a communication agency separately means paying twice for the same context, and living with the gap between them — a system that works but nobody adopts, or a campaign that promises something the software does not do.',
     body2:
-      'Wir machen beides, mit einem Team und einem Projektumfang. Meilenstein-Preise anstelle eines offenen Retainers, erfahrene Entwickler und Designer anstelle einer wechselnden Besetzung und Code, der uneingeschränkt Ihnen gehört.',
+      'We do both, with one team and one scope. Milestone pricing instead of an open-ended retainer, senior engineers and designers instead of a rotating bench, and code you own outright.',
   },
 
   tracks: {
-    title: 'Zwei Bereiche. Ein Team.',
-    intro: 'Go baut die Software. Sketch sorgt für den Erfolg am Markt. Wählen Sie eines oder beides — der Preis pro Meilenstein ist in jedem Fall fix.',
-    badge: 'Am häufigsten angefragt',
-    ctaBuild: 'Entwicklung offerieren lassen',
-    ctaTell: 'Kampagne offerieren lassen',
+    title: 'Two tracks. One team.',
+    intro: 'Go builds the software. Sketch makes it land. Take one or both — the scope is fixed either way.',
+    badge: 'Most requested',
+    ctaBuild: 'Scope a build',
+    ctaTell: 'Scope a campaign',
     build: {
-      kicker: 'Go — wir bauen es',
-      title: 'Die Systeme, auf denen Ihre Institution läuft',
+      kicker: 'Go — we build it',
+      title: 'Systems your institution runs on',
       promise:
-        'Verwaltung, Planung, Zeiterfassung, Lohnbuchhaltung und Abrechnung — entwickelt für die tatsächlichen Abläufe Ihrer Organisation, nicht als Standard-Vorlage.',
+        'Administration, scheduling, attendance, payroll and billing, engineered around how your organisation actually works rather than around a template.',
       services: [
         {
-          name: 'Schul- & Institutionsverwaltung',
-          detail: 'Einschreibungen, Anwesenheiten, Noten, Elternportale, Rechnungsstellung und standortübergreifende Verwaltung.',
+          name: 'School & institution management',
+          detail: 'Enrolment, attendance, grading, parent portals, invoicing and multi-campus administration.',
         },
         {
-          name: 'HR, Zeiterfassung & Lohn',
-          detail: 'Ein- und Ausstempeln, Absenzen- und Vertragsverwaltung, Lohnberechnung und Reporting.',
+          name: 'HR, time tracking & payroll',
+          detail: 'Check-in/checkout, leave and contract management, salary calculation and payroll reporting.',
         },
         {
-          name: 'Reservation & Anlagenverwaltung',
-          detail: 'Ressourcen-Kalender, Mitgliederverwaltung, Online-Buchungen und automatisierte Zahlungen.',
+          name: 'Booking & facility management',
+          detail: 'Resource calendars, membership management, online reservations and automated payments.',
         },
         {
-          name: 'Integrationen & Datenmigration',
-          detail: 'Anbindung neuer Systeme an Buchhaltung, Zahlungsanbieter und Altsysteme sowie die Übernahme bestehender Daten.',
+          name: 'Integrations & data migration',
+          detail: 'Connecting new systems to accounting, payment and legacy databases, and moving the historical data across.',
         },
       ],
     },
     tell: {
-      kicker: 'Sketch — wir machen es erfolgreich',
-      title: 'Kommunikation, die zur Nutzung anregt',
+      kicker: 'Sketch — we make it land',
+      title: 'Communication that drives adoption',
       promise:
-        'Dasselbe Team, das das System gebaut hat, erklärt es auch — so entspricht die Kommunikation dem Produkt, anstatt etwas zu beschreiben, das nicht existiert.',
+        'The same team that built the system explains it — so the story matches the product instead of describing something that does not exist.',
       services: [
         {
-          name: 'Markenidentität & Design-Systeme',
-          detail: 'Logo-Systeme, Typografie, Farben und Komponenten-Bibliotheken, die über alle Produkte hinweg konsistent bleiben.',
+          name: 'Brand identity & design systems',
+          detail: 'Logo systems, typography, colour and component libraries that stay consistent across products.',
         },
         {
-          name: 'Animierte Erklärvideos',
-          detail: '2D- und 3D-Animationen, die ein komplexes System in unter einer Minute verständlich machen.',
+          name: 'Animated explainer video',
+          detail: '2D and 3D motion that makes a complex system understandable in under a minute.',
         },
         {
-          name: 'Onboarding- & Adoptionsmaterial',
-          detail: 'Trainings-Walkthroughs, In-App-Anleitungen und Dokumentationen für Mitarbeitende, damit das System tatsächlich genutzt wird.',
+          name: 'Onboarding & adoption material',
+          detail: 'Training walkthroughs, in-product guidance and staff documentation that get a system actually used.',
         },
         {
-          name: 'Kampagnen & Lead-Funnels',
-          detail: 'Landing Pages, E-Mail-Sequenzen und CRM-Automatisierung, direkt mit Ihrer Pipeline verknüpft.',
+          name: 'Campaigns & lead funnels',
+          detail: 'Landing pages, email sequences and CRM automation wired to your pipeline.',
         },
       ],
     },
   },
 
   products: {
-    title: 'Systeme, die wir bereits betreiben',
-    intro:
-      'Unsere eigene Software, gehostet in der Schweiz. Eines ist heute lizenzierbar; die anderen laufen produktiv und lassen sich für Ihre Institution anpassen.',
-    forWhoLabel: 'Gebaut für',
-    modulesLabel: 'Was es leistet',
-    scaleLabel: 'Grösse',
-    stackLabel: 'Technologie',
-    readMore: 'Zum Produkt',
-    statusAvailable: 'Ab sofort verfügbar',
-    statusRunning: 'Im produktiven Einsatz',
-    demoCta: 'Demo buchen',
-    adaptCta: 'Zu diesem System anfragen',
-    alsoTitle: 'Ausserdem umgesetzt',
-    alsoIntro: 'Produkt- und Markenarbeiten jenseits unserer Kernkompetenz Managementsysteme.',
+    title: 'Systems we already run',
+    intro: 'These products demonstrate our engineering capability. Every custom project benefits from years of product development experience.',
+    forWhoLabel: 'Built for',
+    problemLabel: 'Problem',
+    solutionLabel: 'Solution',
+    outcomeLabel: 'Outcome',
+    modulesLabel: 'What it does',
+    scaleLabel: 'Scale',
+    stackLabel: 'Built with',
+    readMore: 'See the product',
+    statusAvailable: 'Available now',
+    statusRunning: 'In production',
+    demoCta: 'Book a demo',
+    adaptCta: 'Ask about this system',
+    alsoTitle: 'Also built',
+    alsoIntro: 'Product and brand work beyond the management-systems core.',
     domains: {
-      education: 'Bildung',
-      sports: 'Sport & Freizeit',
-      hr: 'HR & Lohn',
-      product: 'Produkt',
-      brand: 'Marke',
+      education: 'Education',
+      sports: 'Sports & leisure',
+      hr: 'HR & payroll',
+      product: 'Product',
+      brand: 'Brand',
     },
-    /*
-     * Das sind unsere eigenen Produkte: Jeder Eintrag beschreibt die SOFTWARE —
-     * für wen sie gebaut ist und was sie leistet. Niemals die Situation eines
-     * konkreten Kunden: eine erfundene Fallgeschichte ist fabrizierter Beleg.
-     */
     items: {
       spotbase: {
-        tagline: 'Sportanlagenverwaltung & Buchung',
-        forWho: 'Sportzentren, Vereine und Gemeinden, die buchbare Anlagen verwalten.',
-        summary:
-          'Ressourcen-Kalender, Online-Reservationen, Mitgliedschaften und Zahlung in einem System — Buchung und zugehöriger Betrag bilden einen einzigen Datensatz.',
-        modules: ['Ressourcen-Kalender', 'Online-Buchung', 'Mitgliedschaften', 'Zahlungen', 'Auslastungsberichte'],
+        tagline: 'Sports facility management & booking',
+        forWho: 'Sports centres, clubs and communes managing bookable facilities.',
+        summary: 'Resource calendars, online reservations, memberships and payment in one system, so a booking and the money attached to it are a single record.',
+        problem: 'Facilities manage bookings over the phone, leading to double-bookings and untracked revenue.',
+        solution: 'Built a self-service reservation platform with integrated payment and resource rules.',
+        outcome: 'Zero double-bookings and real-time facility usage data.',
+        modules: ['Resource calendar', 'Online booking', 'Memberships', 'Payments', 'Usage reporting'],
         scale: '',
-        outcome: '',
       },
       schoolze: {
-        tagline: 'Schulverwaltungsportal',
-        forWho: 'Primar- und Sekundarschulen sowie Schulgruppen mit mehreren Standorten.',
-        summary:
-          'Einschreibungen, Anwesenheiten, Noten, Elternkommunikation und Rechnungsstellung in einem Portal, mit rollenbasierten Zugriffen für Verwaltung, Lehrpersonen und Eltern.',
-        modules: ['Einschreibungen & Akten', 'Anwesenheit', 'Noten & Zeugnisse', 'Elternportal', 'Rechnungsstellung'],
+        tagline: 'School management portal',
+        forWho: 'Primary and secondary schools, and school groups with several sites.',
+        summary: 'Enrolment, attendance, grading, parent communication and invoicing in one portal, with role-based access for administration, teaching staff and parents.',
+        problem: 'Schools managing hundreds of students using disjointed spreadsheets and paper forms.',
+        solution: 'Built a centralized platform for grading, attendance, and parent communication.',
+        outcome: 'Reduced administrative workload and reconciled invoicing.',
+        modules: ['Enrolment & records', 'Attendance', 'Grading & reports', 'Parent portal', 'Invoicing'],
         scale: '',
-        outcome: '',
       },
       'sb-pointage': {
-        tagline: 'Zeiterfassung & Lohnbuchhaltung',
-        forWho: 'Arbeitgeber mit Schicht- oder Stundenpersonal, deren Stunden ohne Doppelerfassung in die Lohnabrechnung gelangen müssen.',
-        summary:
-          'Ein- und Ausstempeln, Absenzen- und Vertragsverwaltung, Lohnberechnung und Lohn-Export — eine durchgehende Kette von der Stempeluhr bis zur Lohnabrechnung.',
-        modules: ['Ein- / Ausstempeln', 'Absenzenverwaltung', 'Lohnberechnung', 'Lohn-Export', 'Personalakten'],
+        tagline: 'Time tracking & payroll',
+        forWho: 'Employers running shift or hourly staff who need hours to reach payroll without re-entry.',
+        summary: 'Check-in and checkout, leave and contract management, salary calculation and payroll export — one chain from the clock to the payslip.',
+        problem: 'Paper timesheets causing monthly payroll delays and leave balance disputes.',
+        solution: 'Deployed terminal and mobile check-in feeding directly into automated salary calculations.',
+        outcome: 'Error-free payroll exports and fully auditable staff records.',
+        modules: ['Check-in / checkout', 'Leave management', 'Salary calculation', 'Payroll export', 'Staff records'],
         scale: '',
-        outcome: '',
       },
       raqim: {
-        tagline: 'Standortübergreifende Schulverwaltung',
-        forWho: 'Schulgruppen, die eine konsolidierte Sicht über mehrere Standorte benötigen.',
-        summary:
-          'Akademische Akten, Personalverwaltung, Stundenplanung und Reporting über mehrere Standorte, mit zentral konsolidierten Zahlen statt standortweiser Zusammenstellung.',
-        modules: ['Standortübergreifende Verwaltung', 'Akademische Akten', 'Personalverwaltung', 'Stundenplanung', 'Konsolidiertes Reporting'],
+        tagline: 'Multi-site school administration',
+        forWho: 'School groups needing one consolidated view across several sites.',
+        summary: 'Academic records, staff management, scheduling and reporting across multiple sites, with figures consolidated centrally rather than assembled per site.',
+        problem: 'Multi-site groups struggling with fragmented data and lack of consolidated reporting.',
+        solution: 'Built a multi-tenant administration platform unifying records across all campuses.',
+        outcome: 'Real-time visibility and standardized processes across the entire organization.',
+        modules: ['Multi-site administration', 'Academic records', 'Staff management', 'Scheduling', 'Consolidated reporting'],
         scale: '',
-        outcome: '',
       },
     },
     also: {
-      hellodesk: { name: 'Hellodesk', detail: 'Buchungsplattform für Coworking-Spaces — Suche, Reservationen und Host-Onboarding.' },
-      audio: { name: 'Live-Audio-App', detail: 'Community-Audio-Produkt — Mobile-First Räume, Einladungen und Interessens-Graph.' },
-      spectrum: { name: 'Spectrum', detail: 'Markenidentität und Logo-System.' },
+      hellodesk: { name: 'Hellodesk', detail: 'Co-working space booking platform — search, reservations and host onboarding.' },
+      audio: { name: 'Live audio app', detail: 'Community audio product — mobile-first rooms, invitations and interest graph.' },
+      spectrum: { name: 'Spectrum', detail: 'Brand identity and logo system.' },
     },
   },
 
   benefits: {
-    title: 'Warum Teams uns wählen',
-    intro: 'Ein Team für die Software und die Story, zu Bedingungen, die es Ihnen erlauben, nach jedem Meilenstein zu stoppen.',
+    title: 'Why teams pick us',
+    intro: 'One team for the software and the story, on terms that let you stop whenever a milestone closes.',
     items: [
       {
-        title: 'Um Ihre Abläufe herum gebaut',
+        title: 'Built around your workflow',
         detail:
-          'Managementsysteme, entwickelt für die tatsächlichen Abläufe Ihrer Organisation — nicht als Standard-Vorlage, an die Sie sich anpassen müssen.',
+          'Management systems engineered for how your organisation actually runs — not a template bent to fit it.',
       },
       {
-        title: 'Direkter Kontakt zu Senior-Profilen',
-        detail: 'Sie arbeiten direkt mit den Ingenieuren, Architekten und Designern zusammen, die die Arbeit machen. Kein Account-Manager, der Nachrichten weiterleitet.',
+        title: 'Senior people, directly',
+        detail: 'You work with the engineers, architects and designers doing the work. No account manager relaying messages.',
       },
       {
-        title: 'Lieferung in Wochen, nicht Quartalen',
-        detail: 'Ein erstes Modul ist in 3 bis 5 Wochen einsatzbereit. Jeder Meilenstein endet mit einem funktionierenden System, das Sie testen können.',
+        title: 'Shipped in weeks, not quarters',
+        detail: 'A first module lands in 3 to 5 weeks. Every milestone ends in something you can click through.',
       },
     ],
   },
 
   process: {
-    title: 'Wie ein Projekt abläuft',
-    intro: 'Drei Schritte, offeriert und geplant, bevor die Arbeit beginnt.',
+    title: 'How a project runs',
+    intro: 'Three steps, priced and scheduled before anything starts.',
     steps: [
       {
         step: '01',
-        title: 'Anforderungsanalyse & Architektur',
+        title: 'Scope & architecture',
         detail:
-          'Wir analysieren den Prozess, den Sie optimieren möchten, und liefern einen schriftlichen Projektplan mit Meilensteinen, Zeitplan und Fixpreis pro Meilenstein.',
+          'We audit the workflow you want to fix and return a written scope with milestones, timeline and a fixed price per milestone.',
       },
       {
         step: '02',
-        title: 'Entwicklung & Review',
+        title: 'Build & review',
         detail:
-          'Sie arbeiten direkt mit den Entwicklern und Designern zusammen. Jeder Meilenstein endet in einem funktionierenden Review-Termin am System, nicht mit einem Statusbericht.',
+          'You work directly with the engineers and designers building it. Every milestone ends in a working review you can click through, not a status report.',
       },
       {
         step: '03',
-        title: 'Übergabe & Skalierung',
+        title: 'Handover & scale',
         detail:
-          'Wir stellen das System online, schulen Ihr Team und übergeben den Code sowie alle Assets. Laufende Arbeiten werden nur auf monatlicher Basis fortgeführt, wenn Sie dies wünschen.',
+          'We deploy, train your team and hand over the code and assets. Ongoing work continues month to month only if you want it to.',
       },
     ],
   },
 
   pricing: {
-    title: 'Preise',
-    intro: 'Publizierte Tarife, fixe Meilensteine und kostenlose Offerten.',
-    onRequest: 'Auf Anfrage',
-    subscriptionTitle: 'Laufendes Abonnement',
-    subscriptionIntro:
-      'Eine kontinuierliche Design- und Engineering-Kapazität für Teams, die stetige Lieferung anstelle eines einmaligen Projekts benötigen. Eine aktive Anfrage zur Zeit, und Sie können jederzeit zwischen zwei Anfragen pausieren oder kündigen.',
-    monthly: 'Monatlich',
-    yearly: 'Jährlich',
-    yearlyNote: 'jährlich abgerechnet',
-    perMonth: '/Monat',
-    perYear: '/Jahr',
-    featured: 'Am beliebtesten',
-    projectsTitle: 'Fixpreis-Projekte',
-    projectsIntro: 'Für ein definiertes Resultat. Offeriert und zeitlich pro Meilenstein geplant, bevor die Arbeit beginnt.',
-    from: 'ab',
-    subscriptionCta: 'Abo starten',
-    projectCta: 'Projekt offerieren lassen',
-    tiers: {
-      design: {
-        name: 'Design',
-        detail: 'Marken-, UI- und Motion-Arbeiten auf kontinuierlicher Basis.',
-        includes: ['Eine aktive Anfrage zur Zeit', 'Marken-, UI- und Motion-Design', 'Typische Turnaround-Zeit 2–4 Arbeitstage', 'Jederzeit pausieren oder kündigen'],
+    title: 'Three ways to work with us',
+    intro: 'Published rates, fixed milestones, and no charge for scoping.',
+    onRequest: 'On request',
+    models: {
+      license: {
+        name: 'Software License',
+        detail: 'Deploy one of our existing platforms immediately.',
+        includes: ['Ready-to-use software', 'Swiss hosting included', 'Immediate deployment', 'Ongoing updates'],
+        cta: 'See Products'
       },
-      build: {
-        name: 'Design + Build',
-        detail: 'Design plus Entwicklungskapazität — die kompletten Build- und Tell-Bereiche.',
-        includes: ['Eine aktive Anfrage zur Zeit', 'Design und Full-Stack-Entwicklung', 'Typische Turnaround-Zeit 3–7 Arbeitstage', 'Infrastruktur und Wartung inbegriffen', 'Jederzeit pausieren oder kündigen'],
+      project: {
+        name: 'Project',
+        detail: 'Fixed-scope custom software, priced and scheduled per milestone before work starts.',
+        includes: ['Custom architecture', 'Milestone-based delivery', 'Fixed pricing', 'Full IP ownership'],
+        cta: 'Estimate My Project'
       },
-      scale: {
-        name: 'Scale',
-        detail: 'Dedizierte Kapazität für Teams, die kontinuierlich ausliefern.',
-        includes: ['Zwei aktive Anfragen gleichzeitig', 'Priorisierte Bearbeitung', 'Dedizierter Senior-Engineer und -Designer', 'Unterstützung bei Architektur und Roadmap', 'Jederzeit pausieren oder kündigen'],
-      },
-    },
-    tracks: {
-      management: {
-        name: 'Managementsysteme',
-        detail: 'Schulverwaltung, HR und Lohnbuchhaltung, Buchungs- und Anlagenverwaltung.',
-      },
-      webapps: { name: 'Web- & Mobile-Apps', detail: 'Kundenportale, Plattformen, individuelle Applikationen und Integrationen.' },
-      brand: { name: 'Marke & Erklärvideos', detail: 'Identitätssysteme, Design-Bibliotheken und animierte Erklärvideos.' },
-      growth: { name: 'Wachstum & Kampagnen', detail: 'Funnels, Landing Pages, CRM-Automatisierung und Kampagnenproduktion.' },
-    },
+      subscription: {
+        name: 'Subscription',
+        detail: 'Ongoing access to senior software and design capacity after launch. A long-term product partnership.',
+        includes: ['Continuous development', 'UI/UX and motion design', 'Priority scheduling', 'Pause or cancel anytime'],
+        cta: 'Start a subscription'
+      }
+    }
   },
 
   scope: {
-    title: 'Fixpreis-Offerte anfragen',
+    title: 'Get a fixed-price scope',
     intro:
-      'Beantworten Sie fünf kurze Fragen und wir erstellen Ihnen in etwa einer Minute einen ersten Projektplan — Phasen, Leistungen, Zeitplan und einen Preisrahmen — direkt auf dieser Seite. Kein Anruf nötig und völlig kostenlos.',
-    aside: 'Sprechen Sie lieber persönlich mit uns? Buchen Sie stattdessen einen Termin über den Banner unten.',
-    stepOf: 'Schritt {current} von {total}',
-    stepNames: ['Was Sie brauchen', 'Module', 'Grösse', 'Zeitplan', 'Ihre Angaben'],
-    next: 'Weiter',
-    back: 'Zurück',
-    submit: 'Offerte generieren',
-    submitting: 'Wird erstellt…',
+      'Answer five short questions and we will draft your project scope — phases, deliverables, timeline and a price band — on this page, in about a minute. No call required first, and no charge for the scoping.',
+    aside: 'Prefer to talk it through? Book a call from the banner below instead.',
+    stepOf: 'Step {current} of {total}',
+    stepNames: ['What you need', 'Modules', 'Scale', 'Timing', 'Your details'],
+    next: 'Next',
+    back: 'Back',
+    submit: 'Draft my scope',
+    submitting: 'Drafting…',
     progress: {
-      reading: 'Ihre Anforderungen werden gelesen',
-      drafting: 'Phasen und Leistungen werden entworfen',
-      estimating: 'Zeitplan und Kostenrahmen werden geschätzt',
+      reading: 'Reading your requirements',
+      drafting: 'Drafting phases and deliverables',
+      estimating: 'Estimating timeline and range',
     },
-    q1: { title: 'Welche Art von System benötigen Sie?', hint: 'Wählen Sie die treffendste Option.' },
-    q2: { title: 'Welche Bestandteile brauchen Sie?', hint: 'Wählen Sie alles Zutreffende aus.' },
-    q3: { title: 'Wie gross ist das Projekt?', hint: 'Grobe Schätzungen reichen aus.' },
-    q4: { title: 'Wann soll das System live gehen?', hint: 'Und mit welchem ungefähren Budget planen Sie?' },
-    q5: { title: 'Wohin dürfen wir die Offerte senden?', hint: '' },
+    q1: { title: 'What kind of system do you need?', hint: 'Pick the closest match.' },
+    q2: { title: 'Which parts do you need?', hint: 'Select everything that applies.' },
+    q3: { title: 'How big is it?', hint: 'Rough numbers are fine.' },
+    q4: { title: 'When do you want it live?', hint: 'And roughly what budget are you working with?' },
+    q5: { title: 'Where should we send it?', hint: '' },
     fields: {
-      users: 'Wie viele Personen werden das System in etwa nutzen?',
-      sites: 'Wie viele Standorte oder Niederlassungen?',
-      existing: 'Mit welchen Systemen muss es kompatibel sein?',
-      existingPlaceholder: 'z.B. unsere Buchhaltungssoftware, eine bestehende Schülerdatenbank, Stripe',
+      users: 'Roughly how many people will use it?',
+      sites: 'How many sites or locations?',
+      existing: 'What systems does it need to work with?',
+      existingPlaceholder: 'e.g. our accounting software, an existing student database, Stripe',
       name: 'Name',
-      email: 'Geschäftliche E-Mail',
-      company: 'Organisation / Firma',
-      notes: 'Müssen wir noch etwas anderes wissen?',
-      notesPlaceholder: 'z.B. wir haben drei Standorte und die Anwesenheit wird wöchentlich manuell abgestimmt',
+      email: 'Work email',
+      company: 'Organisation',
+      notes: 'Anything else we should know?',
+      notesPlaceholder: 'e.g. we have three campuses and attendance is reconciled by hand every week',
     },
     domains: {
-      education: 'Schule oder Bildungsinstitution',
-      sports: 'Sport- oder Freizeitanlage',
-      hr: 'HR, Zeiterfassung oder Lohn',
-      other: 'Etwas anderes',
+      education: 'School or education',
+      sports: 'Sports or leisure facility',
+      hr: 'HR, time tracking or payroll',
+      other: 'Something else',
     },
     timelines: {
-      urgent: { label: 'So bald wie möglich', detail: 'Ein erstes Modul, 3–5 Wochen' },
-      standard: { label: 'Nächstes Quartal', detail: 'Vollständiges System, 6–10 Wochen' },
-      ongoing: { label: 'Laufende Kapazität', detail: 'Abonnement, Monat für Monat' },
+      urgent: { label: 'As soon as possible', detail: 'A first module, 3–5 weeks' },
+      standard: { label: 'Next quarter', detail: 'Full system, 6–10 weeks' },
+      ongoing: { label: 'Ongoing capacity', detail: 'Subscription, month to month' },
     },
     budgets: {
-      unsure: 'Noch unsicher',
-      small: "Unter CHF 15'000",
+      unsure: 'Not sure yet',
+      small: "Under CHF 15'000",
       medium: "CHF 15'000 – 60'000",
-      large: "Über CHF 60'000",
+      large: "Above CHF 60'000",
     },
     result: {
-      title: 'Ihr erster Projektplan',
+      title: 'Your draft scope',
       disclaimer:
-        'Dies ist eine erste grobe Schätzung, die auf Ihren Antworten basiert, kein verbindliches Angebot. Wir bestätigen den genauen Umfang und Preis schriftlich, bevor die Arbeit beginnt.',
-      phases: 'Phasen',
-      deliverables: 'Leistungen',
-      timeline: 'Geschätzter Zeitplan',
-      weeks: 'Wochen',
-      range: 'Richtpreisrahmen',
-      assumptions: 'Unsere Annahmen',
-      risks: 'Faktoren, die die Schätzung beeinflussen könnten',
-      outOfScope: 'Nicht enthalten',
-      emailed: 'Wir haben eine Kopie an Sie und an unser Team gesendet. Sie erhalten innerhalb eines Arbeitstages eine schriftliche Offerte.',
-      restart: 'Neu starten',
-      book: 'Gespräch zur Verfeinerung buchen',
+        'This is an indicative estimate generated from your answers, not a quote. We confirm scope and price in writing before any work starts.',
+      phases: 'Phases',
+      deliverables: 'Deliverables',
+      timeline: 'Estimated timeline',
+      weeks: 'weeks',
+      range: 'Indicative range',
+      assumptions: 'Assumptions we made',
+      risks: 'Things that could change the estimate',
+      outOfScope: 'Not included',
+      emailed: 'We have emailed a copy to you and to our team. Expect a written scope within one working day.',
+      restart: 'Start over',
+      book: 'Book a call to refine it',
     },
     errors: {
-      generic: 'Etwas ist schiefgelaufen.',
-      notSent: 'Ihre Daten wurden nicht gesendet — bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt per E-Mail.',
+      generic: 'Something went wrong.',
+      notSent: 'Your details were not sent — please retry, or email us directly.',
       degraded:
-        'Wir haben Ihre Anfrage erhalten. Die sofortige Entwurfsgenerierung ist derzeit nicht verfügbar, daher senden wir Ihnen die Offerte per E-Mail zu.',
+        'We received your request and our team has it. The instant draft is unavailable right now, so we will send your scope by email instead.',
     },
   },
 
   faqs: {
-    title: 'Häufig gestellte Fragen',
+    title: 'Frequently asked questions',
     items: [
       {
-        question: 'Welche Art von Systemen bauen Sie?',
+        question: 'What kind of systems do you build?',
         answer:
-          'Operative Managementsysteme: Schul- und Institutionsverwaltung, HR mit Zeiterfassung und Lohnbuchhaltung sowie Buchungs- oder Anlagenverwaltung. Wir starten bei dem Prozess, den Sie optimieren wollen, nicht bei einer Produktvorlage.',
+          'Operational management systems: school and institution administration, HR with time tracking and payroll, and booking or facility management. We start from the process you want to fix, not from a product template.',
       },
       {
-        question: 'Sie bieten sowohl Entwicklung als auch Kommunikation an — ist das nicht zu breit gefächert?',
+        question: 'You do both development and communication — is that not too broad?',
         answer:
-          'Wir arbeiten in zwei Bereichen. "Build" umfasst Managementsysteme sowie Web- und Mobile-Apps. "Tell" deckt Markenidentität, Erklärvideos und Kampagnen ab. Die meisten Kunden starten mit einem Bereich. Der Vorteil beider Bereiche unter einem Dach ist, dass dieselben Leute, die das System bauen, es auch erklären — so entspricht die Kommunikation dem tatsächlichen Endprodukt.',
+          'We run two tracks. Build covers management systems, web and mobile apps. Tell covers brand identity, explainer video and campaigns. Most clients start with one. The advantage of both under one team is that the people explaining the system are the people who built it, so the story matches what actually ships.',
       },
       {
-        question: 'Wie ist die Preisgestaltung strukturiert?',
+        question: 'How is pricing structured?',
         answer:
-          'Auf zwei Arten. Ein Fixpreis pro Meilenstein für Projektarbeiten oder ein publiziertes monatliches Abonnement für fortlaufende Kapazität. Sie erhalten Projektumfang, Zeitplan und Preis schriftlich, bevor ein Meilenstein beginnt, und können jederzeit zwischen zwei Meilensteinen stoppen.',
+          'Two ways. Fixed price per milestone for project work, or a published monthly subscription for ongoing capacity. You get scope, timeline and price in writing before a milestone starts, and you can stop between any two.',
       },
       {
-        question: 'Wie sehen typische Zeitpläne aus?',
+        question: 'What are typical timelines?',
         answer:
-          'Ein erstes Modul oder MVP dauert etwa 3 bis 5 Wochen. Eine vollständige Managementplattform benötigt 6 bis 10 Wochen. Arbeiten in den Bereichen Branding und Erklärvideos nehmen 1 bis 3 Wochen in Anspruch. Sie erhalten einen Meilenstein-Fahrplan mit Terminen, bevor die Arbeit beginnt.',
+          'A first module or MVP takes roughly 3 to 5 weeks. A full management platform takes 6 to 10 weeks. Branding and explainer video work takes 1 to 3 weeks. You get a milestone roadmap with dates before work begins.',
       },
       {
-        question: 'Können Sie die Systeme integrieren, die wir bereits nutzen?',
+        question: 'Can you integrate with the systems we already use?',
         answer:
-          'Ja. Wir bauen Integrationen zu Buchhaltungssoftware, Zahlungsanbietern und bestehenden Datenbanken, einschliesslich On-Premise-Systemen, die nur eine Datenbankverbindung bereitstellen, und migrieren Ihre historischen Daten.',
+          'Yes. We build integrations to accounting software, payment providers and existing databases, including on-premise systems that only expose a database connection, and we migrate your historical data across.',
       },
       {
-        question: 'Unser System enthält personenbezogene Daten. Wie gehen Sie damit um?',
+        question: 'Where is our data hosted?',
         answer:
-          'Schüler-, Personal- und Lohndaten sind besonders schützenswerte Personendaten. Die Zugriffskontrolle ist deshalb Teil der Architektur und kein nachträglicher Zusatz: rollenbasierte Berechtigungen, Audit-Protokollierung, Verschlüsselung im Ruhezustand und Datenminimierung by Design. Wichtig: Schulen und Gemeinden sind kantonale bzw. kommunale Organe — es gilt somit Ihr kantonales Datenschutzgesetz und die Aufsicht liegt bei Ihrer kantonalen Datenschutzbeauftragten, nicht beim Bundesgesetz. Wir bauen nach den Vorgaben Ihres Kantons und liefern den Eintrag im Bearbeitungsverzeichnis sowie eine Datenschutz-Folgenabschätzung, die Sie direkt weiterreichen können. Für private Arbeitgeber gilt stattdessen das revDSG, nach dem wir ebenfalls arbeiten.',
+          'In Switzerland, with a Swiss provider, under Swiss jurisdiction. Not on a US hyperscaler and not transferred abroad. We can name the provider and the data centre in writing so your data protection officer can verify it.',
       },
       {
-        question: 'Wo werden unsere Daten gehostet?',
+        question: 'Our system holds pupil and staff data. How do you handle that?',
         answer:
-          'In der Schweiz, bei einem Schweizer Anbieter, unter Schweizer Jurisdiktion. Nicht bei einem US-Hyperscaler und ohne Übermittlung ins Ausland. Wir nennen Anbieter und Rechenzentrum schriftlich, damit Ihre Datenschutzbeauftragte dies überprüfen kann.',
+          'Pupil, staff and salary records are sensitive personal data, so access control is architectural rather than an afterthought: role-based permissions, audit logging, encryption at rest and data minimisation by default. Note that schools and communes are cantonal or municipal bodies, so it is your cantonal data protection law that applies and your cantonal data protection officer who supervises — not the federal act. We build to your canton’s requirements and provide a processing register entry and a data protection impact assessment you can hand straight to them. For private employers the federal FADP applies instead, and we work to that.',
       },
       {
-        question: 'Wir sind eine Schule oder Gemeinde. Wie läuft die Beschaffung ab?',
+        question: 'We are a school or a commune. How does the procurement side work?',
         answer:
-          'Unterhalb der kantonalen Schwelle für das Einladungsverfahren kann ein Auftrag in der Regel ohne offene Ausschreibung vergeben werden — bei Dienstleistungen liegt das meist unter CHF 150’000, die Schwellenwerte unterscheiden sich jedoch je Kanton und werden alle zwei Jahre angepasst; prüfen Sie den aktuellen Wert für Ihren Kanton. Darüber hinaus reichen wir über SIMAP ein und liefern das übliche Dossier: Referenzen, Versicherungsnachweis, Datenschutzkonzept und Subunternehmererklärung. Unsere Fixpreis-Meilensteine sind so aufgebaut, wie öffentliche Budgets bewilligt werden.',
+          'Below your canton’s invitation threshold a contract can normally be awarded without an open tender — for services that is typically somewhere under CHF 150’000, but thresholds differ by canton and are revised every two years, so confirm the current figure for yours. Above it, we respond to listings on SIMAP and supply the usual dossier: references, insurance certificate, data protection concept and sub-contractor declaration. Our fixed-price milestones are structured to match how public budgets are approved.',
       },
       {
-        question: 'Besitzen wir den Quellcode und die Design-Assets?',
+        question: 'Do we own the source code and design assets?',
         answer:
-          'Ja, vollumfänglich. Bei der Übergabe erhalten Sie den Quellcode, die Datenbankschemas, die Design-System-Dateien und die Medien-Assets. Es gibt keine Lizenzen, die erneuert werden müssen, und nichts hindert Sie daran, zu einem anderen Team zu wechseln.',
+          'Yes, entirely. On handover you receive the source code, database schemas, design system files and media assets. There is no licence to renew and nothing stops you moving to another team.',
       },
       {
-        question: 'Bieten Sie nach dem Launch eine laufende Wartung an?',
+        question: 'Do you offer ongoing maintenance after launch?',
         answer:
-          'Ja — Post-Launch-Wartung, Cloud-Infrastruktur-Management, Sicherheitsupdates und fortlaufende Weiterentwicklung von Funktionen, entweder als monatliches Projektbudget oder über das Abonnement.',
+          'Yes — post-launch maintenance, cloud infrastructure management, security updates and continued feature work, either as a monthly scope or through the subscription.',
       },
     ],
   },
 
   procurement: {
-    title: 'Beschaffung für Schulen, Gemeinden und öffentliche Stellen',
+    title: 'Buying as a school, commune or public body',
     intro:
-      'Öffentliche Stellen beschaffen nach den Regeln des öffentlichen Beschaffungswesens. Wir arbeiten innerhalb dieser Regeln statt daran vorbei und dimensionieren Projekte entsprechend.',
+      'Public bodies buy under procurement rules. We work inside them rather than around them, and we size projects with them in mind.',
     points: [
       {
-        title: 'Oft ohne offene Ausschreibung',
+        title: 'Often no open tender needed',
         detail:
-          'Unterhalb der kantonalen Schwelle für das Einladungsverfahren — bei Dienstleistungen meist unter CHF 150’000 — kann ein Auftrag in der Regel freihändig vergeben werden. Die Schwellenwerte unterscheiden sich je Kanton und werden alle zwei Jahre angepasst; prüfen Sie den aktuellen Wert für Ihren Kanton.',
+          'Below your canton’s invitation threshold — typically somewhere under CHF 150’000 for services — a contract can normally be awarded directly. Thresholds vary by canton and are revised every two years, so confirm the current figure for yours.',
       },
       {
-        title: 'Wir reichen über SIMAP ein',
+        title: 'We respond to SIMAP listings',
         detail:
-          'Oberhalb der Schwelle offerieren wir im ordentlichen Verfahren und liefern das übliche Dossier: Referenzen, Versicherungsnachweis, Datenschutzkonzept und Subunternehmererklärung.',
+          'Above the threshold we tender in the normal way and supply the usual dossier: references, insurance certificate, data protection concept and sub-contractor declaration.',
       },
       {
-        title: 'Meilensteine passend zum Budgetzyklus',
+        title: 'Milestones fit budget cycles',
         detail:
-          'Fixpreis-Meilensteine entsprechen der Art, wie öffentliche Budgets bewilligt und freigegeben werden, statt eine Gesamtsumme zu Beginn zu verlangen.',
+          'Fixed-price milestones map onto how public budgets are actually approved and released, instead of asking for one lump sum up front.',
       },
       {
-        title: 'Die Unterlagen, die Ihre Datenschutzstelle verlangt',
+        title: 'Documentation your DPO will ask for',
         detail:
-          'Eintrag im Bearbeitungsverzeichnis, Datenschutz-Folgenabschätzung und schriftliche Bestätigung des Hosting-Standorts — als Teil des Auftrags erstellt, nicht nachträglich.',
+          'A processing register entry, a data protection impact assessment and written confirmation of where data is hosted — prepared as part of the work, not as an afterthought.',
       },
     ],
   },
 
   cta: {
-    title: 'Noch unsicher, was Sie benötigen? Sprechen Sie 30 Minuten mit einem Software-Architekten, nicht mit dem Vertrieb.',
-    button: '30-Minuten-Gespräch buchen',
+    title: 'Not sure what you need scoped yet? Take 30 minutes with an engineer, not a salesperson.',
+    button: 'Book a 30 min call',
   },
 
   footer: {
-    title: 'Erzählen Sie uns, was Ihre Organisation ausbremst.',
-    button: 'Offerte anfragen',
-    note: 'Sie erhalten einen schriftlichen Projektplan mit Meilensteinen und Preisen, bevor Sie sich zu etwas verpflichten.',
-    legal: 'AGB · Datenschutz · Impressum — demnächst',
+    title: 'Tell us what is slowing your organisation down.',
+    button: 'Get a scope',
+    note: 'You get a written scope with milestones and pricing before committing to anything.',
+    legal: 'Terms · Privacy · Impressum — coming soon',
     rights: herkunft.rights,
-    team: 'Verteiltes Team, das zu Schweizer Bürozeiten arbeitet. Kundendaten in der Schweiz gehostet.',
-    social: 'Social Media',
+    team: 'Distributed team, working Swiss hours. Client data hosted in Switzerland.',
+    social: 'Social',
   },
 
   proof: {
-    systems: 'Systeme in Produktion',
-    years: 'Jahre Erfahrung',
-    institutions: 'Betreute Institutionen',
+    systems: 'systems in production',
+    years: 'years building them',
+    institutions: 'institutions served',
   },
 
   testimonials: {
-    title: 'Was die Verantwortlichen dieser Systeme sagen',
+    title: 'What the people running these systems say',
   },
 
   pages: {
-    home: 'Startseite',
-    solutions: 'Lösungen',
-    services: 'Dienstleistungen',
-    servicesInArea: 'Dienstleistungen in diesem Bereich',
-    included: 'Was eine Entwicklung beinhaltet',
-    relatedWork: 'Ähnliche Projekte',
-    problemTitle: 'Das Problem',
-    solutionTitle: 'Was wir bauen',
-    pricingTitle: 'Was es kostet',
+    home: 'Home',
+    solutions: 'Solutions',
+    services: 'Services',
+    servicesInArea: 'Services in this area',
+    included: 'What a build includes',
+    relatedWork: 'Related work',
+    problemTitle: 'The problem',
+    solutionTitle: 'What we build',
+    pricingTitle: 'What it costs',
     pricingBody:
-      'Fixpreis pro Meilenstein, schriftlich vereinbart, bevor der Meilenstein beginnt. Die Aufwandschätzung ist kostenlos und Sie können jederzeit zwischen zwei Meilensteinen stoppen.',
-    pricingCta: 'Fixpreis-Offerte anfragen',
-    allSolutions: 'Alle Lösungen',
+      'Fixed price per milestone, agreed in writing before the milestone starts. Scoping is free and you can stop between any two milestones.',
+    pricingCta: 'Get a fixed-price scope',
+    allSolutions: 'All solutions',
   },
 
   hubs: {
     'school-management': {
-      navLabel: 'Schul- & Institutionsverwaltung',
-      navDetail: 'Einschreibungen, Anwesenheiten, Noten, Elternportale, Rechnungsstellung.',
-      kicker: 'Lösungen · Bildung',
-      h1: 'Schulverwaltungssoftware für Schweizer Institutionen',
+      navLabel: 'School & institution management',
+      navDetail: 'Enrolment, attendance, grading, parent portals, invoicing.',
+      kicker: 'Solutions · Education',
+      h1: 'School management software for Swiss institutions',
       intro:
-        'Ein System für Einschreibungen, Anwesenheiten, Noten, Elternkommunikation und Rechnungsstellung — das die Excel-Listen und Papierformulare ersetzt, die jeden Monatsabschluss verlangsamen.',
+        'One system for enrolment, attendance, grading, parent communication and invoicing — replacing the spreadsheets and paper forms that make every month-end slow.',
       problem: [
-        'Anwesenheiten werden auf Papier erfasst und später abgetippt, sodass Register und Rechnungen jede Woche manuell abgeglichen werden müssen.',
-        'Jeder Standort hat eigene Prozesse, sodass es keine konsolidierte akademische oder operative Übersicht über die Organisation gibt.',
-        'Eltern rufen an oder schreiben E-Mails, um Informationen zu erhalten, die über ein Self-Service-Portal verfügbar sein könnten.',
+        'Attendance is recorded on paper and re-keyed later, so registers and invoices have to be reconciled by hand every week.',
+        'Each site runs its own process, leaving no consolidated academic or operational view of the organisation.',
+        'Parents phone and email the office for information that could be self-service.',
       ],
       solution: [
-        'Ein einziger Datensatz pro Schüler, von der Einschreibung über die Notengebung bis zum Abschlusszeugnis.',
-        'Anwesenheitserfassung, die direkt in die Rechnungsstellung fliesst, damit beide Datenbestände stets übereinstimmen.',
-        'Ein Elternportal für Absenzen, Berichte, Zahlungen und Nachrichten.',
-        'Standortübergreifende Verwaltung mit konsolidiertem Reporting über alle Campus hinweg.',
+        'A single record per pupil, from enrolment through grading to leaving certificate.',
+        'Attendance capture that feeds invoicing directly, so the two cannot disagree.',
+        'A parent portal for absences, reports, payments and messages.',
+        'Multi-site administration with consolidated reporting across campuses.',
       ],
       faqs: [
         {
-          question: 'Kann es parallel zu unserem bestehenden System betrieben werden?',
+          question: 'Can it run alongside the system we already have?',
           answer:
-            'Ja. Wir starten oft mit einem Modul — z. B. Anwesenheit oder Rechnungsstellung —, das an Ihre bestehenden Aufzeichnungen angebunden ist, und erweitern es von dort aus. So bleibt der erste Meilenstein klein und risikofrei.',
+            'Yes. We commonly start with one module — attendance or invoicing — connected to your existing records, and expand from there. That keeps the first milestone small and reversible.',
         },
         {
-          question: 'Wie werden die Schülerdaten geschützt?',
+          question: 'How is pupil data protected?',
           answer:
-            'Rollenbasierte Berechtigungen, Audit-Protokollierung, Verschlüsselung im Ruhezustand und Datenminimierung sind Teil der Systemarchitektur, nicht bloss ein nachträglicher Zusatz. Die Daten werden in der Schweiz gehostet. Schulen und Gemeinden unterstehen dem kantonalen Datenschutzgesetz statt dem Bundesgesetz: Wir bauen nach den Vorgaben Ihres Kantons und übergeben Ihnen den Eintrag im Bearbeitungsverzeichnis und die Folgenabschätzung, die Ihre kantonale Datenschutzbeauftragte verlangen wird.',
+            'Role-based permissions, audit logging, encryption at rest and data minimisation are part of the architecture, not an afterthought. Data is hosted in Switzerland. Schools and communes fall under cantonal data protection law rather than the federal act, so we build to your canton’s requirements and hand you the processing register entry and impact assessment your cantonal data protection officer will ask for.',
         },
       ],
     },
     'hr-and-payroll': {
-      navLabel: 'HR, Zeiterfassung & Lohn',
-      navDetail: 'Ein- und Ausstempeln, Absenzen, Lohnberechnung, Reporting.',
-      kicker: 'Lösungen · HR & Lohn',
-      h1: 'HR-, Zeiterfassungs- und Lohnsoftware',
+      navLabel: 'HR, time tracking & payroll',
+      navDetail: 'Check-in and checkout, leave, salary calculation, reporting.',
+      kicker: 'Solutions · HR & payroll',
+      h1: 'HR, time tracking and payroll software',
       intro:
-        'Arbeitsstunden einmal erfasst, direkt am Arbeitsplatz, und bis zur Lohnberechnung weitergeführt — ganz ohne Excel-Tabellen dazwischen.',
+        'Hours captured once, at the point of work, and carried through to salary calculation without a spreadsheet in between.',
       problem: [
-        'Stunden werden auf Papier oder in Excel erfasst und vor der Lohnabrechnung erneut eingegeben, was den Monatsabschluss verlangsamt und anfällig für Fehler macht.',
-        'Feriensaldi existieren nur in den Köpfen oder einer geteilten Datei, was Urlaubsansprüche schwer nachvollziehbar macht.',
-        'Es gibt keine verlässliche Aufzeichnung darüber, wer wann wo gearbeitet hat, was sofort problematisch wird, wenn jemand danach fragt.',
+        'Hours are written on paper or in a spreadsheet and re-entered before payroll, which makes the monthly close slow and error-prone.',
+        'Leave balances live in someone’s head or a shared file, so entitlement disputes are hard to settle.',
+        'There is no reliable record of who worked where, which matters the moment anyone asks.',
       ],
       solution: [
-        'Ein- und Ausstempeln, das von den Mitarbeitenden tatsächlich genutzt werden kann — am Terminal oder auf dem Smartphone.',
-        'Ferienanträge, Freigaben und Saldi werden automatisch berechnet.',
-        'Lohnberechnung basierend auf den erfassten Arbeitsstunden, mit payroll-fertigen Exporten.',
-        'Vertrags- und Personalakten an einem zentralen Ort, mit vollständigem Audit-Trail.',
+        'Check-in and checkout that staff can actually use, on a terminal or a phone.',
+        'Leave requests, approvals and balances calculated automatically.',
+        'Salary calculation driven by recorded hours, with payroll-ready output.',
+        'Contract and staff records in one place, with an audit trail.',
       ],
       faqs: [
         {
-          question: 'Deckte es Schweizer Lohn-Spezifikationen ab?',
+          question: 'Does it handle Swiss payroll specifics?',
           answer:
-            'Wir bauen die Berechnungsregeln passend zu Ihren kantonalen und vertraglichen Anforderungen und exportieren im Format, das Ihr Treuhänder oder Lohnanbieter erwartet. Wir integrieren uns in Ihr bestehendes Lohnsystem anstatt es komplett zu ersetzen, es sei denn, Sie wünschen eine Gesamtlösung.',
+            'We build the calculation rules to your cantonal and contractual requirements and export in the format your accountant or payroll provider expects. We integrate with your existing payroll rather than replacing it, unless you want the whole chain.',
         },
         {
-          question: 'Was ist mit Mitarbeitenden ohne Firmenhandy?',
+          question: 'What about employees without a company phone?',
           answer:
-            'Ein gemeinsames Terminal — ein Tablet am Eingang mit Badge oder PIN-Eingabe — funktioniert genauso gut wie individuelle Geräte. Die meisten unserer Implementierungen nutzen beides.',
+            'A shared terminal — a tablet at the entrance with a badge or PIN — works the same as individual devices. Most of our deployments use both.',
         },
       ],
     },
     'booking-and-facilities': {
-      navLabel: 'Buchungs- & Anlagenverwaltung',
-      navDetail: 'Ressourcen-Kalender, Online-Reservationen, Mitgliedschaften, Zahlungen.',
-      kicker: 'Lösungen · Anlagen',
-      h1: 'Software für Buchungs- und Anlagenverwaltung',
+      navLabel: 'Booking & facility management',
+      navDetail: 'Resource calendars, online reservations, memberships, payments.',
+      kicker: 'Solutions · Facilities',
+      h1: 'Booking and facility management software',
       intro:
-        'Ein Kalender pro Ressource, online buchbar, mit direkt angebundener Mitgliedschaftsverwaltung und Bezahlung — so gehören Doppelbuchungen der Vergangenheit an und Sie sehen genau, wie gut Ihre Anlagen ausgelastet sind.',
+        'One calendar per resource, bookable online, with memberships and payment attached — so double-bookings stop and you can finally see usage per facility.',
       problem: [
-        'Buchungen treffen per Telefon und Nachricht ein, was Doppelbuchungen verursacht und keine Aufzeichnungen hinterlässt.',
-        'Niemand kann genau sagen, welcher Platz, Raum oder Court sich tatsächlich rechnet.',
-        'Zahlungen werden getrennt von der Buchung einkassiert, was die Abstimmung zu einer manuellen Aufgabe macht.',
+        'Bookings arrive by phone and message, which causes double-booking and leaves no record.',
+        'Nobody can say which pitch, room or court actually earns its keep.',
+        'Payment is collected separately from the booking, so reconciliation is manual.',
       ],
       solution: [
-        'Ein Kalender pro Ressource mit Regeln für Öffnungszeiten, Dauer und Berechtigungen, wer was buchen darf.',
-        'Self-Service Online-Reservationen mit sofortiger Bestätigung.',
-        'Mitgliedschaften, Abonnemente und Einzelbuchungen im selben System.',
-        'Auslastungs- und Umsatzberichte pro Anlage.',
+        'A calendar per resource with rules for opening hours, duration and who may book what.',
+        'Self-service online reservation with instant confirmation.',
+        'Memberships, subscriptions and one-off bookings in the same system.',
+        'Usage and revenue reporting per facility.',
       ],
       faqs: [
         {
-          question: 'Können Mitglieder online bezahlen?',
+          question: 'Can members pay online?',
           answer:
-            'Ja — mit Kreditkarte und Schweizer Zahlungsmitteln. Die Zahlung ist direkt mit der Buchung verknüpft, sodass Reservation und Zahlung einen einzigen Datensatz bilden, nicht zwei separate.',
+            'Yes — card and Swiss payment methods, attached to the booking so the reservation and the payment are one record rather than two.',
         },
         {
-          question: 'Wir haben mehrere Standorte. Funktioniert das?',
+          question: 'We have several sites. Does that work?',
           answer:
-            'Ja. Ressourcen werden nach Standort gruppiert, mit standortspezifischen Regeln und Berechtigungen sowie einem konsolidierten Reporting über alle Anlagen hinweg.',
+            'Yes. Resources are grouped by site, with per-site rules and permissions, plus consolidated reporting across all of them.',
         },
       ],
     },
     'brand-and-communication': {
-      navLabel: 'Marke & Kommunikation',
-      navDetail: 'Identitätssysteme, Erklärvideos, Adoptionsmaterial.',
-      kicker: 'Lösungen · Kommunikation',
-      h1: 'Markenauftritt und Kommunikation für technische Produkte',
+      navLabel: 'Brand & communication',
+      navDetail: 'Identity systems, explainer video, adoption material.',
+      kicker: 'Solutions · Communication',
+      h1: 'Brand and communication for technical products',
       intro:
-        'Das Team, das das System gebaut hat, erklärt es auch. So entspricht Ihre Botschaft dem tatsächlichen Produkt, anstatt Funktionen zu bewerben, die es gar nicht gibt.',
+        'The team that built the system explains it, so the story matches the product instead of describing something that does not exist.',
       problem: [
-        'Ein System funktioniert einwandfrei, wird aber nicht genutzt, weil es den Nutzern nicht richtig erklärt wurde.',
-        'Eine Marketingkampagne verspricht Funktionen, die die Software in Wirklichkeit nicht bietet.',
-        'Materialien werden von einer Agentur erstellt, die das eigentliche Produkt nie von innen gesehen hat.',
+        'A system that works but nobody adopts, because no one explained it to the people who have to use it.',
+        'A campaign that promises capabilities the software does not have.',
+        'Materials produced by an agency that never saw the product.',
       ],
       solution: [
-        'Identitätssysteme und Komponenten-Bibliotheken, die über alle Produkte hinweg konsistent bleiben.',
-        'Animierte Erklärvideos, die ein komplexes System in unter einer Minute begreiflich machen.',
-        'Onboarding- und Schulungsmaterialien, die dafür sorgen, dass ein System tatsächlich genutzt wird.',
-        'Landing Pages und Funnels, die direkt in Ihre Vertriebs-Pipeline münden.',
+        'Identity systems and component libraries that stay consistent across products.',
+        'Animated explainer video that makes a complex system understandable in under a minute.',
+        'Onboarding and training material that gets a system actually used.',
+        'Landing pages and funnels wired to your pipeline.',
       ],
       faqs: [
         {
-          question: 'Können Sie die Kommunikation übernehmen, ohne das System gebaut zu haben?',
+          question: 'Can you do the communication without building the system?',
           answer:
-            'Ja. Viele Kunden bringen ein bereits existierendes Produkt zu uns, um es besser zu erklären. Wir bitten jedoch zuerst um Zugang dazu — wir kommunizieren nicht über Software, die wir nicht selbst getestet haben.',
+            'Yes. Plenty of clients bring us an existing product to explain. We ask for access to it first — we do not write about software we have not used.',
         },
         {
-          question: 'Wie lange dauert die Produktion eines Erklärvideos?',
+          question: 'How long does an explainer video take?',
           answer:
-            'Ein bis drei Wochen, abhängig von der Länge und davon, ob 3D-Elemente integriert werden. Skript und Storyboard werden stets von Ihnen freigegeben, bevor die eigentliche Animation beginnt.',
+            'One to three weeks depending on length and whether 3D is involved. Script and storyboard are approved before any animation starts.',
         },
       ],
     },
@@ -661,224 +691,224 @@ const de: Dictionary = {
 
   services: {
     'school-management-software': {
-      h1: 'Schulverwaltungssoftware, passend zu Ihrem Prozess',
+      h1: 'School management software, built to your process',
       intro:
-        'Eine massgeschneiderte Administrationsplattform für Schulen und Bildungsinstitutionen — keine Vorlage, die Sie zwingt, Ihre bewährten Abläufe zu ändern.',
+        'A custom administration platform for schools and training institutions — not a template bent to fit how you already work.',
       problem:
-        'Standard-Schulsoftware zwingt Ihnen deren Prozesslogik auf. Wenn diese nicht passt, wird die Lücke mit Excel-Listen gefüllt, und diese Listen werden schliesslich zum eigentlichen Kernsystem.',
+        'Off-the-shelf school software forces your process to match its assumptions. When it does not fit, the gap is filled with spreadsheets, and those spreadsheets become the real system of record.',
       solution:
-        'Wir bilden zuerst Ihre tatsächlichen administrativen Abläufe ab und bauen anschliessend die Module, die diese unterstützen — Einschreibungen, Anwesenheiten, Noten, Rechnungsstellung — mit Ihrer Terminologie und Ihren Regeln.',
+        'We map your actual administrative workflow first, then build the modules that carry it — enrolment, attendance, grading, invoicing — with your terminology and your rules.',
       includes: [
-        'Schüler- und Familienakten mit Dokumentenablage',
-        'Anwesenheitserfassung und Absenzen-Workflows',
-        'Notengebung, Zeugnisse und Reporting',
-        'Rechnungsstellung gekoppelt an Einschreibungen und Anwesenheit',
-        'Rollenbasierter Zugriff für Lehrpersonen, Verwaltung und Eltern',
+        'Pupil and family records with document storage',
+        'Attendance capture and absence workflows',
+        'Grading, bulletins and reporting',
+        'Invoicing linked to enrolment and attendance',
+        'Role-based access for staff, management and parents',
       ],
       faqs: [
         {
-          question: 'Wie lange dauert es, bis wir den ersten Teil nutzen können?',
+          question: 'How long until we can use the first part?',
           answer:
-            'Ein erstes funktionierendes Modul ist in 3 bis 5 Wochen einsatzbereit. Wir definieren den ersten Meilenstein ganz bewusst so, dass er für sich allein nützlich ist, anstatt darauf zu warten, bis die gesamte Plattform fertig ist.',
+            'A first working module lands in 3 to 5 weeks. We deliberately scope the first milestone so it is useful on its own, rather than waiting for the whole platform.',
         },
         {
-          question: 'Können unsere historischen Daten übernommen werden?',
+          question: 'Can our historical data come across?',
           answer:
-            'Ja — siehe Datenmigration. Wir übertragen Datensätze aus Tabellen, Exporten oder einer alten Datenbank und gleichen die Ergebnisse vor dem Go-Live gemeinsam mit Ihnen ab.',
+            'Yes — see data migration. We move records from spreadsheets, exports or a legacy database, and reconcile the result with you before go-live.',
         },
       ],
     },
     'parent-portal': {
-      h1: 'Elternportal für Schulen',
+      h1: 'Parent portal for schools',
       intro:
-        'Ein Self-Service-Portal, das routinebedingte Elternanfragen von der Telefonleitung des Sekretariats fernhält.',
+        'A self-service portal that takes routine parent enquiries off the office phone.',
       problem:
-        'Das Verwaltungspersonal verbringt einen grossen Teil der Woche damit, Fragen zu beantworten, deren Antworten ohnehin schon irgendwo stehen: eine Absenz, ein Zeugnis, eine Rechnung, ein Termin.',
+        'Office staff spend a large part of the week answering questions with answers that already exist somewhere: an absence, a report, an invoice, a date.',
       solution:
-        'Ein Portal, in dem Eltern ihre eigenen Kinder sehen — Anwesenheit, Noten, Rechnungen, Dokumente und Nachrichten — mit Berechtigungen, die niemals die Daten einer anderen Familie preisgeben.',
+        'A portal where parents see their own children — attendance, results, invoices, documents and messages — with permissions that never expose another family’s data.',
       includes: [
-        'Familien-Login strikt auf eigene Kinder beschränkt',
-        'Absenzenmeldung und Begründung',
-        'Zeugnisse und Berichte nach Freigabe',
-        'Rechnungen und Zahlungsstatus',
-        'Ankündigungen und Direktnachrichten',
+        'Per-family login scoped strictly to their own children',
+        'Absence reporting and justification',
+        'Reports and bulletins on release',
+        'Invoices and payment status',
+        'Announcements and direct messaging',
       ],
       faqs: [
         {
-          question: 'Was verhindert, dass Eltern die Daten anderer Kinder sehen?',
+          question: 'What stops a parent seeing another child’s data?',
           answer:
-            'Der Zugriff wird serverseitig pro Beziehung durchgesetzt, nicht indem Teile der Benutzeroberfläche versteckt werden. Dies ist der am stärksten getestete Bereich jedes von uns gebauten Portals, da ein Fehler hier ein Datenschutzvorfall wäre.',
+            'Access is enforced server-side per relationship, not by hiding parts of the interface. It is the single most tested area of any portal we build, because getting it wrong is a data-protection incident.',
         },
         {
-          question: 'Müssen Eltern eine App installieren?',
+          question: 'Do parents need to install an app?',
           answer:
-            'Nein. Es funktioniert im Browser auf dem Smartphone. Eine native App ist möglich, aber den zusätzlichen Aufwand und die App-Store-Freigaben selten wert.',
+            'No. It works in the browser on a phone. A native app is possible but rarely worth the extra cost and the app-store overhead.',
         },
       ],
     },
     'time-tracking': {
-      h1: 'Zeiterfassungssoftware für Schweizer Arbeitgeber',
-      intro: 'Arbeitsstunden einmal erfasst, direkt am Arbeitsplatz, in einem Format, das die Lohnbuchhaltung nutzen kann.',
+      h1: 'Time tracking software for Swiss employers',
+      intro: 'Hours captured at the point of work, once, in a form payroll can use.',
       problem:
-        'Stundenzettel auf Papier und geteilte Tabellen werden vor der Lohnabrechnung abgetippt. Jede erneute Eingabe birgt das Risiko eines Fehlers, den niemand bemerkt, bis jemand falsch bezahlt wird.',
+        'Paper timesheets and shared spreadsheets are re-keyed before payroll. Every re-entry is a chance for an error nobody catches until someone is paid wrongly.',
       solution:
-        'Ein- und Ausstempeln an einem gemeinsamen Terminal oder auf dem Handy, wobei die Regeln für Pausen, Überstunden und Schichten einmal hinterlegt und konsistent angewendet werden.',
+        'Check-in and checkout on a shared terminal or a phone, with the rules for breaks, overtime and shifts encoded once and applied consistently.',
       includes: [
-        'Ein-/Ausstempeln per Badge, PIN oder Smartphone',
-        'Pausen-, Überstunden- und Schicht-Regelwerke',
-        'Standort- und teambasierte Ansichten',
-        'Korrektur-Workflow mit Audit-Trail',
-        'Export im Format Ihres Lohnanbieters',
+        'Check-in and checkout by badge, PIN or phone',
+        'Break, overtime and shift rules',
+        'Per-site and per-team views',
+        'Correction workflow with an audit trail',
+        'Export in your payroll provider’s format',
       ],
       faqs: [
         {
-          question: 'Können Vorgesetzte Fehler korrigieren?',
+          question: 'Can supervisors correct a mistake?',
           answer:
-            'Ja, über einen Korrektur-Workflow, der dokumentiert, wer was und warum geändert hat. Stille Anpassungen sind genau das, was eine Zeiterfassung rechtlich unhaltbar macht.',
+            'Yes, through a correction workflow that records who changed what and why. Silent edits are exactly what makes a time record indefensible.',
         },
         {
-          question: 'Funktioniert es offline?',
+          question: 'Does it work offline?',
           answer:
-            'Ein Terminal erfasst weiter, falls die Verbindung abbricht, und synchronisiert sich, sobald sie wiederhergestellt ist. Einen Vormittag an Zeitbuchungen wegen Netzwerkproblemen zu verlieren, ist inakzeptabel.',
+            'A terminal keeps recording if the connection drops and syncs when it returns. Losing a morning of check-ins because of the network is not acceptable.',
         },
       ],
     },
     payroll: {
-      h1: 'Lohnbuchhaltung und Gehaltsmanagement',
-      intro: 'Lohnberechnungen basierend auf erfassten Arbeitsstunden, nicht auf Excel-Tabellen.',
+      h1: 'Payroll and salary management software',
+      intro: 'Salary calculation driven by recorded hours, not by a spreadsheet.',
       problem:
-        'Lohnabrechnungen, die jeden Monat aus verschiedenen Quellen manuell zusammengestellt werden, sind langsam, schwer zu überprüfen und unmöglich zu reproduzieren, wenn jemand ein halbes Jahr später eine Abrechnung infrage stellt.',
+        'Payroll assembled by hand each month from several sources is slow, hard to audit, and impossible to reproduce when someone queries a payslip from six months ago.',
       solution:
-        'Berechnungsregeln, die einmal kodiert werden und dann basierend auf erfassten Stunden und Verträgen laufen, um reproduzierbare Resultate und einen sauberen Export für Ihren Treuhänder zu liefern.',
+        'Calculation rules encoded once, run against recorded hours and contracts, producing a reproducible result and an export your accountant accepts.',
       includes: [
-        'Lohnberechnung aus erfassten Stunden und Verträgen',
-        'Regelwerke für Zulagen, Abzüge und Überstunden',
-        'Reproduzierbare monatliche Läufe mit kompletter Historie',
-        'Payroll-fertiger Export',
-        'Mitarbeiterbezogene Historie und Audit-Trail',
+        'Salary calculation from recorded hours and contracts',
+        'Allowances, deductions and overtime rules',
+        'Reproducible monthly runs with full history',
+        'Payroll-ready export',
+        'Per-employee history and audit trail',
       ],
       faqs: [
         {
-          question: 'Ersetzen Sie unseren Lohnanbieter?',
+          question: 'Do you replace our payroll provider?',
           answer:
-            'Normalerweise nicht. Wir erzeugen saubere, korrekte Eingabedaten für den Anbieter, den Sie bereits nutzen. Den gesamten Prozess zu ersetzen ist möglich, aber selten der günstigste Weg, um das eigentliche Problem zu lösen.',
+            'Usually not. We produce clean, correct input for the provider you already use. Replacing the whole chain is possible but rarely the cheapest way to fix the actual problem.',
         },
         {
-          question: 'Können wir einen vergangenen Monat neu berechnen?',
+          question: 'Can we re-run a past month?',
           answer:
-            'Ja. Berechnungsläufe sind reproduzierbar und versioniert, sodass Sie exakt nachweisen können, wie eine Zahl zustande kam.',
+            'Yes. Runs are reproducible and versioned, so you can show exactly how a figure was reached.',
         },
       ],
     },
     'facility-booking': {
-      h1: 'Anlagen- und Platzbuchungssoftware',
+      h1: 'Facility and pitch booking software',
       intro:
-        'Online-Reservation für Sportanlagen, Räume und geteilte Ressourcen, direkt mit Zahlungen verknüpft.',
+        'Online reservation for sports facilities, rooms and shared resources, with payment attached.',
       problem:
-        'Buchungen per Telefon und E-Mail verursachen Doppelbuchungen und hinterlassen keine verlässlichen Daten darüber, welche Anlage tatsächlich genutzt wird oder Umsatz generiert.',
+        'Phone and message bookings cause double-booking, and there is no record to tell you which facility is actually used or what it earns.',
       solution:
-        'Ein Kalender pro Ressource mit echten Buchungsregeln, Self-Service-Reservation, Mitgliedschaften und Berichten zu Auslastung und Umsatz.',
+        'A calendar per resource with real booking rules, self-service reservation, memberships, and reporting on usage and revenue.',
       includes: [
-        'Kalender pro Ressource mit Verfügbarkeitsregeln',
-        'Self-Service-Buchung mit sofortiger Bestätigung',
-        'Mitgliedschaften, Abos und Einzelbuchungen',
-        'Online-Zahlung gekoppelt an die Reservation',
-        'Auslastungs- und Umsatzberichte pro Anlage',
+        'Calendar per resource with availability rules',
+        'Self-service booking with instant confirmation',
+        'Memberships, subscriptions and single bookings',
+        'Online payment tied to the reservation',
+        'Usage and revenue reporting per facility',
       ],
       faqs: [
         {
-          question: 'Können wir weiterhin telefonische Buchungen annehmen?',
+          question: 'Can we keep taking bookings by phone?',
           answer:
-            'Ja — Ihre Mitarbeiter buchen in denselben Kalender ein, sodass Telefon und Website sich niemals überschneiden können.',
+            'Yes — staff book into the same calendar, so the phone and the website can never double-book each other.',
         },
         {
-          question: 'Können wir unterschiedliche Regeln pro Ressource festlegen?',
+          question: 'Can we set different rules per resource?',
           answer:
-            'Ja: Öffnungszeiten, minimale und maximale Dauer, Vorlaufzeiten, wer buchen darf und Preise, alles individuell pro Anlage.',
+            'Yes: opening hours, minimum and maximum duration, notice period, who may book, and pricing, all per resource.',
         },
       ],
     },
     'explainer-video': {
-      h1: 'Animierte Erklärvideos für Software',
+      h1: 'Animated explainer video for software',
       intro:
-        'Ein kurzer Animationsfilm, der ein komplexes System in unter einer Minute verständlich macht.',
+        'A short animated film that makes a complex system understandable in under a minute.',
       problem:
-        'Technische Produkte verlieren das Publikum in den ersten dreissig Sekunden. Eine Demo ist zu lang, ein Screenshot sagt zu wenig, und ein Textblock voller Features erklärt nicht, warum es wichtig ist.',
+        'Technical products lose people in the first thirty seconds. A demo is too long, a screenshot says too little, and a paragraph of features explains nothing about why it matters.',
       solution:
-        'Skript, Storyboard und 2D- oder 3D-Animation, produziert von Personen, die die Software tatsächlich benutzt haben — so erklärt der Film das echte Produkt und keine reine Marketing-Vision davon.',
+        'Script, storyboard and 2D or 3D animation, produced by people who have used the software — so the film explains the real product rather than a marketing idea of it.',
       includes: [
-        'Skript und Storyboard, vor der Animation freigegeben',
-        '2D- oder 3D-Animation in Ihrem Marken-Stil',
-        'Voiceover und Sounddesign',
-        'Formate angepasst für Web, Social Media und Pitch-Decks',
-        'Quelldateien bei Übergabe',
+        'Script and storyboard, approved before animation',
+        '2D or 3D animation in your brand system',
+        'Voice-over and sound design',
+        'Cuts sized for web, social and pitch decks',
+        'Source files on handover',
       ],
       faqs: [
         {
-          question: 'Wie lang sollte es sein?',
+          question: 'How long should it be?',
           answer:
-            'Sechzig bis neunzig Sekunden für einen Produkt-Erklärfilm. Länger nur dann, wenn er eine Live-Demo ersetzt, und in diesem Fall gliedern wir ihn in Kapitel.',
+            'Sixty to ninety seconds for a product explainer. Longer only when it replaces a live demo, and then we structure it in chapters.',
         },
         {
-          question: 'Besitzen wir die Animationsdateien?',
+          question: 'Do we own the animation files?',
           answer:
-            'Ja, inklusive der Projekt-Quelldateien. Es gibt keine zu erneuernden Lizenzen und nichts hindert ein anderes Studio daran, daran weiterzuarbeiten.',
+            'Yes, including project sources. There is no licence to renew and nothing stops another studio picking it up.',
         },
       ],
     },
     'web-app-development': {
-      h1: 'Massgeschneiderte Web-Applikationsentwicklung',
+      h1: 'Custom web application development',
       intro:
-        'Full-Stack-Applikationen für Organisationen, deren Prozesse in keine Standardsoftware passen.',
+        'Full-stack applications for organisations whose process does not fit a product you can buy.',
       problem:
-        'Wenn bestehende Tools fast, aber nicht ganz passen, wird die Lücke mit Handarbeit gefüllt — und diese Handarbeit wird still und heimlich zum teuersten Teil des Betriebs.',
+        'When the available tools nearly fit, the difference gets absorbed by manual work — and that manual work quietly becomes the most expensive part of the operation.',
       solution:
-        'Eine Web-Applikation, die um Ihre tatsächlichen Abläufe herum entwickelt wird, auf einem Stack, für den Sie leicht Entwickler finden, wobei der Code und die Schemas vom ersten Tag an Ihnen gehören.',
+        'A web application built around your actual workflow, on a stack you can hire for, with the code and schemas transferred to you from day one.',
       includes: [
-        'Gemeinsame Architektur und Datenmodellierung',
-        'Web-Applikation basierend auf Next.js, Node und PostgreSQL',
-        'Rollenbasierte Zugriffskontrolle und Audit-Logging',
-        'Integrationen mit Ihren bestehenden Systemen',
-        'Deployment, Übergabe und Schulung',
+        'Architecture and data model designed with you',
+        'Web application on Next.js, Node and PostgreSQL',
+        'Role-based access control and audit logging',
+        'Integrations with the systems you already run',
+        'Deployment, handover and training',
       ],
       faqs: [
         {
-          question: 'Auf welchem Technologie-Stack entwickeln Sie?',
+          question: 'What stack do you build on?',
           answer:
-            'Next.js, Node und PostgreSQL, gehostet in der Schweiz. Bewusst standardisierte Entscheidungen — Sie müssen in der Lage sein, jemanden einzustellen, der damit umgehen kann.',
+            'Next.js, Node and PostgreSQL, hosted in Switzerland. Deliberately ordinary choices — you need to be able to hire someone else who knows them.',
         },
         {
-          question: 'Was passiert, wenn wir später das Team wechseln möchten?',
+          question: 'What happens if we want to change teams later?',
           answer:
-            'Sie haben bereits alles: Quellcode, Datenbankschemas, Infrastrukturkonfigurationen und Dokumentationen werden fortlaufend an Sie übergeben, nicht erst am Ende.',
+            'You already have everything: source code, database schemas, infrastructure configuration and documentation transfer to you as we go, not at the end.',
         },
       ],
     },
     'data-migration': {
-      h1: 'Datenmigration für Managementsysteme',
+      h1: 'Data migration for management systems',
       intro:
-        'Jahrelange Aufzeichnungen sicher aus Excel und Altsystemen transferieren, abgeglichen vor dem Go-Live.',
+        'Moving years of records out of spreadsheets and legacy systems, with the result reconciled before go-live.',
       problem:
-        'Migration ist der Grund, warum Systemwechsel oft scheitern. Die Daten sind chaotischer als erwartet, und niemand bemerkt den Verlust, bis das alte System abgeschaltet wird.',
+        'Migration is where system replacements fail. The data is messier than anyone expects, and nobody notices what was lost until the old system is switched off.',
       solution:
-        'Wir analysieren zuerst die Quelldaten, vereinbaren mit Ihnen die Regeln für schwierige Fälle, migrieren in Testläufen und gleichen Datensätze und Summen ab, bevor etwas live geht.',
+        'We profile the source data first, agree the rules for the awkward cases with you, migrate in dry runs, and reconcile record counts and totals before anything goes live.',
       includes: [
-        'Datenprofiling und Qualitätsbericht der Quelle',
-        'Vereinbarte Behandlung von Duplikaten, Lücken und Konflikten',
-        'Wiederholbare Testläufe statt einer Einweg-Umstellung',
-        'Abgleich von Zählungen und Summen vor dem Go-Live',
-        'Ein dokumentierter Rollback-Plan',
+        'Source data profiling and a quality report',
+        'Agreed handling for duplicates, gaps and conflicts',
+        'Repeatable dry runs, not a one-shot cutover',
+        'Reconciliation of counts and totals before go-live',
+        'A documented rollback path',
       ],
       faqs: [
         {
-          question: 'Unsere Daten sind in einem schlechten Zustand. Ist das ein Problem?',
+          question: 'Our data is in a bad state. Is that a problem?',
           answer:
-            'Das ist normal, deshalb ist der erste Schritt das Profiling und nicht das Migrieren. Sie erhalten einen Bericht darüber, was dupliziert ist, fehlt oder widersprüchlich ist, und Sie legen die Regeln fest, bevor wir etwas verschieben.',
+            'It is normal, and it is why the first step is profiling rather than migrating. You get a report of what is duplicated, missing or contradictory, and you decide the rules before we move anything.',
         },
         {
-          question: 'Können wir beide Systeme parallel betreiben?',
+          question: 'Can we run both systems in parallel?',
           answer:
-            'Ja. Für alles, was mit Lohnbuchhaltung oder Rechnungsstellung zu tun hat, empfehlen wir dies sogar für mindestens einen Zyklus, um die Ergebnisse vergleichen zu können.',
+            'Yes, and for anything payroll- or invoicing-related we recommend it for at least one cycle so the two can be compared.',
         },
       ],
     },
