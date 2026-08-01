@@ -48,13 +48,14 @@ export function formatCHF(amount: number): string {
  */
 export const COMPANY = {
   name: 'Vectra',
-  legalName: '',
+  legalName: 'Vectra Sàrl',
   email: 'hello@vectra.ch',
-  phoneSwiss: '',
-  phoneInternational: '+216 25 436 155',
-  streetAddress: '',
-  postalCode: '',
-  addressLocality: '',
+  phoneSwiss: '+41 76 456 81 17',
+  phoneInternational: '+41 76 456 81 17',
+  streetAddress: 'Chemin de la Colline 19',
+  postalCode: '1635',
+  addressLocality: 'La Tour-de-Trême',
+  addressRegion: 'Fribourg',
   addressCountry: 'CH',
   social: [
     'https://www.linkedin.com/company/vectra/',

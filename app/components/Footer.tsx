@@ -48,7 +48,7 @@ export default function Footer({ t }: { t: Dictionary }) {
               <address className="not-italic text-gray-400">
                 {COMPANY.streetAddress}
                 <br />
-                {COMPANY.postalCode} {COMPANY.addressLocality}, Switzerland
+                {COMPANY.postalCode} {COMPANY.addressLocality} (Fribourg), Suisse
               </address>
             )}
           </div>
