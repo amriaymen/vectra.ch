@@ -30,3 +30,6 @@ next-env.d.ts
 
 # temp files & logs
 chk.*.html
+
+.vercel
+.env*.local
