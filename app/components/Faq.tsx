@@ -28,7 +28,10 @@ export default function Faq({
   if (items.length === 0) return null;
 
   return (
-    <Section id={id} tone="light">
+    // Dark, not light: Faq is followed by the lime CtaBanner on every page that
+    // uses it. Lime on white measures 1.15:1 — the band dissolved into the FAQ
+    // and the page's one call to action lost its edge. On dark it is 15.98:1.
+    <Section id={id}>
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16">
         <div>
           <h2 className="text-3xl leading-tight tracking-tight md:text-4xl">{title}</h2>
@@ -39,14 +42,14 @@ export default function Faq({
             const isOpen = openIndex === index;
             const panelId = `${id}-panel-${index}`;
             return (
-              <li key={faq.question} className="border-b border-gray-200 first:border-t">
+              <li key={faq.question} className="border-b border-line first:border-t">
                 <h3>
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                     aria-expanded={isOpen}
                     aria-controls={panelId}
-                    className="flex w-full items-center justify-between gap-6 py-5 text-left text-lg leading-snug transition-colors hover:text-gray-600 md:text-xl"
+                    className="flex w-full items-center justify-between gap-6 py-5 text-left text-lg leading-snug transition-colors hover:text-primary md:text-xl"
                   >
                     <span>{faq.question}</span>
                     <svg
@@ -64,7 +67,7 @@ export default function Faq({
                   </button>
                 </h3>
                 <div id={panelId} hidden={!isOpen}>
-                  <p className="max-w-2xl pb-6 leading-relaxed text-gray-600">{faq.answer}</p>
+                  <p className="max-w-2xl pb-6 leading-relaxed text-gray-400">{faq.answer}</p>
                 </div>
               </li>
             );

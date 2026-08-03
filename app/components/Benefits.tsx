@@ -12,7 +12,7 @@ export default function Benefits({ t }: { t: Dictionary }) {
           <p className="mt-6 text-lg leading-relaxed text-gray-600">{t.benefits.intro}</p>
         </div>
 
-        <ul className="grid gap-px overflow-hidden rounded-xl bg-gray-200">
+        <ul className="grid gap-px overflow-hidden bg-gray-200">
           {t.benefits.items.map((benefit, index) => (
             <li key={benefit.title} className="bg-white p-6 md:p-8">
               <div className="flex gap-5">

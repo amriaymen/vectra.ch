@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Header from '../../../components/Header';
+import ProductMedia from '../../../components/ProductMedia';
 import Section from '../../../components/Section';
 import CtaBanner from '../../../components/CtaBanner';
 import Footer from '../../../components/Footer';
@@ -117,14 +117,13 @@ export default function CaseStudyPage({ params }: { params: { locale: string; sl
         </div>
 
         {study.image && (
-          <div className="relative mt-12 h-64 w-full overflow-hidden rounded-xl border border-line md:h-[28rem]">
-            <Image
-              src={study.image}
+          <div className="relative mt-12 h-64 w-full overflow-hidden border border-line md:h-[28rem]">
+            <ProductMedia
+              poster={study.image}
+              video={study.video}
               alt={`${study.name} — ${copy.tagline}`}
-              fill
-              sizes="(min-width: 1024px) 1152px, 100vw"
               priority
-              className="object-cover object-center"
+              sizes="(min-width: 1024px) 1152px, 100vw"
             />
           </div>
         )}
@@ -139,7 +138,7 @@ export default function CaseStudyPage({ params }: { params: { locale: string; sl
             </div>
           </div>
 
-          <aside className="grid content-start gap-8 rounded-xl border border-line bg-surface p-6 md:p-8">
+          <aside className="grid content-start gap-8 border border-line bg-surface p-6 md:p-8">
             <div>
               <h2 className="text-sm uppercase tracking-[0.15em] text-gray-500">
                 {t.products.modulesLabel}

@@ -3,11 +3,23 @@ import { notFound } from 'next/navigation';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import Section from '../../../components/Section';
-import { COMPANY, LOCALES, SITE_URL, getContent, isLocale, languageAlternates, type Locale } from '../../../data';
+import { COMPANY, HOSTING, LOCALES, SITE_URL, SUBPROCESSORS, getContent, isLocale, languageAlternates, type Locale } from '../../../data';
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
+
+/**
+ * What each sub-processor actually receives. Keyed by SUBPROCESSORS id so a new
+ * entry in config.ts fails the build here until its purpose is written — the
+ * disclosure cannot silently fall behind the code that calls the service.
+ */
+const SUBPROCESSOR_PURPOSE: Record<(typeof SUBPROCESSORS)[number]['id'], string> = {
+  anthropic:
+    'reçoit le descriptif du projet — secteur, modules souhaités, nombre d’utilisateurs, sites, systèmes existants, budget indicatif, nom de votre organisation et le texte libre que vous rédigez — afin de générer le brouillon de cadrage. Ne reçoit ni votre nom, ni votre adresse e-mail.',
+  resend:
+    'reçoit votre nom, votre adresse e-mail professionnelle, votre organisation et le cadrage produit, uniquement pour nous acheminer votre demande par courriel.',
+};
 
 export async function generateMetadata({
   params,
@@ -61,7 +73,10 @@ export default function PrivacyPage({ params }: { params: { locale: string } }) 
                   Chez <strong>{COMPANY.name}</strong>, la confidentialité et la sécurité de vos données sont inscrites au cœur de notre architecture. Vos données ne sont jamais revendues, louées ou cédées à des tiers.
                 </p>
                 <p>
-                  Toutes les données collectées via notre site web et nos systèmes sont hébergées exclusivement en <strong>Suisse</strong> sous juridiction suisse.
+                  <strong>Les systèmes que nous construisons pour vous</strong> sont hébergés en <strong>Suisse</strong>, chez {HOSTING.client.provider} ({HOSTING.client.location}), sous juridiction suisse.
+                </p>
+                <p>
+                  <strong>Le présent site vitrine</strong> est hébergé chez {HOSTING.site.provider}, hors de Suisse, et les informations que vous saisissez dans le formulaire de cadrage sont transmises à des prestataires eux aussi situés hors de Suisse. Nous préférons l’écrire noir sur blanc plutôt que de laisser entendre une exclusivité suisse qui ne s’appliquerait pas ici — le détail figure au point 5.
                 </p>
               </section>
 
@@ -99,6 +114,32 @@ export default function PrivacyPage({ params }: { params: { locale: string } }) 
                 <h2 className="text-xl font-semibold text-white">4. Sécurité & Chiffrement</h2>
                 <p>
                   Tous les échanges d’informations sont chiffrés selon les standards industriels les plus stricts (HTTPS / TLS 1.3). Les bases de données sont isolées et chiffrées au repos.
+                </p>
+              </section>
+
+              <section className="space-y-2">
+                <h2 className="text-xl font-semibold text-white">
+                  5. Sous-traitants et communication de données à l’étranger
+                </h2>
+                <p>
+                  Conformément à l’art. 19 nLPD, voici précisément qui reçoit les données que vous saisissez sur ce site, et pourquoi. Cette liste correspond aux services réellement appelés par notre formulaire de cadrage :
+                </p>
+                <ul className="list-disc space-y-2 pl-6 text-gray-400">
+                  {SUBPROCESSORS.map((processor) => (
+                    <li key={processor.id}>
+                      <strong className="text-gray-300">{processor.name}</strong> ({processor.country}) —{' '}
+                      {SUBPROCESSOR_PURPOSE[processor.id]}
+                    </li>
+                  ))}
+                </ul>
+                <p className="pt-2">
+                  Les États-Unis ne bénéficient pas d’une décision d’adéquation du Conseil fédéral. Ces transferts reposent donc sur les <strong>clauses contractuelles types</strong>, lues au regard de la LPD suisse — et non sur une quelconque équivalence de niveau de protection. Vous pouvez nous demander une copie des garanties en vigueur à l’adresse{' '}
+                  <a href={`mailto:${COMPANY.email}`} className="text-primary hover:underline">
+                    {COMPANY.email}
+                  </a>.
+                </p>
+                <p>
+                  Si vous préférez qu’aucune donnée ne quitte la Suisse, ne remplissez pas le formulaire : écrivez-nous ou appelez-nous directement, et le cadrage se fera sans passer par ces services.
                 </p>
               </section>
             </div>

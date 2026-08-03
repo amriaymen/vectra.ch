@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Section from './Section';
 import Badge from './Badge';
+import ProductMedia from './ProductMedia';
 import {
   ALSO_BUILT,
   DEMO_URL,
@@ -31,7 +32,7 @@ function Card({
 
   return (
     <article
-      className={`group flex flex-col overflow-hidden rounded-xl border bg-surface ${
+      className={`group flex flex-col overflow-hidden border bg-surface ${
         featured ? 'border-primary md:col-span-2' : 'border-line'
       }`}
     >
@@ -39,13 +40,12 @@ function Card({
           school-management screenshot as a warehouse ERP. */}
       {product.image && (
         <div className={`relative w-full overflow-hidden ${featured ? 'h-64 md:h-96' : 'h-56'}`}>
-          <Image
-            src={product.image}
+          <ProductMedia
+            poster={product.image}
+            video={product.video}
             alt={`${product.name} — ${copy.tagline}`}
-            fill
-            sizes={featured ? '(min-width: 768px) 1152px, 100vw' : '(min-width: 768px) 568px, 100vw'}
             priority={priority}
-            className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+            sizes={featured ? '(min-width: 768px) 1152px, 100vw' : '(min-width: 768px) 568px, 100vw'}
           />
         </div>
       )}
@@ -73,7 +73,17 @@ function Card({
           {copy.forWho}
         </p>
 
-        <p className="mt-3 leading-relaxed text-gray-400">{copy.summary}</p>
+        <div className="mt-5 space-y-3">
+          <p className="text-sm leading-relaxed text-gray-400">
+            <strong className="text-white font-medium">{t.products.problemLabel}:</strong> {copy.problem}
+          </p>
+          <p className="text-sm leading-relaxed text-gray-400">
+            <strong className="text-white font-medium">{t.products.solutionLabel}:</strong> {copy.solution}
+          </p>
+          <p className="text-sm leading-relaxed text-primary">
+            <strong className="text-primary font-medium">{t.products.outcomeLabel}:</strong> {copy.outcome}
+          </p>
+        </div>
 
         {copy.scale && (
           <p className="mt-4 text-sm text-gray-300">
@@ -81,7 +91,6 @@ function Card({
             {copy.scale}
           </p>
         )}
-        {copy.outcome && <p className="mt-2 font-medium text-primary">{copy.outcome}</p>}
 
         <ul className="mt-5 flex flex-wrap gap-2">
           {copy.modules.slice(0, featured ? 5 : 3).map((module) => (
@@ -164,7 +173,7 @@ export default function Products({ t, locale }: { t: Dictionary; locale: Locale 
           {ALSO_BUILT.map((item) => {
             const copy = t.products.also[item.id as keyof typeof t.products.also];
             return (
-              <li key={item.id} className="overflow-hidden rounded-xl border border-line bg-surface">
+              <li key={item.id} className="overflow-hidden border border-line bg-surface">
                 <div className="relative h-40 w-full overflow-hidden">
                   <Image
                     src={item.image}

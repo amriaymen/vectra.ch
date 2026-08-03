@@ -10,8 +10,8 @@ const origin = {
     ? 'Swiss software and communication studio.'
     : 'A software and communication studio for Swiss institutions.',
   kicker: SWISS_ENTITY
-    ? 'Operational software · Swiss made'
-    : 'Operational software · For Switzerland',
+    ? 'Management systems & communication · Switzerland'
+    : 'Management systems & communication · for Switzerland',
   rights: SWISS_ENTITY
     ? 'Vectra — Swiss management systems & communication.'
     : 'Vectra — management systems & communication for Swiss institutions.',
@@ -36,12 +36,12 @@ const en = {
 
   nav: {
     services: 'Services',
-    solutions: 'Ways to work',
+    solutions: 'Solutions',
     work: 'Work',
     process: 'Process',
     pricing: 'Pricing',
     faqs: 'FAQs',
-    cta: 'Estimate My Project',
+    cta: 'Get a scope',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     menuTitle: 'Site navigation',
@@ -58,80 +58,30 @@ const en = {
    * thinking "we do attendance by hand", not "I'd like a fixed-price engagement".
    */
   solutionsMenu: {
-    headerTitle: 'Three ways to work with Vectra',
-    headerSubtitle: 'Choose the engagement model that best matches your situation.',
     ready: {
-      title: 'License Software',
-      desc: 'Use software already in production. Ready to deploy.',
+      title: 'Something already exists',
+      desc: 'Licence a system that is already running. Nothing to build.',
     },
     built: {
-      title: 'Custom Software',
-      desc: 'Built for your organization. Fixed price per milestone.',
+      title: 'We need it built',
+      desc: 'Scoped to your workflow, at a fixed price per milestone.',
     },
     team: {
-      title: 'Dedicated Team',
-      desc: 'Your dedicated software and design team, month after month.',
+      title: 'We need a team',
+      desc: 'Continuous design and engineering capacity, month to month.',
     },
-    ctaLabel: 'Describe your project in one minute',
-    ctaNote: 'Still unsure which option fits your needs?',
+    ctaLabel: 'Draft a scope in about a minute',
+    ctaNote: 'Not sure which of the three fits?',
   },
 
   hero: {
     kicker: origin.kicker,
     titleLine1: 'We build the system,',
     titleLine2: 'then we make people want it.',
-    body: 'Swiss software studio. We build operational software, custom applications, and the communication that drives their adoption.',
-    primaryCta: 'Estimate My Project',
+    body: 'Vectra builds the software institutions run on — school administration, HR and payroll, facility booking — and produces the brand, motion and campaigns that sell it. Your data stays in Switzerland.',
+    primaryCta: 'Get a fixed-price scope',
     secondaryCta: 'See what we build',
-    proof: 'Software running in Swiss schools, sports centers, municipalities, and businesses.',
     mediaLabel: 'The Schoolze school management portal in use',
-  },
-
-  engagementModels: {
-    title: 'Choose how you\'d like to work with us.',
-    items: [
-      { step: '01', title: 'License Software', desc: 'Use one of our existing platforms.\nSchool Management\nSports Booking\nHR & Payroll' },
-      { step: '02', title: 'Build Custom Software', desc: 'Need something unique?\n\nWe\'ll design and build it.' },
-      { step: '03', title: 'Ongoing Partnership', desc: 'Need continuous design, engineering and growth?\n\nMonthly subscription.' }
-    ]
-  },
-
-  whoWeServe: {
-    kicker: 'Target Industries',
-    title: 'We specialize in operational software.',
-    list: ['Education', 'Sports', 'Workforce', 'Public Sector'],
-    footer: 'We also build custom software for startups and businesses.',
-    badge: 'Dedicated Systems'
-  },
-
-  decisionMatrix: {
-    title: 'Is Vectra right for you?',
-    subtitle: 'Choose the path that fits your situation:',
-    columns: ['If you...', 'Choose...'],
-    rows: [
-      { condition: 'Need software that\'s already built', choice: 'License one of our products' },
-      { condition: 'Need software tailored to your organization', choice: 'Custom project' },
-      { condition: 'Need continuous design, development, or growth support', choice: 'Subscription' }
-    ]
-  },
-
-  whyVectra: {
-    title: 'Why organizations choose Vectra',
-    trustTitle: 'Institutionally verified',
-    items: [
-      { label: 'Fixed-price milestones', detail: 'Every milestone is quoted before it starts. No open-ended hourly billing.' },
-      { label: 'Swiss-hosted infrastructure', detail: 'The systems we build for you run on Swiss infrastructure, under Swiss jurisdiction. We name the provider and the data centre in writing.' },
-      { label: 'You own your code', detail: 'Source code, schemas and design files transfer to you from day one.' },
-      { label: 'Direct access to senior engineers', detail: 'You work with the engineers doing the work. No account managers.' },
-      { label: 'One team for software and adoption', detail: 'The team that built the system explains it. The story matches the product.' }
-    ],
-    // Labels only. The values are facts, so they live in CREDENTIALS in
-    // config.ts where an unfilled one is null and renders nothing.
-    credentials: {
-      uid: 'Swiss registration',
-      insurance: 'Insurance',
-      stack: 'Tech stack'
-    }
   },
 
   trust: [
@@ -140,7 +90,7 @@ const en = {
       // decides whether they keep reading.
       label: 'Your data stays in Switzerland',
       detail:
-        'The system we build for you is hosted with a Swiss provider, under Swiss jurisdiction. No US hyperscaler.',
+        'Hosted with a Swiss provider, under Swiss jurisdiction. No US hyperscaler and no transfer abroad.',
     },
     {
       label: 'Built to your canton’s rules',
@@ -223,11 +173,9 @@ const en = {
 
   products: {
     title: 'Systems we already run',
-    intro: 'These products demonstrate our engineering capability. Every custom project benefits from years of product development experience.',
+    intro:
+      'Our own software, hosted in Switzerland. One is available to licence today; the others are in production and can be adapted for your institution.',
     forWhoLabel: 'Built for',
-    problemLabel: 'Problem',
-    solutionLabel: 'Solution',
-    outcomeLabel: 'Outcome',
     modulesLabel: 'What it does',
     scaleLabel: 'Scale',
     stackLabel: 'Built with',
@@ -245,46 +193,48 @@ const en = {
       product: 'Product',
       brand: 'Brand',
     },
+    /*
+     * These are our own products, so each entry describes the SOFTWARE — who it
+     * is for and what it does. It must never describe a specific client's
+     * situation: we do not name clients we cannot cite, and an invented
+     * "they used to reconcile by hand" narrative is fabricated social proof.
+     */
     items: {
       spotbase: {
         tagline: 'Sports facility management & booking',
         forWho: 'Sports centres, clubs and communes managing bookable facilities.',
-        summary: 'Resource calendars, online reservations, memberships and payment in one system, so a booking and the money attached to it are a single record.',
-        problem: 'Facilities manage bookings over the phone, leading to double-bookings and untracked revenue.',
-        solution: 'Built a self-service reservation platform with integrated payment and resource rules.',
-        outcome: 'Zero double-bookings and real-time facility usage data.',
+        summary:
+          'Resource calendars, online reservations, memberships and payment in one system, so a booking and the money attached to it are a single record.',
         modules: ['Resource calendar', 'Online booking', 'Memberships', 'Payments', 'Usage reporting'],
         scale: '',
+        outcome: '',
       },
       schoolze: {
         tagline: 'School management portal',
         forWho: 'Primary and secondary schools, and school groups with several sites.',
-        summary: 'Enrolment, attendance, grading, parent communication and invoicing in one portal, with role-based access for administration, teaching staff and parents.',
-        problem: 'Schools managing hundreds of students using disjointed spreadsheets and paper forms.',
-        solution: 'Built a centralized platform for grading, attendance, and parent communication.',
-        outcome: 'Reduced administrative workload and reconciled invoicing.',
+        summary:
+          'Enrolment, attendance, grading, parent communication and invoicing in one portal, with role-based access for administration, teaching staff and parents.',
         modules: ['Enrolment & records', 'Attendance', 'Grading & reports', 'Parent portal', 'Invoicing'],
         scale: '',
+        outcome: '',
       },
       'sb-pointage': {
         tagline: 'Time tracking & payroll',
         forWho: 'Employers running shift or hourly staff who need hours to reach payroll without re-entry.',
-        summary: 'Check-in and checkout, leave and contract management, salary calculation and payroll export — one chain from the clock to the payslip.',
-        problem: 'Paper timesheets causing monthly payroll delays and leave balance disputes.',
-        solution: 'Deployed terminal and mobile check-in feeding directly into automated salary calculations.',
-        outcome: 'Error-free payroll exports and fully auditable staff records.',
+        summary:
+          'Check-in and checkout, leave and contract management, salary calculation and payroll export — one chain from the clock to the payslip.',
         modules: ['Check-in / checkout', 'Leave management', 'Salary calculation', 'Payroll export', 'Staff records'],
         scale: '',
+        outcome: '',
       },
       raqim: {
         tagline: 'Multi-site school administration',
         forWho: 'School groups needing one consolidated view across several sites.',
-        summary: 'Academic records, staff management, scheduling and reporting across multiple sites, with figures consolidated centrally rather than assembled per site.',
-        problem: 'Multi-site groups struggling with fragmented data and lack of consolidated reporting.',
-        solution: 'Built a multi-tenant administration platform unifying records across all campuses.',
-        outcome: 'Real-time visibility and standardized processes across the entire organization.',
+        summary:
+          'Academic records, staff management, scheduling and reporting across multiple sites, with figures consolidated centrally rather than assembled per site.',
         modules: ['Multi-site administration', 'Academic records', 'Staff management', 'Scheduling', 'Consolidated reporting'],
         scale: '',
+        outcome: '',
       },
     },
     also: {
@@ -340,37 +290,49 @@ const en = {
   },
 
   pricing: {
-    title: 'Three ways to work with us',
+    title: 'Pricing',
     intro: 'Published rates, fixed milestones, and no charge for scoping.',
     onRequest: 'On request',
-    models: {
-      license: {
-        name: 'Software License',
-        detail: 'Deploy one of our existing platforms immediately.',
-        includes: ['Ready-to-use software', 'Swiss hosting included', 'Immediate deployment', 'Ongoing updates'],
-        cta: 'See Products'
-      },
-      project: {
-        name: 'Project',
-        detail: 'Fixed-scope custom software, priced and scheduled per milestone before work starts.',
-        includes: ['Custom architecture', 'Milestone-based delivery', 'Fixed pricing', 'Full IP ownership'],
-        cta: 'Estimate My Project'
-      },
-      subscription: {
-        name: 'Subscription',
-        detail: 'Ongoing access to senior software and design capacity after launch. A long-term product partnership.',
-        includes: ['Continuous development', 'UI/UX and motion design', 'Priority scheduling', 'Pause or cancel anytime'],
-        cta: 'Start a subscription'
-      }
-    },
-    // Tier names are plan names, kept identical in every locale so a client
-    // reading the French site and an English contract sees the same word.
+    subscriptionTitle: 'Ongoing subscription',
+    subscriptionIntro:
+      'A continuous design and engineering capacity for teams who need steady delivery rather than one project. One active request at a time, and you can pause or cancel between any two.',
+    monthly: 'Monthly',
+    yearly: 'Yearly',
+    yearlyNote: 'billed yearly',
+    perMonth: '/month',
+    perYear: '/year',
+    featured: 'Most popular',
+    projectsTitle: 'Fixed-scope projects',
+    projectsIntro: 'For a defined deliverable. Priced and scheduled per milestone before work starts.',
+    from: 'from',
+    subscriptionCta: 'Start a subscription',
+    projectCta: 'Scope a project',
     tiers: {
-      perMonth: '/month',
-      perYear: '/year',
-      note: 'Annual commitment: two months free.',
-      names: { design: 'Design', build: 'Build', scale: 'Scale' }
-    }
+      design: {
+        name: 'Design',
+        detail: 'Brand, UI and motion work on a continuous basis.',
+        includes: ['One active request at a time', 'Brand, UI and motion design', 'Typical turnaround 2–4 working days', 'Pause or cancel anytime'],
+      },
+      build: {
+        name: 'Design + Build',
+        detail: 'Design plus engineering capacity — the full Build and Tell tracks.',
+        includes: ['One active request at a time', 'Design and full-stack development', 'Typical turnaround 3–7 working days', 'Infrastructure and maintenance included', 'Pause or cancel anytime'],
+      },
+      scale: {
+        name: 'Scale',
+        detail: 'Dedicated capacity for teams shipping continuously.',
+        includes: ['Two active requests at a time', 'Priority scheduling', 'Dedicated senior engineer and designer', 'Architecture and roadmap support', 'Pause or cancel anytime'],
+      },
+    },
+    tracks: {
+      management: {
+        name: 'Management systems',
+        detail: 'School administration, HR and payroll, booking and facility management.',
+      },
+      webapps: { name: 'Web & mobile apps', detail: 'Client portals, platforms, custom applications and integrations.' },
+      brand: { name: 'Brand & explainer motion', detail: 'Identity systems, design libraries and animated explainers.' },
+      growth: { name: 'Growth & campaigns', detail: 'Funnels, landing pages, CRM automation and campaign production.' },
+    },
   },
 
   scope: {
@@ -477,7 +439,7 @@ const en = {
       {
         question: 'Where is our data hosted?',
         answer:
-          'The system we build for you runs in Switzerland, with a Swiss provider, under Swiss jurisdiction — not on a US hyperscaler. We name the provider and the data centre in writing so your data protection officer can verify it. Our own website is a separate matter: the instant scope form sends what you type to services outside Switzerland, and our privacy page names them.',
+          'In Switzerland, with a Swiss provider, under Swiss jurisdiction. Not on a US hyperscaler and not transferred abroad. We can name the provider and the data centre in writing so your data protection officer can verify it.',
       },
       {
         question: 'Our system holds pupil and staff data. How do you handle that?',

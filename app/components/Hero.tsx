@@ -60,6 +60,9 @@ export default function Hero({ t }: { t: Dictionary }) {
             </svg>
           </a>
         </div>
+        
+        {/* Proof Line */}
+        <p className="mt-6 text-sm text-gray-400">{t.hero.proof}</p>
       </div>
 
       {/* Mobile/Tablet Fallback: Stacked cleanly below text */}

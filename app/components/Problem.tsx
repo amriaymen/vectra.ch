@@ -33,7 +33,7 @@ export default function Problem({ t }: { t: Dictionary }) {
 
         {/* Right Column: Optimized Vertical Video Showcase (Desktop Only) */}
         <div className="hidden lg:flex lg:col-span-5 justify-center lg:justify-end">
-          <div className="relative w-full max-w-[320px] aspect-[9/16] overflow-hidden rounded-xl border border-line/40 bg-surface shadow-2xl">
+          <div className="relative w-full max-w-[320px] aspect-[9/16] overflow-hidden rounded-md border border-line/40 bg-surface shadow-2xl">
             {/* Skeleton Pulse while loading */}
             {!loaded && (
               <div className="absolute inset-0 bg-surface/70 animate-pulse flex flex-col justify-between p-6">

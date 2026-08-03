@@ -67,7 +67,7 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
           </span>
         </a>
 
-        <nav aria-label={t.nav.menuTitle} className="hidden items-center gap-7 lg:flex">
+        <nav aria-label={t.nav.menuTitle} className="hidden items-center gap-8 lg:flex xl:gap-9">
           <SolutionsMenu label={t.nav.solutions} menu={solutions} />
           {links.map((link) => (
             <a

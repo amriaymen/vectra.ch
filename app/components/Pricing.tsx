@@ -1,7 +1,7 @@
 'use client';
 
 import Section from './Section';
-import { type Dictionary } from '../data';
+import { SUBSCRIPTION_TIERS, formatCHF, type Dictionary } from '../data';
 
 export default function Pricing({ t }: { t: Dictionary }) {
   const models = [
@@ -23,7 +23,7 @@ export default function Pricing({ t }: { t: Dictionary }) {
         {models.map((model) => (
           <div
             key={model.id}
-            className={`flex flex-col scroll-mt-28 rounded-xl border bg-surface p-6 md:p-8 ${
+            className={`flex flex-col scroll-mt-28 border bg-surface p-6 md:p-8 ${
               model.featured ? 'border-primary ring-1 ring-primary' : 'border-line'
             }`}
           >
@@ -38,9 +38,40 @@ export default function Pricing({ t }: { t: Dictionary }) {
 
             <p className="mt-4 text-sm leading-relaxed text-gray-400 min-h-[4rem]">{model.detail}</p>
 
-            <p className="mt-6 font-medium text-3xl text-white">
-              {t.pricing.onRequest}
-            </p>
+            {/* The subscription model is the one with published rates — that is
+                its entire point, so it shows numbers where the others cannot. */}
+            {model.id === 'subscription' ? (
+              <div className="mt-6">
+                <ul className="grid gap-3">
+                  {SUBSCRIPTION_TIERS.map((tier) => (
+                    <li key={tier.id} className="flex flex-wrap items-baseline justify-between gap-x-3">
+                      <span className={tier.featured ? 'text-white' : 'text-gray-300'}>
+                        {t.pricing.tiers.names[tier.id as keyof typeof t.pricing.tiers.names]}
+                      </span>
+                      {tier.monthly === null ? (
+                        <span className="text-gray-400">{t.pricing.onRequest}</span>
+                      ) : (
+                        <span className="text-right">
+                          <span className="font-medium text-white">
+                            {formatCHF(tier.monthly)}
+                            {t.pricing.tiers.perMonth}
+                          </span>
+                          {tier.yearly !== null && (
+                            <span className="block text-xs text-gray-500">
+                              {formatCHF(tier.yearly)}
+                              {t.pricing.tiers.perYear}
+                            </span>
+                          )}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-xs text-gray-500">{t.pricing.tiers.note}</p>
+              </div>
+            ) : (
+              <p className="mt-6 font-medium text-3xl text-white">{t.pricing.onRequest}</p>
+            )}
 
             <ul className="mt-8 grid flex-1 gap-4 border-t border-line pt-8">
               {model.includes.map((item) => (

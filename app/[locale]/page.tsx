@@ -41,6 +41,11 @@ export default function Home({ params }: { params: { locale: string } }) {
   return (
     // id is the `inert` target while the mobile panel is open (see MobileNav).
     <div id="page-shell" className="isolate bg-background text-white">
+      {/* Section tones alternate dark / light so no two neighbours share a
+          background, with accent (blue) and action (lime) used once each.
+          TESTIMONIALS is currently empty so Testimonials renders nothing — when
+          real quotes land it becomes a light band between two darks and
+          DecisionMatrix must flip to dark to keep the alternation. */}
       <Header t={t} locale={locale} />
       <Hero t={t} />
       <EngagementModels t={t} />

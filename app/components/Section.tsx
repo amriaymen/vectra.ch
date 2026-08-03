@@ -1,11 +1,16 @@
 import type { ReactNode } from 'react';
 
-type Tone = 'dark' | 'light' | 'action' | 'accent' | 'surface';
+/**
+ * Exactly four section backgrounds. `surface` is deliberately NOT one of them:
+ * at #181C21 against #121519 it measures 1.07:1, which is optically invisible —
+ * using it as a band produced the illusion of variation with none of the effect.
+ * It remains the CARD colour, which is what it actually is.
+ */
+type Tone = 'dark' | 'light' | 'action' | 'accent';
 type Padding = 'default' | 'tight' | 'none';
 
 const TONE: Record<Tone, string> = {
   dark: 'bg-background text-white',
-  surface: 'bg-surface text-white',
   light: 'bg-white text-background',
   /** Lime. Reserved for the single call-to-action band. */
   action: 'bg-primary text-background',

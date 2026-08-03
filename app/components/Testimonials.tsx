@@ -21,7 +21,7 @@ export default function Testimonials({ t }: { t: Dictionary }) {
       <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8">
         {TESTIMONIALS.map((item, index) => (
           <Reveal as="li" key={`${item.organisation}-${item.name}`} delay={index * 80}>
-            <figure className="flex h-full flex-col rounded-xl border border-gray-200 p-6 md:p-8">
+            <figure className="flex h-full flex-col border border-gray-200 p-6 md:p-8">
               <blockquote className="flex-1 text-lg leading-relaxed text-gray-700">
                 <p>{item.quote}</p>
               </blockquote>

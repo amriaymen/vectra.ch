@@ -97,7 +97,9 @@ export default function MobileNav({
          * value is visible in devtools.
          */
         style={{ transform: open ? 'translateX(0)' : 'translateX(100%)' }}
-        className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col border-l border-line bg-surface transition-transform duration-300 ease-out lg:hidden"
+        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col border-l border-line bg-surface transition-transform duration-300 ease-out lg:hidden ${
+          open ? 'pointer-events-auto' : 'pointer-events-none'
+        }`}
       >
         <h2 id="mobile-nav-title" className="sr-only">
           {t.nav.menuTitle}

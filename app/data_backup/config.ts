@@ -42,10 +42,9 @@ export function formatCHF(amount: number): string {
  * Company identity. Empty strings are treated as "omit" by every consumer, so
  * nothing false is published while they're blank.
  *
- * Filled as of the Fribourg registration, so SWISS_ENTITY below is now true and
- * every origin claim on the site is live. Confirm the hello@vectra.ch mailbox
- * actually receives mail — the Impressum and privacy page both publish it as the
- * address for exercising data protection rights.
+ * ACTION REQUIRED — fill once the Swiss presence is real:
+ *   streetAddress / postalCode / addressLocality, phoneSwiss (+41…),
+ *   and move email to hello@vectra.ch once that mailbox exists.
  */
 export const COMPANY = {
   name: 'Vectra',
@@ -85,45 +84,16 @@ export const SWISS_ENTITY = Boolean(
 );
 
 /**
- * Two DIFFERENT facts that must never be conflated. Systems we build and run for
- * clients sit on Swiss infrastructure; this marketing site does not. Saying both
- * out loud is the honest position — and the Impressum previously claimed
- * "l'intégralité du site et des données clients" was hosted exclusively in
- * Switzerland, which the scope form's own API calls contradict (see SUBPROCESSORS).
+ * Where client data is hosted. This is a contractual promise, not a marketing
+ * line — the buyer's cantonal data protection officer may ask to verify it.
  *
- * A named provider is verifiable; "Swiss servers" is not, and the cantonal data
- * protection officer reading this knows the difference.
+ * ACTION REQUIRED — name the provider (Infomaniak / Exoscale / Swisscom). A named
+ * provider is verifiable; "Swiss servers" is not, and this reader knows it.
  */
 export const HOSTING = {
-  /** Client systems. A contractual promise their DPO may ask us to evidence. */
-  client: {
-    provider: 'Infomaniak Network SA',
-    location: 'Genève',
-    country: 'Switzerland',
-  },
-  /** This marketing site. Deliberately stated separately. */
-  site: {
-    provider: 'Vercel',
-    country: 'US',
-  },
+  country: 'Switzerland',
+  provider: '',
 } as const;
-
-/**
- * Every third party that receives personal data entered on this site. Adding a
- * call to a new service without adding it here is a compliance defect, not a
- * style one — nLPD Art. 19 requires the disclosure, and the privacy page renders
- * this array rather than restating it, so the two cannot drift apart.
- *
- * Basis verified against each provider's own published terms (Aug 2026):
- * Anthropic's privacy policy §5 relies on standard contractual clauses for
- * transfers to countries without an adequacy decision; Resend's DPA §6.5 routes
- * Swiss transfers through the EU SCCs read against the FADP. Neither is an
- * adequacy decision — do not describe it as one.
- */
-export const SUBPROCESSORS = [
-  { id: 'anthropic', name: 'Anthropic PBC', country: 'US' },
-  { id: 'resend', name: 'Resend', country: 'US' },
-] as const;
 
 export const CALENDLY_URL = 'https://calendly.com/vectra/30min';
 
@@ -163,22 +133,6 @@ export const PROOF: { id: string; value: number | null; suffix?: string }[] = [
   { id: 'systems', value: null }, // Schoolze, SB Pointage, Spotbase, Raqim
   { id: 'years', value: null },
   { id: 'institutions', value: null },
-];
-
-/**
- * Verifiable credentials, same discipline as PROOF: `null` omits the row
- * entirely, so an unfilled fact is unrenderable rather than merely unfilled.
- * The dictionaries carry the LABELS; the values live here because they are
- * facts, not copy, and a placeholder printed next to a real address and phone
- * number reads as genuine. `CHE-XXX.XXX.XXX` shipped on all three locales.
- *
- * ACTION REQUIRED — `uid` once the entry is in the commercial register;
- * `insurance` only once a policy exists and you can produce the certificate.
- */
-export const CREDENTIALS: { id: 'uid' | 'insurance' | 'stack'; value: string | null }[] = [
-  { id: 'uid', value: null },
-  { id: 'insurance', value: null },
-  { id: 'stack', value: 'Next.js, Node, PostgreSQL' },
 ];
 
 export interface Testimonial {
@@ -235,13 +189,12 @@ export const PRICE_BANDS = [
 export type PriceBand = (typeof PRICE_BANDS)[number];
 
 /**
- * Subscription tiers — the "unlimited agency" model. Published, predictable
- * pricing is the whole appeal here and our clearest differentiator against a
- * competitor who hides rates behind "contact us".
+ * Subscription tiers — the "unlimited agency" model.
  *
- * `yearly` is ten months of the monthly rate: an annual commitment gets two
- * months free. Keep that ratio when rates change — the copy states it.
- * A null still renders "On request", so a tier can be withdrawn honestly.
+ * ACTION REQUIRED — `monthly`/`yearly` are null on purpose. A null renders
+ * "On request", which defeats the point of this model: its entire appeal is
+ * published, predictable pricing, and it is our clearest differentiator against
+ * a competitor who hides rates behind "contact us".
  */
 export const SUBSCRIPTION_TIERS: {
   id: string;
@@ -249,9 +202,9 @@ export const SUBSCRIPTION_TIERS: {
   yearly: number | null;
   featured: boolean;
 }[] = [
-  { id: 'design', monthly: 1500, yearly: 15000, featured: false },
-  { id: 'build', monthly: 1800, yearly: 18000, featured: true },
-  { id: 'scale', monthly: 2400, yearly: 24000, featured: false },
+  { id: 'design', monthly: null, yearly: null, featured: false },
+  { id: 'build', monthly: null, yearly: null, featured: true },
+  { id: 'scale', monthly: null, yearly: null, featured: false },
 ];
 
 /** Project tracks. `from` is null → renders "On request". ACTION REQUIRED. */
@@ -405,15 +358,6 @@ export const HUB_DOMAINS: Record<HubKey, Domain[]> = {
  * `image: null` renders the card WITHOUT an image. Deliberate: an earlier build
  * captioned a school-management screenshot as a "warehouse ERP". A missing image
  * beats a contradicting one.
- *
- * `video` is a muted, looping screen capture that replaces the still where one
- * exists. It still needs `image` set as its poster: the poster is what OpenGraph
- * and the crawler get, and what a visitor sees before the loop decodes.
- *
- * A capture is a PUBLICATION of whatever is on screen. Record against a demo
- * tenant — never a live client one. Real end-user names or amounts in a frame
- * are a client-confidentiality breach and an nLPD Art. 6 problem, and neither
- * is undone by taking the file down later.
  */
 export const PRODUCTS: {
   slug: string;
@@ -421,7 +365,6 @@ export const PRODUCTS: {
   domain: Domain;
   status: 'available' | 'running';
   image: string | null;
-  video: string | null;
   tech: string[];
   featured: boolean;
 }[] = [
@@ -430,12 +373,9 @@ export const PRODUCTS: {
     name: 'Spotbase',
     domain: 'sports',
     status: 'available',
-    // BLOCKED, not missing. /assets/spotbase.mp4 and -poster.webp are encoded and
-    // ready, but the capture is of a LIVE tenant: end-user names and an unpaid
-    // balance are legible throughout. Point these at a demo tenant re-record and
-    // this is the strongest asset on the site.
+    // ACTION REQUIRED — the most urgent screenshot on the site: this is the one
+    // product a visitor can actually buy, and it is the featured card.
     image: null,
-    video: null,
     tech: ['Next.js', 'Supabase', 'Stripe'],
     featured: true,
   },
@@ -445,7 +385,6 @@ export const PRODUCTS: {
     domain: 'education',
     status: 'running',
     image: '/assets/6.webp', // confirmed: this screenshot is Schoolze
-    video: null,
     tech: ['Next.js', 'Node', 'PostgreSQL'],
     featured: false,
   },
@@ -455,7 +394,6 @@ export const PRODUCTS: {
     domain: 'hr',
     status: 'running',
     image: null, // ACTION REQUIRED: screenshot needed (mask employee/salary data)
-    video: null,
     tech: ['Next.js', 'Node', 'PostgreSQL'],
     featured: false,
   },
@@ -464,10 +402,7 @@ export const PRODUCTS: {
     name: 'Raqim',
     domain: 'education',
     status: 'running',
-    // Recorded against a test tenant, so no pupil data is exposed. The flip side
-    // is that the figures on screen read 1 class / 1 pupil — see the note below.
-    image: '/assets/raqim-poster.webp',
-    video: '/assets/raqim.mp4',
+    image: null, // ACTION REQUIRED: screenshot needed (mask pupil data)
     tech: ['Next.js', 'Node', 'PostgreSQL'],
     featured: false,
   },

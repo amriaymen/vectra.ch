@@ -195,13 +195,13 @@ export default function ServicePage({ params }: { params: { locale: string; slug
       <Testimonials t={t} />
       <Process t={t} />
 
-      <Section tone="surface" className="border-y border-line">
+      <Section tone="light">
         <div className="max-w-2xl">
           <h2 className="text-2xl leading-snug md:text-3xl">{t.pages.pricingTitle}</h2>
-          <p className="mt-4 leading-relaxed text-gray-300">{t.pages.pricingBody}</p>
+          <p className="mt-4 leading-relaxed text-gray-600">{t.pages.pricingBody}</p>
           <a
             href={`/${locale}#scope`}
-            className="mt-8 inline-flex min-h-[48px] items-center rounded-md bg-primary px-8 font-medium text-background transition-colors hover:bg-primary-hover"
+            className="mt-8 inline-flex min-h-[48px] items-center rounded-md bg-background px-8 font-medium text-white transition-colors hover:bg-surface"
           >
             {t.pages.pricingCta}
           </a>

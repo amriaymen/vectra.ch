@@ -14,40 +14,37 @@ function Column({ column, labels }: { column: MenuColumn; labels: SolutionsMenuM
   const tone = TONE[column.tone];
 
   return (
-    <div className="flex flex-col">
-      <span aria-hidden="true" className={`mb-4 h-px w-10 ${tone.rule}`} />
+    <div className="group/col flex flex-col transition-opacity duration-200 group-hover/menu:opacity-60 hover:!opacity-100">
+      <span aria-hidden="true" className={`mb-3.5 h-px w-10 ${tone.rule}`} />
 
       <h3 className={`text-sm font-medium ${tone.title}`}>{column.title}</h3>
-      <p className="mt-1.5 text-xs leading-relaxed text-gray-500">{column.desc}</p>
-      <p className="mt-2 text-xs text-gray-400">{column.price}</p>
+      <p className="mt-1 text-xs leading-relaxed text-gray-400">{column.desc}</p>
 
       <ul className="mt-4 grid gap-0.5">
         {column.items.map((item) => (
           <li key={item.key}>
             <a
               href={item.href}
-              className="group block rounded-lg px-3 py-2.5 -mx-3 transition-colors hover:bg-surface-hover focus-visible:bg-surface-hover"
+              className="group/item block rounded-md px-3 py-2 -mx-3 transition-colors hover:bg-surface-hover focus-visible:bg-surface-hover"
             >
               <span className="flex items-baseline justify-between gap-3">
-                <span className="text-sm text-white transition-colors group-hover:text-primary group-focus-visible:text-primary">
+                <span className="text-sm font-medium text-white transition-colors group-hover/item:text-primary group-focus-visible:text-primary">
                   {item.name}
                 </span>
 
-                {/* A `running` system is real but not licensable — it must never
-                    read as purchasable, here or on its product page. */}
                 {item.status && (
                   <span
-                    className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] leading-none ${
+                    className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-medium leading-none ${
                       item.status === 'available'
-                        ? 'border-primary/40 text-primary'
-                        : 'border-line text-gray-500'
+                        ? 'border-primary/40 text-primary bg-primary/5'
+                        : 'border-line text-gray-400'
                     }`}
                   >
                     {item.status === 'available' ? labels.available : labels.running}
                   </span>
                 )}
                 {item.price && (
-                  <span className="shrink-0 text-xs text-gray-500">{item.price}</span>
+                  <span className="shrink-0 font-mono text-xs text-gray-400">{item.price}</span>
                 )}
               </span>
               <span className="mt-0.5 block text-xs leading-relaxed text-gray-500">
@@ -116,11 +113,6 @@ export default function SolutionsMenu({
 
   return (
     <div ref={wrapper} className="relative">
-      {/*
-        A disclosure, not role="menu". The ARIA menu pattern promises arrow keys,
-        Home/End and typeahead; a list of links wants none of that and gets
-        correct Tab order for free.
-      */}
       <button
         ref={trigger}
         type="button"
@@ -142,35 +134,42 @@ export default function SolutionsMenu({
         </svg>
       </button>
 
-      {/*
-        Two elements on purpose: the outer one owns the centring transform, the
-        inner one owns the animated transform. Sharing them would mean both the
-        position and the transition write the same transform shorthand through
-        Tailwind's CSS variables.
-      */}
-      <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
+      <div className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 ${open ? '' : 'pointer-events-none'}`}>
         <div
           ref={panel}
           id={panelId}
           onClick={() => setOpen(false)}
           style={{ transform: open ? 'translateY(0)' : 'translateY(-4px)' }}
-          className={`w-[52rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-line bg-surface p-8 shadow-2xl transition-[opacity,transform] duration-200 ease-out ${
-            open ? 'visible opacity-100' : 'invisible opacity-0'
+          className={`w-[54rem] max-w-[calc(100vw-2rem)] border border-line bg-surface p-7 shadow-2xl transition-[opacity,transform] duration-200 ease-out ${
+            open ? 'visible opacity-100 pointer-events-auto' : 'invisible opacity-0 pointer-events-none'
           }`}
         >
-        <div className="grid grid-cols-3 gap-10">
-          {menu.columns.map((column) => (
-            <Column key={column.key} column={column} labels={menu.labels} />
-          ))}
-        </div>
+          {/* Introductory Context Header */}
+          <div className="mb-6 border-b border-line/60 pb-4">
+            <h2 className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-primary">
+              {menu.headerTitle}
+            </h2>
+            <p className="mt-1 text-xs text-gray-400">
+              {menu.headerSubtitle}
+            </p>
+          </div>
 
-          <div className="mt-8 flex items-center justify-between gap-6 border-t border-line pt-5">
-            <span className="text-xs text-gray-500">{menu.cta.note}</span>
+          {/* Three Engagement Model Columns */}
+          <div className="group/menu grid grid-cols-3 gap-8 md:gap-10">
+            {menu.columns.map((column) => (
+              <Column key={column.key} column={column} labels={menu.labels} />
+            ))}
+          </div>
+
+          {/* Bottom Full-Width Scope Generator CTA */}
+          <div className="mt-7 flex items-center justify-between gap-6 border-t border-line/60 pt-4">
+            <span className="text-xs text-gray-400">{menu.cta.note}</span>
             <a
               href={menu.cta.href}
-              className="text-xs font-medium text-primary transition-colors hover:text-white"
+              className="group/cta inline-flex items-center gap-1.5 text-xs font-medium text-primary transition-colors hover:text-white"
             >
-              {menu.cta.label} →
+              <span>{menu.cta.label}</span>
+              <span className="transition-transform duration-200 group-hover/cta:translate-x-1">→</span>
             </a>
           </div>
         </div>

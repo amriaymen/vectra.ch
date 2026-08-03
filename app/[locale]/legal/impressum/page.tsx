@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import Section from '../../../components/Section';
-import { COMPANY, LOCALE_TAGS, LOCALES, SITE_URL, getContent, isLocale, languageAlternates, type Locale } from '../../../data';
+import { COMPANY, HOSTING, LOCALE_TAGS, LOCALES, SITE_URL, getContent, isLocale, languageAlternates, type Locale } from '../../../data';
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -84,7 +84,14 @@ export default function ImpressumPage({ params }: { params: { locale: string } }
               <section className="space-y-2">
                 <h2 className="text-xl font-semibold text-white">3. Hébergement & Souveraineté des Données</h2>
                 <p>
-                  Conformément aux engagements de {COMPANY.name}, l’intégralité du site et des données clients sont hébergées exclusivement en <strong>Suisse</strong> sur des serveurs hautement sécurisés (Infomaniak Network SA, Genève, Suisse / Datacenters certifiés ISO 27001 & ISO 50001).
+                  <strong>Les systèmes que nous construisons et exploitons pour nos clients</strong> sont hébergés en{' '}
+                  <strong>{HOSTING.client.country === 'Switzerland' ? 'Suisse' : HOSTING.client.country}</strong>, chez {HOSTING.client.provider} ({HOSTING.client.location}), sous juridiction suisse. Nous confirmons par écrit le prestataire et le centre de données, afin que votre préposé cantonal à la protection des données puisse le vérifier.
+                </p>
+                <p>
+                  <strong>Le présent site vitrine</strong> est en revanche hébergé chez {HOSTING.site.provider}, hors de Suisse. Nous le distinguons délibérément de ce qui précède : les données que vous saisissez sur ce site ne suivent pas le même chemin que celles de vos systèmes. Le détail des destinataires figure au{' '}
+                  <a href={`/${locale}/legal/privacy`} className="text-primary hover:underline">
+                    point 5 de notre politique de confidentialité
+                  </a>.
                 </p>
               </section>
 

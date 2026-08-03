@@ -125,13 +125,13 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
   const labelClass = 'mb-2 block text-sm text-gray-300';
   const optionClass = (active: boolean) =>
     `flex min-h-[48px] cursor-pointer items-start gap-3 rounded-md border px-4 py-3 transition-colors ${
-      active ? 'border-primary bg-surface text-white' : 'border-line text-gray-400 hover:border-gray-600'
+      active ? 'border-primary bg-background text-white' : 'border-line text-gray-400 hover:border-gray-600'
     }`;
 
   const nextDisabled = (step === 2 && modules.length === 0) || false;
 
   return (
-    <Section id="scope" tone="surface" className="border-y border-line">
+    <Section id="scope" className="border-y border-line">
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-16">
         <div>
           <h2 className="text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl">
@@ -141,7 +141,7 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
           <p className="mt-6 text-sm leading-relaxed text-gray-500">{t.scope.aside}</p>
         </div>
 
-        <div className="rounded-xl border border-line bg-background p-6 md:p-10">
+        <div className="border border-line bg-surface p-6 md:p-10">
           {status === 'done' && scope ? (
             <ScopeResult t={t} scope={scope} emailed={emailed} onRestart={reset} />
           ) : status === 'done' && degraded ? (

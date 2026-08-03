@@ -8,19 +8,19 @@ import { PROCUREMENT, type Dictionary } from '../data';
  */
 export default function Procurement({ t }: { t: Dictionary }) {
   return (
-    <Section id="procurement" tone="surface" className="border-y border-line">
+    <Section id="procurement" tone="light">
       <div className="max-w-3xl">
         <h2 className="text-3xl leading-tight tracking-tight md:text-4xl">
           {t.procurement.title}
         </h2>
-        <p className="mt-6 text-lg leading-relaxed text-gray-300">{t.procurement.intro}</p>
+        <p className="mt-6 text-lg leading-relaxed text-gray-600">{t.procurement.intro}</p>
       </div>
 
-      <ul className="mt-12 grid gap-px overflow-hidden rounded-xl bg-line sm:grid-cols-2">
+      <ul className="mt-12 grid gap-px border border-gray-200 bg-gray-200 sm:grid-cols-2">
         {t.procurement.points.map((point) => (
-          <li key={point.title} className="bg-surface p-6 md:p-8">
-            <h3 className="text-lg leading-snug text-white">{point.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-gray-400">{point.detail}</p>
+          <li key={point.title} className="bg-white p-6 md:p-8">
+            <h3 className="text-lg leading-snug text-background">{point.title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-gray-600">{point.detail}</p>
           </li>
         ))}
       </ul>

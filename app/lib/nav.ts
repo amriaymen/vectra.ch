@@ -46,6 +46,8 @@ export interface MenuColumn {
 
 export interface SolutionsMenuModel {
   columns: MenuColumn[];
+  headerTitle: string;
+  headerSubtitle: string;
   cta: { label: string; href: string; note: string };
   labels: { available: string; running: string; from: string; perMonth: string };
 }
@@ -102,6 +104,8 @@ export function buildSolutionsMenu(locale: Locale, t: Dictionary): SolutionsMenu
 
   return {
     columns: [ready, built, team],
+    headerTitle: m.headerTitle,
+    headerSubtitle: m.headerSubtitle,
     cta: { label: m.ctaLabel, href: `/${locale}#scope`, note: m.ctaNote },
     labels: {
       available: t.products.statusAvailable,

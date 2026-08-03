@@ -1,11 +1,14 @@
 import type { Dictionary } from './content.en';
 import { SWISS_ENTITY } from './config';
+
 /** Siehe content.en.ts — die Herkunftsangabe ist an die Schweizer Gesellschaft gekoppelt. */
 const herkunft = {
   descriptionOpener: SWISS_ENTITY
     ? 'Schweizer Studio für Software und Kommunikation.'
     : 'Studio für Software und Kommunikation für Schweizer Institutionen.',
-  kicker: SWISS_ENTITY ? 'Operative Software · Schweiz' : 'Operative Software · Für die Schweiz',
+  kicker: SWISS_ENTITY
+    ? 'Managementsysteme & Kommunikation · Schweiz'
+    : 'Managementsysteme & Kommunikation · für die Schweiz',
   rights: SWISS_ENTITY
     ? 'Vectra — Schweizer Managementsysteme & Kommunikation.'
     : 'Vectra — Managementsysteme & Kommunikation für Schweizer Institutionen.',
@@ -40,12 +43,12 @@ const de: Dictionary = {
 
   nav: {
     services: 'Dienstleistungen',
-    solutions: 'Zusammenarbeit',
+    solutions: 'Lösungen',
     work: 'Referenzen',
     process: 'Prozess',
     pricing: 'Preise',
     faqs: 'FAQs',
-    cta: 'Projekt berechnen',
+    cta: 'Offerte anfragen',
     openMenu: 'Menü öffnen',
     closeMenu: 'Menü schliessen',
     menuTitle: 'Seiten-Navigation',
@@ -55,80 +58,30 @@ const de: Dictionary = {
 
   /* Nur Beschriftungen — die URLs werden in app/lib/nav.ts abgeleitet. */
   solutionsMenu: {
-    headerTitle: 'Drei Arten der Zusammenarbeit mit Vectra',
-    headerSubtitle: 'Wählen Sie das Modell, das am besten zu Ihrer Situation passt.',
     ready: {
-      title: 'Softwarelizenz',
-      desc: 'Nutzen Sie ein produktives System. Sofort einsatzbereit.',
+      title: 'Es gibt es bereits',
+      desc: 'Lizenzieren Sie ein System, das bereits produktiv läuft. Nichts zu entwickeln.',
     },
     built: {
-      title: 'Massgeschneiderte Software',
-      desc: 'Für Ihre Organisation entwickelt. Festpreis pro Meilenstein.',
+      title: 'Wir brauchen eine Eigenentwicklung',
+      desc: 'Auf Ihre Abläufe zugeschnitten, zum Fixpreis pro Meilenstein.',
     },
     team: {
-      title: 'Dediziertes Team',
-      desc: 'Ihr dediziertes Software- und Designteam, Monat für Monat.',
+      title: 'Wir brauchen ein Team',
+      desc: 'Laufende Design- und Entwicklungskapazität, Monat für Monat.',
     },
-    ctaLabel: 'Projekt in einer Minute beschreiben',
-    ctaNote: 'Unsicher, welche Option zu Ihnen passt?',
+    ctaLabel: 'Offerte in rund einer Minute erstellen',
+    ctaNote: 'Unsicher, welches der drei passt?',
   },
 
   hero: {
     kicker: herkunft.kicker,
     titleLine1: 'Wir bauen das System,',
     titleLine2: 'dann machen wir es begehrenswert.',
-    body: 'Schweizer Softwarestudio. Wir entwickeln operative Software, massgeschneiderte Anwendungen und die Kommunikationsstrategien, die deren Akzeptanz sichern.',
-    primaryCta: 'Projekt berechnen',
-    secondaryCta: 'Unsere Arbeiten ansehen',
-    proof: 'Software im Einsatz in Schweizer Schulen, Sportzentren, Gemeinden und Unternehmen.',
-    mediaLabel: 'Das Schoolze Schulverwaltungsportal im Einsatz',
-  },
-
-  engagementModels: {
-    title: 'Wie wir zusammenarbeiten',
-    items: [
-      { step: '01', title: 'Softwarelizenz', desc: 'Nutzen Sie eine unserer bestehenden Plattformen.\nSchulverwaltung\nSportplatzbuchung\nHR & Lohn' },
-      { step: '02', title: 'Massgeschneidertes Projekt', desc: 'Benötigen Sie etwas Einzigartiges?\n\nWir konzipieren und entwickeln es.' },
-      { step: '03', title: 'Laufende Partnerschaft', desc: 'Benötigen Sie kontinuierliches Design, Entwicklung und Wachstum?\n\nMonatliches Abonnement.' }
-    ]
-  },
-
-  whoWeServe: {
-    kicker: 'Branchen & Bereiche',
-    title: 'Wir sind auf operative Software spezialisiert.',
-    list: ['Bildungswesen', 'Sportanlagen', 'Öffentlicher Sektor', 'KMU & Startups'],
-    footer: 'Wir entwickeln auch massgeschneiderte Software für Startups und Unternehmen.',
-    badge: 'Spezialisierte Systeme'
-  },
-
-  decisionMatrix: {
-    title: 'Ist Vectra das Richtige für Sie?',
-    subtitle: 'Wählen Sie den Weg, der zu Ihrer Situation passt:',
-    columns: ['Wenn Sie...', 'Dann wählen Sie...'],
-    rows: [
-      { condition: 'Eine bereits entwickelte Software benötigen', choice: 'Eines unserer Produkte lizenzieren' },
-      { condition: 'Eine auf Ihre Organisation zugeschnittene Software benötigen', choice: 'Massgeschneidertes Projekt' },
-      { condition: 'Kontinuierliche Unterstützung bei Design, Entwicklung oder Wachstum benötigen', choice: 'Abonnement' }
-    ]
-  },
-
-  whyVectra: {
-    title: 'Warum Organisationen Vectra wählen',
-    trustTitle: 'Institutionell geprüft',
-    items: [
-      { label: 'Meilensteine zum Festpreis', detail: 'Jeder Meilenstein wird vor Beginn offeriert. Keine unbegrenzte stundenbasierte Abrechnung.' },
-      { label: 'In der Schweiz gehostete Infrastruktur', detail: 'Die Systeme, die wir für Sie bauen, laufen auf Schweizer Infrastruktur unter Schweizer Gerichtsstand. Anbieter und Rechenzentrum nennen wir schriftlich.' },
-      { label: 'Sie besitzen den Code', detail: 'Quellcode, Schemata und Designdateien gehen vom ersten Tag an in Ihren Besitz über.' },
-      { label: 'Direkter Zugang zu den Ingenieuren', detail: 'Sie arbeiten mit den Ingenieuren zusammen, die die Arbeit ausführen. Keine Account Manager.' },
-      { label: 'Ein Team für Software und Akzeptanz', detail: 'Das Team, das das System gebaut hat, erklärt es auch. Die Story passt zum Produkt.' }
-    ],
-    // Nur Beschriftungen. Die Werte sind Fakten und stehen in CREDENTIALS
-    // (config.ts); ein nicht gesetzter Wert ist null und wird nicht angezeigt.
-    credentials: {
-      uid: 'Schweizer Firmenregistrierung',
-      insurance: 'Versicherung',
-      stack: 'Technologie'
-    }
+    body: 'Vectra entwickelt die Software, auf der Institutionen laufen — Schulverwaltung, HR & Lohnbuchhaltung, Raumreservationen — und produziert die Marke, Videos und Kampagnen, die sie erfolgreich machen. Ihre Daten bleiben in der Schweiz.',
+    primaryCta: 'Fixpreis-Offerte anfragen',
+    secondaryCta: 'Unsere Referenzen',
+    mediaLabel: 'Das Schulverwaltungsportal Schoolze im Einsatz',
   },
 
   trust: [
@@ -137,7 +90,7 @@ const de: Dictionary = {
       // diese Frage, ob überhaupt weitergelesen wird.
       label: 'Ihre Daten bleiben in der Schweiz',
       detail:
-        'Das System, das wir für Sie bauen, wird bei einem Schweizer Anbieter unter Schweizer Jurisdiktion gehostet. Kein US-Hyperscaler.',
+        'Gehostet bei einem Schweizer Anbieter, unter Schweizer Jurisdiktion. Kein US-Hyperscaler, keine Übermittlung ins Ausland.',
     },
     {
       label: 'Nach den Regeln Ihres Kantons',
@@ -220,11 +173,9 @@ const de: Dictionary = {
 
   products: {
     title: 'Systeme, die wir bereits betreiben',
-    intro: 'Diese Produkte demonstrieren unsere Engineering-Kompetenz. Jedes massgeschneiderte Projekt profitiert von unserer jahrelangen Erfahrung in der Produktentwicklung.',
-    forWhoLabel: 'Entwickelt für',
-    problemLabel: 'Problem',
-    solutionLabel: 'Lösung',
-    outcomeLabel: 'Ergebnis',
+    intro:
+      'Unsere eigene Software, gehostet in der Schweiz. Eines ist heute lizenzierbar; die anderen laufen produktiv und lassen sich für Ihre Institution anpassen.',
+    forWhoLabel: 'Gebaut für',
     modulesLabel: 'Was es leistet',
     scaleLabel: 'Grösse',
     stackLabel: 'Technologie',
@@ -251,42 +202,38 @@ const de: Dictionary = {
       spotbase: {
         tagline: 'Sportanlagenverwaltung & Buchung',
         forWho: 'Sportzentren, Vereine und Gemeinden, die buchbare Anlagen verwalten.',
-        summary: 'Ressourcenkalender, Online-Reservationen, Mitgliedschaften und Zahlung in einem System, sodass eine Buchung und das zugehörige Geld einen einzigen Datensatz bilden.',
-        problem: 'Anlagen verwalten Buchungen telefonisch, was zu Doppelbuchungen und nicht erfassten Einnahmen führt.',
-        solution: 'Aufbau einer Self-Service-Buchungsplattform mit integrierter Zahlung und Ressourcenregeln.',
-        outcome: 'Keine Doppelbuchungen und Echtzeitdaten zur Anlagennutzung.',
-        modules: ['Ressourcenkalender', 'Online-Buchung', 'Mitgliedschaften', 'Zahlungen', 'Nutzungsberichte'],
+        summary:
+          'Ressourcen-Kalender, Online-Reservationen, Mitgliedschaften und Zahlung in einem System — Buchung und zugehöriger Betrag bilden einen einzigen Datensatz.',
+        modules: ['Ressourcen-Kalender', 'Online-Buchung', 'Mitgliedschaften', 'Zahlungen', 'Auslastungsberichte'],
         scale: '',
+        outcome: '',
       },
       schoolze: {
         tagline: 'Schulverwaltungsportal',
         forWho: 'Primar- und Sekundarschulen sowie Schulgruppen mit mehreren Standorten.',
-        summary: 'Einschreibung, Anwesenheit, Notengebung, Elternkommunikation und Rechnungsstellung in einem Portal, mit rollenbezogenem Zugriff für Verwaltung, Lehrpersonal und Eltern.',
-        problem: 'Schulen verwalten Hunderte von Schülern mit unzusammenhängenden Tabellenkalkulationen und Papierformularen.',
-        solution: 'Aufbau einer zentralisierten Plattform für Noten, Anwesenheit und Elternkommunikation.',
-        outcome: 'Reduzierter Verwaltungsaufwand und abgestimmte Rechnungsstellung.',
-        modules: ['Einschreibung und Akten', 'Anwesenheit', 'Noten und Zeugnisse', 'Elternportal', 'Rechnungsstellung'],
+        summary:
+          'Einschreibungen, Anwesenheiten, Noten, Elternkommunikation und Rechnungsstellung in einem Portal, mit rollenbasierten Zugriffen für Verwaltung, Lehrpersonen und Eltern.',
+        modules: ['Einschreibungen & Akten', 'Anwesenheit', 'Noten & Zeugnisse', 'Elternportal', 'Rechnungsstellung'],
         scale: '',
+        outcome: '',
       },
       'sb-pointage': {
         tagline: 'Zeiterfassung & Lohnbuchhaltung',
         forWho: 'Arbeitgeber mit Schicht- oder Stundenpersonal, deren Stunden ohne Doppelerfassung in die Lohnabrechnung gelangen müssen.',
-        summary: 'Check-in und Checkout, Urlaubs- und Vertragsverwaltung, Lohnberechnung und Lohnexport — eine einzige Kette von der Stechuhr bis zur Lohnabrechnung.',
-        problem: 'Papier-Stundenzettel verursachen monatliche Verzögerungen bei der Lohnabrechnung und Streitigkeiten über den Urlaubssaldo.',
-        solution: 'Bereitstellung von Terminals und mobiler Zeiterfassung, die direkt in automatisierte Lohnberechnungen einfliessen.',
-        outcome: 'Fehlerfreie Lohnexporte und vollständig prüfbare Personalakten.',
-        modules: ['Check-in / Checkout', 'Urlaubsverwaltung', 'Lohnberechnung', 'Lohnexport', 'Personalakten'],
+        summary:
+          'Ein- und Ausstempeln, Absenzen- und Vertragsverwaltung, Lohnberechnung und Lohn-Export — eine durchgehende Kette von der Stempeluhr bis zur Lohnabrechnung.',
+        modules: ['Ein- / Ausstempeln', 'Absenzenverwaltung', 'Lohnberechnung', 'Lohn-Export', 'Personalakten'],
         scale: '',
+        outcome: '',
       },
       raqim: {
         tagline: 'Standortübergreifende Schulverwaltung',
         forWho: 'Schulgruppen, die eine konsolidierte Sicht über mehrere Standorte benötigen.',
-        summary: 'Akademische Aufzeichnungen, Personalverwaltung, Terminplanung und Berichterstattung über mehrere Standorte hinweg, wobei Zahlen zentral konsolidiert anstatt standortweise zusammengestellt werden.',
-        problem: 'Standortübergreifende Gruppen kämpfen mit fragmentierten Daten und mangelndem konsolidierten Reporting.',
-        solution: 'Aufbau einer mandantenfähigen Administrationsplattform, die Akten über alle Campus hinweg vereinheitlicht.',
-        outcome: 'Echtzeit-Transparenz und standardisierte Prozesse in der gesamten Organisation.',
-        modules: ['Standortübergreifende Verwaltung', 'Akademische Akten', 'Personalverwaltung', 'Planung', 'Konsolidiertes Reporting'],
+        summary:
+          'Akademische Akten, Personalverwaltung, Stundenplanung und Reporting über mehrere Standorte, mit zentral konsolidierten Zahlen statt standortweiser Zusammenstellung.',
+        modules: ['Standortübergreifende Verwaltung', 'Akademische Akten', 'Personalverwaltung', 'Stundenplanung', 'Konsolidiertes Reporting'],
         scale: '',
+        outcome: '',
       },
     },
     also: {
@@ -342,35 +289,49 @@ const de: Dictionary = {
   },
 
   pricing: {
-    title: 'Drei Arten der Zusammenarbeit',
-    intro: 'Publizierte Tarife, feste Meilensteine und kein kostenpflichtiges Scoping.',
+    title: 'Preise',
+    intro: 'Publizierte Tarife, fixe Meilensteine und kostenlose Offerten.',
     onRequest: 'Auf Anfrage',
-    models: {
-      license: {
-        name: 'Softwarelizenz',
-        detail: 'Stellen Sie sofort eine unserer bestehenden Plattformen bereit.',
-        includes: ['Sofort einsatzbereite Software', 'Schweizer Hosting inklusive', 'Sofortige Bereitstellung', 'Laufende Updates'],
-        cta: 'Produkte ansehen'
-      },
-      project: {
-        name: 'Projekt',
-        detail: 'Massgeschneiderte Software mit festem Umfang, vor Beginn nach Meilensteinen offeriert und geplant.',
-        includes: ['Massgeschneiderte Architektur', 'Lieferung nach Meilensteinen', 'Festpreis', 'Vollständiges geistiges Eigentum'],
-        cta: 'Projekt berechnen'
-      },
-      subscription: {
-        name: 'Abonnement',
-        detail: 'Laufender Zugriff auf unsere Software- und Designkapazitäten nach dem Launch. Eine langfristige Produktpartnerschaft.',
-        includes: ['Kontinuierliche Entwicklung', 'UI/UX und Motion Design', 'Priorisierte Planung', 'Jederzeit pausieren oder kündigen'],
-        cta: 'Abonnement abschliessen'
-      }
-    },
+    subscriptionTitle: 'Laufendes Abonnement',
+    subscriptionIntro:
+      'Eine kontinuierliche Design- und Engineering-Kapazität für Teams, die stetige Lieferung anstelle eines einmaligen Projekts benötigen. Eine aktive Anfrage zur Zeit, und Sie können jederzeit zwischen zwei Anfragen pausieren oder kündigen.',
+    monthly: 'Monatlich',
+    yearly: 'Jährlich',
+    yearlyNote: 'jährlich abgerechnet',
+    perMonth: '/Monat',
+    perYear: '/Jahr',
+    featured: 'Am beliebtesten',
+    projectsTitle: 'Fixpreis-Projekte',
+    projectsIntro: 'Für ein definiertes Resultat. Offeriert und zeitlich pro Meilenstein geplant, bevor die Arbeit beginnt.',
+    from: 'ab',
+    subscriptionCta: 'Abo starten',
+    projectCta: 'Projekt offerieren lassen',
     tiers: {
-      perMonth: '/Monat',
-      perYear: '/Jahr',
-      note: 'Jahresvertrag: zwei Monate geschenkt.',
-      names: { design: 'Design', build: 'Build', scale: 'Scale' }
-    }
+      design: {
+        name: 'Design',
+        detail: 'Marken-, UI- und Motion-Arbeiten auf kontinuierlicher Basis.',
+        includes: ['Eine aktive Anfrage zur Zeit', 'Marken-, UI- und Motion-Design', 'Typische Turnaround-Zeit 2–4 Arbeitstage', 'Jederzeit pausieren oder kündigen'],
+      },
+      build: {
+        name: 'Design + Build',
+        detail: 'Design plus Entwicklungskapazität — die kompletten Build- und Tell-Bereiche.',
+        includes: ['Eine aktive Anfrage zur Zeit', 'Design und Full-Stack-Entwicklung', 'Typische Turnaround-Zeit 3–7 Arbeitstage', 'Infrastruktur und Wartung inbegriffen', 'Jederzeit pausieren oder kündigen'],
+      },
+      scale: {
+        name: 'Scale',
+        detail: 'Dedizierte Kapazität für Teams, die kontinuierlich ausliefern.',
+        includes: ['Zwei aktive Anfragen gleichzeitig', 'Priorisierte Bearbeitung', 'Dedizierter Senior-Engineer und -Designer', 'Unterstützung bei Architektur und Roadmap', 'Jederzeit pausieren oder kündigen'],
+      },
+    },
+    tracks: {
+      management: {
+        name: 'Managementsysteme',
+        detail: 'Schulverwaltung, HR und Lohnbuchhaltung, Buchungs- und Anlagenverwaltung.',
+      },
+      webapps: { name: 'Web- & Mobile-Apps', detail: 'Kundenportale, Plattformen, individuelle Applikationen und Integrationen.' },
+      brand: { name: 'Marke & Erklärvideos', detail: 'Identitätssysteme, Design-Bibliotheken und animierte Erklärvideos.' },
+      growth: { name: 'Wachstum & Kampagnen', detail: 'Funnels, Landing Pages, CRM-Automatisierung und Kampagnenproduktion.' },
+    },
   },
 
   scope: {
@@ -482,7 +443,7 @@ const de: Dictionary = {
       {
         question: 'Wo werden unsere Daten gehostet?',
         answer:
-          'Das System, das wir für Sie bauen, läuft in der Schweiz, bei einem Schweizer Anbieter, unter Schweizer Jurisdiktion — nicht bei einem US-Hyperscaler. Wir nennen Anbieter und Rechenzentrum schriftlich, damit Ihre Datenschutzbeauftragte dies überprüfen kann. Unsere eigene Website ist ein separater Fall: Das Sofort-Scoping-Formular übermittelt Ihre Eingaben an Dienste ausserhalb der Schweiz, die unsere Datenschutzerklärung namentlich nennt.',
+          'In der Schweiz, bei einem Schweizer Anbieter, unter Schweizer Jurisdiktion. Nicht bei einem US-Hyperscaler und ohne Übermittlung ins Ausland. Wir nennen Anbieter und Rechenzentrum schriftlich, damit Ihre Datenschutzbeauftragte dies überprüfen kann.',
       },
       {
         question: 'Wir sind eine Schule oder Gemeinde. Wie läuft die Beschaffung ab?',

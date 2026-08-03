@@ -21,7 +21,7 @@ export default function Tracks({ t }: { t: Dictionary }) {
         {tracks.map((track, index) => (
           <div
             key={track.key}
-            className="flex flex-col rounded-xl border border-line bg-surface p-6 md:p-10"
+            className="flex flex-col border border-line bg-surface p-6 md:p-10"
           >
             <div className="flex items-start justify-between gap-4">
               <p className="text-sm uppercase tracking-[0.15em] text-primary">{track.data.kicker}</p>

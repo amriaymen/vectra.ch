@@ -7,8 +7,8 @@ const origine = {
     ? 'Studio suisse de logiciel et de communication.'
     : 'Studio de logiciel et de communication pour les institutions suisses.',
   kicker: SWISS_ENTITY
-    ? 'Logiciel opérationnel · Suisse'
-    : 'Logiciel opérationnel · Pour la Suisse',
+    ? 'Systèmes de gestion et communication · Suisse'
+    : 'Systèmes de gestion et communication · pour la Suisse',
   rights: SWISS_ENTITY
     ? 'Vectra — systèmes de gestion et communication suisses.'
     : 'Vectra — systèmes de gestion et communication pour les institutions suisses.',
@@ -43,12 +43,12 @@ const fr: Dictionary = {
 
   nav: {
     services: 'Services',
-    solutions: 'Comment nous collaborons',
+    solutions: 'Solutions',
     work: 'Réalisations',
     process: 'Processus',
     pricing: 'Tarifs',
-    faqs: 'FAQs',
-    cta: 'Estimer mon projet',
+    faqs: 'Questions',
+    cta: 'Obtenir un cadrage',
     openMenu: 'Ouvrir le menu',
     closeMenu: 'Fermer le menu',
     menuTitle: 'Navigation du site',
@@ -58,81 +58,30 @@ const fr: Dictionary = {
 
   /* Libellés uniquement — les URL sont dérivées dans app/lib/nav.ts. */
   solutionsMenu: {
-    headerTitle: 'Trois façons de collaborer avec Vectra',
-    headerSubtitle: 'Choisissez le mode de collaboration le plus adapté à votre situation.',
     ready: {
-      title: 'Licence logicielle',
-      desc: 'Exploitez un système déjà en production. Prêt au déploiement.',
+      title: 'Ça existe déjà',
+      desc: 'Prenez sous licence un système déjà en production. Rien à développer.',
     },
     built: {
-      title: 'Logiciel sur mesure',
-      desc: 'Conçu pour votre organisation. Prix fixe par jalon.',
+      title: 'Nous devons le faire construire',
+      desc: 'Cadré sur votre fonctionnement, à prix fixe par jalon.',
     },
     team: {
-      title: 'Équipe dédiée',
-      desc: 'Votre équipe logicielle et design dédiée, mois après mois.',
+      title: 'Nous avons besoin d’une équipe',
+      desc: 'Une capacité de design et de développement continue, de mois en mois.',
     },
-    ctaLabel: 'Décrire votre projet en une minute',
-    ctaNote: 'Vous hésitez encore sur l’option adaptée ?',
+    ctaLabel: 'Rédiger un cadrage en une minute',
+    ctaNote: 'Vous hésitez entre les trois ?',
   },
 
   hero: {
     kicker: origine.kicker,
     titleLine1: 'Nous construisons le système,',
     titleLine2: 'puis nous le rendons désirable.',
-    body: 'Studio suisse de logiciels. Nous développons des logiciels métiers, des applications sur mesure et les stratégies qui assurent leur adoption.',
-    primaryCta: 'Estimer mon projet',
+    body: 'Vectra développe les logiciels qui font tourner les institutions — administration scolaire, RH et paie, réservation d’installations — et produit la marque, le motion design et les campagnes qui les font adopter. Vos données restent en Suisse.',
+    primaryCta: 'Obtenir un cadrage à prix fixe',
     secondaryCta: 'Voir nos réalisations',
-    proof: 'Logiciels utilisés dans les écoles, les centres sportifs, les communes et les entreprises suisses.',
     mediaLabel: 'Le portail de gestion scolaire Schoolze en cours d’utilisation',
-  },
-
-  engagementModels: {
-    title: 'Comment nous collaborons',
-    items: [
-      { step: '01', title: 'Licence logicielle', desc: 'Utilisez l’une de nos plateformes existantes.\nGestion scolaire\nRéservation sportive\nRH & Paie' },
-      { step: '02', title: 'Projet sur mesure', desc: 'Besoin de quelque chose d\'unique ?\n\nNous le concevons et le développons.' },
-      { step: '03', title: 'Partenariat continu', desc: 'Besoin d\'un accompagnement design, dev et croissance ?\n\nAbonnement mensuel.' }
-    ]
-  },
-
-  whoWeServe: {
-    kicker: 'Secteurs d’activité',
-    title: 'Nous sommes spécialisés dans les logiciels opérationnels.',
-    list: ['Éducation', 'Sports', 'Ressources Humaines', 'Secteur public'],
-    footer: 'Nous créons également des logiciels sur mesure pour les startups et les entreprises.',
-    badge: 'Systèmes dédiés'
-  },
-
-  decisionMatrix: {
-    title: 'Vectra est-il fait pour vous ?',
-    subtitle: 'Choisissez la voie qui correspond à votre situation :',
-    columns: ['Si vous...', 'Choisissez...'],
-    rows: [
-      { condition: 'Avez besoin d\'un logiciel déjà existant', choice: 'Prendre sous licence nos produits' },
-      { condition: 'Avez besoin d\'un logiciel adapté à votre organisation', choice: 'Projet sur mesure' },
-      { condition: 'Avez besoin d\'un accompagnement continu en conception, développement ou croissance', choice: 'Abonnement' }
-    ]
-  },
-
-  whyVectra: {
-    title: 'Pourquoi les organisations choisissent Vectra',
-    trustTitle: 'Vérifié institutionnellement',
-    items: [
-      { label: 'Jalons à prix fixe', detail: 'Chaque jalon est devisé avant de commencer. Aucune facturation horaire illimitée.' },
-      { label: 'Infrastructure hébergée en Suisse', detail: 'Les systèmes que nous construisons pour vous tournent sur une infrastructure suisse, sous juridiction suisse. Nous indiquons par écrit le prestataire et le centre de données.' },
-      { label: 'Vous êtes propriétaire du code', detail: 'Le code source, les schémas et les fichiers de conception vous sont transférés dès le premier jour.' },
-      { label: 'Accès direct aux ingénieurs', detail: 'Vous travaillez avec les ingénieurs qui réalisent le travail. Aucun chef de projet intermédiaire.' },
-      { label: 'Une seule équipe pour le logiciel et l\'adoption', detail: 'L\'équipe qui a construit le système l\'explique. L\'histoire correspond au produit.' }
-    ],
-    // Libellés uniquement. Les valeurs sont des faits : elles vivent dans
-    // CREDENTIALS (config.ts), où une valeur non renseignée vaut null et
-    // n'affiche rien.
-    credentials: {
-      uid: 'Enregistrement suisse',
-      insurance: 'Assurance',
-      stack: 'Technologie'
-    }
   },
 
   trust: [
@@ -141,7 +90,7 @@ const fr: Dictionary = {
       // question qui décide s'ils continuent à lire.
       label: 'Vos données restent en Suisse',
       detail:
-        'Le système que nous construisons pour vous est hébergé chez un prestataire suisse, sous juridiction suisse. Aucun hyperscaler américain.',
+        'Hébergement chez un prestataire suisse, sous juridiction suisse. Aucun hyperscaler américain, aucun transfert à l’étranger.',
     },
     {
       label: 'Conforme aux règles de votre canton',
@@ -228,11 +177,9 @@ const fr: Dictionary = {
 
   products: {
     title: 'Les systèmes que nous exploitons déjà',
-    intro: 'Ces produits démontrent notre capacité d\'ingénierie. Chaque projet sur mesure bénéficie de nos années d\'expérience en développement de produits.',
+    intro:
+      'Nos propres logiciels, hébergés en Suisse. L’un est disponible sous licence dès aujourd’hui ; les autres sont en production et peuvent être adaptés à votre institution.',
     forWhoLabel: 'Conçu pour',
-    problemLabel: 'Problème',
-    solutionLabel: 'Solution',
-    outcomeLabel: 'Résultat',
     modulesLabel: 'Ce qu’il fait',
     scaleLabel: 'Échelle',
     stackLabel: 'Technologies',
@@ -259,40 +206,35 @@ const fr: Dictionary = {
       spotbase: {
         tagline: 'Gestion et réservation d’installations sportives',
         forWho: 'Centres sportifs, clubs et communes gérant des installations réservables.',
-        summary: 'Calendriers de ressources, réservations en ligne, abonnements et paiement dans un seul système : la réservation et l’argent qui s’y rattache forment un seul enregistrement.',
-        problem: 'Les installations gèrent les réservations par téléphone, ce qui entraîne des doubles réservations et des revenus non suivis.',
-        solution: 'Création d\'une plateforme de réservation en libre-service avec paiement intégré et règles de ressources.',
-        outcome: 'Zéro double réservation et données d\'utilisation des installations en temps réel.',
+        summary:
+          'Calendriers de ressources, réservations en ligne, abonnements et paiement dans un seul système : la réservation et l’argent qui s’y rattache forment un seul enregistrement.',
         modules: ['Calendrier des ressources', 'Réservation en ligne', 'Abonnements', 'Paiements', 'Rapports d’utilisation'],
         scale: '',
+        outcome: '',
       },
       schoolze: {
         tagline: 'Portail de gestion scolaire',
         forWho: 'Écoles primaires et secondaires, et groupes scolaires répartis sur plusieurs sites.',
-        summary: 'Inscriptions, présences, notes, communication avec les parents et facturation dans un seul portail, avec des accès par rôle pour l’administration, le corps enseignant et les parents.',
-        problem: 'Les écoles gèrent des centaines d\'élèves avec des tableurs décousus et des formulaires papier.',
-        solution: 'Création d\'une plateforme centralisée pour les notes, les présences et la communication avec les parents.',
-        outcome: 'Réduction de la charge administrative et facturation réconciliée.',
+        summary:
+          'Inscriptions, présences, notes, communication avec les parents et facturation dans un seul portail, avec des accès par rôle pour l’administration, le corps enseignant et les parents.',
         modules: ['Inscriptions et dossiers', 'Présences', 'Notes et bulletins', 'Portail parents', 'Facturation'],
         scale: '',
+        outcome: '',
       },
       'sb-pointage': {
         tagline: 'Pointage et paie',
         forWho: 'Employeurs avec du personnel en équipes ou à l’heure, dont les heures doivent arriver à la paie sans ressaisie.',
-        summary: 'Pointage des entrées et sorties, gestion des congés et des contrats, calcul des salaires et export vers la paie — une seule chaîne, de la pointeuse à la fiche de salaire.',
-        problem: 'Les feuilles de temps papier causent des retards de paie mensuels et des litiges sur le solde des congés.',
-        solution: 'Déploiement de pointeuses et de pointage mobile alimentant directement les calculs de salaires automatisés.',
-        outcome: 'Exports de paie sans erreur et dossiers du personnel entièrement auditables.',
+        summary:
+          'Pointage des entrées et sorties, gestion des congés et des contrats, calcul des salaires et export vers la paie — une seule chaîne, de la pointeuse à la fiche de salaire.',
         modules: ['Pointage entrées / sorties', 'Gestion des congés', 'Calcul des salaires', 'Export paie', 'Dossiers du personnel'],
         scale: '',
+        outcome: '',
       },
       raqim: {
         tagline: 'Administration scolaire multi-sites',
         forWho: 'Groupes scolaires ayant besoin d’une vue consolidée sur plusieurs sites.',
-        summary: 'Dossiers académiques, gestion du personnel, planification et reporting sur plusieurs sites, avec des chiffres consolidés au niveau central plutôt qu’assemblés site par site.',
-        problem: 'Les groupes multi-sites luttent avec des données fragmentées et un manque de reporting consolidé.',
-        solution: 'Création d\'une plateforme d\'administration multi-tenant unifiant les dossiers de tous les campus.',
-        outcome: 'Visibilité en temps réel et processus standardisés dans toute l\'organisation.',
+        summary:
+          'Dossiers académiques, gestion du personnel, planification et reporting sur plusieurs sites, avec des chiffres consolidés au niveau central plutôt qu’assemblés site par site.',
         modules: [
           'Administration multi-sites',
           'Dossiers académiques',
@@ -301,6 +243,7 @@ const fr: Dictionary = {
           'Reporting consolidé',
         ],
         scale: '',
+        outcome: '',
       },
     },
     also: {
@@ -365,35 +308,75 @@ const fr: Dictionary = {
   },
 
   pricing: {
-    title: 'Trois façons de collaborer',
-    intro: 'Des tarifs publiés, des jalons fixes, et aucun frais de cadrage.',
+    title: 'Tarifs',
+    intro: 'Des tarifs publiés, des jalons fixes, et le cadrage offert.',
     onRequest: 'Sur demande',
-    models: {
-      license: {
-        name: 'Licence logicielle',
-        detail: 'Déployez immédiatement l\'une de nos plateformes existantes.',
-        includes: ['Logiciel prêt à l\'emploi', 'Hébergement suisse inclus', 'Déploiement immédiat', 'Mises à jour continues'],
-        cta: 'Voir les produits'
-      },
-      project: {
-        name: 'Projet',
-        detail: 'Logiciel sur mesure à périmètre fixe, chiffré et planifié par jalon avant le démarrage.',
-        includes: ['Architecture sur mesure', 'Livraison par jalons', 'Prix fixe', 'Propriété intellectuelle totale'],
-        cta: 'Estimer mon projet'
-      },
-      subscription: {
-        name: 'Abonnement',
-        detail: 'Accès continu à notre capacité logicielle et de design après le lancement. Un partenariat produit à long terme.',
-        includes: ['Développement continu', 'Design UI/UX et motion', 'Planification prioritaire', 'Suspension ou résiliation à tout moment'],
-        cta: 'Souscrire un abonnement'
-      }
-    },
+    subscriptionTitle: 'Abonnement mensuel',
+    subscriptionIntro:
+      'Une capacité de design et de développement continue, pour les équipes qui ont besoin d’un flux régulier plutôt que d’un projet unique. Une demande active à la fois, et vous pouvez suspendre ou résilier entre deux demandes.',
+    monthly: 'Mensuel',
+    yearly: 'Annuel',
+    yearlyNote: 'facturé annuellement',
+    perMonth: '/mois',
+    perYear: '/an',
+    featured: 'Le plus choisi',
+    projectsTitle: 'Projets à périmètre fixe',
+    projectsIntro: 'Pour un livrable défini. Chiffré et planifié par jalon avant le démarrage.',
+    from: 'dès',
+    subscriptionCta: 'Souscrire un abonnement',
+    projectCta: 'Cadrer un projet',
     tiers: {
-      perMonth: '/mois',
-      perYear: '/an',
-      note: 'Engagement annuel : deux mois offerts.',
-      names: { design: 'Design', build: 'Build', scale: 'Scale' }
-    }
+      design: {
+        name: 'Design',
+        detail: 'Marque, interface et motion design en continu.',
+        includes: [
+          'Une demande active à la fois',
+          'Design de marque, d’interface et motion',
+          'Délai habituel de 2 à 4 jours ouvrés',
+          'Suspension ou résiliation à tout moment',
+        ],
+      },
+      build: {
+        name: 'Design + Développement',
+        detail: 'Design et capacité de développement — les volets Go et Sketch réunis.',
+        includes: [
+          'Une demande active à la fois',
+          'Design et développement full-stack',
+          'Délai habituel de 3 à 7 jours ouvrés',
+          'Infrastructure et maintenance incluses',
+          'Suspension ou résiliation à tout moment',
+        ],
+      },
+      scale: {
+        name: 'Scale',
+        detail: 'Capacité dédiée pour les équipes qui livrent en continu.',
+        includes: [
+          'Deux demandes actives à la fois',
+          'Planification prioritaire',
+          'Ingénieur et designer seniors dédiés',
+          'Accompagnement architecture et feuille de route',
+          'Suspension ou résiliation à tout moment',
+        ],
+      },
+    },
+    tracks: {
+      management: {
+        name: 'Systèmes de gestion',
+        detail: 'Administration scolaire, RH et paie, réservation et gestion d’installations.',
+      },
+      webapps: {
+        name: 'Applications web et mobiles',
+        detail: 'Portails clients, plateformes, applications sur mesure et intégrations.',
+      },
+      brand: {
+        name: 'Marque et motion explicatif',
+        detail: 'Systèmes d’identité, bibliothèques de design et vidéos explicatives animées.',
+      },
+      growth: {
+        name: 'Croissance et campagnes',
+        detail: 'Tunnels d’acquisition, pages d’atterrissage, automatisation CRM et production de campagnes.',
+      },
+    },
   },
 
   scope: {
@@ -501,7 +484,7 @@ const fr: Dictionary = {
       {
         question: 'Où nos données sont-elles hébergées ?',
         answer:
-          'Le système que nous construisons pour vous tourne en Suisse, chez un prestataire suisse, sous juridiction suisse — pas chez un hyperscaler américain. Nous indiquons par écrit le prestataire et le centre de données afin que votre préposé à la protection des données puisse le vérifier. Notre propre site est un cas distinct : le formulaire de cadrage instantané transmet ce que vous saisissez à des services situés hors de Suisse, et notre politique de confidentialité les nomme.',
+          'En Suisse, chez un prestataire suisse, sous juridiction suisse. Pas chez un hyperscaler américain et sans transfert à l’étranger. Nous pouvons indiquer par écrit le prestataire et le centre de données afin que votre préposé à la protection des données puisse le vérifier.',
       },
       {
         question: 'Notre système contient des données d’élèves et de collaborateurs. Comment les traitez-vous ?',

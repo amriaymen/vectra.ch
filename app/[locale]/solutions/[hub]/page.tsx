@@ -164,7 +164,7 @@ export default function HubPage({ params }: { params: { locale: string; hub: str
             <Reveal as="li" key={service} delay={index * 60}>
               <a
                 href={servicePath(locale, service)}
-                className="group flex h-full flex-col rounded-xl border border-line bg-surface p-6 transition-colors hover:border-primary/50 md:p-8"
+                className="group flex h-full flex-col border border-line bg-surface p-6 transition-colors hover:border-primary/50 md:p-8"
               >
                 <h3 className="text-xl leading-snug">{t.services[service].h1}</h3>
                 <p className="mt-3 flex-1 leading-relaxed text-gray-400">
@@ -226,13 +226,13 @@ export default function HubPage({ params }: { params: { locale: string; hub: str
       <Testimonials t={t} />
       <Process t={t} />
 
-      <Section tone="surface" className="border-y border-line">
+      <Section tone="light">
         <div className="max-w-2xl">
           <h2 className="text-2xl leading-snug md:text-3xl">{t.pages.pricingTitle}</h2>
-          <p className="mt-4 leading-relaxed text-gray-300">{t.pages.pricingBody}</p>
+          <p className="mt-4 leading-relaxed text-gray-600">{t.pages.pricingBody}</p>
           <a
             href={`/${locale}#scope`}
-            className="mt-8 inline-flex min-h-[48px] items-center rounded-md bg-primary px-8 font-medium text-background transition-colors hover:bg-primary-hover"
+            className="mt-8 inline-flex min-h-[48px] items-center rounded-md bg-background px-8 font-medium text-white transition-colors hover:bg-surface"
           >
             {t.pages.pricingCta}
           </a>
