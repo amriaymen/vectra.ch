@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import Section from '../../../components/Section';
-import { COMPANY, HOSTING, LOCALE_TAGS, LOCALES, SITE_URL, getContent, isLocale, languageAlternates, type Locale } from '../../../data';
+import { COMPANY, HOSTING, LOCALE_TAGS, LOCALES, SITE_URL, formatCHF, getContent, isLocale, languageAlternates, type Locale } from '../../../data';
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -26,7 +26,7 @@ export async function generateMetadata({
 
   return {
     title: titles[locale],
-    description: `Mentions légales et informations officielles concernant la société ${COMPANY.legalName} à La Tour-de-Trême (Fribourg), Suisse.`,
+    description: `Mentions légales et informations officielles concernant ${COMPANY.legalName} (${COMPANY.uid}), éditrice de ${COMPANY.name}, à ${COMPANY.addressLocality} (${COMPANY.addressRegion}), Suisse.`,
     alternates: { canonical: `${SITE_URL}/${locale}/legal/impressum`, languages },
   };
 }
@@ -58,9 +58,13 @@ export default function ImpressumPage({ params }: { params: { locale: string } }
               <section className="space-y-2">
                 <h2 className="text-xl font-semibold text-white">1. Éditeur du Site & Raison Sociale</h2>
                 <p>
-                  <strong>Nom de la société :</strong> {COMPANY.legalName || COMPANY.name}<br />
-                  <strong>Siège social :</strong> {COMPANY.streetAddress}, {COMPANY.postalCode} {COMPANY.addressLocality} ({COMPANY.addressRegion}), Suisse<br />
-                  <strong>Pays :</strong> Suisse (CH)
+                  <strong>Raison sociale :</strong> {COMPANY.legalName}<br />
+                  <strong>Marque exploitée :</strong> {COMPANY.name} — division de {COMPANY.legalName}. {COMPANY.name} est un nom commercial et non une entité juridique distincte.<br />
+                  <strong>Numéro IDE :</strong> {COMPANY.uid}<br />
+                  <strong>Siège social :</strong> {COMPANY.registeredOffice} ({COMPANY.addressRegion}), Suisse<br />
+                  <strong>Adresse inscrite :</strong> {COMPANY.careOf}, {COMPANY.streetAddress}, {COMPANY.postalCode} {COMPANY.addressLocality}, Suisse<br />
+                  <strong>Forme juridique :</strong> Société à responsabilité limitée, inscrite au registre du commerce du canton de {COMPANY.registerCanton} le {COMPANY.registeredSince}<br />
+                  <strong>Capital social :</strong> {formatCHF(COMPANY.capital)}, entièrement libéré
                 </p>
               </section>
 
@@ -76,9 +80,17 @@ export default function ImpressumPage({ params }: { params: { locale: string } }
                   <a href={`tel:${COMPANY.phoneSwiss.replace(/\s/g, '')}`} className="text-primary hover:underline">
                     {COMPANY.phoneSwiss}
                   </a>
-                  <br />
-                  <strong>Direction :</strong> Direction Générale {COMPANY.name}
                 </p>
+                <p>
+                  <strong>Personnes autorisées à engager la société :</strong>
+                </p>
+                <ul className="list-disc space-y-1 pl-5">
+                  {COMPANY.managers.map((manager) => (
+                    <li key={manager.name}>
+                      {manager.name} — {manager.role}, signature individuelle
+                    </li>
+                  ))}
+                </ul>
               </section>
 
               <section className="space-y-2">
@@ -98,7 +110,7 @@ export default function ImpressumPage({ params }: { params: { locale: string } }
               <section className="space-y-2">
                 <h2 className="text-xl font-semibold text-white">4. Propriété Intellectuelle</h2>
                 <p>
-                  L’ensemble des contenus, marques, logos, graphismes, codes sources et vidéos présents sur ce site sont protégés par la loi suisse sur le droit d’auteur (LDA) et appartiennent exclusivement à {COMPANY.name} Sàrl, sauf mention contraire.
+                  L’ensemble des contenus, marques, logos, graphismes, codes sources et vidéos présents sur ce site sont protégés par la loi suisse sur le droit d’auteur (LDA) et appartiennent exclusivement à {COMPANY.legalName}, sauf mention contraire.
                 </p>
               </section>
             </div>

@@ -1,7 +1,12 @@
 // Locale-independent facts, numbers and structure. Prose lives in
 // content.en.ts / content.fr.ts so translations can't drift from the numbers.
 
-export const SITE_URL = 'https://vectra.ch';
+/**
+ * The registered domain, which is longer than the brand — `vectra.ch` is not
+ * ours. Every canonical URL, hreflang tag, sitemap entry and OG URL is built
+ * from this constant, so a wrong value here is site-wide and invisible.
+ */
+export const SITE_URL = 'https://vectrastudio.ch';
 
 export const LOCALES = ['fr', 'de', 'en'] as const;
 export type Locale = (typeof LOCALES)[number];
@@ -42,17 +47,39 @@ export function formatCHF(amount: number): string {
  * Company identity. Empty strings are treated as "omit" by every consumer, so
  * nothing false is published while they're blank.
  *
- * Filled as of the Fribourg registration, so SWISS_ENTITY below is now true and
- * every origin claim on the site is live. Confirm the hello@vectra.ch mailbox
- * actually receives mail — the Impressum and privacy page both publish it as the
- * address for exercising data protection rights.
+ * `name` is the BRAND. `legalName` is the registered entity, and they are not
+ * the same thing: Vectra is a division of TIMGroupe Sàrl, and no "Vectra Sàrl"
+ * exists in any Swiss register — the site published that as fact until the RC
+ * extract was checked. Art. 3 al. 1 let. s LCD requires the Impressum to name
+ * the registered entity, so the two fields must never be substituted for one
+ * another, and `${name} Sàrl` must never be composed in copy.
+ *
+ * Facts below are verified against the Fribourg commercial register extract
+ * réf. 05366/2025 (IDE CHE-421.583.207), issued 09.04.2026.
  */
 export const COMPANY = {
   name: 'Vectra',
-  legalName: 'Vectra Sàrl',
-  email: 'hello@vectra.ch',
+  legalName: 'TIMGroupe Sàrl',
+  uid: 'CHE-421.583.207',
+  /** Registered office (commune), which is not the postal locality below. */
+  registeredOffice: 'Bulle',
+  registerCanton: 'Fribourg',
+  registeredSince: '15.07.2025',
+  /** Nominal share capital in CHF, fully paid up. */
+  capital: 20000,
+  /**
+   * Both gérants hold individual signing authority. Published because an
+   * institutional buyer's legal department asks who may bind the supplier.
+   */
+  managers: [
+    { name: 'Rexhep Kllokoqi', role: 'Associé gérant président' },
+    { name: 'Zouheir Lommini', role: 'Associé gérant' },
+  ],
+  email: 'hello@vectrastudio.ch',
   phoneSwiss: '+41 76 456 81 17',
   phoneInternational: '+41 76 456 81 17',
+  /** The registered address is a c/o. Dropping this line misdirects postal mail. */
+  careOf: 'c/o Rexhep Kllokoqi',
   streetAddress: 'Chemin de la Colline 19',
   postalCode: '1635',
   addressLocality: 'La Tour-de-Trême',
@@ -172,11 +199,11 @@ export const PROOF: { id: string; value: number | null; suffix?: string }[] = [
  * facts, not copy, and a placeholder printed next to a real address and phone
  * number reads as genuine. `CHE-XXX.XXX.XXX` shipped on all three locales.
  *
- * ACTION REQUIRED — `uid` once the entry is in the commercial register;
- * `insurance` only once a policy exists and you can produce the certificate.
+ * ACTION REQUIRED — `insurance` only once a policy exists and you can produce
+ * the certificate.
  */
 export const CREDENTIALS: { id: 'uid' | 'insurance' | 'stack'; value: string | null }[] = [
-  { id: 'uid', value: null },
+  { id: 'uid', value: COMPANY.uid },
   { id: 'insurance', value: null },
   { id: 'stack', value: 'Next.js, Node, PostgreSQL' },
 ];
