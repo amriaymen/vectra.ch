@@ -9,7 +9,7 @@
  * Required environment variables:
  *   RESEND_API_KEY   API key from resend.com
  *   LEAD_TO_EMAIL    inbox that receives requests
- *   LEAD_FROM_EMAIL  verified sender on your domain, e.g. scope@sketchngo.ch
+ *   LEAD_FROM_EMAIL  verified sender on your domain, e.g. scope@vectrastudio.ch
  */
 
 export interface Lead {

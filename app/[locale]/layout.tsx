@@ -78,6 +78,8 @@ function structuredData(locale: Locale) {
     '@id': `${SITE_URL}/#organization`,
     name: COMPANY.name,
     ...(COMPANY.legalName ? { legalName: COMPANY.legalName } : {}),
+    // The UID is the one identifier a Swiss buyer can check against zefix.ch.
+    ...(COMPANY.uid ? { identifier: COMPANY.uid } : {}),
     url: `${SITE_URL}/${locale}`,
     description: t.meta.description,
     email: COMPANY.email,
