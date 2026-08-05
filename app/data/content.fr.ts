@@ -58,8 +58,8 @@ const fr: Dictionary = {
 
   hero: {
     kicker: origine.kicker,
-    titleLine1: 'Des logiciels de gestion conçus pour le',
-    titleLine2: 'fonctionnement réel de votre établissement.',
+    titleLine1: 'Des logiciels de gestion conçus pour',
+    titleLine2: 'le fonctionnement réel de votre établissement.',
     body: 'Nous remplaçons les processus dispersés entre Excel, le papier, WhatsApp et les appels par un système unique, adapté à vos équipes. Premier module opérationnel en 3 à 4 semaines.',
     primaryCta: 'Estimer mon projet',
     secondaryCta: 'Voir nos réalisations',
@@ -70,16 +70,16 @@ const fr: Dictionary = {
   engagementModels: {
     title: 'Comment nous collaborons',
     items: [
-      { step: '01', title: 'Licence logicielle', desc: 'Utilisez l’une de nos plateformes existantes.\nGestion scolaire\nRéservation sportive\nRH & Paie' },
-      { step: '02', title: 'Projet sur mesure', desc: 'Besoin de quelque chose d\'unique ?\n\nNous le concevons et le développons.' },
-      { step: '03', title: 'Partenariat continu', desc: 'Besoin d\'un accompagnement design, dev et croissance ?\n\nAbonnement mensuel.' }
+      { step: '01', title: 'Licence logicielle', desc: 'Utilisez l’une de nos plateformes existantes.\nGestion scolaire\nRéservation sportive\nRH et paie' },
+      { step: '02', title: 'Projet sur mesure', desc: 'Besoin de quelque chose d’unique ?\n\nNous le concevons et le développons.' },
+      { step: '03', title: 'Partenariat continu', desc: 'Besoin d’un accompagnement en design, développement et croissance ?\n\nAbonnement mensuel.' }
     ]
   },
 
   whoWeServe: {
     kicker: 'Secteurs d’activité',
     title: 'Nous sommes spécialisés dans les logiciels opérationnels.',
-    list: ['Éducation', 'Sports', 'Ressources Humaines', 'Secteur public'],
+    list: ['Éducation', 'Sport', 'Ressources humaines', 'Secteur public'],
     footer: 'Nous créons également des logiciels sur mesure pour les startups et les entreprises.',
     badge: 'Systèmes dédiés'
   },
@@ -87,23 +87,26 @@ const fr: Dictionary = {
   decisionMatrix: {
     title: 'Vectra est-il fait pour vous ?',
     subtitle: 'Choisissez la voie qui correspond à votre situation :',
-    columns: ['Si vous...', 'Choisissez...'],
+    // Le français ne peut pas omettre le sujet comme l'anglais : « Si vous… /
+    // Avez besoin de… » ne se lit pas. L'en-tête nomme donc la colonne et
+    // chaque ligne est une phrase complète.
+    columns: ['Votre situation', 'La voie adaptée'],
     rows: [
-      { condition: 'Avez besoin d\'un logiciel déjà existant', choice: 'Prendre sous licence nos produits' },
-      { condition: 'Avez besoin d\'un logiciel adapté à votre organisation', choice: 'Projet sur mesure' },
-      { condition: 'Avez besoin d\'un accompagnement continu en conception, développement ou croissance', choice: 'Abonnement' }
+      { condition: 'Vous avez besoin d’un logiciel déjà développé', choice: 'Prendre sous licence l’un de nos produits' },
+      { condition: 'Vous avez besoin d’un logiciel adapté à votre organisation', choice: 'Projet sur mesure' },
+      { condition: 'Vous avez besoin d’un accompagnement continu en conception, développement ou croissance', choice: 'Abonnement' }
     ]
   },
 
   whyVectra: {
     title: 'Pourquoi les organisations choisissent Vectra',
-    trustTitle: 'Vérifié institutionnellement',
+    trustTitle: 'Informations vérifiables',
     items: [
-      { label: 'Jalons à prix fixe', detail: 'Chaque jalon est devisé avant de commencer. Aucune facturation horaire illimitée.' },
-      { label: 'Infrastructure hébergée en Suisse', detail: 'Les systèmes que nous construisons pour vous tournent sur une infrastructure suisse, sous juridiction suisse. Nous indiquons par écrit le prestataire et le centre de données.' },
+      { label: 'Jalons à prix fixe', detail: 'Chaque jalon est devisé avant de commencer. Pas de facturation horaire ouverte.' },
+      { label: 'Infrastructure hébergée en Suisse', detail: 'Les systèmes que nous développons pour vous tournent sur une infrastructure suisse, sous juridiction suisse. Nous indiquons par écrit le prestataire et le centre de données.' },
       { label: 'Vous êtes propriétaire du code', detail: 'Le code source, les schémas et les fichiers de conception vous sont transférés dès le premier jour.' },
       { label: 'Accès direct aux ingénieurs', detail: 'Vous travaillez avec les ingénieurs qui réalisent le travail. Aucun chef de projet intermédiaire.' },
-      { label: 'Une seule équipe pour le logiciel et l\'adoption', detail: 'L\'équipe qui a construit le système l\'explique. L\'histoire correspond au produit.' }
+      { label: 'Une seule équipe pour le logiciel et l’adoption', detail: 'L’équipe qui a développé le système est celle qui l’explique. Le discours correspond au produit.' }
     ],
     // Libellés uniquement. Les valeurs sont des faits : elles vivent dans
     // CREDENTIALS (config.ts), où une valeur non renseignée vaut null et
@@ -121,12 +124,12 @@ const fr: Dictionary = {
       // question qui décide s'ils continuent à lire.
       label: 'Vos données restent en Suisse',
       detail:
-        'Le système que nous construisons pour vous est hébergé chez un prestataire suisse, sous juridiction suisse. Aucun hyperscaler américain.',
+        'Le système que nous développons pour vous est hébergé chez un prestataire suisse, sous juridiction suisse. Aucun géant américain du cloud.',
     },
     {
       label: 'Conforme aux règles de votre canton',
       detail:
-        'Les écoles et les communes relèvent de la loi cantonale sur la protection des données, et non de la loi fédérale. Nous construisons selon les exigences de votre canton.',
+        'Les écoles et les communes relèvent de la loi cantonale sur la protection des données, et non de la loi fédérale. Nous développons selon les exigences de votre canton.',
     },
     {
       label: 'Jalons à prix fixe',
@@ -140,7 +143,7 @@ const fr: Dictionary = {
 
   problem: {
     title:
-      'La plupart des institutions ont besoin de deux prestataires : celui qui construit le système et celui qui sait l’expliquer.',
+      'La plupart des institutions ont besoin de deux prestataires : celui qui développe le système et celui qui sait l’expliquer.',
     body1:
       'Engager séparément une équipe de développement et une agence de communication revient à payer deux fois le même contexte, et à vivre avec l’écart entre les deux — un système qui fonctionne mais que personne n’adopte, ou une campagne qui promet ce que le logiciel ne fait pas.',
     body2:
@@ -150,12 +153,12 @@ const fr: Dictionary = {
   tracks: {
     title: 'Deux volets. Une équipe.',
     intro:
-      'Go construit le logiciel. Sketch le fait adopter. Choisissez l’un ou les deux — le cadrage est fixe dans les deux cas.',
+      'Go développe le logiciel. Sketch le fait adopter. Choisissez l’un ou les deux — le cadrage est fixe dans les deux cas.',
     badge: 'Le plus demandé',
     ctaBuild: 'Cadrer un développement',
     ctaTell: 'Cadrer une campagne',
     build: {
-      kicker: 'Go — nous le construisons',
+      kicker: 'Go — nous le développons',
       title: 'Les systèmes qui font tourner votre institution',
       promise:
         'Administration, planification, présences, paie et facturation, conçus autour du fonctionnement réel de votre organisation plutôt qu’autour d’un modèle générique.',
@@ -183,7 +186,7 @@ const fr: Dictionary = {
       kicker: 'Sketch — nous le faisons adopter',
       title: 'Une communication qui favorise l’adoption',
       promise:
-        'L’équipe qui a construit le système est celle qui l’explique — le discours correspond donc au produit au lieu de décrire quelque chose qui n’existe pas.',
+        'L’équipe qui a développé le système est celle qui l’explique — le discours correspond donc au produit au lieu de décrire quelque chose qui n’existe pas.',
       services: [
         {
           name: 'Identité de marque et design systems',
@@ -208,7 +211,7 @@ const fr: Dictionary = {
 
   products: {
     title: 'Les systèmes que nous exploitons déjà',
-    intro: 'Ces produits démontrent notre capacité d\'ingénierie. Chaque projet sur mesure bénéficie de nos années d\'expérience en développement de produits.',
+    intro: 'Ces produits démontrent notre capacité d’ingénierie. Chaque projet sur mesure bénéficie de nos années d’expérience en développement de produits.',
     forWhoLabel: 'Conçu pour',
     problemLabel: 'Problème',
     solutionLabel: 'Solution',
@@ -241,8 +244,8 @@ const fr: Dictionary = {
         forWho: 'Centres sportifs, clubs et communes gérant des installations réservables.',
         summary: 'Calendriers de ressources, réservations en ligne, abonnements et paiement dans un seul système : la réservation et l’argent qui s’y rattache forment un seul enregistrement.',
         problem: 'Les installations gèrent les réservations par téléphone, ce qui entraîne des doubles réservations et des revenus non suivis.',
-        solution: 'Création d\'une plateforme de réservation en libre-service avec paiement intégré et règles de ressources.',
-        outcome: 'Zéro double réservation et données d\'utilisation des installations en temps réel.',
+        solution: 'Création d’une plateforme de réservation en libre-service avec paiement intégré et règles de ressources.',
+        outcome: 'Zéro double réservation et données d’utilisation des installations en temps réel.',
         modules: ['Calendrier des ressources', 'Réservation en ligne', 'Abonnements', 'Paiements', 'Rapports d’utilisation'],
         scale: '',
       },
@@ -250,8 +253,8 @@ const fr: Dictionary = {
         tagline: 'Portail de gestion scolaire',
         forWho: 'Écoles primaires et secondaires, et groupes scolaires répartis sur plusieurs sites.',
         summary: 'Inscriptions, présences, notes, communication avec les parents et facturation dans un seul portail, avec des accès par rôle pour l’administration, le corps enseignant et les parents.',
-        problem: 'Les écoles gèrent des centaines d\'élèves avec des tableurs décousus et des formulaires papier.',
-        solution: 'Création d\'une plateforme centralisée pour les notes, les présences et la communication avec les parents.',
+        problem: 'Les écoles gèrent des centaines d’élèves avec des tableurs décousus et des formulaires papier.',
+        solution: 'Création d’une plateforme centralisée pour les notes, les présences et la communication avec les parents.',
         outcome: 'Réduction de la charge administrative et facturation réconciliée.',
         modules: ['Inscriptions et dossiers', 'Présences', 'Notes et bulletins', 'Portail parents', 'Facturation'],
         scale: '',
@@ -271,8 +274,8 @@ const fr: Dictionary = {
         forWho: 'Groupes scolaires ayant besoin d’une vue consolidée sur plusieurs sites.',
         summary: 'Dossiers académiques, gestion du personnel, planification et reporting sur plusieurs sites, avec des chiffres consolidés au niveau central plutôt qu’assemblés site par site.',
         problem: 'Les groupes multi-sites luttent avec des données fragmentées et un manque de reporting consolidé.',
-        solution: 'Création d\'une plateforme d\'administration multi-tenant unifiant les dossiers de tous les campus.',
-        outcome: 'Visibilité en temps réel et processus standardisés dans toute l\'organisation.',
+        solution: 'Création d’une plateforme d’administration multi-tenant unifiant les dossiers de tous les campus.',
+        outcome: 'Visibilité en temps réel et processus standardisés dans toute l’organisation.',
         modules: [
           'Administration multi-sites',
           'Dossiers académiques',
@@ -351,8 +354,8 @@ const fr: Dictionary = {
     models: {
       license: {
         name: 'Licence logicielle',
-        detail: 'Déployez immédiatement l\'une de nos plateformes existantes.',
-        includes: ['Logiciel prêt à l\'emploi', 'Hébergement suisse inclus', 'Déploiement immédiat', 'Mises à jour continues'],
+        detail: 'Déployez immédiatement l’une de nos plateformes existantes.',
+        includes: ['Logiciel prêt à l’emploi', 'Hébergement suisse inclus', 'Déploiement immédiat', 'Mises à jour continues'],
         cta: 'Voir les produits'
       },
       project: {
@@ -461,7 +464,7 @@ const fr: Dictionary = {
       {
         question: 'Vous faites à la fois le développement et la communication — n’est-ce pas trop large ?',
         answer:
-          'Nous travaillons en deux volets. Go couvre les systèmes de gestion et les applications web et mobiles. Sketch couvre l’identité de marque, la vidéo explicative et les campagnes. La plupart des clients commencent par l’un des deux. L’avantage de réunir les deux dans une même équipe, c’est que les personnes qui expliquent le système sont celles qui l’ont construit : le discours correspond donc à ce qui est réellement livré.',
+          'Nous travaillons en deux volets. Go couvre les systèmes de gestion et les applications web et mobiles. Sketch couvre l’identité de marque, la vidéo explicative et les campagnes. La plupart des clients commencent par l’un des deux. L’avantage de réunir les deux dans une même équipe, c’est que les personnes qui expliquent le système sont celles qui l’ont développé : le discours correspond donc à ce qui est réellement livré.',
       },
       {
         question: 'Comment vos tarifs sont-ils structurés ?',
@@ -481,12 +484,12 @@ const fr: Dictionary = {
       {
         question: 'Où nos données sont-elles hébergées ?',
         answer:
-          'Le système que nous construisons pour vous tourne en Suisse, chez un prestataire suisse, sous juridiction suisse — pas chez un hyperscaler américain. Nous indiquons par écrit le prestataire et le centre de données afin que votre préposé à la protection des données puisse le vérifier. Notre propre site est un cas distinct : le formulaire de cadrage instantané transmet ce que vous saisissez à des services situés hors de Suisse, et notre politique de confidentialité les nomme.',
+          'Le système que nous développons pour vous tourne en Suisse, chez un prestataire suisse, sous juridiction suisse — pas chez un géant américain du cloud. Nous indiquons par écrit le prestataire et le centre de données afin que votre préposé à la protection des données puisse le vérifier. Notre propre site est un cas distinct : le formulaire de cadrage instantané transmet ce que vous saisissez à des services situés hors de Suisse, et notre politique de confidentialité les nomme.',
       },
       {
         question: 'Notre système contient des données d’élèves et de collaborateurs. Comment les traitez-vous ?',
         answer:
-          'Les dossiers d’élèves, de personnel et de salaires sont des données personnelles sensibles : le contrôle d’accès relève donc de l’architecture et non d’une étape ultérieure — permissions par rôle, journalisation des accès, chiffrement au repos et minimisation des données par défaut. À noter : les écoles et les communes sont des organes cantonaux ou communaux ; c’est donc votre loi cantonale sur la protection des données qui s’applique et votre préposé cantonal qui exerce la surveillance, et non la loi fédérale. Nous construisons selon les exigences de votre canton et fournissons l’inscription au registre des traitements ainsi qu’une analyse d’impact que vous pouvez leur transmettre directement. Pour les employeurs privés, c’est la LPD fédérale qui s’applique, et nous travaillons selon celle-ci.',
+          'Les dossiers d’élèves, de personnel et de salaires sont des données personnelles sensibles : le contrôle d’accès relève donc de l’architecture et non d’une étape ultérieure — permissions par rôle, journalisation des accès, chiffrement au repos et minimisation des données par défaut. À noter : les écoles et les communes sont des organes cantonaux ou communaux ; c’est donc votre loi cantonale sur la protection des données qui s’applique et votre préposé cantonal qui exerce la surveillance, et non la loi fédérale. Nous développons selon les exigences de votre canton et fournissons l’inscription au registre des traitements ainsi qu’une analyse d’impact que vous pouvez leur transmettre directement. Pour les employeurs privés, c’est la LPD fédérale qui s’applique, et nous travaillons selon celle-ci.',
       },
       {
         question: 'Nous sommes une école ou une commune. Comment se passe la procédure de marché ?',
@@ -568,12 +571,14 @@ const fr: Dictionary = {
     included: 'Ce que comprend un projet',
     relatedWork: 'Réalisations associées',
     problemTitle: 'Le problème',
-    solutionTitle: 'Ce que nous construisons',
+    solutionTitle: 'Ce que nous développons',
     pricingTitle: 'Combien cela coûte',
     pricingBody:
       'Un prix fixe par jalon, convenu par écrit avant le démarrage du jalon. Le cadrage est offert et vous pouvez vous arrêter entre deux jalons.',
     pricingCta: 'Obtenir un cadrage à prix fixe',
     allSolutions: 'Toutes les solutions',
+    solutionsIntro:
+      'Quatre domaines dans lesquels nous développons, chacun avec les systèmes, les services et les tarifs qui s’y appliquent. Commencez par celui qui correspond au fonctionnement réel de votre institution.',
   },
 
   hubs: {
@@ -607,12 +612,12 @@ const fr: Dictionary = {
         {
           question: 'Comment les données des élèves sont-elles protégées ?',
           answer:
-            'Permissions par rôle, journalisation des accès, chiffrement au repos et minimisation des données font partie de l’architecture, et non d’une étape ultérieure. Les données sont hébergées en Suisse. Les écoles et les communes relèvent de la loi cantonale sur la protection des données plutôt que de la loi fédérale : nous construisons selon les exigences de votre canton et vous remettons l’inscription au registre des traitements et l’analyse d’impact que votre préposé cantonal demandera.',
+            'Permissions par rôle, journalisation des accès, chiffrement au repos et minimisation des données font partie de l’architecture, et non d’une étape ultérieure. Les données sont hébergées en Suisse. Les écoles et les communes relèvent de la loi cantonale sur la protection des données plutôt que de la loi fédérale : nous développons selon les exigences de votre canton et vous remettons l’inscription au registre des traitements et l’analyse d’impact que votre préposé cantonal demandera.',
         },
       ],
     },
     'hr-and-payroll': {
-      navShort: 'RH & paie',
+      navShort: 'RH et paie',
       navLabel: 'RH, pointage et paie',
       navDetail: 'Pointage des entrées et sorties, congés, calcul des salaires, rapports.',
       kicker: 'Solutions · RH et paie',
@@ -644,7 +649,7 @@ const fr: Dictionary = {
       ],
     },
     'booking-and-facilities': {
-      navShort: 'Sport & loisirs',
+      navShort: 'Sport et loisirs',
       navLabel: 'Réservation et gestion d’installations',
       navDetail: 'Calendriers de ressources, réservations en ligne, abonnements, paiements.',
       kicker: 'Solutions · Installations',
@@ -683,7 +688,7 @@ const fr: Dictionary = {
       kicker: 'Solutions · Communication',
       h1: 'Marque et communication pour produits techniques',
       intro:
-        'L’équipe qui a construit le système est celle qui l’explique : le discours correspond au produit au lieu de décrire quelque chose qui n’existe pas.',
+        'L’équipe qui a développé le système est celle qui l’explique : le discours correspond au produit au lieu de décrire quelque chose qui n’existe pas.',
       problem: [
         'Un système qui fonctionne mais que personne n’adopte, parce que personne ne l’a expliqué à celles et ceux qui doivent l’utiliser.',
         'Une campagne qui promet des fonctionnalités que le logiciel n’a pas.',
@@ -718,7 +723,7 @@ const fr: Dictionary = {
       problem:
         'Les logiciels scolaires standards imposent leur logique à votre processus. Quand cela ne correspond pas, l’écart est comblé par des tableurs — et ces tableurs deviennent le véritable système de référence.',
       solution:
-        'Nous cartographions d’abord votre processus administratif réel, puis nous construisons les modules qui le portent — inscriptions, présences, notes, facturation — avec votre terminologie et vos règles.',
+        'Nous cartographions d’abord votre processus administratif réel, puis nous développons les modules qui le portent — inscriptions, présences, notes, facturation — avec votre terminologie et vos règles.',
       includes: [
         'Dossiers élèves et familles avec stockage des documents',
         'Saisie des présences et traitement des absences',
@@ -758,7 +763,7 @@ const fr: Dictionary = {
         {
           question: 'Qu’est-ce qui empêche un parent de voir les données d’un autre enfant ?',
           answer:
-            'L’accès est contrôlé côté serveur pour chaque relation, et non en masquant des parties de l’interface. C’est la zone la plus testée de tous les portails que nous construisons, parce qu’une erreur y constitue un incident de protection des données.',
+            'L’accès est contrôlé côté serveur pour chaque relation, et non en masquant des parties de l’interface. C’est la zone la plus testée de tous les portails que nous développons, parce qu’une erreur y constitue un incident de protection des données.',
         },
         {
           question: 'Les parents doivent-ils installer une application ?',
@@ -885,7 +890,7 @@ const fr: Dictionary = {
       problem:
         'Quand les outils du marché conviennent presque, l’écart est absorbé par du travail manuel — et ce travail manuel devient discrètement le poste le plus coûteux de l’exploitation.',
       solution:
-        'Une application web construite autour de votre processus réel, sur une stack pour laquelle vous pourrez recruter, avec le code et les schémas transférés dès le premier jour.',
+        'Une application web conçue autour de votre processus réel, sur une stack pour laquelle vous pourrez recruter, avec le code et les schémas transférés dès le premier jour.',
       includes: [
         'Architecture et modèle de données conçus avec vous',
         'Application web sur Next.js, Node et PostgreSQL',

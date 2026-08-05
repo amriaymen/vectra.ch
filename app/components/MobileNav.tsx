@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import Link from 'next/link';
 import LocaleSwitcher from './LocaleSwitcher';
+import type { NavKind } from './NavLink';
 import { COMPANY, type Dictionary, type Locale } from '../data';
 
 export default function MobileNav({
@@ -13,7 +15,7 @@ export default function MobileNav({
   t: Dictionary;
   locale: Locale;
   /** The same list the desktop bar renders, so the two cannot drift. */
-  links: { href: string; label: string }[];
+  links: { href: string; label: string; kind: NavKind }[];
 }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -120,17 +122,26 @@ export default function MobileNav({
           {/* One flat list, same order as the desktop bar. It previously stacked
               three annotated columns, so Réalisations sat below nine links. */}
           <ul className="grid">
-            {links.map((link) => (
-              <li key={link.href} className="border-b border-line/60">
-                <a
-                  href={link.href}
-                  onClick={close}
-                  className="flex min-h-[56px] items-center text-2xl text-gray-200 transition-colors hover:text-primary"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {links.map((link) => {
+              const className =
+                'flex min-h-[56px] items-center text-2xl text-gray-200 transition-colors hover:text-primary';
+              return (
+                <li key={link.href} className="border-b border-line/60">
+                  {/* Routes get client navigation; '#' links must stay a plain
+                      <a> so the browser does the scrolling that
+                      scroll-padding-top in globals.css is tuned for. */}
+                  {link.kind === 'route' ? (
+                    <Link href={link.href} onClick={close} className={className}>
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a href={link.href} onClick={close} className={className}>
+                      {link.label}
+                    </a>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           <div className="mt-8">

@@ -22,9 +22,12 @@ export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: L
             {t.footer.title}
           </h2>
           <div className="mt-8 flex flex-wrap items-center gap-6">
+            {/* Locale-prefixed, not a bare '#scope'. The Footer renders on every
+                route, and only the homepage has that section — this button did
+                nothing at all on product, hub, service and legal pages. */}
             <a
               className="inline-flex min-h-[48px] items-center rounded-md bg-primary px-8 py-4 text-lg font-medium text-background transition-colors hover:bg-primary-hover"
-              href="#scope"
+              href={`/${locale}#scope`}
             >
               {t.footer.button}
             </a>
@@ -69,18 +72,42 @@ export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: L
           </nav>
 
           {/*
-            Process and FAQs live here rather than in the header. Both are
-            homepage sections, and the header's width is better spent on the
-            sectors — which are real routes.
+            Process, Pricing and FAQs live here rather than in the header. All
+            three are homepage sections, and the header's width is spent on
+            ROUTES — the sectors, and the one anchor that leads to real product
+            pages. Pricing in particular sat next to a CTA that is itself the
+            pricing path, so it was competing with the thing it duplicates.
+
+            Ordered along the funnel: how we work, what it costs, then answers.
+            "All solutions" leads it because this is the only sitewide entry to
+            the solutions index.
           */}
           <nav
             aria-label={t.nav.menuTitle}
             className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm"
           >
-            <a className="text-gray-400 transition-colors hover:text-primary" href={`/${locale}#process`}>
+            <Link
+              className="inline-flex min-h-[44px] items-center text-gray-400 transition-colors hover:text-primary"
+              href={`/${locale}/solutions`}
+            >
+              {t.pages.allSolutions}
+            </Link>
+            <a
+              className="inline-flex min-h-[44px] items-center text-gray-400 transition-colors hover:text-primary"
+              href={`/${locale}#process`}
+            >
               {t.nav.process}
             </a>
-            <a className="text-gray-400 transition-colors hover:text-primary" href={`/${locale}#faqs`}>
+            <a
+              className="inline-flex min-h-[44px] items-center text-gray-400 transition-colors hover:text-primary"
+              href={`/${locale}#pricing`}
+            >
+              {t.nav.pricing}
+            </a>
+            <a
+              className="inline-flex min-h-[44px] items-center text-gray-400 transition-colors hover:text-primary"
+              href={`/${locale}#faqs`}
+            >
               {t.nav.faqs}
             </a>
           </nav>

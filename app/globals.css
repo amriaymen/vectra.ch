@@ -33,6 +33,13 @@
 
 html {
   scroll-behavior: smooth;
+  /*
+   * Clears the 85px sticky header on every hash jump. Deliberately outside the
+   * reduced-motion block below: this is a layout offset, not motion, and a user
+   * who has turned off smooth scrolling arrives instantly — needing it more,
+   * not less.
+   */
+  scroll-padding-top: 6rem;
   color-scheme: dark;
 }
 

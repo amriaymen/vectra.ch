@@ -549,6 +549,8 @@ const de: Dictionary = {
       'Fixpreis pro Meilenstein, schriftlich vereinbart, bevor der Meilenstein beginnt. Die Aufwandschätzung ist kostenlos und Sie können jederzeit zwischen zwei Meilensteinen stoppen.',
     pricingCta: 'Fixpreis-Offerte anfragen',
     allSolutions: 'Alle Lösungen',
+    solutionsIntro:
+      'Vier Bereiche, für die wir entwickeln — jeweils mit den Systemen, Dienstleistungen und Preisen, die dafür gelten. Beginnen Sie mit dem Bereich, der dem tatsächlichen Betrieb Ihrer Institution entspricht.',
   },
 
   hubs: {

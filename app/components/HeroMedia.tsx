@@ -79,7 +79,7 @@ export default function HeroMedia({
     // read as a "window" instead of a hero image.
     <div
       ref={wrapper}
-      className="relative h-full w-full min-h-[240px] overflow-hidden rounded-md border border-line/60 bg-surface shadow-2xl"
+      className="relative h-full w-full min-h-[240px] overflow-hidden rounded-xl border border-line/60 bg-surface shadow-2xl"
     >
       {/* Skeleton Loading State (shadcn style pulse) shown before video loads */}
       {!loaded && (

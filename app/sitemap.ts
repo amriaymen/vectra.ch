@@ -31,6 +31,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: { languages: languageAlternates('') },
   }));
 
+  // Locale-invariant segment, so languageAlternates rather than alternatesFor.
+  const solutionsIndex = LOCALES.map((locale) => ({
+    url: `${SITE_URL}/${locale}/solutions`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
+    alternates: { languages: languageAlternates('/solutions') },
+  }));
+
   const hubs = LOCALES.flatMap((locale) =>
     HUBS.map((hub) => ({
       url: `${SITE_URL}${hubPath(locale, hub)}`,
@@ -61,5 +70,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...home, ...hubs, ...services, ...work];
+  return [...home, ...solutionsIndex, ...hubs, ...services, ...work];
 }

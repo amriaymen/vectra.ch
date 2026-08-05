@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Header from '../../../components/Header';
 import ProductMedia from '../../../components/ProductMedia';
 import Section from '../../../components/Section';
+import Breadcrumbs from '../../../components/Breadcrumbs';
 import CtaBanner from '../../../components/CtaBanner';
 import Footer from '../../../components/Footer';
 import {
@@ -60,10 +61,21 @@ export default function CaseStudyPage({ params }: { params: { locale: string; sl
   const t = getContent(locale);
   const copy = t.products.items[study.slug as keyof typeof t.products.items];
 
+  /*
+   * The middle rung is the homepage `#work` section, not a route: there is no
+   * products index. It at least resolves, which is more than the `#services`
+   * crumb these pages' siblings used to carry. `t.nav.work` rather than
+   * `t.products.title` because that value is a full sentence.
+   */
+  const crumbs = [
+    { label: t.pages.home, href: `/${locale}` },
+    { label: t.nav.work, href: `/${locale}#work` },
+    { label: study.name, href: `/${locale}/products/${study.slug}` },
+  ];
+
   // SoftwareApplication, not CreativeWork: these are licensed products, and it
   // is the type eligible for richer results.
-  const jsonLd = {
-    '@context': 'https://schema.org',
+  const product = {
     '@type': 'SoftwareApplication',
     name: study.name,
     applicationCategory: 'BusinessApplication',
@@ -88,12 +100,30 @@ export default function CaseStudyPage({ params }: { params: { locale: string; sl
       : {}),
   };
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      product,
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: crumbs.map((crumb, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: crumb.label,
+          item: `${SITE_URL}${crumb.href}`,
+        })),
+      },
+    ],
+  };
+
   return (
     <div id="page-shell" className="isolate bg-background text-white">
       <Header t={t} locale={locale} />
 
-      <Section as="main" innerClassName="pt-8 pb-16 md:pt-12 md:pb-20">
-        <div className="max-w-3xl">
+      <Section as="main" innerClassName="pt-4 pb-16 md:pt-6 md:pb-20">
+        <Breadcrumbs items={crumbs} />
+
+        <div className="mt-8 max-w-3xl">
           <p className="text-sm uppercase tracking-[0.2em] text-primary">
             {t.products.domains[study.domain]}
           </p>

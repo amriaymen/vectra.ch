@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '../../../components/Header';
 import Section from '../../../components/Section';
@@ -73,15 +74,18 @@ export default function ServicePage({ params }: { params: { locale: string; slug
   const copy = t.services[service];
   const hub = SERVICE_HUB[service];
 
-  // Cross-cutting services sit directly under Services, with no hub level.
+  /*
+   * Cross-cutting services skip the hub rung — but they still hang off
+   * Solutions, so the second crumb is unconditional now.
+   *
+   * It used to branch to a "Services" label pointing at `/{locale}#services`.
+   * That was wrong twice over: the anchor was dead (no rendered element owns
+   * that id), and there is no services index for a "Services" label to mean.
+   */
   const crumbs = [
     { label: t.pages.home, href: `/${locale}` },
-    ...(hub
-      ? [
-          { label: t.pages.solutions, href: `/${locale}#services` },
-          { label: t.hubs[hub].navLabel, href: hubPath(locale, hub) },
-        ]
-      : [{ label: t.pages.services, href: `/${locale}#services` }]),
+    { label: t.pages.solutions, href: `/${locale}/solutions` },
+    ...(hub ? [{ label: t.hubs[hub].navLabel, href: hubPath(locale, hub) }] : []),
     { label: copy.h1, href: servicePath(locale, service) },
   ];
 
@@ -168,7 +172,7 @@ export default function ServicePage({ params }: { params: { locale: string; slug
 
         {hub && (
           <div className="mt-12">
-            <a
+            <Link
               href={hubPath(locale, hub)}
               className="group inline-flex min-h-[44px] items-center gap-2 text-primary transition-colors hover:text-white"
             >
@@ -186,7 +190,7 @@ export default function ServicePage({ params }: { params: { locale: string; slug
                 />
               </svg>
               {t.hubs[hub].navLabel}
-            </a>
+            </Link>
           </div>
         )}
       </Section>

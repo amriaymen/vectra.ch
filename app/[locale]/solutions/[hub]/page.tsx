@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '../../../components/Header';
 import Section from '../../../components/Section';
@@ -77,7 +78,7 @@ export default function HubPage({ params }: { params: { locale: string; hub: str
 
   const crumbs = [
     { label: t.pages.home, href: `/${locale}` },
-    { label: t.pages.solutions, href: `/${locale}#services` },
+    { label: t.pages.solutions, href: `/${locale}/solutions` },
     { label: copy.navLabel, href: hubPath(locale, hub) },
   ];
 
@@ -162,7 +163,7 @@ export default function HubPage({ params }: { params: { locale: string; hub: str
         <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:gap-8">
           {services.map((service, index) => (
             <Reveal as="li" key={service} delay={index * 60}>
-              <a
+              <Link
                 href={servicePath(locale, service)}
                 className="group flex h-full flex-col border border-line bg-surface p-6 transition-colors hover:border-primary/50 md:p-8"
               >
@@ -186,7 +187,7 @@ export default function HubPage({ params }: { params: { locale: string; hub: str
                     />
                   </svg>
                 </span>
-              </a>
+              </Link>
             </Reveal>
           ))}
         </ul>
@@ -201,7 +202,7 @@ export default function HubPage({ params }: { params: { locale: string; hub: str
                 const studyCopy = t.products.items[study.slug as keyof typeof t.products.items];
                 return (
                   <li key={study.slug}>
-                    <a
+                    <Link
                       href={`/${locale}/products/${study.slug}`}
                       className="flex items-baseline justify-between gap-4 rounded-md border border-line px-5 py-4 transition-colors hover:border-primary/50"
                     >
@@ -214,7 +215,7 @@ export default function HubPage({ params }: { params: { locale: string; hub: str
                       <span aria-hidden="true" className="text-primary">
                         →
                       </span>
-                    </a>
+                    </Link>
                   </li>
                 );
               })}

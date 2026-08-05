@@ -550,6 +550,11 @@ const en = {
       'Fixed price per milestone, agreed in writing before the milestone starts. Scoping is free and you can stop between any two milestones.',
     pricingCta: 'Get a fixed-price scope',
     allSolutions: 'All solutions',
+    // Lede on /[locale]/solutions, and that page's meta description. Written to
+    // read as an answer to "which of these am I?", because the index exists to
+    // route a visitor to a sector, not to describe the company.
+    solutionsIntro:
+      'Four areas we build for, each with the systems, services and pricing that apply to it. Start with the one that matches how your institution actually runs.',
   },
 
   hubs: {
