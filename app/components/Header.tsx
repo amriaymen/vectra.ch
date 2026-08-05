@@ -2,23 +2,28 @@ import Image from 'next/image';
 import Section from './Section';
 import MobileNav from './MobileNav';
 import LocaleSwitcher from './LocaleSwitcher';
-import SolutionsMenu from './SolutionsMenu';
-import { buildSolutionsMenu } from '../lib/nav';
+import { buildSectorNav } from '../lib/nav';
 import type { Dictionary, Locale } from '../data';
 
 export default function Header({ t, locale }: { t: Dictionary; locale: Locale }) {
-  // Absolute, locale-prefixed anchors. Bare '#work' silently did nothing on
-  // nested routes like /fr/work/schoolze, which have no such section.
+  /*
+   * Sectors first, then the two page anchors worth a slot.
+   *
+   * The sector links are real routes; the anchors are not. Leading with the
+   * routes is the point — the site's structure used to sit behind a dropdown
+   * while the bar spent its width scrolling one page. Process and FAQs moved to
+   * the footer: nobody navigates to "FAQ" from a header in a considered
+   * institutional purchase, and both are one scroll away.
+   *
+   * Anchors are absolute and locale-prefixed. A bare '#work' silently did
+   * nothing on nested routes like /fr/products/schoolze, which have no such
+   * section.
+   */
   const links = [
+    ...buildSectorNav(locale, t),
     { href: `/${locale}#work`, label: t.nav.work },
-    { href: `/${locale}#process`, label: t.nav.process },
     { href: `/${locale}#pricing`, label: t.nav.pricing },
-    { href: `/${locale}#faqs`, label: t.nav.faqs },
   ];
-
-  // One model for desktop and mobile, with every href derived from the config
-  // path helpers rather than authored per locale.
-  const solutions = buildSolutionsMenu(locale, t);
 
   return (
     <Section
@@ -67,13 +72,13 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
           </span>
         </a>
 
-        <nav aria-label={t.nav.menuTitle} className="hidden items-center gap-8 lg:flex xl:gap-9">
-          <SolutionsMenu label={t.nav.solutions} menu={solutions} />
+        {/* gap-6 at lg, widening at xl: five labels in French are tight at 1024px. */}
+        <nav aria-label={t.nav.menuTitle} className="hidden items-center gap-6 lg:flex xl:gap-9">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-gray-300 transition-colors hover:text-white"
+              className="whitespace-nowrap text-gray-300 transition-colors hover:text-white"
             >
               {link.label}
             </a>
@@ -81,13 +86,13 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
           <LocaleSwitcher t={t} locale={locale} />
           <a
             href={`/${locale}#scope`}
-            className="rounded-md bg-primary px-5 py-2.5 font-medium text-background transition-colors hover:bg-primary-hover"
+            className="whitespace-nowrap rounded-md bg-primary px-5 py-2.5 font-medium text-background transition-colors hover:bg-primary-hover"
           >
             {t.nav.cta}
           </a>
         </nav>
 
-        <MobileNav t={t} locale={locale} links={links} solutions={solutions} />
+        <MobileNav t={t} locale={locale} links={links} />
       </div>
     </Section>
   );

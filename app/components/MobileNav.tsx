@@ -3,20 +3,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import LocaleSwitcher from './LocaleSwitcher';
-import type { SolutionsMenuModel } from '../lib/nav';
 import { COMPANY, type Dictionary, type Locale } from '../data';
 
 export default function MobileNav({
   t,
   locale,
   links,
-  solutions,
 }: {
   t: Dictionary;
   locale: Locale;
+  /** The same list the desktop bar renders, so the two cannot drift. */
   links: { href: string; label: string }[];
-  /** Same model the desktop dropdown renders, so the two cannot drift. */
-  solutions: SolutionsMenuModel;
 }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -120,57 +117,8 @@ export default function MobileNav({
         </div>
 
         <nav aria-label={t.nav.menuTitle} className="flex-1 overflow-y-auto px-6 py-4">
-          {/* The three funnels, from the same model the desktop panel renders. */}
-          {solutions.columns.map((column) => (
-            <div key={column.key} className="mb-6">
-              <p
-                className={`mb-1 text-xs font-medium uppercase tracking-[0.15em] ${
-                  column.tone === 'primary'
-                    ? 'text-primary'
-                    : column.tone === 'accent'
-                      ? 'text-accent'
-                      : 'text-gray-400'
-                }`}
-              >
-                {column.title}
-              </p>
-              <p className="mb-3 text-xs leading-relaxed text-gray-500">{column.desc}</p>
-
-              <ul className="grid">
-                {column.items.map((item) => (
-                  <li key={item.key} className="border-b border-line/40">
-                    <a
-                      href={item.href}
-                      onClick={close}
-                      className="flex min-h-[44px] flex-col justify-center py-2 text-base text-gray-200 transition-colors hover:text-primary"
-                    >
-                      <span className="flex items-baseline justify-between gap-3">
-                        <span className="font-medium">{item.name}</span>
-                        {item.status && (
-                          <span
-                            className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] leading-none ${
-                              item.status === 'available'
-                                ? 'border-primary/40 text-primary'
-                                : 'border-line text-gray-500'
-                            }`}
-                          >
-                            {item.status === 'available'
-                              ? solutions.labels.available
-                              : solutions.labels.running}
-                          </span>
-                        )}
-                        {item.price && (
-                          <span className="shrink-0 text-xs text-gray-500">{item.price}</span>
-                        )}
-                      </span>
-                      <span className="text-xs text-gray-400">{item.desc}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
+          {/* One flat list, same order as the desktop bar. It previously stacked
+              three annotated columns, so Réalisations sat below nine links. */}
           <ul className="grid">
             {links.map((link) => (
               <li key={link.href} className="border-b border-line/60">

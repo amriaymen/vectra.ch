@@ -39,38 +39,18 @@ const de: Dictionary = {
   },
 
   nav: {
-    services: 'Dienstleistungen',
-    solutions: 'Zusammenarbeit',
     work: 'Referenzen',
     process: 'Prozess',
     pricing: 'Preise',
     faqs: 'FAQs',
-    cta: 'Projekt berechnen',
+    // Problemorientiert statt lösungsorientiert: Interessenten kommen mit einem
+    // Betriebsproblem, nicht mit einem bereits definierten Projekt.
+    cta: 'Bedarf schildern',
     openMenu: 'Menü öffnen',
     closeMenu: 'Menü schliessen',
     menuTitle: 'Seiten-Navigation',
     language: 'Sprache',
     home: 'Vectra — Startseite',
-  },
-
-  /* Nur Beschriftungen — die URLs werden in app/lib/nav.ts abgeleitet. */
-  solutionsMenu: {
-    headerTitle: 'Drei Arten der Zusammenarbeit mit Vectra',
-    headerSubtitle: 'Wählen Sie das Modell, das am besten zu Ihrer Situation passt.',
-    ready: {
-      title: 'Softwarelizenz',
-      desc: 'Nutzen Sie ein produktives System. Sofort einsatzbereit.',
-    },
-    built: {
-      title: 'Massgeschneiderte Software',
-      desc: 'Für Ihre Organisation entwickelt. Festpreis pro Meilenstein.',
-    },
-    team: {
-      title: 'Dediziertes Team',
-      desc: 'Ihr dediziertes Software- und Designteam, Monat für Monat.',
-    },
-    ctaLabel: 'Projekt in einer Minute beschreiben',
-    ctaNote: 'Unsicher, welche Option zu Ihnen passt?',
   },
 
   hero: {
@@ -573,6 +553,9 @@ const de: Dictionary = {
 
   hubs: {
     'school-management': {
+      // `navShort` ist die Beschriftung im Header. Sie muss kurz genug bleiben,
+      // damit drei Bereiche, Sprachwahl und CTA bei 1024px nebeneinander passen.
+      navShort: 'Schulen',
       navLabel: 'Schul- & Institutionsverwaltung',
       navDetail: 'Einschreibungen, Anwesenheiten, Noten, Elternportale, Rechnungsstellung.',
       kicker: 'Lösungen · Bildung',
@@ -604,6 +587,7 @@ const de: Dictionary = {
       ],
     },
     'hr-and-payroll': {
+      navShort: 'HR & Lohn',
       navLabel: 'HR, Zeiterfassung & Lohn',
       navDetail: 'Ein- und Ausstempeln, Absenzen, Lohnberechnung, Reporting.',
       kicker: 'Lösungen · HR & Lohn',
@@ -635,6 +619,7 @@ const de: Dictionary = {
       ],
     },
     'booking-and-facilities': {
+      navShort: 'Sport & Anlagen',
       navLabel: 'Buchungs- & Anlagenverwaltung',
       navDetail: 'Ressourcen-Kalender, Online-Reservationen, Mitgliedschaften, Zahlungen.',
       kicker: 'Lösungen · Anlagen',
@@ -666,6 +651,8 @@ const de: Dictionary = {
       ],
     },
     'brand-and-communication': {
+      // Nicht im Header — erhalten, damit jeder Bereich dieselbe Form behält.
+      navShort: 'Marke',
       navLabel: 'Marke & Kommunikation',
       navDetail: 'Identitätssysteme, Erklärvideos, Adoptionsmaterial.',
       kicker: 'Lösungen · Kommunikation',

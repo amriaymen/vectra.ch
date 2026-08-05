@@ -35,13 +35,13 @@ const en = {
   },
 
   nav: {
-    services: 'Services',
-    solutions: 'Ways to work',
     work: 'Work',
     process: 'Process',
     pricing: 'Pricing',
     faqs: 'FAQs',
-    cta: 'Estimate My Project',
+    // Problem-led, not solution-led: buyers arrive with an operational mess,
+    // not with a project they have already specified.
+    cta: 'Describe your need',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     menuTitle: 'Site navigation',
@@ -57,25 +57,6 @@ const en = {
    * Column titles are buyer statements, not our pricing labels: someone arrives
    * thinking "we do attendance by hand", not "I'd like a fixed-price engagement".
    */
-  solutionsMenu: {
-    headerTitle: 'Three ways to work with Vectra',
-    headerSubtitle: 'Choose the engagement model that best matches your situation.',
-    ready: {
-      title: 'License Software',
-      desc: 'Use software already in production. Ready to deploy.',
-    },
-    built: {
-      title: 'Custom Software',
-      desc: 'Built for your organization. Fixed price per milestone.',
-    },
-    team: {
-      title: 'Dedicated Team',
-      desc: 'Your dedicated software and design team, month after month.',
-    },
-    ctaLabel: 'Describe your project in one minute',
-    ctaNote: 'Still unsure which option fits your needs?',
-  },
-
   hero: {
     kicker: origin.kicker,
     titleLine1: 'We build the system,',
@@ -573,6 +554,9 @@ const en = {
 
   hubs: {
     'school-management': {
+      // `navShort` is the header label. It must stay short enough that three
+      // sectors, the locale switcher and the CTA all fit at 1024px.
+      navShort: 'Schools',
       navLabel: 'School & institution management',
       navDetail: 'Enrolment, attendance, grading, parent portals, invoicing.',
       kicker: 'Solutions · Education',
@@ -604,6 +588,7 @@ const en = {
       ],
     },
     'hr-and-payroll': {
+      navShort: 'HR & payroll',
       navLabel: 'HR, time tracking & payroll',
       navDetail: 'Check-in and checkout, leave, salary calculation, reporting.',
       kicker: 'Solutions · HR & payroll',
@@ -635,6 +620,7 @@ const en = {
       ],
     },
     'booking-and-facilities': {
+      navShort: 'Sport & facilities',
       navLabel: 'Booking & facility management',
       navDetail: 'Resource calendars, online reservations, memberships, payments.',
       kicker: 'Solutions · Facilities',
@@ -666,6 +652,8 @@ const en = {
       ],
     },
     'brand-and-communication': {
+      // Not rendered in the header — kept so every hub carries the same shape.
+      navShort: 'Brand',
       navLabel: 'Brand & communication',
       navDetail: 'Identity systems, explainer video, adoption material.',
       kicker: 'Solutions · Communication',

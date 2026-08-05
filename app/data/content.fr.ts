@@ -42,13 +42,13 @@ const fr: Dictionary = {
   },
 
   nav: {
-    services: 'Services',
-    solutions: 'Comment nous collaborons',
     work: 'Réalisations',
     process: 'Processus',
     pricing: 'Tarifs',
     faqs: 'FAQs',
-    cta: 'Estimer mon projet',
+    // Formulé autour du problème, pas de la solution : nos prospects arrivent
+    // avec un fonctionnement à corriger, pas avec un projet déjà défini.
+    cta: 'Décrire votre besoin',
     openMenu: 'Ouvrir le menu',
     closeMenu: 'Fermer le menu',
     menuTitle: 'Navigation du site',
@@ -56,34 +56,14 @@ const fr: Dictionary = {
     home: 'Vectra — accueil',
   },
 
-  /* Libellés uniquement — les URL sont dérivées dans app/lib/nav.ts. */
-  solutionsMenu: {
-    headerTitle: 'Trois façons de collaborer avec Vectra',
-    headerSubtitle: 'Choisissez le mode de collaboration le plus adapté à votre situation.',
-    ready: {
-      title: 'Licence logicielle',
-      desc: 'Exploitez un système déjà en production. Prêt au déploiement.',
-    },
-    built: {
-      title: 'Logiciel sur mesure',
-      desc: 'Conçu pour votre organisation. Prix fixe par jalon.',
-    },
-    team: {
-      title: 'Équipe dédiée',
-      desc: 'Votre équipe logicielle et design dédiée, mois après mois.',
-    },
-    ctaLabel: 'Décrire votre projet en une minute',
-    ctaNote: 'Vous hésitez encore sur l’option adaptée ?',
-  },
-
   hero: {
     kicker: origine.kicker,
-    titleLine1: 'Nous construisons le système,',
-    titleLine2: 'puis nous le rendons désirable.',
-    body: 'Studio suisse de logiciels. Nous développons des logiciels métiers, des applications sur mesure et les stratégies qui assurent leur adoption.',
+    titleLine1: 'Des logiciels de gestion conçus pour le',
+    titleLine2: 'fonctionnement réel de votre établissement.',
+    body: 'Nous remplaçons les processus dispersés entre Excel, le papier, WhatsApp et les appels par un système unique, adapté à vos équipes. Premier module opérationnel en 3 à 4 semaines.',
     primaryCta: 'Estimer mon projet',
     secondaryCta: 'Voir nos réalisations',
-    proof: 'Logiciels utilisés dans les écoles, les centres sportifs, les communes et les entreprises suisses.',
+    proof: 'Pour les établissements scolaires, centres sportifs et employeurs suisses.',
     mediaLabel: 'Le portail de gestion scolaire Schoolze en cours d’utilisation',
   },
 
@@ -598,6 +578,9 @@ const fr: Dictionary = {
 
   hubs: {
     'school-management': {
+      // `navShort` est le libellé de l'en-tête. Il doit rester assez court pour
+      // que trois secteurs, le sélecteur de langue et le CTA tiennent à 1024px.
+      navShort: 'Écoles',
       navLabel: 'Gestion scolaire et institutionnelle',
       navDetail: 'Inscriptions, présences, notes, portails parents, facturation.',
       kicker: 'Solutions · Éducation',
@@ -629,6 +612,7 @@ const fr: Dictionary = {
       ],
     },
     'hr-and-payroll': {
+      navShort: 'RH & paie',
       navLabel: 'RH, pointage et paie',
       navDetail: 'Pointage des entrées et sorties, congés, calcul des salaires, rapports.',
       kicker: 'Solutions · RH et paie',
@@ -660,6 +644,7 @@ const fr: Dictionary = {
       ],
     },
     'booking-and-facilities': {
+      navShort: 'Sport & loisirs',
       navLabel: 'Réservation et gestion d’installations',
       navDetail: 'Calendriers de ressources, réservations en ligne, abonnements, paiements.',
       kicker: 'Solutions · Installations',
@@ -691,6 +676,8 @@ const fr: Dictionary = {
       ],
     },
     'brand-and-communication': {
+      // Absent de l'en-tête — conservé pour que chaque pôle ait la même forme.
+      navShort: 'Marque',
       navLabel: 'Marque et communication',
       navDetail: 'Systèmes d’identité, vidéo explicative, supports d’adoption.',
       kicker: 'Solutions · Communication',

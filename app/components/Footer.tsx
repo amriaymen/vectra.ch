@@ -68,6 +68,23 @@ export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: L
             ))}
           </nav>
 
+          {/*
+            Process and FAQs live here rather than in the header. Both are
+            homepage sections, and the header's width is better spent on the
+            sectors — which are real routes.
+          */}
+          <nav
+            aria-label={t.nav.menuTitle}
+            className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm"
+          >
+            <a className="text-gray-400 transition-colors hover:text-primary" href={`/${locale}#process`}>
+              {t.nav.process}
+            </a>
+            <a className="text-gray-400 transition-colors hover:text-primary" href={`/${locale}#faqs`}>
+              {t.nav.faqs}
+            </a>
+          </nav>
+
           {/* Legal Navigation Links */}
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-400">
             <Link className="transition-colors hover:text-primary" href={`/${locale}/legal/terms`}>
