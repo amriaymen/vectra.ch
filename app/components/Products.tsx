@@ -32,8 +32,8 @@ function Card({
 
   return (
     <article
-      className={`group flex flex-col overflow-hidden border bg-surface ${
-        featured ? 'border-primary md:col-span-2' : 'border-line'
+      className={`group flex flex-col overflow-hidden border bg-band-card ${
+        featured ? 'border-band-brand md:col-span-2' : 'border-band-line'
       }`}
     >
       {/* No image is better than a wrong one — an earlier build captioned a
@@ -52,7 +52,7 @@ function Card({
 
       <div className="flex flex-1 flex-col p-6 md:p-8">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full border border-line px-3 py-1 text-xs uppercase tracking-wide text-gray-400">
+          <span className="rounded-full border border-band-line px-3 py-1 text-xs uppercase tracking-wide text-band-body">
             {t.products.domains[product.domain]}
           </span>
           {/* Status is the honesty control: only a sellable product may look sellable. */}
@@ -66,28 +66,28 @@ function Card({
         <h3 className={`mt-4 leading-snug ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
           {product.name}
         </h3>
-        <p className="mt-1 text-sm text-gray-500">{copy.tagline}</p>
+        <p className="mt-1 text-sm text-band-muted">{copy.tagline}</p>
 
-        <p className="mt-4 text-sm leading-relaxed text-gray-500">
-          <span className="text-gray-400">{t.products.forWhoLabel}: </span>
+        <p className="mt-4 text-sm leading-relaxed text-band-muted">
+          <span className="text-band-body">{t.products.forWhoLabel}: </span>
           {copy.forWho}
         </p>
 
         <div className="mt-5 space-y-3">
-          <p className="text-sm leading-relaxed text-gray-400">
-            <strong className="text-white font-medium">{t.products.problemLabel}:</strong> {copy.problem}
+          <p className="text-sm leading-relaxed text-band-body">
+            <strong className="text-band-fg font-medium">{t.products.problemLabel}:</strong> {copy.problem}
           </p>
-          <p className="text-sm leading-relaxed text-gray-400">
-            <strong className="text-white font-medium">{t.products.solutionLabel}:</strong> {copy.solution}
+          <p className="text-sm leading-relaxed text-band-body">
+            <strong className="text-band-fg font-medium">{t.products.solutionLabel}:</strong> {copy.solution}
           </p>
-          <p className="text-sm leading-relaxed text-primary">
-            <strong className="text-primary font-medium">{t.products.outcomeLabel}:</strong> {copy.outcome}
+          <p className="text-sm leading-relaxed text-band-brand">
+            <strong className="text-band-brand font-medium">{t.products.outcomeLabel}:</strong> {copy.outcome}
           </p>
         </div>
 
         {copy.scale && (
-          <p className="mt-4 text-sm text-gray-300">
-            <span className="text-gray-500">{t.products.scaleLabel}: </span>
+          <p className="mt-4 text-sm text-band-lead">
+            <span className="text-band-muted">{t.products.scaleLabel}: </span>
             {copy.scale}
           </p>
         )}
@@ -96,7 +96,7 @@ function Card({
           {copy.modules.slice(0, featured ? 5 : 3).map((module) => (
             <li
               key={module}
-              className="rounded-full bg-surface-hover px-3 py-1 text-xs text-gray-400"
+              className="rounded-full bg-band-chip px-3 py-1 text-xs text-band-body"
             >
               {module}
             </li>
@@ -117,7 +117,7 @@ function Card({
           )}
           <a
             href={productPath(locale, product.slug)}
-            className="group/link inline-flex min-h-[44px] items-center gap-2 text-sm text-primary transition-colors hover:text-white"
+            className="group/link inline-flex min-h-[44px] items-center gap-2 text-sm text-band-brand transition-colors hover:text-band-fg"
           >
             {t.products.readMore}
             <svg
@@ -149,7 +149,7 @@ export default function Products({ t, locale }: { t: Dictionary; locale: Locale 
         <h2 className="text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl">
           {t.products.title}
         </h2>
-        <p className="mt-6 text-lg leading-relaxed text-gray-300">{t.products.intro}</p>
+        <p className="mt-6 text-lg leading-relaxed text-band-lead">{t.products.intro}</p>
       </div>
 
       <div className="mt-14 grid gap-6 md:grid-cols-2 lg:gap-8">
@@ -165,15 +165,15 @@ export default function Products({ t, locale }: { t: Dictionary; locale: Locale 
         ))}
       </div>
 
-      <div className="mt-20 border-t border-line pt-12">
+      <div className="mt-20 border-t border-band-line pt-12">
         <h3 className="text-xl leading-snug md:text-2xl">{t.products.alsoTitle}</h3>
-        <p className="mt-3 max-w-2xl leading-relaxed text-gray-400">{t.products.alsoIntro}</p>
+        <p className="mt-3 max-w-2xl leading-relaxed text-band-body">{t.products.alsoIntro}</p>
 
         <ul className="mt-8 grid gap-6 sm:grid-cols-3">
           {ALSO_BUILT.map((item) => {
             const copy = t.products.also[item.id as keyof typeof t.products.also];
             return (
-              <li key={item.id} className="overflow-hidden border border-line bg-surface">
+              <li key={item.id} className="overflow-hidden border border-band-line bg-band-card">
                 <div className="relative h-40 w-full overflow-hidden">
                   <Image
                     src={item.image}
@@ -184,8 +184,8 @@ export default function Products({ t, locale }: { t: Dictionary; locale: Locale 
                   />
                 </div>
                 <div className="p-5">
-                  <p className="font-medium text-white">{copy.name}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-gray-400">{copy.detail}</p>
+                  <p className="font-medium text-band-fg">{copy.name}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-band-body">{copy.detail}</p>
                 </div>
               </li>
             );

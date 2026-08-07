@@ -31,6 +31,92 @@
   --color-primary: #D9FF41;
 }
 
+/*
+ * Band palettes.
+ *
+ * Every band declares what each ROLE means inside it; components ask for the
+ * role and never for a value. Section stamps `data-tone` on the band element,
+ * and because custom properties inherit, every descendant — including shared
+ * leaves like Badge and HeroMedia — resolves correctly with no prop threading.
+ *
+ * Channel triplets, not hex, so Tailwind's `<alpha-value>` can compose:
+ * `border-band-line/60` must keep its 60%. See tailwind.config.js.
+ *
+ * :root carries the dark set so a token still resolves if one ever leaks into
+ * chrome that sits outside a band.
+ */
+:root,
+[data-tone='dark'] {
+  --band-bg: 18 21 25; /* #121519 */
+  --band-card: 24 28 33; /* #181C21 surface */
+  --band-chip: 31 36 42; /* #1F242A surface-hover */
+  --band-inset: 18 21 25; /* recessed below the card — equals bg here, diverges on light */
+  --band-line: 40 46 54; /* #282E36 */
+  --band-line-strong: 75 85 99; /* gray-600 */
+  --band-fg: 255 255 255;
+  --band-lead: 209 213 219; /* gray-300 */
+  --band-body: 156 163 175; /* gray-400 */
+  --band-muted: 107 114 128; /* gray-500 */
+  --band-faint: 75 85 99; /* gray-600 — INVERTS on light */
+  --band-danger: 252 165 165; /* red-300 */
+  --band-brand: 217 255 65; /* lime as text: 15.98:1 here */
+}
+
+[data-tone='light'] {
+  --band-bg: 255 255 255;
+  --band-card: 255 255 255;
+  --band-chip: 243 244 246; /* gray-100 */
+  --band-inset: 249 250 251; /* gray-50 — matches DecisionMatrix's header row */
+  --band-line: 229 231 235; /* gray-200 */
+  --band-line-strong: 156 163 175; /* gray-400 */
+  --band-fg: 18 21 25;
+  --band-lead: 75 85 99; /* gray-600 */
+  --band-body: 75 85 99; /* gray-600 — collapses onto lead here, by design */
+  --band-muted: 107 114 128; /* gray-500 */
+  --band-faint: 209 213 219; /* gray-300 — the inversion: faint must stay faint */
+  --band-danger: 185 28 28; /* red-700 — red-300 is 2.2:1 on white */
+  /*
+   * Lime as TEXT is 1.15:1 on white and unusable. This olive is ~5.6:1.
+   * Nothing consumes it yet — adopting it is the Phase 2 brand decision.
+   * Lime as a PLATE (bg-primary + dark text) is unaffected and stays lime.
+   */
+  --band-brand: 90 112 0;
+}
+
+[data-tone='accent'] {
+  /* #1B2CF5. Call sites keep their own alphas: /80 on text, /25 on rules. */
+  --band-bg: 27 44 245;
+  --band-card: 255 255 255;
+  --band-chip: 255 255 255;
+  --band-inset: 255 255 255;
+  --band-line: 255 255 255;
+  --band-line-strong: 255 255 255;
+  --band-fg: 255 255 255;
+  --band-lead: 255 255 255;
+  --band-body: 255 255 255;
+  --band-muted: 255 255 255;
+  --band-faint: 255 255 255;
+  --band-danger: 254 226 226; /* red-100 — the only red that reads on blue */
+  --band-brand: 217 255 65; /* 6.69:1 on this blue */
+}
+
+[data-tone='action'] {
+  /* Lime plate, dark ink. */
+  --band-bg: 217 255 65;
+  --band-card: 18 21 25;
+  --band-chip: 24 28 33;
+  --band-inset: 18 21 25;
+  --band-line: 18 21 25;
+  --band-line-strong: 18 21 25;
+  --band-fg: 18 21 25;
+  --band-lead: 18 21 25;
+  --band-body: 18 21 25;
+  --band-muted: 55 65 81; /* gray-700 */
+  --band-faint: 107 114 128; /* gray-500 */
+  --band-danger: 127 29 29; /* red-900 */
+  --band-brand: 18 21 25; /* lime-on-lime is meaningless — degrade to the ink */
+}
+
 html {
   scroll-behavior: smooth;
   /*

@@ -36,6 +36,9 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
     <Section
       as="header"
       padding="none"
+      // Chrome, not a band: it floats over whatever scrolls beneath, and its
+      // backdrop blur would smear a seam gradient.
+      seam={false}
       className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-line/50"
       innerClassName="py-4 md:py-5"
     >

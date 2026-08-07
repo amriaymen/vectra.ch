@@ -120,7 +120,8 @@ export default function CaseStudyPage({ params }: { params: { locale: string; sl
     <div id="page-shell" className="isolate bg-background text-white">
       <Header t={t} locale={locale} />
 
-      <Section as="main" innerClassName="pt-4 pb-16 md:pt-6 md:pb-20">
+      {/* seam={false}: pt-4/md:pt-6 beats the padding prop, leaving a 24px gutter. */}
+      <Section as="main" seam={false} innerClassName="pt-4 pb-16 md:pt-6 md:pb-20">
         <Breadcrumbs items={crumbs} />
 
         <div className="mt-8 max-w-3xl">

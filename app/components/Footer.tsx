@@ -15,7 +15,7 @@ export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: L
   const hasAddress = Boolean(COMPANY.streetAddress && COMPANY.addressLocality);
 
   return (
-    <Section as="footer" tone="dark" className="border-t border-line">
+    <Section as="footer" tone="dark" className="border-t border-band-line">
       <div className="grid gap-12 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:gap-16">
         <div>
           <h2 className="max-w-xl text-3xl leading-tight tracking-tight md:text-4xl">
@@ -31,25 +31,25 @@ export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: L
             >
               {t.footer.button}
             </a>
-            <p className="max-w-xs text-sm leading-relaxed text-gray-400">{t.footer.note}</p>
+            <p className="max-w-xs text-sm leading-relaxed text-band-body">{t.footer.note}</p>
           </div>
         </div>
 
         <div className="grid content-start gap-8">
           <div className="grid gap-2 text-sm">
-            <a className="transition-colors hover:text-primary" href={`mailto:${COMPANY.email}`}>
+            <a className="transition-colors hover:text-band-brand" href={`mailto:${COMPANY.email}`}>
               {COMPANY.email}
             </a>
             {phone && (
               <a
-                className="transition-colors hover:text-primary"
+                className="transition-colors hover:text-band-brand"
                 href={`tel:${phone.replace(/\s/g, '')}`}
               >
                 {phone}
               </a>
             )}
             {hasAddress && (
-              <address className="not-italic text-gray-400">
+              <address className="not-italic text-band-body">
                 {COMPANY.streetAddress}
                 <br />
                 {COMPANY.postalCode} {COMPANY.addressLocality} (Fribourg), Suisse
@@ -61,7 +61,7 @@ export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: L
             {COMPANY.social.map((href, index) => (
               <a
                 key={href}
-                className="text-gray-400 transition-colors hover:text-primary"
+                className="text-band-body transition-colors hover:text-band-brand"
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -87,25 +87,25 @@ export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: L
             className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm"
           >
             <Link
-              className="inline-flex min-h-[44px] items-center text-gray-400 transition-colors hover:text-primary"
+              className="inline-flex min-h-[44px] items-center text-band-body transition-colors hover:text-band-brand"
               href={`/${locale}/solutions`}
             >
               {t.pages.allSolutions}
             </Link>
             <a
-              className="inline-flex min-h-[44px] items-center text-gray-400 transition-colors hover:text-primary"
+              className="inline-flex min-h-[44px] items-center text-band-body transition-colors hover:text-band-brand"
               href={`/${locale}#process`}
             >
               {t.nav.process}
             </a>
             <a
-              className="inline-flex min-h-[44px] items-center text-gray-400 transition-colors hover:text-primary"
+              className="inline-flex min-h-[44px] items-center text-band-body transition-colors hover:text-band-brand"
               href={`/${locale}#pricing`}
             >
               {t.nav.pricing}
             </a>
             <a
-              className="inline-flex min-h-[44px] items-center text-gray-400 transition-colors hover:text-primary"
+              className="inline-flex min-h-[44px] items-center text-band-body transition-colors hover:text-band-brand"
               href={`/${locale}#faqs`}
             >
               {t.nav.faqs}
@@ -113,23 +113,23 @@ export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: L
           </nav>
 
           {/* Legal Navigation Links */}
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-400">
-            <Link className="transition-colors hover:text-primary" href={`/${locale}/legal/terms`}>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-band-body">
+            <Link className="transition-colors hover:text-band-brand" href={`/${locale}/legal/terms`}>
               {locale === 'de' ? 'AGB' : locale === 'en' ? 'Terms' : 'Conditions'}
             </Link>
             <span>·</span>
-            <Link className="transition-colors hover:text-primary" href={`/${locale}/legal/privacy`}>
+            <Link className="transition-colors hover:text-band-brand" href={`/${locale}/legal/privacy`}>
               {locale === 'de' ? 'Datenschutz' : locale === 'en' ? 'Privacy' : 'Confidentialité'}
             </Link>
             <span>·</span>
-            <Link className="transition-colors hover:text-primary" href={`/${locale}/legal/impressum`}>
+            <Link className="transition-colors hover:text-band-brand" href={`/${locale}/legal/impressum`}>
               {locale === 'de' ? 'Impressum' : locale === 'en' ? 'Legal Notice' : 'Mentions légales'}
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="mt-16 flex flex-col gap-2 border-t border-line pt-8 text-sm text-gray-500 md:flex-row md:justify-between">
+      <div className="mt-16 flex flex-col gap-2 border-t border-band-line pt-8 text-sm text-band-muted md:flex-row md:justify-between">
         <p>
           {t.footer.rights} © {new Date().getFullYear()}
         </p>

@@ -15,10 +15,10 @@ function List({ title, items }: { title: string; items: string[] }) {
   if (!items?.length) return null;
   return (
     <div>
-      <h4 className="text-sm uppercase tracking-[0.15em] text-gray-500">{title}</h4>
+      <h4 className="text-sm uppercase tracking-[0.15em] text-band-muted">{title}</h4>
       <ul className="mt-3 grid gap-2">
         {items.map((item) => (
-          <li key={item} className="flex gap-3 text-sm leading-relaxed text-gray-300">
+          <li key={item} className="flex gap-3 text-sm leading-relaxed text-band-lead">
             <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
             {item}
           </li>
@@ -44,52 +44,52 @@ export default function ScopeResult({
   return (
     <div>
       <h3 className="text-2xl leading-snug">{r.title}</h3>
-      <p className="mt-4 leading-relaxed text-gray-300">{scope.summary}</p>
+      <p className="mt-4 leading-relaxed text-band-lead">{scope.summary}</p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <div className="rounded-md border border-line bg-surface p-4">
-          <p className="text-sm text-gray-500">{r.timeline}</p>
-          <p className="font-medium mt-1 text-xl text-white">
+        <div className="rounded-md border border-band-line bg-band-card p-4">
+          <p className="text-sm text-band-muted">{r.timeline}</p>
+          <p className="font-medium mt-1 text-xl text-band-fg">
             {scope.weekEstimate} {r.weeks}
           </p>
         </div>
-        <div className="rounded-md border border-primary/40 bg-surface p-4">
-          <p className="text-sm text-gray-500">{r.range}</p>
-          <p className="font-medium mt-1 text-xl text-primary">{scope.priceBand}</p>
+        <div className="rounded-md border border-band-brand/40 bg-band-card p-4">
+          <p className="text-sm text-band-muted">{r.range}</p>
+          <p className="font-medium mt-1 text-xl text-band-brand">{scope.priceBand}</p>
         </div>
       </div>
 
-      <p className="mt-4 text-xs leading-relaxed text-gray-500">{r.disclaimer}</p>
+      <p className="mt-4 text-xs leading-relaxed text-band-muted">{r.disclaimer}</p>
 
-      <ol className="mt-8 grid gap-4 border-t border-line pt-8">
+      <ol className="mt-8 grid gap-4 border-t border-band-line pt-8">
         {scope.phases.map((phase, index) => (
           <li key={phase.name} className="flex gap-4">
-            <span className="font-medium shrink-0 tabular-nums text-gray-600">
+            <span className="font-medium shrink-0 tabular-nums text-band-faint">
               {String(index + 1).padStart(2, '0')}
             </span>
             <div>
-              <p className="font-medium text-white">
+              <p className="font-medium text-band-fg">
                 {phase.name}
-                <span className="ml-2 font-normal text-sm text-gray-500">
+                <span className="ml-2 font-normal text-sm text-band-muted">
                   {phase.weeks} {r.weeks}
                 </span>
               </p>
-              <p className="mt-1 text-sm leading-relaxed text-gray-400">{phase.detail}</p>
+              <p className="mt-1 text-sm leading-relaxed text-band-body">{phase.detail}</p>
             </div>
           </li>
         ))}
       </ol>
 
-      <div className="mt-8 grid gap-8 border-t border-line pt-8">
+      <div className="mt-8 grid gap-8 border-t border-band-line pt-8">
         <List title={r.deliverables} items={scope.deliverables} />
         <List title={r.assumptions} items={scope.assumptions} />
         <List title={r.risks} items={scope.risks} />
         <List title={r.outOfScope} items={scope.outOfScope} />
       </div>
 
-      {emailed && <p className="mt-8 text-sm leading-relaxed text-gray-400">{r.emailed}</p>}
+      {emailed && <p className="mt-8 text-sm leading-relaxed text-band-body">{r.emailed}</p>}
 
-      <div className="mt-8 flex flex-wrap gap-4 border-t border-line pt-8">
+      <div className="mt-8 flex flex-wrap gap-4 border-t border-band-line pt-8">
         <a
           href={CALENDLY_URL}
           target="_blank"
@@ -101,7 +101,7 @@ export default function ScopeResult({
         <button
           type="button"
           onClick={onRestart}
-          className="min-h-[48px] rounded-md border border-line px-6 text-sm transition-colors hover:border-primary hover:text-primary"
+          className="min-h-[48px] rounded-md border border-band-line px-6 text-sm transition-colors hover:border-primary hover:text-band-brand"
         >
           {r.restart}
         </button>

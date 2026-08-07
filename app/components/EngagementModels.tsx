@@ -31,15 +31,24 @@ export default function EngagementModels({ t }: { t: Dictionary }) {
       <ul className="mt-16 grid gap-6 md:grid-cols-3">
         {items.map((item, index) => (
           <Reveal as="li" key={item.title} delay={index * 80}>
-            <div className="flex h-full flex-col border border-gray-200 p-6 md:p-8">
+            <div className="flex h-full flex-col border border-band-line p-6 md:p-8">
+              {/*
+                NOT tokenised — INVERSE CHIP. This dark square exists to be the
+                opposite of its light band, and the icons inside it are
+                hardcoded `text-white` to read against it. `bg-band-bg` here
+                would track the tone and make the chip vanish into the band, at
+                1.00:1, taking the white icons with it. Same rule as the button
+                in CtaBanner. Compare `bg-band-inset` two components over, where
+                the same literal meant "recessed" rather than "opposite".
+              */}
               <span
                 aria-hidden="true"
                 className="flex h-10 w-10 items-center justify-center bg-background rounded-md shadow-sm"
               >
                 {MODEL_ICONS[index % MODEL_ICONS.length]}
               </span>
-              <h3 className="mt-6 text-xl leading-snug text-background">{item.title}</h3>
-              <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-gray-600">
+              <h3 className="mt-6 text-xl leading-snug text-band-fg">{item.title}</h3>
+              <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-band-lead">
                 {item.desc}
               </p>
             </div>

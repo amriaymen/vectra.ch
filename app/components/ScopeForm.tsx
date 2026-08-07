@@ -120,38 +120,47 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
     }
   };
 
+  /*
+   * `bg-band-inset`, not the inverse-chip literal: a form field is RECESSED
+   * below its surroundings, which is what bg-background meant here. Note this
+   * component also inherits the global `color-scheme: dark`, so its native
+   * controls draw dark UA chrome — the standing rule is that native form
+   * controls appear only on dark bands.
+   */
   const fieldClass =
-    'w-full rounded-md border border-line bg-background px-4 py-3 text-base text-white placeholder-gray-500 transition-colors focus:border-primary focus:outline-none';
-  const labelClass = 'mb-2 block text-sm text-gray-300';
+    'w-full rounded-md border border-band-line bg-band-inset px-4 py-3 text-base text-band-fg placeholder-band-muted transition-colors focus:border-band-brand focus:outline-none';
+  const labelClass = 'mb-2 block text-sm text-band-lead';
   const optionClass = (active: boolean) =>
     `flex min-h-[48px] cursor-pointer items-start gap-3 rounded-md border px-4 py-3 transition-colors ${
-      active ? 'border-primary bg-background text-white' : 'border-line text-gray-400 hover:border-gray-600'
+      active
+        ? 'border-band-brand bg-band-inset text-band-fg'
+        : 'border-band-line text-band-body hover:border-band-line-strong'
     }`;
 
   const nextDisabled = (step === 2 && modules.length === 0) || false;
 
   return (
-    <Section id="scope" className="border-y border-line">
+    <Section id="scope" className="border-y border-band-line">
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-16">
         <div>
           <h2 className="text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl">
             {t.scope.title}
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-gray-300">{t.scope.intro}</p>
-          <p className="mt-6 text-sm leading-relaxed text-gray-500">{t.scope.aside}</p>
+          <p className="mt-6 text-lg leading-relaxed text-band-lead">{t.scope.intro}</p>
+          <p className="mt-6 text-sm leading-relaxed text-band-muted">{t.scope.aside}</p>
         </div>
 
-        <div className="border border-line bg-surface p-6 md:p-10">
+        <div className="border border-band-line bg-band-card p-6 md:p-10">
           {status === 'done' && scope ? (
             <ScopeResult t={t} scope={scope} emailed={emailed} onRestart={reset} />
           ) : status === 'done' && degraded ? (
             <div className="py-8">
               <h3 className="text-2xl leading-snug">{t.scope.result.title}</h3>
-              <p className="mt-4 leading-relaxed text-gray-400">{t.scope.errors.degraded}</p>
+              <p className="mt-4 leading-relaxed text-band-body">{t.scope.errors.degraded}</p>
               <button
                 type="button"
                 onClick={reset}
-                className="mt-8 min-h-[48px] rounded-md border border-line px-6 text-sm transition-colors hover:border-primary hover:text-primary"
+                className="mt-8 min-h-[48px] rounded-md border border-band-line px-6 text-sm transition-colors hover:border-band-brand hover:text-band-brand"
               >
                 {t.scope.result.restart}
               </button>
@@ -159,7 +168,7 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
           ) : (
             <form onSubmit={handleSubmit} noValidate>
               <div className="mb-8">
-                <div className="mb-2 flex items-baseline justify-between gap-4 text-sm text-gray-400">
+                <div className="mb-2 flex items-baseline justify-between gap-4 text-sm text-band-body">
                   <span>
                     {t.scope.stepOf
                       .replace('{current}', String(step))
@@ -173,10 +182,10 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
                   aria-valuemin={1}
                   aria-valuemax={TOTAL_STEPS}
                   aria-label={t.scope.stepNames[step - 1]}
-                  className="h-1 w-full overflow-hidden rounded-full bg-surface-hover"
+                  className="h-1 w-full overflow-hidden rounded-full bg-band-chip"
                 >
                   <div
-                    className="h-full rounded-full bg-primary transition-[width] duration-300 ease-out"
+                    className="h-full rounded-full bg-band-brand transition-[width] duration-300 ease-out"
                     style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
                   />
                 </div>
@@ -185,7 +194,7 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
               {step === 1 && (
                 <fieldset>
                   <legend className="text-xl leading-snug">{t.scope.q1.title}</legend>
-                  <p className="mt-2 text-sm text-gray-400">{t.scope.q1.hint}</p>
+                  <p className="mt-2 text-sm text-band-body">{t.scope.q1.hint}</p>
                   <div className="mt-6 grid gap-3">
                     {Object.entries(t.scope.domains).map(([key, label]) => (
                       <label key={key} className={optionClass(domain === key)}>
@@ -209,7 +218,7 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
               {step === 2 && (
                 <fieldset>
                   <legend className="text-xl leading-snug">{t.scope.q2.title}</legend>
-                  <p className="mt-2 text-sm text-gray-400">{t.scope.q2.hint}</p>
+                  <p className="mt-2 text-sm text-band-body">{t.scope.q2.hint}</p>
                   <div className="mt-6 grid gap-3 sm:grid-cols-2">
                     {(MODULES[domain] ?? MODULES.other).map((id) => (
                       <label key={id} className={optionClass(modules.includes(id))}>
@@ -229,7 +238,7 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
               {step === 3 && (
                 <div>
                   <h3 className="text-xl leading-snug">{t.scope.q3.title}</h3>
-                  <p className="mt-2 text-sm text-gray-400">{t.scope.q3.hint}</p>
+                  <p className="mt-2 text-sm text-band-body">{t.scope.q3.hint}</p>
                   <div className="mt-6 grid gap-5">
                     <div className="grid gap-5 sm:grid-cols-2">
                       <div>
@@ -280,7 +289,7 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
                 <div className="grid gap-8">
                   <fieldset>
                     <legend className="text-xl leading-snug">{t.scope.q4.title}</legend>
-                    <p className="mt-2 text-sm text-gray-400">{t.scope.q4.hint}</p>
+                    <p className="mt-2 text-sm text-band-body">{t.scope.q4.hint}</p>
                     <div className="mt-6 grid gap-3">
                       {Object.entries(t.scope.timelines).map(([key, option]) => (
                         <label key={key} className={optionClass(timeline === key)}>
@@ -292,8 +301,8 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
                             className="mt-0.5 h-4 w-4 shrink-0 accent-primary"
                           />
                           <span>
-                            <span className="block text-sm text-white">{option.label}</span>
-                            <span className="mt-0.5 block text-xs text-gray-400">{option.detail}</span>
+                            <span className="block text-sm text-band-fg">{option.label}</span>
+                            <span className="mt-0.5 block text-xs text-band-body">{option.detail}</span>
                           </span>
                         </label>
                       ))}
@@ -308,8 +317,9 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
                           key={key}
                           className={`inline-flex min-h-[44px] cursor-pointer items-center rounded-full border px-4 text-sm transition-colors ${
                             budget === key
-                              ? 'border-primary bg-primary text-background'
-                              : 'border-line text-gray-400 hover:border-gray-600'
+                              ? // Lime plate, dark ink — literal on every band.
+                                'border-primary bg-primary text-background'
+                              : 'border-band-line text-band-body hover:border-band-line-strong'
                           }`}
                         >
                           <input
@@ -404,12 +414,12 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
               )}
 
               {status === 'submitting' && (
-                <div aria-live="polite" className="mt-8 grid gap-2 rounded-md border border-line bg-surface p-4">
+                <div aria-live="polite" className="mt-8 grid gap-2 rounded-md border border-band-line bg-band-card p-4">
                   {Object.values(t.scope.progress).map((label, index) => (
                     <p
                       key={label}
                       className={`flex items-center gap-2 text-sm transition-colors ${
-                        index <= progressIndex ? 'text-primary' : 'text-gray-600'
+                        index <= progressIndex ? 'text-band-brand' : 'text-band-faint'
                       }`}
                     >
                       <span aria-hidden="true" className="h-1 w-1 shrink-0 rounded-full bg-current" />
@@ -422,7 +432,10 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
               {status === 'error' && (
                 <p
                   role="alert"
-                  className="mt-6 rounded-md border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300"
+                  /* The red-500 alphas stay literal — pure red at low opacity
+                     reads on any plate. Only the TEXT needed a token: red-300
+                     is 2.2:1 on white, so it had to stop being hardcoded. */
+                  className="mt-6 rounded-md border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-band-danger"
                 >
                   {error} {t.scope.errors.notSent}
                 </p>
@@ -434,7 +447,7 @@ export default function ScopeForm({ t, locale }: { t: Dictionary; locale: Locale
                     type="button"
                     onClick={() => setStep(step - 1)}
                     disabled={status === 'submitting'}
-                    className="min-h-[44px] px-2 text-sm text-gray-400 transition-colors hover:text-white disabled:opacity-40"
+                    className="min-h-[44px] px-2 text-sm text-band-body transition-colors hover:text-band-fg disabled:opacity-40"
                   >
                     {t.scope.back}
                   </button>

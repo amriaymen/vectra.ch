@@ -26,12 +26,12 @@ export default function WhoWeServe({ t }: { t: Dictionary }) {
   const { kicker, title, list, footer, badge } = t.whoWeServe;
 
   return (
-    <Section tone="dark" padding="tight" className="border-y border-line/60">
+    <Section tone="dark" padding="tight" className="border-y border-band-line/60">
       <Reveal>
         <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs font-mono uppercase tracking-[0.2em] text-primary">{kicker}</p>
-            <h2 className="mt-2 text-2xl font-medium tracking-tight text-white sm:text-3xl lg:text-4xl">
+            <p className="text-xs font-mono uppercase tracking-[0.2em] text-band-brand">{kicker}</p>
+            <h2 className="mt-2 text-2xl font-medium tracking-tight text-band-fg sm:text-3xl lg:text-4xl">
               {title}
             </h2>
           </div>
@@ -41,20 +41,27 @@ export default function WhoWeServe({ t }: { t: Dictionary }) {
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {list.map((domain, index) => (
           <Reveal key={domain} delay={index * 60}>
-            <div className="group relative flex h-full flex-col justify-between border border-line bg-surface p-6 transition-all duration-300 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/5">
+            <div className="group relative flex h-full flex-col justify-between border border-band-line bg-band-card p-6 transition-all duration-300 hover:border-band-brand/60 hover:shadow-lg hover:shadow-primary/5">
               <div>
                 <div className="flex items-center justify-between">
-                  <div className="flex h-10 w-10 items-center justify-center rounded border border-line/80 bg-background text-primary transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
+                  {/*
+                    bg-band-inset, NOT the inverse-chip literal: this square is
+                    recessed a step BELOW the card it sits in, not set against
+                    the band. Same `bg-background` source class as the chip in
+                    EngagementModels, opposite role — which is why this migration
+                    is per-occurrence and never find-and-replace.
+                  */}
+                  <div className="flex h-10 w-10 items-center justify-center rounded border border-band-line/80 bg-band-inset text-band-brand transition-colors group-hover:border-band-brand/40 group-hover:bg-band-brand/10">
                     {DOMAIN_ICONS[index % DOMAIN_ICONS.length]}
                   </div>
-                  <span className="font-mono text-xs text-gray-500">0{index + 1}</span>
+                  <span className="font-mono text-xs text-band-muted">0{index + 1}</span>
                 </div>
-                <h3 className="mt-6 text-lg font-medium text-white transition-colors group-hover:text-primary">
+                <h3 className="mt-6 text-lg font-medium text-band-fg transition-colors group-hover:text-band-brand">
                   {domain}
                 </h3>
               </div>
-              <div className="mt-6 flex items-center gap-1.5 text-xs text-gray-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary/60 group-hover:bg-primary" />
+              <div className="mt-6 flex items-center gap-1.5 text-xs text-band-body">
+                <span className="h-1.5 w-1.5 rounded-full bg-band-brand/60 group-hover:bg-band-brand" />
                 <span>{badge}</span>
               </div>
             </div>
@@ -63,11 +70,11 @@ export default function WhoWeServe({ t }: { t: Dictionary }) {
       </div>
 
       <Reveal delay={240}>
-        <div className="mt-6 flex flex-col items-start justify-between gap-4 border border-line/60 bg-surface/40 p-5 rounded-md sm:flex-row sm:items-center">
-          <p className="text-sm text-gray-300">{footer}</p>
+        <div className="mt-6 flex flex-col items-start justify-between gap-4 border border-band-line/60 bg-band-card/40 p-5 rounded-md sm:flex-row sm:items-center">
+          <p className="text-sm text-band-lead">{footer}</p>
           <a
             href="#scope"
-            className="inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-primary transition-colors hover:text-white"
+            className="inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-band-brand transition-colors hover:text-band-fg"
           >
             <span>Custom Build</span>
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

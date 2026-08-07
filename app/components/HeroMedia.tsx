@@ -79,22 +79,22 @@ export default function HeroMedia({
     // read as a "window" instead of a hero image.
     <div
       ref={wrapper}
-      className="relative h-full w-full min-h-[240px] overflow-hidden rounded-xl border border-line/60 bg-surface shadow-2xl"
+      className="relative h-full w-full min-h-[240px] overflow-hidden rounded-xl border border-band-line/60 bg-band-card shadow-2xl"
     >
       {/* Skeleton Loading State (shadcn style pulse) shown before video loads */}
       {!loaded && (
-        <div className="absolute inset-0 flex flex-col justify-between p-8 bg-surface/60 animate-pulse">
+        <div className="absolute inset-0 flex flex-col justify-between p-8 bg-band-card/60 animate-pulse">
           <div className="flex items-center justify-between">
-            <div className="h-3 w-28 rounded-md bg-white/10" />
-            <div className="h-3 w-12 rounded-md bg-white/10" />
+            <div className="h-3 w-28 rounded-md bg-band-fg/10" />
+            <div className="h-3 w-12 rounded-md bg-band-fg/10" />
           </div>
           <div className="space-y-4">
-            <div className="h-6 w-3/4 rounded-md bg-white/10" />
-            <div className="h-4 w-1/2 rounded-md bg-white/10" />
+            <div className="h-6 w-3/4 rounded-md bg-band-fg/10" />
+            <div className="h-4 w-1/2 rounded-md bg-band-fg/10" />
           </div>
           <div className="flex gap-4">
-            <div className="h-10 w-28 rounded-md bg-white/10" />
-            <div className="h-10 w-28 rounded-md bg-white/10" />
+            <div className="h-10 w-28 rounded-md bg-band-fg/10" />
+            <div className="h-10 w-28 rounded-md bg-band-fg/10" />
           </div>
         </div>
       )}

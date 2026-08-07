@@ -23,26 +23,26 @@ export default function WhyVectra({ t }: { t: Dictionary }) {
       >
         <dl className="grid gap-8">
           {items.map((item) => (
-            <div key={item.label} className="border-l-2 border-primary pl-6">
-              <dt className="font-medium leading-snug text-white">{item.label}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-gray-400">{item.detail}</dd>
+            <div key={item.label} className="border-l-2 border-band-brand pl-6">
+              <dt className="font-medium leading-snug text-band-fg">{item.label}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-band-body">{item.detail}</dd>
             </div>
           ))}
         </dl>
 
         {verified.length > 0 && (
-          <div className="h-fit border border-line bg-surface p-6 md:p-8">
-            <h3 className="text-xl leading-snug text-white">{trustTitle}</h3>
+          <div className="h-fit border border-band-line bg-band-card p-6 md:p-8">
+            <h3 className="text-xl leading-snug text-band-fg">{trustTitle}</h3>
             <ul className="mt-6 grid gap-6">
               {verified.map((credential) => (
                 <li
                   key={credential.id}
-                  className="grid gap-1 border-b border-line pb-6 last:border-0 last:pb-0"
+                  className="grid gap-1 border-b border-band-line pb-6 last:border-0 last:pb-0"
                 >
-                  <span className="text-xs uppercase tracking-wider text-gray-500">
+                  <span className="text-xs uppercase tracking-wider text-band-muted">
                     {credentials[credential.id]}
                   </span>
-                  <span className="text-sm leading-relaxed text-gray-300">{credential.value}</span>
+                  <span className="text-sm leading-relaxed text-band-lead">{credential.value}</span>
                 </li>
               ))}
             </ul>

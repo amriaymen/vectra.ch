@@ -6,6 +6,9 @@ export default function Hero({ t }: { t: Dictionary }) {
   return (
     <Section
       as="main"
+      // Its innerClassName padding beats the `padding` prop, leaving a 40px
+      // gutter — too small for a seam. It follows the dark Header anyway.
+      seam={false}
       id="main"
       className="min-h-[calc(100dvh-76px)] md:min-h-[calc(100dvh-88px)] flex flex-col justify-center"
       innerClassName="w-full py-6 md:py-8 lg:py-10 relative overflow-hidden my-auto"
@@ -18,19 +21,19 @@ export default function Hero({ t }: { t: Dictionary }) {
           label={t.hero.mediaLabel}
         />
         {/* Subtle dark gradient overlay to guarantee text readability over the video */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-band-bg via-band-bg/40 to-transparent pointer-events-none" />
       </div>
 
       {/* Main Content: Floats OVER the video on the right */}
       <div className="relative z-10 w-full max-w-5xl">
-        <p className="mb-4 text-xs md:text-sm uppercase tracking-[0.2em] text-primary font-medium">{t.hero.kicker}</p>
+        <p className="mb-4 text-xs md:text-sm uppercase tracking-[0.2em] text-band-brand font-medium">{t.hero.kicker}</p>
 
         <h1 className="w-full text-3xl leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl drop-shadow-md">
           <span className="block">{t.hero.titleLine1}</span>
-          <span className="mt-1 block text-gray-300 sm:mt-2">{t.hero.titleLine2}</span>
+          <span className="mt-1 block text-band-lead sm:mt-2">{t.hero.titleLine2}</span>
         </h1>
 
-        <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-gray-300 drop-shadow-sm">{t.hero.body}</p>
+        <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-band-lead drop-shadow-sm">{t.hero.body}</p>
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
           <a
@@ -41,7 +44,7 @@ export default function Hero({ t }: { t: Dictionary }) {
           </a>
           <a
             href="#work"
-            className="group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-md px-2 py-4 text-base md:text-lg text-white transition-colors hover:text-primary"
+            className="group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-md px-2 py-4 text-base md:text-lg text-band-fg transition-colors hover:text-band-brand"
           >
             {t.hero.secondaryCta}
             <svg
@@ -61,7 +64,7 @@ export default function Hero({ t }: { t: Dictionary }) {
         </div>
         
         {/* Proof Line */}
-        <p className="mt-6 text-xs md:text-sm text-gray-400 font-normal">{t.hero.proof}</p>
+        <p className="mt-6 text-xs md:text-sm text-band-body font-normal">{t.hero.proof}</p>
       </div>
 
       {/* Mobile/Tablet Fallback: Stacked cleanly below text */}

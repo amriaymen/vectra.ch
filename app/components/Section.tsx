@@ -24,6 +24,25 @@ const PADDING: Record<Padding, string> = {
   none: '',
 };
 
+/*
+ * Seam sizing, keyed to the padding it has to hide inside.
+ *
+ * The seam (Phase 3) is a gradient in the band's TOP GUTTER, which carries no
+ * text — that is the entire reason it cannot break contrast. So its height is a
+ * function of the padding, and always leaves >=16px of clean gutter. A seam
+ * that reaches the first baseline is a bug, not a longer fade.
+ *
+ * `none` gets nothing. Note also that four call sites override padding via
+ * `innerClassName` and WIN (pt-* is emitted after py-*): the sub-page <main>
+ * elements measure 24px and Hero measures 40px. Those pass `seam={false}`
+ * rather than relying on this map.
+ */
+const SEAM: Record<Padding, string> = {
+  default: 'seam-default',
+  tight: 'seam-tight',
+  none: '',
+};
+
 /**
  * Owns every section's horizontal rhythm. All page-level content must go through
  * this so the page keeps a single left edge at every breakpoint — section
@@ -36,6 +55,7 @@ export default function Section({
   as: Tag = 'section',
   className = '',
   innerClassName = '',
+  seam = true,
   children,
 }: {
   id?: string;
@@ -44,10 +64,35 @@ export default function Section({
   as?: 'section' | 'header' | 'footer' | 'main' | 'div';
   className?: string;
   innerClassName?: string;
+  /**
+   * Opt out of the seam — the gradient a band paints from its predecessor's
+   * colour into its own. Set `false` where the top gutter is too small to hold
+   * one (any section overriding padding through `innerClassName`) or where the
+   * element is chrome rather than a band (the sticky Header, whose backdrop
+   * blur would smear the ramp).
+   */
+  seam?: boolean;
   children: ReactNode;
 }) {
   return (
-    <Tag id={id} className={`${TONE[tone]} ${className}`}>
+    <Tag
+      id={id}
+      /*
+       * `data-tone` is the whole tone-awareness mechanism: it selects the band
+       * palette in globals.css, and custom properties inherit from here to
+       * every descendant. It is also what Phase 3's seam reads, via sibling
+       * adjacency — CSS sees the DOM as rendered, so a section that returned
+       * null (Testimonials, with no quotes) is correctly not a neighbour.
+       *
+       * `isolate` is load-bearing for that seam: it makes this element a
+       * stacking context, so the seam's `z-index:-1` paints above this band's
+       * own background but below its content. Without it the seam would fall
+       * behind the background and vanish.
+       */
+      data-tone={tone}
+      data-seam={seam ? undefined : 'none'}
+      className={`relative isolate ${SEAM[seam ? padding : 'none']} ${TONE[tone]} ${className}`}
+    >
       <div
         className={`mx-auto w-full max-w-[1400px] px-4 md:px-8 lg:px-12 ${PADDING[padding]} ${innerClassName}`}
       >

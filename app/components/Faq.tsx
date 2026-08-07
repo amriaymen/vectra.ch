@@ -42,14 +42,14 @@ export default function Faq({
             const isOpen = openIndex === index;
             const panelId = `${id}-panel-${index}`;
             return (
-              <li key={faq.question} className="border-b border-line first:border-t">
+              <li key={faq.question} className="border-b border-band-line first:border-t">
                 <h3>
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                     aria-expanded={isOpen}
                     aria-controls={panelId}
-                    className="flex w-full items-center justify-between gap-6 py-5 text-left text-lg leading-snug transition-colors hover:text-primary md:text-xl"
+                    className="flex w-full items-center justify-between gap-6 py-5 text-left text-lg leading-snug transition-colors hover:text-band-brand md:text-xl"
                   >
                     <span>{faq.question}</span>
                     <svg
@@ -67,7 +67,7 @@ export default function Faq({
                   </button>
                 </h3>
                 <div id={panelId} hidden={!isOpen}>
-                  <p className="max-w-2xl pb-6 leading-relaxed text-gray-400">{faq.answer}</p>
+                  <p className="max-w-2xl pb-6 leading-relaxed text-band-body">{faq.answer}</p>
                 </div>
               </li>
             );
