@@ -5,13 +5,14 @@ import math
 import struct
 import zlib
 from pathlib import Path
+from xml.etree import ElementTree
 
 from pypdf import PdfReader, PdfWriter
 from reportlab.graphics import renderPDF
 from reportlab.graphics.barcode.qr import QrCodeWidget
 from reportlab.graphics.shapes import Drawing, Rect
 from reportlab.graphics.svgpath import SvgPath
-from reportlab.lib.colors import Color, HexColor
+from reportlab.lib.colors import HexColor
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
@@ -20,7 +21,7 @@ from reportlab.pdfgen import canvas
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "output" / "pdf"
 TMP_DIR = ROOT / "tmp" / "pdfs"
-OUT_PDF = OUT_DIR / "vectra-business-card-zouhair-loumini.pdf"
+OUT_PDF = OUT_DIR / "vectra-business-card-zouheir-lommini.pdf"
 
 MM = 72 / 25.4
 TRIM_W = 85 * MM
@@ -35,18 +36,17 @@ BLEED_X = SLUG
 BLEED_Y = SLUG
 
 DARK = HexColor("#121519")
-DARK_2 = HexColor("#181C21")
 LIME = HexColor("#D9FF41")
 WHITE = HexColor("#FFFFFF")
 GRAY = HexColor("#D1D5DB")
-MUTED = HexColor("#9CA3AF")
 
-NAME = "Zouhair Loumini"
+NAME = "Zouheir Lommini"
 ROLE = "Directeur général"
 EMAIL = "hello@vectrastudio.ch"
 PHONE = "+41 76 456 81 17"
-ADDRESS_1 = "Chemin de la Colline 19"
-ADDRESS_2 = "1635 La Tour-de-Trême (Fribourg), Suisse"
+ADDRESS_1 = "Chemin des Ebastements 29"
+ADDRESS_2 = "1618 Châtel-Saint-Denis"
+ADDRESS_3 = "(Fribourg), Suisse"
 QR_URL = "https://vectrastudio.ch"
 
 
@@ -105,24 +105,41 @@ def register_fonts() -> None:
     pdfmetrics.registerFont(TTFont("TTFirs-Medium", str(medium_ttf)))
 
 
-LOGO_PATH = (
-    "M946.49 726.21 v411.48 a48.36 48.36 0 0 1 -48.36 48.36 H498 "
-    "a48.35 48.35 0 0 1 -40.3 -21.63 L8.06 486.57 A48.31 48.31 0 0 1 0 459.84 "
-    "V48.36 A48.36 48.36 0 0 1 48.36 0 H448.47 a48.35 48.35 0 0 1 40.3 21.63 "
-    "L938.43 699.48 A48.31 48.31 0 0 1 946.49 726.21 Z"
-)
+def load_logo_drawing() -> tuple[Drawing, float, float]:
+    """Load the supplied SVG's geometry directly, without recreating the mark."""
+    svg_path = ROOT / "public" / "assets" / "logo.svg"
+    root = ElementTree.parse(svg_path).getroot()
+    _, _, source_w, source_h = [float(value) for value in root.attrib["viewBox"].split()]
+    drawing = Drawing(source_w, source_h)
+
+    for element in root.iter():
+        tag = element.tag.rsplit("}", 1)[-1]
+        if tag == "rect":
+            drawing.add(
+                Rect(
+                    float(element.attrib.get("x", 0)),
+                    float(element.attrib.get("y", 0)),
+                    float(element.attrib["width"]),
+                    float(element.attrib["height"]),
+                    rx=float(element.attrib.get("rx", 0)),
+                    ry=float(element.attrib.get("ry", element.attrib.get("rx", 0))),
+                    fillColor=LIME,
+                    strokeColor=None,
+                )
+            )
+        elif tag == "path":
+            drawing.add(SvgPath(element.attrib["d"], fillColor=LIME, strokeColor=None))
+    return drawing, source_w, source_h
 
 
-def draw_mark(c: canvas.Canvas, x: float, y: float, width: float, color: Color) -> None:
-    source_w, source_h = 1423.26, 1186.05
+def draw_mark(c: canvas.Canvas, x: float, y: float, width: float) -> None:
+    drawing, source_w, source_h = load_logo_drawing()
     scale = width / source_w
     height = source_h * scale
-    drawing = Drawing(source_w, source_h)
-    drawing.add(Rect(948.84, 711.63, 474.42, 474.42, rx=48.36, ry=48.36, fillColor=color, strokeColor=None))
-    drawing.add(SvgPath(LOGO_PATH, fillColor=color, strokeColor=None))
     c.saveState()
-    c.translate(x, y)
-    c.scale(scale, scale)
+    # SVG uses a top-left origin. This transform preserves the asset's native orientation.
+    c.translate(x, y + height)
+    c.scale(scale, -scale)
     renderPDF.draw(drawing, c, 0, 0)
     c.restoreState()
     return height
@@ -166,48 +183,63 @@ def draw_spaced_text(
     c.drawText(text_object)
 
 
-def draw_front(c: canvas.Canvas) -> None:
-    c.setFillColor(LIME)
-    c.rect(BLEED_X, BLEED_Y, TRIM_W + 2 * BLEED, TRIM_H + 2 * BLEED, fill=1, stroke=0)
-
-    # A single centered lockup makes the card instantly recognizable at a glance.
-    mark_w = mm(17.5)
+def draw_brand_lockup(c: canvas.Canvas, x: float, y: float, total_width: float) -> tuple[float, float]:
+    """Draw the complete website lockup: symbol, VECTRASTUDIO, BY TIMGROUP."""
+    mark_w = total_width * 0.16
     mark_h = mark_w * 1186.05 / 1423.26
-    word = "Vectra"
-    word_size = 24
-    word_w = pdfmetrics.stringWidth(word, "TTFirs-Medium", word_size)
-    gap = mm(4)
-    lockup_w = mark_w + gap + word_w
-    start_x = TRIM_X + (TRIM_W - lockup_w) / 2
-    center_y = TRIM_Y + TRIM_H / 2
+    gap = total_width * 0.055
+    text_x = x + mark_w + gap
+    text_w = total_width - mark_w - gap
 
-    draw_mark(c, start_x, center_y - mark_h / 2, mark_w, DARK)
-    c.setFillColor(DARK)
-    c.setFont("TTFirs-Medium", word_size)
-    c.drawString(start_x + mark_w + gap, center_y - word_size * 0.34, word)
+    draw_mark(c, x, y, mark_w)
 
+    main = "VECTRASTUDIO"
+    main_char_space = total_width / mm(72) * 0.35
+    main_unit_width = pdfmetrics.stringWidth(main, "TTFirs", 1)
+    main_size = (text_w - main_char_space * (len(main) - 1)) / main_unit_width
+    c.setFillColor(WHITE)
     draw_spaced_text(
         c,
-        TRIM_X + mm(7),
-        TRIM_Y + mm(6.2),
-        "SYSTÈMES OPÉRATIONNELS · SUISSE",
-        "TTFirs-Medium",
-        6.6,
-        0.7,
+        text_x,
+        y + mark_h * 0.53,
+        main,
+        "TTFirs",
+        main_size,
+        main_char_space,
     )
 
-    # Tiny registration-style detail, borrowed from the website's technical tone.
-    x2 = TRIM_X + TRIM_W - mm(7)
-    y2 = TRIM_Y + mm(6.2)
-    c.setLineWidth(0.7)
-    c.line(x2 - mm(7), y2 + mm(0.8), x2, y2 + mm(0.8))
-    c.circle(x2, y2 + mm(0.8), mm(0.7), fill=1, stroke=0)
+    sub = "BY TIMGROUP"
+    sub_size = main_size * 0.47
+    sub_char_space = sub_size * 0.15
+    c.setFillColor(HexColor("#7F8797"))
+    draw_spaced_text(
+        c,
+        text_x,
+        y - mark_h * 0.02,
+        sub,
+        "TTFirs",
+        sub_size,
+        sub_char_space,
+    )
+    return total_width, mark_h
+
+
+def draw_front(c: canvas.Canvas) -> None:
+    c.setFillColor(DARK)
+    c.rect(BLEED_X, BLEED_Y, TRIM_W + 2 * BLEED, TRIM_H + 2 * BLEED, fill=1, stroke=0)
+
+    # The front reproduces the supplied website logo lockup without extra elements.
+    lockup_w = mm(72)
+    mark_h = lockup_w * 0.16 * 1186.05 / 1423.26
+    lockup_x = TRIM_X + (TRIM_W - lockup_w) / 2
+    lockup_y = TRIM_Y + (TRIM_H - mark_h) / 2
+    draw_brand_lockup(c, lockup_x, lockup_y, lockup_w)
     draw_crop_marks(c)
 
 
 def draw_qr(c: canvas.Canvas, x: float, y: float, size: float) -> None:
     c.setFillColor(LIME)
-    c.roundRect(x, y, size, size, mm(1.6), fill=1, stroke=0)
+    c.roundRect(x, y, size, size, mm(0.8), fill=1, stroke=0)
 
     qr = QrCodeWidget(QR_URL)
     qr.barFillColor = DARK
@@ -215,10 +247,11 @@ def draw_qr(c: canvas.Canvas, x: float, y: float, size: float) -> None:
     bounds = qr.getBounds()
     qr_w = bounds[2] - bounds[0]
     qr_h = bounds[3] - bounds[1]
-    inner = size - mm(3.2)
+    quiet = mm(1.4)
+    inner = size - 2 * quiet
     drawing = Drawing(inner, inner, transform=[inner / qr_w, 0, 0, inner / qr_h, 0, 0])
     drawing.add(qr)
-    renderPDF.draw(drawing, c, x + mm(1.6), y + mm(1.6))
+    renderPDF.draw(drawing, c, x + quiet, y + quiet)
 
 
 def draw_back(c: canvas.Canvas) -> None:
@@ -229,13 +262,10 @@ def draw_back(c: canvas.Canvas) -> None:
     right = TRIM_X + TRIM_W - mm(7)
     top = TRIM_Y + TRIM_H - mm(6.5)
 
-    # Compact brand signature.
-    mark_w = mm(5.2)
-    mark_h = mark_w * 1186.05 / 1423.26
-    draw_mark(c, left, top - mark_h, mark_w, LIME)
-    c.setFillColor(WHITE)
-    c.setFont("TTFirs-Medium", 12.8)
-    c.drawString(left + mark_w + mm(2.2), top - mark_h * 0.62, "Vectra")
+    # Compact version of the same complete website lockup.
+    header_w = mm(35)
+    header_mark_h = header_w * 0.16 * 1186.05 / 1423.26
+    draw_brand_lockup(c, left, top - header_mark_h, header_w)
 
     # Name and role form the primary typographic anchor.
     name_y = TRIM_Y + mm(32.5)
@@ -246,37 +276,24 @@ def draw_back(c: canvas.Canvas) -> None:
     c.setFillColor(LIME)
     c.drawString(left, TRIM_Y + mm(26.5), ROLE)
 
-    # Contact details.
+    # Keep every textual element on the same left edge as the identity block.
+    text_x = left
     c.setFillColor(WHITE)
-    c.setFont("TTFirs", 8.1)
-    c.drawString(left, TRIM_Y + mm(18), EMAIL)
-    c.drawString(left, TRIM_Y + mm(13.6), PHONE)
+    c.setFont("TTFirs", 7.4)
+    c.drawString(text_x, TRIM_Y + mm(19.8), EMAIL)
+    c.drawString(text_x, TRIM_Y + mm(15.6), PHONE)
     c.setFillColor(GRAY)
-    c.setFont("TTFirs", 6.4)
-    c.drawString(left, TRIM_Y + mm(9), ADDRESS_1)
-    c.drawString(left, TRIM_Y + mm(5.8), ADDRESS_2)
+    c.setFont("TTFirs", 5.6)
+    c.drawString(text_x, TRIM_Y + mm(10.6), ADDRESS_1)
+    c.drawString(text_x, TRIM_Y + mm(7.5), ADDRESS_2)
+    c.drawString(text_x, TRIM_Y + mm(4.4), ADDRESS_3)
 
-    # QR code and web address.
-    qr_size = mm(20)
+    qr_size = mm(17)
     qr_x = right - qr_size
-    qr_y = TRIM_Y + mm(10.5)
+    qr_y = TRIM_Y + mm(5.2)
     draw_qr(c, qr_x, qr_y, qr_size)
-    c.setFillColor(MUTED)
-    draw_spaced_text(
-        c,
-        qr_x + qr_size / 2,
-        TRIM_Y + mm(6.5),
-        "VECTRASTUDIO.CH",
-        "TTFirs-Medium",
-        5.8,
-        0.25,
-        centered=True,
-    )
 
-    # Fine rules echo the website's dark grid without adding visual noise.
-    c.setStrokeColor(HexColor("#282E36"))
-    c.setLineWidth(0.45)
-    c.line(left, TRIM_Y + mm(3), right, TRIM_Y + mm(3))
+    # The lime spine ties the brand mark, identity block, and contact details together.
     c.setStrokeColor(LIME)
     c.setLineWidth(mm(0.75))
     c.line(TRIM_X, TRIM_Y + mm(5), TRIM_X, TRIM_Y + TRIM_H - mm(5))
@@ -296,7 +313,7 @@ def apply_print_boxes(pdf_path: Path) -> None:
         writer.add_page(page)
     writer.add_metadata(
         {
-            "/Title": "Carte de visite Vectra - Zouhair Loumini",
+            "/Title": "Carte de visite Vectra - Zouheir Lommini",
             "/Author": "Vectra",
             "/Subject": "Carte de visite recto-verso, format suisse 85 x 55 mm",
         }
@@ -311,7 +328,7 @@ def main() -> None:
     register_fonts()
 
     c = canvas.Canvas(str(OUT_PDF), pagesize=(PAGE_W, PAGE_H), pageCompression=1)
-    c.setTitle("Carte de visite Vectra - Zouhair Loumini")
+    c.setTitle("Carte de visite Vectra - Zouheir Lommini")
     draw_front(c)
     c.showPage()
     draw_back(c)

@@ -26,7 +26,7 @@ export async function generateMetadata({
 
   return {
     title: titles[locale],
-    description: `Conditions générales de vente, de service et charte d'éthique contractuelle de ${COMPANY.legalName} à La Tour-de-Trême (Fribourg), Suisse.`,
+    description: `Conditions générales de vente, de service et charte d'éthique contractuelle de ${COMPANY.legalName} à ${COMPANY.addressLocality} (${COMPANY.addressRegion}), Suisse.`,
     alternates: { canonical: `${SITE_URL}/${locale}/legal/terms`, languages },
   };
 }
