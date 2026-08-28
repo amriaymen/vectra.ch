@@ -2,8 +2,6 @@ import Link from 'next/link';
 import Section from './Section';
 import { COMPANY, type Dictionary, type Locale } from '../data';
 
-const SOCIAL_LABELS = ['LinkedIn', 'X', 'Facebook', 'Instagram', 'TikTok'];
-
 export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: Locale }) {
   /*
    * Show a phone number only once it is a Swiss one. A +216 number sitting
@@ -55,21 +53,24 @@ export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: L
                 {COMPANY.postalCode} {COMPANY.addressLocality} (Fribourg), Suisse
               </address>
             )}
+            <p className="text-band-body">Vectra fait partie de {COMPANY.groupName}.</p>
           </div>
 
-          <nav aria-label={t.footer.social} className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
-            {COMPANY.social.map((href, index) => (
-              <a
-                key={href}
-                className="text-band-body transition-colors hover:text-band-brand"
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {SOCIAL_LABELS[index]}
-              </a>
-            ))}
-          </nav>
+          {COMPANY.social.length > 0 && (
+            <nav aria-label={t.footer.social} className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              {COMPANY.social.map((href) => (
+                <a
+                  key={href}
+                  className="text-band-body transition-colors hover:text-band-brand"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {href}
+                </a>
+              ))}
+            </nav>
+          )}
 
           {/*
             Process, Pricing and FAQs live here rather than in the header. All

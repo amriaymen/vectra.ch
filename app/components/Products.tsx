@@ -141,15 +141,15 @@ function Card({
 }
 
 export default function Products({ t, locale }: { t: Dictionary; locale: Locale }) {
-  const ordered = [...PRODUCTS].sort((a, b) => Number(b.featured) - Number(a.featured));
+  const ordered = PRODUCTS.filter((product) => !product.featured);
 
   return (
     <Section id="work">
       <div className="max-w-3xl">
         <h2 className="text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl">
-          {t.products.title}
+          {t.spotbaseFeature.supportingTitle}
         </h2>
-        <p className="mt-6 text-lg leading-relaxed text-band-lead">{t.products.intro}</p>
+        <p className="mt-6 text-lg leading-relaxed text-band-lead">{t.spotbaseFeature.supportingIntro}</p>
       </div>
 
       <div className="mt-14 grid gap-6 md:grid-cols-2 lg:gap-8">

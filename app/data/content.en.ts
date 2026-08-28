@@ -68,6 +68,35 @@ const en = {
     mediaLabel: 'The Schoolze school management portal in use',
   },
 
+  operationalProblem: {
+    kicker: 'The operational bottleneck',
+    title: 'When the work lives in five places, your team spends its time reconnecting it.',
+    body: 'We map the process as it actually runs, then replace the fragile hand-offs with one system your team can rely on.',
+    signals: ['Spreadsheets', 'Paper forms', 'WhatsApp', 'Phone calls', 'Disconnected software'],
+  },
+
+  schoolManagement: {
+    kicker: 'Custom school management',
+    title: 'A school-management system designed around your establishment.',
+    body: 'Admissions, attendance, parent communication, billing and multi-site administration in one system, shaped around your team rather than a generic template.',
+    modulesLabel: 'A first module can bring together',
+    modules: ['Admissions and student records', 'Attendance and reports', 'Parent portal and communication', 'Billing and administration'],
+    delivery: 'A first operational module can be delivered in 3–4 weeks.',
+  },
+
+  spotbaseFeature: {
+    kicker: 'Vectra-owned SaaS',
+    title: 'Spotbase connects booking, payment and revenue in one system.',
+    body: 'We built and operate Spotbase ourselves for sports facilities, clubs and communes. It is practical proof of the kind of operational system Vectra designs, ships and improves.',
+    chainLabel: 'One operational record, from start to finish',
+    chain: ['Availability and booking rules', 'Self-service reservations', 'Payment attached to the booking', 'Revenue and facility-use reporting'],
+    imageAlt: 'Spotbase demonstration interface showing a facility booking calendar',
+    ownership: 'Spotbase is Vectra-owned software, built and operated by our own team.',
+    productCta: 'Explore Spotbase',
+    supportingTitle: 'Other systems we have built',
+    supportingIntro: 'Relevant experience across school administration, HR, payroll and multi-site operations.',
+  },
+
   engagementModels: {
     title: 'Choose how you\'d like to work with us.',
     items: [
@@ -80,9 +109,10 @@ const en = {
   whoWeServe: {
     kicker: 'Target Industries',
     title: 'We specialize in operational software.',
-    list: ['Education', 'Sports', 'Workforce', 'Public Sector'],
-    footer: 'We also build custom software for startups and businesses.',
-    badge: 'Dedicated Systems'
+    list: ['Schools and education', 'Sports facilities', 'Employers'],
+    footer: 'For organisations ready to replace fragmented day-to-day operations with a system built around their workflow.',
+    badge: 'Custom systems',
+    cta: 'Describe your need',
   },
 
   decisionMatrix: {
@@ -321,9 +351,11 @@ const en = {
   },
 
   pricing: {
-    title: 'Three ways to work with us',
-    intro: 'Published rates, fixed milestones, and no charge for scoping.',
+    title: 'Custom software, scoped before we start.',
+    intro: 'Fixed milestones, a written scope and no charge for initial scoping.',
     onRequest: 'On request',
+    featuredLabel: 'Primary offer',
+    projectStartingPrice: "From CHF 10'000",
     models: {
       license: {
         name: 'Software License',
@@ -355,10 +387,10 @@ const en = {
   },
 
   scope: {
-    title: 'Get a fixed-price scope',
+    title: 'Tell us which operational process needs fixing.',
     intro:
-      'Answer five short questions and we will draft your project scope — phases, deliverables, timeline and a price band — on this page, in about a minute. No call required first, and no charge for the scoping.',
-    aside: 'Prefer to talk it through? Book a call from the banner below instead.',
+      'Answer five short questions and we will prepare an initial scope — modules, milestones, timeline and a price band — on this page, in about a minute. No call required first, and no charge for the scoping.',
+    aside: 'Prefer to talk it through? You can book a call from the banner below.',
     stepOf: 'Step {current} of {total}',
     stepNames: ['What you need', 'Modules', 'Scale', 'Timing', 'Your details'],
     next: 'Next',
@@ -370,7 +402,7 @@ const en = {
       drafting: 'Drafting phases and deliverables',
       estimating: 'Estimating timeline and range',
     },
-    q1: { title: 'What kind of system do you need?', hint: 'Pick the closest match.' },
+    q1: { title: 'Which process do you want to simplify?', hint: 'Pick the closest match.' },
     q2: { title: 'Which parts do you need?', hint: 'Select everything that applies.' },
     q3: { title: 'How big is it?', hint: 'Rough numbers are fine.' },
     q4: { title: 'When do you want it live?', hint: 'And roughly what budget are you working with?' },

@@ -64,6 +64,35 @@ const de: Dictionary = {
     mediaLabel: 'Das Schoolze Schulverwaltungsportal im Einsatz',
   },
 
+  operationalProblem: {
+    kicker: 'Der operative Engpass',
+    title: 'Wenn die Arbeit in fünf Werkzeugen lebt, verbringt Ihr Team seine Zeit damit, sie wieder zu verbinden.',
+    body: 'Wir erfassen Ihren tatsächlichen Ablauf und ersetzen die fragilen Übergaben durch ein System, auf das sich Ihr Team verlassen kann.',
+    signals: ['Tabellenkalkulationen', 'Papierformulare', 'WhatsApp', 'Telefonate', 'Nicht verbundene Software'],
+  },
+
+  schoolManagement: {
+    kicker: 'Massgeschneiderte Schulverwaltung',
+    title: 'Ein Schulverwaltungssystem, das für Ihre Institution entwickelt wird.',
+    body: 'Anmeldungen, Anwesenheiten, Elternkommunikation, Fakturierung und Mehrstandortverwaltung in einem System – abgestimmt auf Ihr Team statt auf eine generische Vorlage.',
+    modulesLabel: 'Ein erstes Modul kann Folgendes zusammenführen',
+    modules: ['Anmeldungen und Schülerdossiers', 'Anwesenheiten und Berichte', 'Elternportal und Kommunikation', 'Fakturierung und Administration'],
+    delivery: 'Ein erstes betriebsbereites Modul kann in 3–4 Wochen geliefert werden.',
+  },
+
+  spotbaseFeature: {
+    kicker: 'SaaS von Vectra',
+    title: 'Spotbase vereint Reservation, Zahlung und Umsatzübersicht in einem System.',
+    body: 'Wir haben Spotbase für Sportzentren, Vereine und Gemeinden selbst entwickelt und betreiben es auch selbst. Es ist der konkrete Beweis für die operativen Systeme, die Vectra konzipiert, liefert und weiterentwickelt.',
+    chainLabel: 'Ein betrieblicher Datensatz von Anfang bis Ende',
+    chain: ['Verfügbarkeiten und Buchungsregeln', 'Selbstbedienungs-Reservationen', 'Der Reservation zugeordnete Zahlung', 'Umsatz- und Nutzungsreporting'],
+    imageAlt: 'Spotbase-Demonstrationsoberfläche mit einem Reservierungskalender für Anlagen',
+    ownership: 'Spotbase ist eine SaaS-Software im Besitz von Vectra, die von unserem eigenen Team entwickelt und betrieben wird.',
+    productCta: 'Spotbase entdecken',
+    supportingTitle: 'Weitere Systeme, die wir entwickelt haben',
+    supportingIntro: 'Relevante Erfahrung in Schulverwaltung, HR, Lohnbuchhaltung und Mehrstandortbetrieb.',
+  },
+
   engagementModels: {
     title: 'Wie wir zusammenarbeiten',
     items: [
@@ -76,9 +105,10 @@ const de: Dictionary = {
   whoWeServe: {
     kicker: 'Branchen & Bereiche',
     title: 'Wir sind auf operative Software spezialisiert.',
-    list: ['Bildungswesen', 'Sportanlagen', 'Öffentlicher Sektor', 'KMU & Startups'],
-    footer: 'Wir entwickeln auch massgeschneiderte Software für Startups und Unternehmen.',
-    badge: 'Spezialisierte Systeme'
+    list: ['Schulen und Bildung', 'Sportanlagen', 'Arbeitgeber'],
+    footer: 'Für Organisationen, die verstreute tägliche Abläufe durch ein System ersetzen wollen, das zu ihrem tatsächlichen Prozess passt.',
+    badge: 'Massgeschneiderte Systeme',
+    cta: 'Bedarf schildern',
   },
 
   decisionMatrix: {
@@ -322,9 +352,11 @@ const de: Dictionary = {
   },
 
   pricing: {
-    title: 'Drei Arten der Zusammenarbeit',
-    intro: 'Publizierte Tarife, feste Meilensteine und kein kostenpflichtiges Scoping.',
+    title: 'Massgeschneiderte Software, vor dem Start klar definiert.',
+    intro: 'Fixpreis-Meilensteine, ein schriftlicher Umfang und keine Kosten für die Erstabklärung.',
     onRequest: 'Auf Anfrage',
+    featuredLabel: 'Unser Hauptangebot',
+    projectStartingPrice: "Ab CHF 10'000",
     models: {
       license: {
         name: 'Softwarelizenz',
@@ -354,10 +386,10 @@ const de: Dictionary = {
   },
 
   scope: {
-    title: 'Fixpreis-Offerte anfragen',
+    title: 'Welchen operativen Prozess möchten Sie vereinfachen?',
     intro:
-      'Beantworten Sie fünf kurze Fragen und wir erstellen Ihnen in etwa einer Minute einen ersten Projektplan — Phasen, Leistungen, Zeitplan und einen Preisrahmen — direkt auf dieser Seite. Kein Anruf nötig und völlig kostenlos.',
-    aside: 'Sprechen Sie lieber persönlich mit uns? Buchen Sie stattdessen einen Termin über den Banner unten.',
+      'Beantworten Sie fünf kurze Fragen und wir erstellen direkt auf dieser Seite eine erste Projektklärung — Module, Meilensteine, Zeitplan und Preisrahmen — in etwa einer Minute. Kein Anruf nötig und ohne Kosten für die Erstabklärung.',
+    aside: 'Möchten Sie lieber persönlich darüber sprechen? Über den Banner unten können Sie einen Termin buchen.',
     stepOf: 'Schritt {current} von {total}',
     stepNames: ['Was Sie brauchen', 'Module', 'Grösse', 'Zeitplan', 'Ihre Angaben'],
     next: 'Weiter',
@@ -369,7 +401,7 @@ const de: Dictionary = {
       drafting: 'Phasen und Leistungen werden entworfen',
       estimating: 'Zeitplan und Kostenrahmen werden geschätzt',
     },
-    q1: { title: 'Welche Art von System benötigen Sie?', hint: 'Wählen Sie die treffendste Option.' },
+    q1: { title: 'Welchen Prozess möchten Sie vereinfachen?', hint: 'Wählen Sie die treffendste Option.' },
     q2: { title: 'Welche Bestandteile brauchen Sie?', hint: 'Wählen Sie alles Zutreffende aus.' },
     q3: { title: 'Wie gross ist das Projekt?', hint: 'Grobe Schätzungen reichen aus.' },
     q4: { title: 'Wann soll das System live gehen?', hint: 'Und mit welchem ungefähren Budget planen Sie?' },

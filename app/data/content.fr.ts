@@ -61,10 +61,39 @@ const fr: Dictionary = {
     titleLine1: 'Des logiciels de gestion conçus pour',
     titleLine2: 'le fonctionnement réel de votre établissement.',
     body: 'Nous remplaçons les processus dispersés entre Excel, le papier, WhatsApp et les appels par un système unique, adapté à vos équipes. Premier module opérationnel en 3 à 4 semaines.',
-    primaryCta: 'Estimer mon projet',
+    primaryCta: 'Décrire votre besoin',
     secondaryCta: 'Voir nos réalisations',
     proof: 'Pour les établissements scolaires, centres sportifs et employeurs suisses.',
     mediaLabel: 'Le portail de gestion scolaire Schoolze en cours d’utilisation',
+  },
+
+  operationalProblem: {
+    kicker: 'Le processus à simplifier',
+    title: 'Lorsque le travail vit dans cinq outils, vos équipes passent leur temps à les relier.',
+    body: 'Nous cartographions le fonctionnement réel de votre organisation, puis nous remplaçons les passages fragiles par un système unique sur lequel vos équipes peuvent s’appuyer.',
+    signals: ['Excel', 'Formulaires papier', 'WhatsApp', 'Appels téléphoniques', 'Logiciels déconnectés'],
+  },
+
+  schoolManagement: {
+    kicker: 'Gestion scolaire sur mesure',
+    title: 'Un système de gestion scolaire conçu pour votre établissement.',
+    body: 'Inscriptions, présences, communication avec les parents, facturation et administration multi-sites réunies dans un seul système, adapté à vos équipes plutôt qu’à un modèle générique.',
+    modulesLabel: 'Un premier module peut réunir',
+    modules: ['Inscriptions et dossiers des élèves', 'Présences et rapports', 'Portail parents et communication', 'Facturation et administration'],
+    delivery: 'Un premier module opérationnel peut être livré en 3 à 4 semaines.',
+  },
+
+  spotbaseFeature: {
+    kicker: 'SaaS conçu par Vectra',
+    title: 'Spotbase réunit réservations, paiements et suivi des revenus dans un seul système.',
+    body: 'Nous avons conçu et exploitons nous-mêmes Spotbase pour les centres sportifs, les clubs et les communes. C’est une preuve concrète du type de système opérationnel que Vectra conçoit, livre et améliore.',
+    chainLabel: 'Un seul enregistrement, du début à la fin',
+    chain: ['Disponibilités et règles de réservation', 'Réservations en libre-service', 'Paiement rattaché à la réservation', 'Suivi des revenus et de l’utilisation des installations'],
+    imageAlt: 'Interface de démonstration de Spotbase montrant un calendrier de réservation d’installations',
+    ownership: 'Spotbase est un logiciel SaaS détenu, conçu et exploité par Vectra.',
+    productCta: 'Découvrir Spotbase',
+    supportingTitle: 'Autres systèmes que nous avons réalisés',
+    supportingIntro: 'Une expérience pertinente en administration scolaire, RH, paie et gestion multi-sites.',
   },
 
   engagementModels: {
@@ -79,9 +108,10 @@ const fr: Dictionary = {
   whoWeServe: {
     kicker: 'Secteurs d’activité',
     title: 'Nous sommes spécialisés dans les logiciels opérationnels.',
-    list: ['Éducation', 'Sport', 'Ressources humaines', 'Secteur public'],
-    footer: 'Nous créons également des logiciels sur mesure pour les startups et les entreprises.',
-    badge: 'Systèmes dédiés'
+    list: ['Établissements scolaires', 'Centres sportifs', 'Employeurs'],
+    footer: 'Pour les organisations prêtes à remplacer des opérations quotidiennes dispersées par un système adapté à leur fonctionnement.',
+    badge: 'Systèmes sur mesure',
+    cta: 'Décrire votre besoin',
   },
 
   decisionMatrix: {
@@ -348,9 +378,11 @@ const fr: Dictionary = {
   },
 
   pricing: {
-    title: 'Trois façons de collaborer',
-    intro: 'Des tarifs publiés, des jalons fixes, et aucun frais de cadrage.',
+    title: 'Un logiciel sur mesure, cadré avant le démarrage.',
+    intro: 'Des jalons à prix fixe, un cadrage écrit et aucun frais de cadrage initial.',
     onRequest: 'Sur demande',
+    featuredLabel: 'Notre offre principale',
+    projectStartingPrice: "Dès CHF 10'000",
     models: {
       license: {
         name: 'Licence logicielle',
@@ -380,10 +412,10 @@ const fr: Dictionary = {
   },
 
   scope: {
-    title: 'Obtenez un cadrage à prix fixe',
+    title: 'Parlez-nous du processus à simplifier.',
     intro:
-      'Répondez à cinq questions courtes et nous rédigeons le cadrage de votre projet — phases, livrables, calendrier et fourchette de prix — sur cette page, en une minute environ. Sans appel préalable, et sans frais de cadrage.',
-    aside: 'Vous préférez en parler ? Réservez un appel depuis la bannière ci-dessous.',
+      'Répondez à cinq questions courtes et nous préparons un premier cadrage — modules, jalons, calendrier et fourchette de prix — directement sur cette page, en une minute environ. Sans appel préalable, et sans frais de cadrage.',
+    aside: 'Vous préférez en parler ? Vous pouvez réserver un appel depuis la bannière ci-dessous.',
     stepOf: 'Étape {current} sur {total}',
     stepNames: ['Votre besoin', 'Modules', 'Échelle', 'Calendrier', 'Vos coordonnées'],
     next: 'Suivant',
@@ -395,7 +427,7 @@ const fr: Dictionary = {
       drafting: 'Rédaction des phases et des livrables',
       estimating: 'Estimation du calendrier et de la fourchette',
     },
-    q1: { title: 'De quel type de système avez-vous besoin ?', hint: 'Choisissez la réponse la plus proche.' },
+    q1: { title: 'Quel processus souhaitez-vous simplifier ?', hint: 'Choisissez l’option la plus proche.' },
     q2: { title: 'De quelles parties avez-vous besoin ?', hint: 'Sélectionnez tout ce qui s’applique.' },
     q3: { title: 'Quelle est son échelle ?', hint: 'Des ordres de grandeur suffisent.' },
     q4: { title: 'Pour quand le voulez-vous en production ?', hint: 'Et avec quel budget approximatif ?' },

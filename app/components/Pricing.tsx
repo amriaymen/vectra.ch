@@ -31,7 +31,7 @@ export default function Pricing({ t }: { t: Dictionary }) {
               <h4 className="text-xl leading-snug text-band-fg">{model.name}</h4>
               {model.featured && (
                 <span className="rounded-full bg-band-brand/10 px-2.5 py-0.5 text-xs font-medium text-band-brand">
-                  Most popular
+                  {t.pricing.featuredLabel}
                 </span>
               )}
             </div>
@@ -40,7 +40,9 @@ export default function Pricing({ t }: { t: Dictionary }) {
 
             {/* The subscription model is the one with published rates — that is
                 its entire point, so it shows numbers where the others cannot. */}
-            {model.id === 'subscription' ? (
+            {model.id === 'project' ? (
+              <p className="mt-6 font-medium text-3xl text-band-fg">{t.pricing.projectStartingPrice}</p>
+            ) : model.id === 'subscription' ? (
               <div className="mt-6">
                 <ul className="grid gap-3">
                   {SUBSCRIPTION_TIERS.map((tier) => (

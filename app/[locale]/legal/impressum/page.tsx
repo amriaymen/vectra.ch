@@ -26,7 +26,7 @@ export async function generateMetadata({
 
   return {
     title: titles[locale],
-    description: `Mentions légales et informations officielles concernant la société ${COMPANY.legalName} à La Tour-de-Trême (Fribourg), Suisse.`,
+    description: `Mentions légales et informations officielles concernant la société ${COMPANY.legalName}, dont le siège est à ${COMPANY.registeredSeat}, Suisse.`,
     alternates: { canonical: `${SITE_URL}/${locale}/legal/impressum`, languages },
   };
 }
@@ -59,7 +59,9 @@ export default function ImpressumPage({ params }: { params: { locale: string } }
                 <h2 className="text-xl font-semibold text-white">1. Éditeur du Site & Raison Sociale</h2>
                 <p>
                   <strong>Nom de la société :</strong> {COMPANY.legalName || COMPANY.name}<br />
-                  <strong>Siège social :</strong> {COMPANY.streetAddress}, {COMPANY.postalCode} {COMPANY.addressLocality} ({COMPANY.addressRegion}), Suisse<br />
+                  <strong>Siège social :</strong> {COMPANY.registeredSeat}, Suisse<br />
+                  <strong>Adresse :</strong> {COMPANY.streetAddress}, {COMPANY.postalCode} {COMPANY.addressLocality} ({COMPANY.addressRegion}), Suisse<br />
+                  <strong>IDE :</strong> {COMPANY.uid}<br />
                   <strong>Pays :</strong> Suisse (CH)
                 </p>
               </section>
@@ -77,7 +79,8 @@ export default function ImpressumPage({ params }: { params: { locale: string } }
                     {COMPANY.phoneSwiss}
                   </a>
                   <br />
-                  <strong>Direction :</strong> Direction Générale {COMPANY.name}
+                  <strong>Direction :</strong> TIMGroupe Sàrl<br />
+                  <strong>Groupe :</strong> Vectra fait partie de {COMPANY.groupName}.
                 </p>
               </section>
 
@@ -98,7 +101,7 @@ export default function ImpressumPage({ params }: { params: { locale: string } }
               <section className="space-y-2">
                 <h2 className="text-xl font-semibold text-white">4. Propriété Intellectuelle</h2>
                 <p>
-                  L’ensemble des contenus, marques, logos, graphismes, codes sources et vidéos présents sur ce site sont protégés par la loi suisse sur le droit d’auteur (LDA) et appartiennent exclusivement à {COMPANY.name} Sàrl, sauf mention contraire.
+                  L’ensemble des contenus, marques, logos, graphismes, codes sources et vidéos présents sur ce site sont protégés par la loi suisse sur le droit d’auteur (LDA) et appartiennent à {COMPANY.legalName}, sauf mention contraire.
                 </p>
               </section>
             </div>

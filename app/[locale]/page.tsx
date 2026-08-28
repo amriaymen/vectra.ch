@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
+import OperationalProblem from '../components/OperationalProblem';
+import SchoolManagement from '../components/SchoolManagement';
+import FeaturedSpotbase from '../components/FeaturedSpotbase';
 import TrustStrip from '../components/TrustStrip';
 import Problem from '../components/Problem';
 import Tracks from '../components/Tracks';
@@ -14,9 +17,7 @@ import ScopeForm from '../components/ScopeForm';
 import Faq from '../components/Faq';
 import CtaBanner from '../components/CtaBanner';
 import Footer from '../components/Footer';
-import EngagementModels from '../components/EngagementModels';
 import WhoWeServe from '../components/WhoWeServe';
-import DecisionMatrix from '../components/DecisionMatrix';
 import WhyVectra from '../components/WhyVectra';
 import { LOCALE_TAGS, SITE_URL, getContent, isLocale, type Locale } from '../data';
 
@@ -48,11 +49,12 @@ export default function Home({ params }: { params: { locale: string } }) {
           DecisionMatrix must flip to dark to keep the alternation. */}
       <Header t={t} locale={locale} />
       <Hero t={t} />
-      <EngagementModels t={t} />
+      <OperationalProblem t={t} />
+      <SchoolManagement t={t} />
       <WhoWeServe t={t} />
+      <FeaturedSpotbase t={t} locale={locale} />
       <Products t={t} locale={locale} />
       <Testimonials t={t} />
-      <DecisionMatrix t={t} />
       <WhyVectra t={t} />
       <Process t={t} />
       <Pricing t={t} />

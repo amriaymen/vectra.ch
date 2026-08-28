@@ -68,17 +68,16 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
             priority
           />
           {/*
-            leading-none so items-center centres the glyphs, not the line box —
-            "Vectra" has no descenders, so the box would otherwise sit the caps low.
-
-            aria-hidden because the sr-only label above already names the link.
-            Without it the accessible name reads "Vectra — home Vectra".
+            The visible lockup is hidden from assistive technology because the
+            sr-only label above already names the home link.
           */}
-          <span
-            aria-hidden="true"
-            className="hidden sm:inline font-medium text-2xl leading-none tracking-tight text-white transition-colors group-hover:text-primary"
-          >
-            Vectra
+          <span aria-hidden="true" className="hidden sm:grid gap-1">
+            <span className="font-medium text-xl leading-none tracking-[0.04em] text-white transition-colors group-hover:text-primary">
+              VECTRASTUDIO
+            </span>
+            <span className="text-[10px] uppercase leading-none tracking-[0.12em] text-band-muted">
+              By Timgroup
+            </span>
           </span>
         </Link>
 

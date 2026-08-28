@@ -42,29 +42,25 @@ export function formatCHF(amount: number): string {
  * Company identity. Empty strings are treated as "omit" by every consumer, so
  * nothing false is published while they're blank.
  *
- * Filled as of the Fribourg registration, so SWISS_ENTITY below is now true and
- * every origin claim on the site is live. Confirm the hello@vectra.ch mailbox
- * actually receives mail — the Impressum and privacy page both publish it as the
- * address for exercising data protection rights.
+ * The registered entity is verified against the Fribourg commercial-register
+ * extract. The Impressum and privacy page draw their contact details from this
+ * object, so the published details remain consistent.
  */
 export const COMPANY = {
   name: 'Vectra',
-  legalName: 'Vectra Sàrl',
-  email: 'hello@vectra.ch',
+  legalName: 'TIMGroupe Sàrl',
+  groupName: 'TIMGroupe',
+  uid: 'CHE-421.583.207',
+  email: 'hello@vectrastudio.ch',
   phoneSwiss: '+41 76 456 81 17',
   phoneInternational: '+41 76 456 81 17',
-  streetAddress: 'Chemin de la Colline 19',
+  streetAddress: 'c/o Rexhep Kllokoqi, Chemin de la Colline 19',
   postalCode: '1635',
   addressLocality: 'La Tour-de-Trême',
   addressRegion: 'Fribourg',
+  registeredSeat: 'Bulle',
   addressCountry: 'CH',
-  social: [
-    'https://www.linkedin.com/company/vectra/',
-    'https://twitter.com/VectraDesign',
-    'https://www.facebook.com/people/Vectra/100092321876626/',
-    'https://www.instagram.com/vectradesign/',
-    'https://www.tiktok.com/@vectra',
-  ],
+  social: [],
 } as const;
 
 /**
@@ -176,7 +172,7 @@ export const PROOF: { id: string; value: number | null; suffix?: string }[] = [
  * `insurance` only once a policy exists and you can produce the certificate.
  */
 export const CREDENTIALS: { id: 'uid' | 'insurance' | 'stack'; value: string | null }[] = [
-  { id: 'uid', value: null },
+  { id: 'uid', value: COMPANY.uid },
   { id: 'insurance', value: null },
   { id: 'stack', value: 'Next.js, Node, PostgreSQL' },
 ];
@@ -430,11 +426,8 @@ export const PRODUCTS: {
     name: 'Spotbase',
     domain: 'sports',
     status: 'available',
-    // BLOCKED, not missing. /assets/spotbase.mp4 and -poster.webp are encoded and
-    // ready, but the capture is of a LIVE tenant: end-user names and an unpaid
-    // balance are legible throughout. Point these at a demo tenant re-record and
-    // this is the strongest asset on the site.
-    image: null,
+    // Sanitized demonstration capture; the original live-tenant assets remain unused.
+    image: '/assets/spotbase-demo.png',
     video: null,
     tech: ['Next.js', 'Supabase', 'Stripe'],
     featured: true,

@@ -78,6 +78,10 @@ function structuredData(locale: Locale) {
     '@id': `${SITE_URL}/#organization`,
     name: COMPANY.name,
     ...(COMPANY.legalName ? { legalName: COMPANY.legalName } : {}),
+    ...(COMPANY.uid ? { identifier: COMPANY.uid } : {}),
+    ...(COMPANY.groupName
+      ? { parentOrganization: { '@type': 'Organization', name: COMPANY.groupName } }
+      : {}),
     url: `${SITE_URL}/${locale}`,
     description: t.meta.description,
     email: COMPANY.email,
@@ -98,7 +102,7 @@ function structuredData(locale: Locale) {
       ...SERVICE_AREAS.map((city) => ({ '@type': 'City', name: city })),
     ],
     knowsLanguage: ['fr', 'de', 'en'],
-    sameAs: COMPANY.social,
+    ...(COMPANY.social.length > 0 ? { sameAs: COMPANY.social } : {}),
     serviceType: [
       'School and institution management software',
       'HR, time tracking and payroll systems',

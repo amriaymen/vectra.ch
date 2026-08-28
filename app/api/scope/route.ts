@@ -61,7 +61,8 @@ const SCOPE_SCHEMA = {
 } as const;
 
 function systemPrompt(locale: string) {
-  const language = locale === 'fr' ? 'Swiss French (fr-CH)' : 'English';
+  const language =
+    locale === 'fr' ? 'Swiss French (fr-CH)' : locale === 'de' ? 'Swiss Standard German (de-CH)' : 'English';
   return `You are a senior solutions architect at Vectra, a Swiss studio that builds operational
 management systems for institutions and also handles their brand and communication.
 
@@ -131,7 +132,7 @@ export async function POST(request: Request) {
   }
   const { lead } = validated;
 
-  const locale = payload.locale === 'fr' ? 'fr' : 'en';
+  const locale = payload.locale === 'fr' || payload.locale === 'de' ? payload.locale : 'en';
   const intake = intakeSummary(payload);
   const details = {
     Domain: String(payload.domain ?? '—'),
