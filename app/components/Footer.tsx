@@ -46,6 +46,14 @@ export default function Footer({ t, locale = 'fr' }: { t: Dictionary; locale?: L
                 {phone}
               </a>
             )}
+            {COMPANY.phoneBureau && (
+              <a
+                className="transition-colors hover:text-band-brand"
+                href={`tel:${COMPANY.phoneBureau.replace(/\s/g, '')}`}
+              >
+                {COMPANY.phoneBureau}
+              </a>
+            )}
             {hasAddress && (
               <address className="not-italic text-band-body">
                 {COMPANY.streetAddress}

@@ -53,6 +53,7 @@ export const COMPANY = {
   uid: 'CHE-421.583.207',
   email: 'hello@vectrastudio.ch',
   phoneSwiss: '+41 76 456 81 17',
+  phoneBureau: '+41 78 257 73 39',
   phoneInternational: '+41 76 456 81 17',
   streetAddress: 'c/o Zouheir Lommini, Chemin des Ebastements 29',
   postalCode: '1618',

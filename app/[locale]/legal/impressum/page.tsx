@@ -78,6 +78,15 @@ export default function ImpressumPage({ params }: { params: { locale: string } }
                   <a href={`tel:${COMPANY.phoneSwiss.replace(/\s/g, '')}`} className="text-primary hover:underline">
                     {COMPANY.phoneSwiss}
                   </a>
+                  {COMPANY.phoneBureau && (
+                    <>
+                      <br />
+                      <strong>Téléphone (Bureau) :</strong>{' '}
+                      <a href={`tel:${COMPANY.phoneBureau.replace(/\s/g, '')}`} className="text-primary hover:underline">
+                        {COMPANY.phoneBureau}
+                      </a>
+                    </>
+                  )}
                   <br />
                   <strong>Direction :</strong> TIMGroupe Sàrl<br />
                   <strong>Groupe :</strong> Vectra fait partie de {COMPANY.groupName}.

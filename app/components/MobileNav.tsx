@@ -166,6 +166,11 @@ export default function MobileNav({
                 {phone}
               </a>
             )}
+            {COMPANY.phoneBureau && (
+              <a className="transition-colors hover:text-primary" href={`tel:${COMPANY.phoneBureau.replace(/\s/g, '')}`}>
+                {COMPANY.phoneBureau}
+              </a>
+            )}
           </div>
         </div>
       </div>
