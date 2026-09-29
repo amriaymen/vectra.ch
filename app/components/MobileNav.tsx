@@ -4,8 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import LocaleSwitcher from './LocaleSwitcher';
-import type { NavKind } from './NavLink';
-import { COMPANY, type Dictionary, type Locale } from '../data';
+import { CALENDLY_URL, COMPANY, type Dictionary, type Locale } from '../data';
 
 export default function MobileNav({
   t,
@@ -15,14 +14,14 @@ export default function MobileNav({
   t: Dictionary;
   locale: Locale;
   /** The same list the desktop bar renders, so the two cannot drift. */
-  links: { href: string; label: string; kind: NavKind }[];
+  links: { href: string; label: string }[];
 }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-  // Swiss number only — see Footer.tsx for why the international one is hidden.
+  // Swiss number only.
   const phone: string = COMPANY.phoneSwiss;
 
   useEffect(() => setMounted(true), []);
@@ -119,26 +118,16 @@ export default function MobileNav({
         </div>
 
         <nav aria-label={t.nav.menuTitle} className="flex-1 overflow-y-auto px-6 py-4">
-          {/* One flat list, same order as the desktop bar. It previously stacked
-              three annotated columns, so Réalisations sat below nine links. */}
+          {/* One flat list, same order as the desktop bar. */}
           <ul className="grid">
             {links.map((link) => {
               const className =
                 'flex min-h-[56px] items-center text-2xl text-gray-200 transition-colors hover:text-primary';
               return (
                 <li key={link.href} className="border-b border-line/60">
-                  {/* Routes get client navigation; '#' links must stay a plain
-                      <a> so the browser does the scrolling that
-                      scroll-padding-top in globals.css is tuned for. */}
-                  {link.kind === 'route' ? (
-                    <Link href={link.href} onClick={close} className={className}>
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <a href={link.href} onClick={close} className={className}>
-                      {link.label}
-                    </a>
-                  )}
+                  <Link href={link.href} onClick={close} className={className}>
+                    {link.label}
+                  </Link>
                 </li>
               );
             })}
@@ -151,7 +140,9 @@ export default function MobileNav({
 
         <div className="grid gap-4 border-t border-line px-6 py-6">
           <a
-            href={`/${locale}#scope`}
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={close}
             className="inline-flex min-h-[48px] items-center justify-center rounded-md bg-primary px-6 font-medium text-background transition-colors hover:bg-primary-hover"
           >

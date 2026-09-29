@@ -12,9 +12,8 @@ export default function CtaBanner({ t }: { t: Dictionary }) {
           It is a dark plate placed on a bright band precisely to contrast its
           host, so it must stay literal: `bg-band-card` would track the band and
           on any dark tone the button would vanish into its own background.
-          Same rule as the icon chip in EngagementModels. Roles, not literals —
-          and `bg-background` here means "the opposite of this band", not
-          "recessed", which is what it means inside ScopeForm and WhoWeServe.
+          Roles, not literals — `bg-background` here means "the opposite of
+          this band", not "recessed", which is what it means inside ScopeForm.
         */}
         <a
           className="inline-flex min-h-[48px] items-center justify-center rounded-md bg-background px-8 py-4 text-lg font-medium text-white transition-colors hover:bg-surface md:justify-self-end"

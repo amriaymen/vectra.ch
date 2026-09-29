@@ -4,33 +4,19 @@ import Section from './Section';
 import MobileNav from './MobileNav';
 import NavLink from './NavLink';
 import LocaleSwitcher from './LocaleSwitcher';
-import { buildSectorNav } from '../lib/nav';
-import type { Dictionary, Locale } from '../data';
+import { CALENDLY_URL, DEPARTMENTS, departmentPath, type Dictionary, type Locale } from '../data';
 
 export default function Header({ t, locale }: { t: Dictionary; locale: Locale }) {
   /*
-   * Sectors first, then the one page anchor worth a slot.
-   *
-   * The sector links are real routes; the anchor is not, and `kind` carries
-   * that distinction all the way to NavLink so the two read differently and
-   * only a route can be marked current. Leading with the routes is the point —
-   * the site's structure used to sit behind a dropdown while the bar spent its
-   * width scrolling one page.
-   *
-   * Process, FAQs and now Pricing live in the footer. The header's width is
-   * spent on ROUTES; a homepage section that is one scroll away does not earn a
-   * permanent slot, and Pricing in particular competed with the CTA beside it,
-   * which is itself the pricing path. #work stays because it is the only way in
-   * to four real product pages.
-   *
-   * Anchors are absolute and locale-prefixed. A bare '#work' silently did
-   * nothing on nested routes like /fr/products/schoolze, which have no such
-   * section.
+   * Three departments, three routes, nothing else. The labels are the short
+   * department names from the dictionary; every href is derived from
+   * departmentPath(), never authored, so a locale-mismatched link cannot be
+   * written. Legal pages live in the footer.
    */
-  const links = [
-    ...buildSectorNav(locale, t).map((link) => ({ ...link, kind: 'route' as const })),
-    { href: `/${locale}#work`, label: t.nav.work, kind: 'anchor' as const },
-  ];
+  const links = DEPARTMENTS.map((department) => ({
+    href: departmentPath(locale, department),
+    label: t.nav.departments[department],
+  }));
 
   return (
     <Section
@@ -82,32 +68,14 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
         </Link>
 
         {/*
-          Two groups, because the links are two different things. Dropping
-          Pricing took the logo-to-nav gap at 1024px in German from 34px to
-          ~100px, which is why this still turns on at lg rather than xl —
-          moving up would hand the hamburger to every 1024-1279px laptop.
+          Turns on at lg rather than xl — moving up would hand the hamburger to
+          every 1024-1279px laptop. Re-measure German at 1024px before adding a
+          fourth label.
         */}
         <nav aria-label={t.nav.menuTitle} className="hidden items-center gap-6 lg:flex xl:gap-9">
-          <div className="flex items-center gap-6 xl:gap-9">
-            {links
-              .filter((link) => link.kind === 'route')
-              .map((link) => (
-                <NavLink key={link.href} {...link} />
-              ))}
-          </div>
-
-          {/*
-            The divider is a pseudo-element inside the existing gap, not a flex
-            child: a real <span> would cost its own 24px gap on top of its 1px,
-            handing back a third of the width removing Pricing just won.
-          */}
-          <div className="relative flex items-center gap-6 before:absolute before:left-[-0.75rem] before:top-1/2 before:h-4 before:w-px before:-translate-y-1/2 before:bg-line xl:gap-9 xl:before:left-[-1.125rem]">
-            {links
-              .filter((link) => link.kind === 'anchor')
-              .map((link) => (
-                <NavLink key={link.href} {...link} />
-              ))}
-          </div>
+          {links.map((link) => (
+            <NavLink key={link.href} {...link} />
+          ))}
         </nav>
 
         {/*
@@ -118,7 +86,9 @@ export default function Header({ t, locale }: { t: Dictionary; locale: Locale })
         <div className="hidden items-center gap-4 lg:flex">
           <LocaleSwitcher t={t} locale={locale} />
           <a
-            href={`/${locale}#scope`}
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-md bg-primary px-5 font-medium text-background transition-colors hover:bg-primary-hover"
           >
             {t.nav.cta}
