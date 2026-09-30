@@ -5,7 +5,7 @@ const en: Copy = {
   meta: {
     title: 'Business management software for companies in French-speaking Switzerland | Vectra',
     description:
-      'Replace Excel, paper and WhatsApp with one system. Regioo for field teams (CHF 45 per technician per month), Spotbase for sports venues, or custom software from CHF 10’000.',
+      'Replace Excel, paper and WhatsApp with one system. Regioo for field teams (CHF 45 per technician per month), Spotbase for sports venues, Raqim for schools, or custom software from CHF 10’000.',
     regioo: 'Management of jobs, technicians, customers and schedules for field-service companies.',
     regiooOffer: 'Per technician per month. 14-day trial, no credit card.',
     area: 'French-speaking Switzerland',
@@ -39,6 +39,7 @@ const en: Copy = {
     'Heating engineers',
     'Sports centres',
     'Padel clubs',
+    'Schools',
     'Maintenance companies',
   ],
 
@@ -109,6 +110,25 @@ const en: Copy = {
           ['18:00', 'Padel 2 · Group class', '8 / 12'],
           ['19:00', 'Tennis · Club tournament', 'Live'],
           ['20:00', 'Five-a-side · Booking', 'Unpaid'],
+        ],
+      },
+      {
+        id: 'raqim',
+        tab: 'School or nursery',
+        tag: 'Private schools, nurseries, associations',
+        name: 'Raqim',
+        line: 'Enrol, collect, organise, inform.',
+        points: ['Online enrolment, without retyping', 'School fees, receipts and cash', 'Timetables, attendance and payroll'],
+        price: '',
+        priceNote: 'fixed price per year, by school size',
+        cta: 'Request a demo',
+        ctaNote: 'Free 15-day trial',
+        kind: 'demo' as Kind,
+        screen: [
+          ['7B', 'Morning register', 'Taken'],
+          ['Cash', 'Receipt no. 128 · Instalment 1', 'Collected'],
+          ['5A', 'Timetable · Monday', 'Up to date'],
+          ['HR', 'September payroll', 'Ready'],
         ],
       },
       {
@@ -196,7 +216,7 @@ const en: Copy = {
     items: [
       {
         q: 'Can I try before I pay?',
-        a: 'Yes. Regioo has a 14-day trial, with no credit card. For Spotbase, we show you the software in a demo.',
+        a: 'Yes. Regioo has a 14-day trial with no credit card, Raqim a 15-day trial. For Spotbase, we show you the software in a demo.',
       },
       {
         q: 'What if no software fits my trade?',
@@ -224,7 +244,7 @@ const en: Copy = {
     email: 'Your email',
     company: 'Your company',
     interest: 'What you are interested in',
-    interests: ['Regioo', 'Spotbase', 'Custom software', 'The design subscription', 'I don’t know yet'],
+    interests: ['Regioo', 'Spotbase', 'Raqim', 'Custom software', 'The design subscription', 'I don’t know yet'],
     notes: 'Your message (optional)',
     send: 'Send',
     sending: 'Sending…',

@@ -8,7 +8,7 @@ const de: Copy = {
   meta: {
     title: 'Verwaltungssoftware für Unternehmen in der Westschweiz | Vectra',
     description:
-      'Ersetzen Sie Excel, Papier und WhatsApp durch ein einziges System. Regioo für Teams im Ausseneinsatz (CHF 45 pro Techniker und Monat), Spotbase für Sportzentren oder Software nach Mass ab CHF 10’000.',
+      'Ersetzen Sie Excel, Papier und WhatsApp durch ein einziges System. Regioo für Teams im Ausseneinsatz (CHF 45 pro Techniker und Monat), Spotbase für Sportzentren, Raqim für Schulen oder Software nach Mass ab CHF 10’000.',
     regioo: 'Verwaltung von Einsätzen, Technikern, Kunden und Einsatzplänen für Unternehmen im Ausseneinsatz.',
     regiooOffer: 'Pro Techniker und Monat. 14 Tage testen, ohne Kreditkarte.',
     area: 'Westschweiz',
@@ -42,6 +42,7 @@ const de: Copy = {
     'Heizungsbetriebe',
     'Sportzentren',
     'Padel-Clubs',
+    'Schulen',
     'Wartungsunternehmen',
   ],
 
@@ -112,6 +113,25 @@ const de: Copy = {
           ['18:00', 'Padel 2 · Gruppenkurs', '8 / 12'],
           ['19:00', 'Tennis · Clubturnier', 'Live'],
           ['20:00', 'Fussball 5 · Buchung', 'Offen'],
+        ],
+      },
+      {
+        id: 'raqim',
+        tab: 'Schule oder Kita',
+        tag: 'Privatschulen, Kitas, Vereine',
+        name: 'Raqim',
+        line: 'Anmelden, einnehmen, organisieren, informieren.',
+        points: ['Online-Anmeldung, ohne Abtippen', 'Schulgebühren, Quittungen und Kasse', 'Stundenpläne, Anwesenheit und Lohn'],
+        price: '',
+        priceNote: 'Fixpreis pro Jahr, je nach Schulgrösse',
+        cta: 'Demo anfragen',
+        ctaNote: '15 Tage kostenlos testen',
+        kind: 'demo' as Kind,
+        screen: [
+          ['7B', 'Anwesenheit am Morgen', 'Erfasst'],
+          ['Kasse', 'Quittung Nr. 128 · Rate 1', 'Eingenommen'],
+          ['5A', 'Stundenplan · Montag', 'Aktuell'],
+          ['HR', 'Lohn September', 'Bereit'],
         ],
       },
       {
@@ -199,7 +219,7 @@ const de: Copy = {
     items: [
       {
         q: 'Kann ich testen, bevor ich bezahle?',
-        a: 'Ja. Regioo lässt sich 14 Tage testen, ohne Kreditkarte. Spotbase zeigen wir Ihnen in einer Demo.',
+        a: 'Ja. Regioo lässt sich 14 Tage ohne Kreditkarte testen, Raqim 15 Tage. Spotbase zeigen wir Ihnen in einer Demo.',
       },
       {
         q: 'Und wenn keine Software zu meiner Branche passt?',
@@ -227,7 +247,7 @@ const de: Copy = {
     email: 'Ihre E-Mail',
     company: 'Ihr Unternehmen',
     interest: 'Was Sie interessiert',
-    interests: ['Regioo', 'Spotbase', 'Software nach Mass', 'Das Design-Abonnement', 'Ich weiss es noch nicht'],
+    interests: ['Regioo', 'Spotbase', 'Raqim', 'Software nach Mass', 'Das Design-Abonnement', 'Ich weiss es noch nicht'],
     notes: 'Ihre Nachricht (freiwillig)',
     send: 'Senden',
     sending: 'Wird gesendet…',

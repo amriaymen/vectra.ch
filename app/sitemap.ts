@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { paths: same(''), priority: 1 },
     { paths: same('/regioo'), priority: 0.9 },
     { paths: same('/spotbase'), priority: 0.9 },
+    { paths: same('/raqim'), priority: 0.9 },
     // Trade pages have a translated address, so each language gets its own.
     ...TRADES.map((trade) => ({
       paths: Object.fromEntries(LOCALES.map((l) => [l, tradePath(l, trade)])) as Record<Locale, string>,

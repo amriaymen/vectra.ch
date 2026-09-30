@@ -16,7 +16,7 @@ const fr = {
   meta: {
     title: 'Logiciels de gestion pour entreprises en Suisse romande | Vectra',
     description:
-      'Remplacez Excel, le papier et WhatsApp par un seul système. Regioo pour les équipes de terrain (CHF 45 par technicien et par mois), Spotbase pour les centres sportifs, ou un logiciel sur mesure dès CHF 10’000.',
+      'Remplacez Excel, le papier et WhatsApp par un seul système. Regioo pour les équipes de terrain (CHF 45 par technicien et par mois), Spotbase pour les centres sportifs, Raqim pour les écoles, ou un logiciel sur mesure dès CHF 10’000.',
     regioo: 'Gestion des interventions, des techniciens, des clients et des plannings pour les entreprises de terrain.',
     regiooOffer: 'Par technicien et par mois. Essai de 14 jours, sans carte bancaire.',
     area: 'Suisse romande',
@@ -50,6 +50,7 @@ const fr = {
     'Chauffagistes',
     'Centres sportifs',
     'Clubs de padel',
+    'Écoles',
     'Entreprises de maintenance',
   ],
 
@@ -120,6 +121,26 @@ const fr = {
           ['18:00', 'Padel 2 · Cours collectif', '8 / 12'],
           ['19:00', 'Tennis · Tournoi du club', 'En direct'],
           ['20:00', 'Football 5 · Réservation', 'Impayé'],
+        ],
+      },
+      {
+        id: 'raqim',
+        tab: 'École ou jardin d’enfants',
+        tag: 'Écoles privées, crèches, associations',
+        name: 'Raqim',
+        line: 'Inscrire, encaisser, organiser, informer.',
+        points: ['Inscriptions en ligne, sans rien recopier', 'Frais de scolarité, reçus et caisse', 'Emplois du temps, présences et paie'],
+        // Rendered from raqimPrice(): "Sur demande" until the Swiss price is set.
+        price: '',
+        priceNote: 'prix fixe par an, selon la taille de l’école',
+        cta: 'Demander une démo',
+        ctaNote: 'Essai gratuit de 15 jours',
+        kind: 'demo' as Kind,
+        screen: [
+          ['7B', 'Présences du matin', 'Saisies'],
+          ['Caisse', 'Reçu n° 128 · Tranche 1', 'Encaissé'],
+          ['5A', 'Emploi du temps · Lundi', 'À jour'],
+          ['RH', 'Paie de septembre', 'Prête'],
         ],
       },
       {
@@ -211,7 +232,7 @@ const fr = {
     items: [
       {
         q: 'Puis-je essayer avant de payer ?',
-        a: 'Oui. Regioo s’essaie 14 jours, sans carte bancaire. Pour Spotbase, nous vous montrons le logiciel en démonstration.',
+        a: 'Oui. Regioo s’essaie 14 jours sans carte bancaire, Raqim 15 jours. Pour Spotbase, nous vous montrons le logiciel en démonstration.',
       },
       {
         q: 'Et si aucun logiciel ne correspond à mon métier ?',
@@ -239,7 +260,7 @@ const fr = {
     email: 'Votre e-mail',
     company: 'Votre entreprise',
     interest: 'Ce qui vous intéresse',
-    interests: ['Regioo', 'Spotbase', 'Un logiciel sur mesure', 'Le design sur abonnement', 'Je ne sais pas encore'],
+    interests: ['Regioo', 'Spotbase', 'Raqim', 'Un logiciel sur mesure', 'Le design sur abonnement', 'Je ne sais pas encore'],
     notes: 'Votre message (facultatif)',
     send: 'Envoyer',
     sending: 'Envoi…',

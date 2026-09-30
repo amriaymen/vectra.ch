@@ -5,6 +5,7 @@ import s from './site.module.css';
 import { getCopy, REGIOO_SIGNUP_URL } from './copy';
 import { getRegiooCopy } from './regioo.copy';
 import { getSpotbaseCopy } from './spotbase.copy';
+import { getRaqimCopy, raqimPrice } from './raqim.copy';
 
 /** Tells the contact form which product the visitor was looking at. */
 export function announceInterest(name: string) {
@@ -68,7 +69,7 @@ export default function TradePicker({ locale, estimateHref }: { locale: string; 
             ))}
           </ul>
           <p className={s.price}>
-            <b>{option.price}</b>
+            <b>{option.id === 'raqim' ? raqimPrice(locale) : option.price}</b>
             <span>{option.priceNote}</span>
           </p>
           <div className={s.pickerAction}>
@@ -91,6 +92,11 @@ export default function TradePicker({ locale, estimateHref }: { locale: string; 
           {option.id === 'spotbase' && (
             <a className={s.more} href={`/${locale}/spotbase`}>
               {getSpotbaseCopy(locale).more} →
+            </a>
+          )}
+          {option.id === 'raqim' && (
+            <a className={s.more} href={`/${locale}/raqim`}>
+              {getRaqimCopy(locale).more} →
             </a>
           )}
         </div>
