@@ -484,3 +484,9 @@
   .langs a { min-width: 36px; }
   .nav { gap: 10px; }
 }
+
+/* ── Price bands (Raqim) ───────────────────────────────────────────────── */
+.bands { width: 100%; margin-top: 22px; border-collapse: collapse; font-size: 16px; }
+.bands th, .bands td { padding: 12px 0; border-top: 1px solid rgb(244 240 232 / 0.25); text-align: left; }
+.bands th { font-weight: 400; color: var(--muted); }
+.bands td { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }

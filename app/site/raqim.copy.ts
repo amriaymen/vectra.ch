@@ -8,8 +8,18 @@
  * below, so it appears everywhere at once when the owner provides it.
  */
 
-/** CHF per year. `null` shows "on request" everywhere until the owner sets it. */
-export const RAQIM_PRICE_CHF: number | null = null;
+/**
+ * Swiss price bands, CHF per year excluding VAT, by number of pupils. Same
+ * bands as Raqim's own site. A `null` price shows "on request" for that band;
+ * while every band is null the whole site says "on request" for Raqim.
+ * FILL IN: the owner is sending the amounts.
+ */
+export const RAQIM_BANDS: { upTo: number | null; chf: number | null }[] = [
+  { upTo: 150, chf: null },
+  { upTo: 300, chf: null },
+  { upTo: 500, chf: null },
+  { upTo: null, chf: null }, // more than 500 pupils: always quoted
+];
 
 const fr = {
   meta: {
@@ -59,7 +69,14 @@ const fr = {
     title: 'Un prix fixe par an.',
     intro: 'Toutes les fonctions incluses. Utilisateurs illimités.',
     onRequest: 'Sur demande',
+    from: 'Dès',
     perYear: 'par an',
+    excl: 'hors TVA',
+    pupils: 'élèves',
+    upTo: 'Jusqu’à {n} élèves',
+    between: '{a} à {b} élèves',
+    over: 'Plus de {n} élèves',
+    quote: 'Sur devis',
     note: 'Selon la taille de votre établissement. Nous vous envoyons le prix par écrit après la démonstration.',
     terms: ['Essai gratuit de 15 jours, sans engagement', 'Direction, équipes, enseignants et parents inclus', 'Import de vos fichiers Excel et formation vidéo compris'],
   },
@@ -142,7 +159,14 @@ const en: RaqimCopy = {
     title: 'One fixed price per year.',
     intro: 'All features included. Unlimited users.',
     onRequest: 'On request',
+    from: 'From',
     perYear: 'per year',
+    excl: 'excl. VAT',
+    pupils: 'pupils',
+    upTo: 'Up to {n} pupils',
+    between: '{a} to {b} pupils',
+    over: 'More than {n} pupils',
+    quote: 'Quoted',
     note: 'Depending on the size of your school. We send you the price in writing after the demo.',
     terms: ['Free 15-day trial, no commitment', 'Management, staff, teachers and parents included', 'Excel import and video training included'],
   },
@@ -224,7 +248,14 @@ const de: RaqimCopy = {
     title: 'Ein Fixpreis pro Jahr.',
     intro: 'Alle Funktionen enthalten. Unbegrenzte Benutzer.',
     onRequest: 'Auf Anfrage',
+    from: 'Ab',
     perYear: 'pro Jahr',
+    excl: 'exkl. MwSt.',
+    pupils: 'Kinder',
+    upTo: 'Bis {n} Kinder',
+    between: '{a} bis {b} Kinder',
+    over: 'Mehr als {n} Kinder',
+    quote: 'Auf Offerte',
     note: 'Je nach Grösse Ihrer Einrichtung. Wir senden Ihnen den Preis nach der Demo schriftlich.',
     terms: ['15 Tage kostenlos testen, unverbindlich', 'Leitung, Teams, Lehrpersonen und Eltern inbegriffen', 'Excel-Import und Video-Training inbegriffen'],
   },
@@ -263,8 +294,28 @@ export function getRaqimCopy(locale: string): RaqimCopy {
   return COPIES[locale] ?? fr;
 }
 
-/** "CHF 4'500" once the price is set, otherwise the locale's "on request". */
+export const chf = (n: number) => `CHF ${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '’')}`;
+
+/** The cheapest band, "Dès CHF 4'500", or the locale's "on request" while no band is priced. */
 export function raqimPrice(locale: string): string {
-  if (RAQIM_PRICE_CHF === null) return getRaqimCopy(locale).price.onRequest;
-  return `CHF ${String(RAQIM_PRICE_CHF).replace(/\B(?=(\d{3})+(?!\d))/g, '’')}`;
+  const t = getRaqimCopy(locale).price;
+  const lowest = RAQIM_BANDS.map((band) => band.chf).find((price): price is number => price !== null);
+  return lowest === undefined ? t.onRequest : `${t.from} ${chf(lowest)}`;
+}
+
+/** One row per band: its label ("151 à 300 élèves") and its price or "on request". */
+export function raqimBands(locale: string) {
+  const t = getRaqimCopy(locale).price;
+  let previous = 0;
+  return RAQIM_BANDS.map((band) => {
+    const label =
+      band.upTo === null
+        ? t.over.replace('{n}', String(previous))
+        : previous === 0
+          ? t.upTo.replace('{n}', String(band.upTo))
+          : t.between.replace('{a}', String(previous + 1)).replace('{b}', String(band.upTo));
+    if (band.upTo !== null) previous = band.upTo;
+    const price = band.chf === null ? (band.upTo === null ? t.quote : t.onRequest) : chf(band.chf);
+    return { label, price, priced: band.chf !== null };
+  });
 }

@@ -6,7 +6,7 @@ import AdmissionDemo from '../../site/AdmissionDemo';
 import LeadForm from '../../site/LeadForm';
 import { SiteFooter, SiteHeader } from '../../site/Shell';
 import { getCopy } from '../../site/copy';
-import { RAQIM_PRICE_CHF, getRaqimCopy, raqimPrice } from '../../site/raqim.copy';
+import { RAQIM_BANDS, getRaqimCopy, raqimBands, raqimPrice } from '../../site/raqim.copy';
 import { COMPANY, LOCALES, LOCALE_TAGS, SITE_URL, isLocale, languageAlternates, type Locale } from '../../data';
 
 const PATH = '/raqim';
@@ -51,8 +51,19 @@ function structuredData(locale: Locale) {
         inLanguage: LOCALE_TAGS[locale].hreflang,
         publisher: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Vectra' },
         featureList: t.features.items.map((item) => item.title),
-        ...(RAQIM_PRICE_CHF !== null
-          ? { offers: { '@type': 'Offer', price: RAQIM_PRICE_CHF, priceCurrency: 'CHF', description: t.price.note } }
+        // One offer per priced band; none while the bands are empty.
+        ...(RAQIM_BANDS.some((band) => band.chf !== null)
+          ? {
+              offers: raqimBands(locale)
+                .filter((band) => band.priced)
+                .map((band) => ({
+                  '@type': 'Offer',
+                  price: RAQIM_BANDS[raqimBands(locale).indexOf(band)].chf,
+                  priceCurrency: 'CHF',
+                  name: band.label,
+                  description: t.price.excl,
+                })),
+            }
           : {}),
       },
       {
@@ -156,8 +167,22 @@ export default function RaqimPage({ params }: { params: { locale: string } }) {
             <div className={s.calc} data-reveal>
               <p className={s.calcTotal}>
                 <b>{raqimPrice(locale)}</b>
-                {RAQIM_PRICE_CHF !== null && <span>{t.price.perYear}</span>}
+                {RAQIM_BANDS.some((band) => band.chf !== null) && (
+                  <span>
+                    {t.price.perYear} · {t.price.excl}
+                  </span>
+                )}
               </p>
+              <table className={s.bands}>
+                <tbody>
+                  {raqimBands(locale).map((band) => (
+                    <tr key={band.label}>
+                      <th scope="row">{band.label}</th>
+                      <td>{band.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
               <p className={s.calcDetail}>{t.price.note}</p>
               <div className={s.pickerAction}>
                 <a className={s.btn} data-magnetic href="#demo">
