@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Header from '../../../components/Header';
-import Footer from '../../../components/Footer';
+import site from '../../../site/site.module.css';
+import { SiteFooter, SiteHeader } from '../../../site/Shell';
+import { getCopy } from '../../../site/copy';
 import Section from '../../../components/Section';
 import { COMPANY, LOCALES, SITE_URL, getContent, isLocale, languageAlternates, type Locale } from '../../../data';
 
@@ -37,9 +38,9 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
   const t = getContent(locale);
 
   return (
-    <>
-      <Header t={t} locale={locale} />
-      <main className="py-12 md:py-20">
+    <div className={`${site.page} ${site.legacy}`}>
+      <SiteHeader locale={locale} copy={getCopy(locale)} path="/legal/terms" />
+      <main className={site.legalMain}>
         <Section>
           <div className="max-w-3xl space-y-8">
             <div>
@@ -121,7 +122,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
           </div>
         </Section>
       </main>
-      <Footer t={t} />
-    </>
+      <SiteFooter locale={locale} copy={getCopy(locale)} path="/legal/terms" />
+    </div>
   );
 }

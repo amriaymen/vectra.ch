@@ -11,17 +11,9 @@ import { usePathname } from 'next/navigation';
  * `'use client'` would serialise all of it into the RSC payload of every page
  * to power one string comparison.
  */
-export type NavKind = 'route' | 'anchor';
-
 export interface NavLinkProps {
   href: string;
   label: string;
-  /**
-   * `route` is a real page and can be current. `anchor` is a `#` link into the
-   * homepage and never can be — usePathname() drops the hash, so `/fr#work`
-   * compares equal to `/fr` and would light up across the entire homepage.
-   */
-  kind: NavKind;
 }
 
 const BASE =
@@ -30,27 +22,10 @@ const BASE =
 /** Trailing slashes: no next.config sets `trailingSlash`, but normalise anyway. */
 const trim = (path: string) => path.replace(/\/+$/, '') || '/';
 
-export default function NavLink({ href, label, kind }: NavLinkProps) {
+export default function NavLink({ href, label }: NavLinkProps) {
   const pathname = usePathname();
 
-  if (kind === 'anchor') {
-    return (
-      <a href={href} className={`${BASE} text-gray-300 hover:text-white`}>
-        {label}
-      </a>
-    );
-  }
-
-  /*
-   * Exact match, deliberately not startsWith.
-   *
-   * startsWith('/de/solutions') would light up all three sectors on the
-   * solutions index. It also would not buy the thing it looks like it buys:
-   * service pages live at /de/services/*, not under their hub's URL, so their
-   * parent sector cannot be derived from the path at all — that mapping is
-   * SERVICE_HUB. A service page states its hub in the breadcrumb and kicker
-   * instead, which is where that job belongs.
-   */
+  // Exact match: every header link is a single department page with no sub-routes.
   const active = trim(pathname ?? '') === trim(href);
 
   return (

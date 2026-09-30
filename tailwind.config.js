@@ -1,10 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
@@ -28,7 +24,7 @@ module.exports = {
         /*
          * Band-relative tokens. A component asks for a ROLE; the band it sits
          * in decides what that role means. Values live in globals.css under
-         * [data-tone="…"], which Section sets — so a leaf like HeroMedia or
+         * [data-tone="…"], which Section sets — so a leaf like
          * Badge becomes tone-correct through plain CSS inheritance, with no
          * prop, no context and no API change.
          *

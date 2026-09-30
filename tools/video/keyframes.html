@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vectra Keyframes</title>
+<!--
+  Keyframes for the French explainer video. Every frame is a 1920×1080 still,
+  built from the site's own tokens (tailwind.config.js, app/globals.css) and the
+  real TT Firs Neue files. Times come from a word-level transcription of the
+  ElevenLabs voice-over (vo-fr.words.json).
+
+  Preview:  preview server "video-keyframes" → /tools/video/keyframes.html
+  One frame at 1:1 (used by export_keyframes.py):  keyframes.html?frame=K05
+-->
+<style>
+@font-face{font-family:Firs;font-weight:200;font-display:block;src:url('../../public/fonts/TT Firs Neue Trial ExtraLight.woff') format('woff')}
+@font-face{font-family:Firs;font-weight:400;font-display:block;src:url('../../public/fonts/TT Firs Neue Trial Regular.woff') format('woff')}
+@font-face{font-family:Firs;font-weight:500;font-display:block;src:url('../../public/fonts/TT Firs Neue Trial Medium.woff') format('woff')}
+
+/* Site tokens. Same values as tailwind.config.js + globals.css band palettes. */
+:root{
+  --ink:#121519; --surface:#181C21; --chip:#1F242A; --line:#282E36; --line-strong:#4B5563;
+  --lead:#D1D5DB; --body:#9CA3AF; --muted:#6B7280;
+  --lime:#D9FF41; --blue:#1B2CF5;
+  --g50:#F9FAFB; --g100:#F3F4F6; --g200:#E5E7EB; --g300:#D1D5DB; --g600:#4B5563;
+  --red-d:#FCA5A5; --red-l:#B91C1C;
+  --ease-out:cubic-bezier(.16,1,.3,1); --ease-io:cubic-bezier(.65,0,.35,1);
+}
+
+/* ───────────── Board chrome (not part of the video) ───────────── */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:#0C0E11;color:#D1D5DB;font-family:Firs,system-ui,sans-serif}
+.board-head{max-width:1760px;margin:0 auto;padding:56px 32px 8px}
+.board-head .k{font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime)}
+.board-head h1{font-weight:400;font-size:44px;line-height:1.1;letter-spacing:-.02em;margin:12px 0 10px;color:#fff}
+.board-head .lede{max-width:880px;font-size:17px;line-height:1.55;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px}
+.meta span{border:1px solid #282E36;border-radius:999px;padding:6px 14px;font-size:14px}
+.sys{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-bottom:48px}
+.sys .box{border:1px solid #282E36;background:#121519;padding:20px 22px}
+.sys h3{margin:0 0 10px;font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#9CA3AF}
+.sys p,.sys li{margin:0;font-size:15px;line-height:1.55}
+.sys ul{margin:0;padding-left:18px}
+.sys li{margin:4px 0}
+.tone{display:flex;align-items:center;gap:12px;margin:8px 0;font-size:15px}
+.tone i{width:30px;height:30px;flex:none;border:1px solid #282E36}
+.demo{position:relative;height:150px;overflow:hidden;background:#121519;border:1px solid #282E36;margin-top:14px}
+.demo-cap{font-size:13px;color:#9CA3AF;margin-top:8px}
+main#board{max-width:1760px;margin:0 auto;padding:0 32px 120px;display:grid;grid-template-columns:minmax(0,1fr);gap:64px}
+.kf{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:start}
+/* The frame is taken out of flow so its 1920px never sizes the layout; fit() scales it. */
+.stage{position:relative;overflow:hidden;border:1px solid #282E36}
+.stage>.frame{position:absolute;left:0;top:0}
+.notes{font-size:15px;line-height:1.55}
+.notes .tc{font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.notes h2{font-weight:400;font-size:28px;line-height:1.15;margin:8px 0 14px;color:#fff;letter-spacing:-.01em}
+.notes blockquote{margin:0 0 16px;padding:0 0 0 14px;border-left:3px solid var(--lime);color:#fff;font-size:16px}
+.notes h4{margin:16px 0 6px;font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9CA3AF}
+.notes ul{margin:0;padding-left:18px}
+.notes li{margin:4px 0}
+@media (max-width:1100px){.kf{grid-template-columns:minmax(0,1fr)}}
+
+/* Motion demos */
+.mask{position:absolute;left:24px;top:38px;height:76px;overflow:hidden}
+.mask span{display:block;font-size:50px;line-height:76px;letter-spacing:-.02em;color:#fff;animation:rise 2.6s var(--ease-out) infinite}
+@keyframes rise{0%{transform:translateY(100%)}28%,78%{transform:translateY(0)}100%{transform:translateY(-100%)}}
+.band{position:absolute;top:-30%;height:160%;width:170%;left:-200%;transform:skewX(33.56deg);animation:wipe 3.2s var(--ease-io) infinite}
+.band.b2{background:var(--blue);animation-delay:1.6s}
+.band.b1{background:var(--lime)}
+@keyframes wipe{0%{left:-200%}50%{left:-35%}100%{left:130%}}
+.gather i{position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px;background:var(--line-strong);animation:suck 2.6s cubic-bezier(.7,0,.84,0) infinite}
+@keyframes suck{0%{transform:translate(var(--x),var(--y)) rotate(25deg);opacity:1}42%{transform:translate(0,0) rotate(0) scale(.2);opacity:0}100%{opacity:0}}
+.gather b{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px;background:var(--lime);border-radius:10%;animation:pop 2.6s cubic-bezier(.34,1.56,.64,1) infinite}
+@keyframes pop{0%,40%{transform:scale(0)}56%,90%{transform:scale(1)}100%{transform:scale(0)}}
+
+/* Export mode: one frame, 1:1, nothing else. */
+html.export,html.export body{background:#000;overflow:hidden}
+html.export .board-head,html.export .notes{display:none}
+html.export main#board{display:block;max-width:none;margin:0;padding:0}
+html.export .kf{display:block}
+html.export .stage{border:0;width:1920px;height:1080px}
+
+/* ───────────── Frame system ───────────── */
+.frame{position:relative;width:1920px;height:1080px;overflow:hidden;transform-origin:0 0;font-family:Firs,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
+.frame[data-tone=dark]{background:var(--ink);color:#fff}
+.frame[data-tone=light]{background:#fff;color:var(--ink)}
+.frame[data-tone=accent]{background:var(--blue);color:#fff}
+.frame[data-tone=action]{background:var(--lime);color:var(--ink)}
+.frame p{margin:0}
+.abs{position:absolute}
+/* One left edge for every frame, like Section does on the site. */
+.col{position:absolute;left:144px;width:700px}
+
+.d1{font-size:176px;line-height:1;letter-spacing:-.035em}
+.d2{font-size:124px;line-height:1.04;letter-spacing:-.032em}
+.h1{font-size:92px;line-height:1.06;letter-spacing:-.028em}
+.h2{font-size:66px;line-height:1.12;letter-spacing:-.022em}
+.ld{font-size:48px;line-height:1.24;letter-spacing:-.012em}
+.lime{color:var(--lime)}
+.gray{color:var(--lead)}
+[data-tone=light] .gray{color:var(--g600)}
+/* Lime as a highlighter plate: dark ink on lime is 15.98:1 on any band. */
+.hl{background:var(--lime);color:var(--ink);padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+.pill{position:absolute;display:inline-flex;align-items:center;gap:14px;height:64px;padding:0 30px;border-radius:999px;border:2px solid var(--line-strong);background:var(--surface);color:#fff;font-size:28px;white-space:nowrap}
+.pill.in{position:static}
+.pill svg{width:28px;height:28px}
+.pill .dot{width:14px;height:14px;border-radius:999px;background:var(--lime)}
+.pill .dot.off{background:var(--muted)}
+.pill.blue{background:var(--blue);border-color:var(--blue);color:#fff}
+.badge{position:absolute;display:inline-flex;align-items:center;height:54px;padding:0 26px;border-radius:999px;background:var(--lime);color:var(--ink);font-weight:500;font-size:24px;letter-spacing:.14em;text-transform:uppercase}
+
+/* Icons */
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter}
+.icf{fill:currentColor;stroke:none}
+.cur{position:absolute;width:56px;height:68px;fill:#fff;stroke:var(--ink);stroke-width:2.4;stroke-linejoin:round;filter:drop-shadow(0 8px 14px rgba(0,0,0,.35))}
+[data-tone=light] .cur{fill:var(--ink);stroke:#fff}
+
+/* Cards: square, per the design system. Radius lives on buttons and pills only. */
+.card{background:var(--surface);border:2px solid var(--line);color:#fff}
+.card.w{background:#fff;border-color:var(--g200);color:var(--ink)}
+.card .ch{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;padding:0 26px;border-bottom:2px solid var(--line);font-size:22px;color:var(--body);white-space:nowrap}
+.card.w .ch{border-color:var(--g200);color:var(--g600)}
+.card .ch b{font-weight:500;color:#fff}
+.card.w .ch b{color:var(--ink)}
+.sh{box-shadow:0 60px 120px -40px rgba(0,0,0,.7)}
+[data-tone=light] .sh,[data-tone=accent] .sh{box-shadow:0 50px 100px -35px rgba(18,21,25,.35)}
+.av{width:48px;height:48px;flex:none;display:grid;place-items:center;background:var(--chip);border:2px solid var(--line);color:#fff;font-weight:500;font-size:18px}
+.card.w .av{background:var(--g100);border-color:var(--g200);color:var(--ink)}
+.av.lit{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.ck{width:56px;height:56px;flex:none;display:grid;place-items:center;background:var(--lime);color:var(--ink)}
+.ck svg{width:36px;height:36px}
+.ck.sm{width:40px;height:40px}
+.ck.sm svg{width:26px;height:26px}
+.sk{display:block;height:12px;background:var(--g300)}
+.sk.d{background:var(--line)}
+.err{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 20px;border-radius:999px;background:#2A1C1F;border:2px solid rgba(252,165,165,.6);color:var(--red-d);font-size:23px;white-space:nowrap}
+.err svg{width:24px;height:24px}
+
+/* Positioned by centre: left/top = where the object's centre sits. */
+.obj{position:absolute;transform:translate(-50%,-50%) rotate(var(--r,0deg)) scale(var(--s,1));transform-origin:center}
+.blur{filter:blur(10px);opacity:.28}
+.grey{filter:grayscale(1);opacity:.42}
+svg.trails,svg.wires{position:absolute;left:0;top:0}
+.wires path{fill:none;stroke:var(--line-strong);stroke-width:3;stroke-dasharray:10 12}
+
+/* Chaos objects */
+.sheet{width:640px}
+.sheet .grid{display:grid;grid-template-columns:52px repeat(4,1fr)}
+.sheet .grid>div{height:46px;display:flex;align-items:center;padding:0 12px;border-right:1.5px solid var(--g200);border-bottom:1.5px solid var(--g200);font-size:20px;color:var(--g600)}
+.sheet .gh,.sheet .rn{background:var(--g100);justify-content:center}
+.sheet .gh{font-weight:500}
+.sheet .t{font-weight:500;color:var(--ink)!important}
+.sheet .c s{display:block;height:12px;background:var(--g300)}
+.sheet .sel{outline:3px solid var(--ink);outline-offset:-3px}
+.paper{width:460px;padding:40px 40px 34px}
+.paper .pt{font-weight:500;font-size:28px;margin-bottom:22px}
+.paper .pf{display:flex;align-items:flex-end;gap:14px;height:62px;font-size:20px;color:var(--g600);white-space:nowrap}
+.paper .pf i{flex:1;height:36px;border-bottom:2px solid var(--g300);position:relative}
+.paper svg{fill:none;stroke:var(--blue);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.paper .pf i svg{position:absolute;left:8px;bottom:3px;height:32px}
+.paper .pc{display:flex;align-items:center;gap:14px;margin-top:26px;font-size:20px;color:var(--g600)}
+.paper .pc b{width:26px;height:26px;border:2px solid var(--g600);display:grid;place-items:center}
+.paper .pc b svg{width:26px;height:26px}
+.paper .pc b+span{margin-right:18px}
+.paper .sig{margin-top:30px;height:74px;position:relative;border-bottom:2px solid var(--g300)}
+.paper .sig svg{position:absolute;left:14px;bottom:6px;height:52px}
+.paper .sig span{position:absolute;right:0;bottom:-30px;font-size:17px;color:var(--g600)}
+.chat{width:560px;display:flex;flex-direction:column;gap:14px}
+.chat .hd{display:flex;align-items:center;gap:14px;font-size:22px;color:var(--body)}
+.bub{max-width:440px;padding:20px 26px;font-size:28px;line-height:1.25;border:2px solid var(--line-strong);background:var(--chip);color:#fff}
+.bub.out{align-self:flex-end;background:#fff;border-color:#fff;color:var(--ink)}
+.call{width:580px;display:flex;align-items:center;gap:24px;padding:26px 28px}
+.call .ic-wrap{width:84px;height:84px;flex:none;display:grid;place-items:center;background:#fff;color:var(--ink)}
+.call .ic-wrap svg{width:40px;height:40px}
+.call .tx{flex:1}
+.call .s{font-size:22px;color:var(--body)}
+.call .n{font-size:34px;margin-top:4px}
+.sticky{width:280px;padding:40px 30px 34px;background:#fff;color:var(--ink);font-size:28px;line-height:1.3;position:relative}
+.sticky:before{content:"";position:absolute;left:50%;top:-16px;width:118px;height:32px;transform:translateX(-50%) rotate(-4deg);background:rgba(209,213,219,.9)}
+.mail{width:470px}
+.mail .row{padding:22px 26px;border-bottom:2px solid var(--line)}
+.mail .row:last-child{border-bottom:0}
+.mail .sub{font-size:27px;margin-bottom:8px}
+.mail .from{font-size:20px;color:var(--body)}
+.clock circle.face{fill:var(--surface);stroke:#fff;stroke-width:5}
+
+/* The system window (generic, reused in several frames) */
+.win{width:960px;height:660px;display:grid;grid-template-rows:64px 1fr;background:var(--surface);border:2px solid var(--line);color:#fff}
+.win .bar{display:flex;align-items:center;gap:16px;padding:0 24px;border-bottom:2px solid var(--line);font-size:22px}
+.win .bar b{font-weight:500}
+.win .bar .sq{width:24px;height:24px;background:var(--lime);border-radius:10%}
+.win .bar .sr{margin-left:auto;width:250px;height:40px;display:flex;align-items:center;padding:0 14px;background:var(--chip);border:2px solid var(--line);font-size:18px;color:var(--muted)}
+.win .bar .av{width:40px;height:40px;font-size:15px}
+.win .body{display:grid;grid-template-columns:220px 1fr;min-height:0}
+.win .side{border-right:2px solid var(--line);padding:18px 0}
+.win .nav{position:relative;display:flex;align-items:center;gap:14px;height:54px;padding:0 22px;font-size:20px;color:var(--body)}
+.win .nav svg{width:22px;height:22px}
+.win .nav.on{color:#fff;background:var(--chip)}
+.win .nav.on:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--lime)}
+.win .main{display:grid;grid-template-rows:auto 1fr;gap:18px;padding:24px 26px;min-height:0}
+.win .ttl{display:flex;align-items:baseline;justify-content:space-between}
+.win .ttl b{font-weight:400;font-size:32px}
+.win .ttl span{font-size:18px;color:var(--body)}
+.bento{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;min-height:0}
+.tile{position:relative;display:flex;flex-direction:column;gap:10px;padding:18px 20px;background:var(--ink);border:2px solid var(--line);min-height:0}
+.tile .tl{display:flex;justify-content:space-between;font-size:18px;color:var(--body)}
+.tile .tl span{color:#fff}
+.tile .big{font-weight:200;font-size:78px;line-height:1;letter-spacing:-.03em}
+.bars{display:flex;align-items:flex-end;gap:8px;height:56px;margin-top:auto}
+.bars i{flex:1;background:var(--line)}
+.bars i.on{background:var(--lime)}
+.tile .rw{display:flex;align-items:center;gap:12px}
+.tile .rw i{width:18px;height:18px;flex:none;background:var(--line)}
+.tile .rw i.n{background:var(--lime)}
+.tile .rw s{display:block;height:10px;background:var(--line)}
+.tile .mb{height:34px;background:var(--chip);border:2px solid var(--line)}
+.tile .wkg{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;flex:1}
+.tile .wkg i{background:var(--chip)}
+.tile .wkg i.b{background:var(--line-strong)}
+.tile .wkg i.n{background:var(--lime)}
+.drag .t3{transform:translate(30px,-34px) rotate(-3deg);outline:3px solid var(--lime);box-shadow:0 40px 70px -20px rgba(0,0,0,.8);z-index:2}
+
+/* K05 */
+.ripple{position:absolute;left:960px;top:540px;width:var(--z);height:var(--z);margin:calc(var(--z) / -2) 0 0 calc(var(--z) / -2);border:3px solid var(--lime);border-radius:10.2%}
+.hero-sq{position:absolute;background:var(--lime);border-radius:10.2%;box-shadow:0 0 140px 10px rgba(217,255,65,.2)}
+
+/* K06, K19 lockup: same structure as the site header */
+.mark{position:absolute;fill:currentColor}
+.wm{font-weight:500;line-height:1;letter-spacing:.04em;color:#fff}
+.wm-sub{margin-top:.5em;text-transform:uppercase;letter-spacing:.12em;line-height:1;color:var(--body)}
+
+/* K07 */
+.slot{position:absolute;display:flex;align-items:flex-end;padding:18px 20px;border:3px dashed var(--line-strong);font-size:24px;color:var(--body)}
+.slot.full{border:2px solid var(--line);background:var(--ink);color:#fff;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;padding:20px 22px}
+.slot.full .tl{display:flex;justify-content:space-between;font-size:22px}
+.slot .rw{display:flex;align-items:center;gap:14px}
+.slot .rw s{display:block;height:12px;background:var(--line)}
+.head{position:absolute;width:22px;height:22px;background:var(--lime);border-radius:10%;box-shadow:0 0 30px 6px rgba(217,255,65,.55)}
+
+/* K09–K11 product cards */
+.rows .r{display:flex;align-items:center;gap:20px;height:86px;padding:0 28px;border-bottom:2px solid var(--g200);font-size:28px}
+.rows .r:last-child{border-bottom:0}
+.rows .nm{flex:1}
+.st{display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:999px;background:var(--g100);color:var(--g600);font-size:22px}
+.st.ab{background:#FEE2E2;color:var(--red-l)}
+.grade{font-weight:200;font-size:150px;line-height:1;letter-spacing:-.04em}
+.bars.l i{background:var(--g200)}
+.bars.l i.on{background:var(--blue)}
+.msg{font-size:32px;line-height:1.3}
+.sent{display:flex;align-items:center;gap:14px;margin-top:22px;font-size:25px;color:var(--lead)}
+.card.w .sent{color:var(--g600)}
+.cg{display:grid;grid-template-columns:96px repeat(5,1fr);grid-template-rows:60px;grid-auto-rows:92px}
+.cg>div{position:relative;border-right:2px solid var(--g200);border-bottom:2px solid var(--g200)}
+.cg>div:nth-child(6n){border-right:0}
+.cg .dh,.cg .hr{display:flex;align-items:center;justify-content:center;font-size:21px;color:var(--g600)}
+.cg>.dh,.cg>.c0{background:var(--g50)}
+.bk{position:absolute;inset:7px;display:flex;align-items:flex-start;padding:10px 12px;background:var(--ink);color:#fff;font-size:19px;line-height:1.2}
+.bk.new{background:var(--lime);color:var(--ink);outline:3px solid var(--ink);outline-offset:-3px;font-weight:500}
+.amt{flex:none;white-space:nowrap;font-size:84px;line-height:1;letter-spacing:-.03em}
+.time{font-weight:200;font-size:150px;line-height:1;letter-spacing:-.03em}
+.wl{display:flex;gap:8px;margin-top:10px}
+.wl span{flex:1;text-align:center;font-size:18px;color:var(--body)}
+.ln{display:flex;justify-content:space-between;align-items:center;height:78px;padding:0 28px;border-bottom:2px solid var(--g200);font-size:26px}
+.ln span{color:var(--g600)}
+.ln b{font-weight:500}
+.ln.tot{height:94px;background:var(--ink);color:#fff;border-bottom:0;font-size:30px}
+.ln.tot span{color:var(--lead)}
+.flow path{fill:none;stroke:var(--blue);stroke-width:5}
+
+/* K13 */
+.thumb{position:relative;height:250px;background:#0D0F12;border-bottom:2px solid var(--line);overflow:hidden}
+.thumb .play{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px;display:grid;place-items:center;background:var(--lime);color:var(--ink);border-radius:10px}
+.thumb .play svg{width:44px;height:44px;margin-left:6px}
+.prog{height:10px;background:var(--line)}
+.prog i{display:block;height:100%;background:var(--lime)}
+.steps{list-style:none;margin:0;padding:10px 0}
+.steps li{display:flex;align-items:center;gap:18px;height:78px;padding:0 26px;font-size:26px;color:var(--g600)}
+.steps li i{width:44px;height:44px;flex:none;display:grid;place-items:center;background:var(--g100);color:var(--ink);font-style:normal;font-weight:500;font-size:22px}
+.steps li.on{color:var(--ink);background:var(--g50)}
+.steps li.on i{background:var(--ink);color:var(--lime)}
+.seat{position:absolute;width:64px;height:64px;border:3px dashed var(--line-strong)}
+
+/* K14 */
+.sqdot{display:inline-block;width:.19em;height:.19em;margin-left:.07em;background:var(--lime);border-radius:10.2%}
+
+/* K15–K17: the process band */
+.checks{position:absolute;left:144px;margin:0;padding:0;list-style:none;display:grid;gap:24px}
+.checks li{display:flex;align-items:center;gap:26px;font-size:44px;letter-spacing:-.01em;color:rgba(255,255,255,.32)}
+.checks li i{width:58px;height:58px;flex:none;display:grid;place-items:center;border:3px solid rgba(255,255,255,.32)}
+.checks li i svg{width:36px;height:36px}
+.checks li.on{color:#fff}
+.checks li.on i{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.checks li.now{color:var(--lime)}
+.ms{display:flex;align-items:center;gap:24px;height:120px;padding:0 32px;border-bottom:2px solid var(--g200);font-size:32px}
+.ms:last-child{border-bottom:0}
+.ms .no{width:70px;font-weight:200;font-size:48px;color:var(--blue)}
+.ms .lb{flex:1}
+.ms svg{width:34px;height:34px;color:var(--g600)}
+.stamp{position:absolute;display:inline-flex;align-items:center;gap:14px;padding:14px 28px;border:5px solid var(--blue);background:#fff;color:var(--blue);font-weight:500;font-size:36px;letter-spacing:.14em;text-transform:uppercase;transform:rotate(-8deg);box-shadow:0 20px 40px -20px rgba(18,21,25,.5)}
+.host{display:grid;grid-template-columns:230px 1fr;gap:34px;padding:34px 32px 36px}
+.srv{display:grid;gap:12px}
+.srv .u{display:flex;align-items:center;gap:10px;height:72px;padding:0 18px;border:3px solid var(--ink)}
+.srv .u i{width:14px;height:14px;background:var(--g200);border:2px solid var(--ink)}
+.srv .u i.on{background:var(--lime)}
+.srv .u s{margin-left:auto;display:block;width:70px;height:8px;background:var(--g200)}
+.chb{width:92px;height:92px;display:grid;place-items:center;background:var(--ink);color:#fff;font-weight:500;font-size:38px;letter-spacing:.04em}
+.f1{margin-top:22px!important;font-size:32px;line-height:1.2}
+.f2{display:flex;align-items:center;gap:14px;margin-top:16px!important;font-size:26px;color:var(--g600)}
+.f2 svg{width:30px;height:30px;color:var(--ink)}
+.tlw{padding:40px 34px 48px}
+.tlab{font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--g600);margin-bottom:14px}
+.trk{position:relative;display:flex;gap:6px;height:62px}
+.trk i{flex:1;display:grid;place-items:center;background:var(--g100);border:2px solid var(--g200);font-style:normal;font-size:21px;color:var(--g600)}
+.trk.wk{width:40%}
+.trk.wk i{background:var(--blue);border-color:var(--blue);color:#fff}
+.trk.mo{opacity:.55}
+.strike{position:absolute;left:-14px;right:-14px;top:50%;height:7px;margin-top:-3px;background:var(--ink);transform:rotate(-2.5deg)}
+.flag{position:absolute;left:calc(100% + 18px);top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 18px;background:var(--ink);color:var(--lime);font-weight:500;font-size:22px;white-space:nowrap}
+
+/* K18 */
+.oi{position:absolute;fill:none;stroke:var(--ink);stroke-width:1;stroke-linecap:square;opacity:.3}
+
+/* K19 */
+.btn{position:absolute;display:inline-flex;align-items:center;gap:24px;height:120px;padding:0 56px;border-radius:10px;background:var(--lime);color:var(--ink);font-weight:500;font-size:54px;letter-spacing:-.01em}
+.btn svg{width:48px;height:48px;stroke-width:2.2}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 1423.26 1186.05"><rect x="948.84" width="474.42" height="474.42" rx="48.36"/><path d="M946.49,726.21v411.48a48.36,48.36,0,0,1-48.36,48.36H498a48.35,48.35,0,0,1-40.3-21.63L8.06,486.57A48.31,48.31,0,0,1,0,459.84V48.36A48.36,48.36,0,0,1,48.36,0H448.47a48.35,48.35,0,0,1,40.3,21.630L938.43,699.48A48.31,48.31,0,0,1,946.49,726.21Z"/></symbol>
+  <symbol id="mark-stroke" viewBox="0 0 946.49 1186.05"><path d="M946.49,726.21v411.48a48.36,48.36,0,0,1-48.36,48.36H498a48.35,48.35,0,0,1-40.3-21.63L8.06,486.57A48.31,48.31,0,0,1,0,459.84V48.36A48.36,48.36,0,0,1,48.36,0H448.47a48.35,48.35,0,0,1,40.3,21.63L938.43,699.48A48.31,48.31,0,0,1,946.49,726.21Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20"><path fill="currentColor" d="M16.9003 5.18306C17.1443 5.42714 17.1443 5.82286 16.9003 6.06694L8.56692 14.4003C8.32284 14.6444 7.92712 14.6444 7.68304 14.4003L3.51637 10.2336C3.27229 9.98953 3.27229 9.5938 3.51637 9.34972C3.76045 9.10565 4.15618 9.10565 4.40025 9.34972L8.12498 13.0744L16.0164 5.18306C16.2604 4.93898 16.6562 4.93898 16.9003 5.18306Z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
+  <symbol id="i-phone-o" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.5"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 4v16l14-8z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="7"/><rect x="14" y="4" width="7" height="7"/><path d="M3 20v-5h7v5M14 20v-5h7v5"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9H4z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M5 20V11M11 20V5M17 20v-6M3 20h18"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16"/><path d="M3 9h18M3 14h18M9 4v16M15 4v16"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12"/><path d="m16 10 5-3v10l-5-3"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="cursor" viewBox="0 0 28 34"><path d="M3 2v25l7-6.5 4.8 10.5 4.4-2-4.8-10.3H24z"/></symbol>
+  <!-- Handwriting stand-in: blue ink is the brand blue. -->
+  <symbol id="scrib" viewBox="0 0 120 30"><path d="M2 20c6-12 10-14 12-4s4 12 8 2 6-12 9-2 3 10 7 2 5-10 8-1 4 9 8 0 5-8 8 1 4 8 7 0 6-9 9 1 4 7 8-2 5-7 8 2"/></symbol>
+</svg>
+
+<!-- Reusable objects. Positioned by a wrapper with data-use. -->
+<template id="tpl-sheet">
+  <div class="card w sheet">
+    <div class="ch"><b>planning_final_V3_def.xlsx</b><span>Feuille 1</span></div>
+    <div class="grid">
+      <div class="gh"></div><div class="gh">A</div><div class="gh">B</div><div class="gh">C</div><div class="gh">D</div>
+      <div class="rn">1</div><div class="t">Nom</div><div class="t">Classe</div><div class="t">Absences</div><div class="t">Remarques</div>
+      <div class="rn">2</div><div class="c"><s style="width:120px"></s></div><div class="c"><s style="width:44px"></s></div><div class="c"><s style="width:24px"></s></div><div class="c"><s style="width:110px"></s></div>
+      <div class="rn">3</div><div class="c"><s style="width:96px"></s></div><div class="c"><s style="width:44px"></s></div><div class="c sel"><s style="width:24px"></s></div><div class="c"><s style="width:70px"></s></div>
+      <div class="rn">4</div><div class="c"><s style="width:128px"></s></div><div class="c"><s style="width:44px"></s></div><div class="c"><s style="width:24px"></s></div><div class="c"><s style="width:92px"></s></div>
+      <div class="rn">5</div><div class="c"><s style="width:108px"></s></div><div class="c"><s style="width:44px"></s></div><div class="c"><s style="width:24px"></s></div><div class="c"></div>
+      <div class="rn">6</div><div class="c"><s style="width:88px"></s></div><div class="c"><s style="width:44px"></s></div><div class="c"><s style="width:24px"></s></div><div class="c"><s style="width:54px"></s></div>
+    </div>
+  </div>
+</template>
+<template id="tpl-form">
+  <div class="card w paper">
+    <div class="pt">Formulaire d’inscription</div>
+    <div class="pf"><span>Nom</span><i><svg viewBox="0 0 120 30" style="width:150px"><use href="#scrib"/></svg></i></div>
+    <div class="pf"><span>Prénom</span><i><svg viewBox="0 0 120 30" style="width:110px"><use href="#scrib"/></svg></i></div>
+    <div class="pf"><span>Date de naissance</span><i><svg viewBox="0 0 120 30" style="width:92px"><use href="#scrib"/></svg></i></div>
+    <div class="pf"><span>Téléphone</span><i></i></div>
+    <div class="pc"><b><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></b><span>Cantine</span><b></b><span>Transport</span></div>
+    <div class="sig"><svg viewBox="0 0 120 30" style="width:180px"><use href="#scrib"/></svg><span>Signature</span></div>
+  </div>
+</template>
+<template id="tpl-chat">
+  <div class="chat">
+    <div class="hd"><span class="av">S</span>Groupe · Secrétariat</div>
+    <div class="bub">Qui a la liste à jour&#8239;?</div>
+    <div class="bub out">Je l’ai envoyée hier soir…</div>
+    <div class="bub">Laquelle&#8239;? La v2 ou la v3&#8239;?</div>
+  </div>
+</template>
+<template id="tpl-call">
+  <div class="card call">
+    <div class="ic-wrap"><svg class="icf"><use href="#i-phone"/></svg></div>
+    <div class="tx"><div class="s">Appel entrant</div><div class="n">Secrétariat</div></div>
+    <span class="err">3 appels manqués</span>
+  </div>
+</template>
+<template id="tpl-sticky">
+  <div class="sticky">Rappeler Mme Rochat avant 16&nbsp;h&#8239;!</div>
+</template>
+<template id="tpl-mail">
+  <div class="card mail">
+    <div class="row"><div class="sub">RE: TR: RE: Liste à jour (3)</div><div class="from">Direction · 09:12</div></div>
+    <div class="row"><s class="sk d" style="width:88%"></s><s class="sk d" style="width:62%;margin-top:14px"></s></div>
+  </div>
+</template>
+<template id="tpl-system">
+  <div class="win">
+    <div class="bar"><i class="sq"></i><b>Votre organisation</b><span class="sr">Rechercher…</span><span class="av">LM</span></div>
+    <div class="body">
+      <nav class="side">
+        <div class="nav on"><svg class="ic"><use href="#i-home"/></svg>Accueil</div>
+        <div class="nav"><svg class="ic"><use href="#i-users"/></svg>Personnes</div>
+        <div class="nav"><svg class="ic"><use href="#i-cal"/></svg>Planning</div>
+        <div class="nav"><svg class="ic"><use href="#i-chat"/></svg>Messages</div>
+        <div class="nav"><svg class="ic"><use href="#i-chart"/></svg>Rapports</div>
+      </nav>
+      <div class="main">
+        <div class="ttl"><b>Tableau de bord</b><span>Aujourd’hui</span></div>
+        <div class="bento">
+          <div class="tile t1"><div class="tl">Présences<span>Aujourd’hui</span></div><div class="big">96&#8239;%</div>
+            <div class="bars"><i style="height:55%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:84%"></i><i class="on" style="height:96%"></i></div></div>
+          <div class="tile t2"><div class="tl">Formulaires<span>12 nouveaux</span></div>
+            <div class="rw"><i class="n"></i><s style="width:70%"></s></div><div class="rw"><i class="n"></i><s style="width:52%"></s></div><div class="rw"><i></i><s style="width:64%"></s></div><div class="rw"><i></i><s style="width:40%"></s></div></div>
+          <div class="tile t3"><div class="tl">Messages<span>3 non lus</span></div>
+            <div class="mb" style="width:78%"></div><div class="mb" style="width:56%;margin-left:auto;background:var(--line)"></div><div class="mb" style="width:66%"></div></div>
+          <div class="tile t4"><div class="tl">Planning<span>Semaine 38</span></div>
+            <div class="wkg"><i class="b"></i><i></i><i class="n"></i><i class="b"></i><i></i><i></i><i class="b"></i><i class="b"></i><i></i><i class="n"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<header class="board-head">
+  <div class="k">Vectra · Vidéo explicative · Version FR-CH</div>
+  <h1>Keyframes v1: 19 frames, timed to the voice-over</h1>
+  <p class="lede">Each frame is a still at the moment shown. The notes say how it moves in and out. Every time comes from the recorded voice-over, word by word, so animation can land exactly on the spoken word.</p>
+  <div class="meta">
+    <span>Voice-over 67.7 s · Paul K · ElevenLabs v3</span>
+    <span>Film ≈ 70.5 s with a 3 s end card</span>
+    <span>1920 × 1080</span>
+    <span>Site fonts and colours, no extras</span>
+  </div>
+  <div class="sys">
+    <div class="box">
+      <h3>Colours carry meaning</h3>
+      <div class="tone"><i style="background:#121519"></i>Dark: the problem, and the brand</div>
+      <div class="tone"><i style="background:#fff"></i>White: the product at work</div>
+      <div class="tone"><i style="background:#1B2CF5"></i>Blue: how we work (the site’s process band)</div>
+      <div class="tone"><i style="background:#D9FF41"></i>Lime: the call to action, used once, like on the site</div>
+    </div>
+    <div class="box">
+      <h3>Motion rules</h3>
+      <ul>
+        <li>Everything lands on the spoken word.</li>
+        <li>Text rises out of a mask. Nothing just fades in.</li>
+        <li>Scene changes are wipes at 56°, the angle of the V in the logo.</li>
+        <li>The lime square from the logo is the hero. It swallows the mess, ends the tagline, and becomes the button.</li>
+        <li>Nothing sits still: slow drift, numbers count up, cursors click.</li>
+        <li>Easing: expo-out in, ease-in-out for wipes, a small spring for pops.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Motion samples</h3>
+      <div class="demo"><div class="mask"><span>Ça vous parle&#8239;?</span></div></div>
+      <div class="demo-cap">Text rises out of a mask</div>
+      <div class="demo"><i class="band b1"></i><i class="band b2"></i></div>
+      <div class="demo-cap">Scene wipe at the logo’s 56° angle</div>
+      <div class="demo gather"><i style="--x:-150px;--y:-46px"></i><i style="--x:130px;--y:-52px"></i><i style="--x:-110px;--y:48px"></i><i style="--x:160px;--y:40px"></i><i style="--x:-40px;--y:-60px"></i><i style="--x:40px;--y:60px"></i><b></b></div>
+      <div class="demo-cap">The lime square gathers the mess</div>
+    </div>
+  </div>
+</header>
+
+<main id="board">
+
+<!-- ═════════════ K01 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K01" data-tone="dark">
+  <div class="obj" data-use="tpl-sheet" style="left:480px;top:318px;--r:-6deg"></div>
+  <div class="obj" data-use="tpl-form" style="left:1500px;top:360px;--r:5deg"></div>
+  <div class="obj" data-use="tpl-chat" style="left:600px;top:800px;--r:-2deg"></div>
+  <div class="obj" data-use="tpl-call" style="left:1420px;top:842px;--r:3deg"></div>
+  <span class="pill" style="left:196px;top:572px">Excel</span>
+  <span class="pill" style="left:1276px;top:668px">Formulaires papier</span>
+  <span class="pill" style="left:930px;top:640px">WhatsApp</span>
+  <span class="pill" style="left:1150px;top:938px">Appels téléphoniques</span>
+</section></div>
+<aside class="notes">
+  <div class="tc">K01 · still at 00:05.0 · scene 00:00.0–00:05.9</div>
+  <h2>The mess</h2>
+  <blockquote>Des fichiers Excel. Des formulaires papier. Des messages WhatsApp. Des appels téléphoniques.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>Each object lands on its word: Excel 0.78 s, papier 1.98 s, WhatsApp 3.28 s, appels 4.60 s.</li>
+    <li>Spring in from 60 % into its tilt, 6 % overshoot, 450 ms. Its label pill slides out from under it 120 ms later.</li>
+    <li>Nothing sits still: slow drift, a new chat bubble types in, the phone card buzzes twice.</li>
+  </ul>
+</aside>
+</article>
+
+<!-- ═════════════ K02 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K02" data-tone="dark">
+  <div class="obj blur" data-use="tpl-sheet" style="left:420px;top:230px;--r:-8deg;--s:.9"></div>
+  <div class="obj blur" data-use="tpl-form" style="left:1600px;top:300px;--r:7deg;--s:.9"></div>
+  <div class="obj blur" data-use="tpl-chat" style="left:540px;top:880px;--r:-3deg;--s:.9"></div>
+  <div class="obj blur" data-use="tpl-call" style="left:1480px;top:900px;--r:4deg;--s:.9"></div>
+  <p class="d1 abs" style="left:144px;top:452px">Ça vous parle&#8239;?</p>
+</section></div>
+<aside class="notes">
+  <div class="tc">K02 · still at 00:06.4 · scene 00:05.9–00:07.0</div>
+  <h2>“Ça vous parle ?”</h2>
+  <blockquote>Ça vous parle&#8239;?</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>Rack focus: the objects blur to 10 px and drift 40 px outward while the question rises out of its mask (600 ms, expo-out).</li>
+    <li>Out: the question slides up and away; the objects come back into focus and split for the next beat.</li>
+  </ul>
+</aside>
+</article>
+
+<!-- ═════════════ K03 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K03" data-tone="dark">
+  <svg class="wires" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <path d="M1080 230C1320 380 880 520 1000 700"/>
+    <path d="M1650 240C1420 300 1260 110 1080 230"/>
+    <path d="M1000 700C1200 990 1480 700 1600 880"/>
+    <path d="M1730 610C1500 500 1300 320 1080 230"/>
+    <path d="M1180 930C1350 700 1760 520 1650 240"/>
+    <path d="M1600 880C1820 820 1650 700 1730 610"/>
+    <path d="M1000 700C1250 560 1500 640 1730 610"/>
+  </svg>
+  <div class="obj" data-use="tpl-sheet" style="left:1080px;top:230px;--r:-7deg;--s:.46"></div>
+  <div class="obj" data-use="tpl-form" style="left:1650px;top:240px;--r:8deg;--s:.4"></div>
+  <div class="obj" data-use="tpl-chat" style="left:1000px;top:700px;--r:-3deg;--s:.5"></div>
+  <div class="obj" data-use="tpl-call" style="left:1600px;top:880px;--r:4deg;--s:.5"></div>
+  <div class="obj" data-use="tpl-sticky" style="left:1730px;top:610px;--r:7deg;--s:.72"></div>
+  <div class="obj" data-use="tpl-mail" style="left:1180px;top:930px;--r:-5deg;--s:.6"></div>
+  <svg class="obj clock" viewBox="0 0 240 240" width="270" height="270" style="left:1330px;top:500px">
+    <circle class="face" cx="120" cy="120" r="112"/>
+    <circle cx="120" cy="120" r="104" fill="none" stroke="#4B5563" stroke-width="12" stroke-dasharray="4 50.45"/>
+    <circle cx="120" cy="120" r="80" fill="none" stroke="#D9FF41" stroke-width="16" stroke-dasharray="345 1000" transform="rotate(-90 120 120)" opacity=".9"/>
+    <path d="M120 120V64" stroke="#fff" stroke-width="8"/>
+    <path d="M120 120 45 153" stroke="#fff" stroke-width="5"/>
+    <rect x="111" y="111" width="18" height="18" fill="#fff"/>
+  </svg>
+  <div class="col" style="top:330px">
+    <p class="ld gray">Le travail est éparpillé.</p>
+    <p class="h1" style="margin-top:22px">Des heures à&nbsp;s’y&nbsp;retrouver.</p>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K03 · still at 00:10.0 · scene 00:07.0–00:11.0</div>
+  <h2>Scattered</h2>
+  <blockquote>Quand le travail est éparpillé partout, votre équipe passe des heures à s’y retrouver.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>On “éparpillé” (7.70 s) the four objects split into six smaller ones and scatter to the right.</li>
+    <li>Dashed wires draw between them (800 ms) and tangle.</li>
+    <li>On “des heures” (9.62 s) the clock spins fast, with the lime sweep trailing the minute hand.</li>
+  </ul>
+</aside>
+</article>
+
+<!-- ═════════════ K04 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K04" data-tone="dark">
+  <svg class="wires" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <path d="M1080 230C1320 380 880 520 1000 700"/>
+    <path d="M1650 240C1420 300 1260 110 1080 230"/>
+    <path d="M1000 700C1200 990 1480 700 1600 880"/>
+    <path d="M1180 930C1350 700 1760 520 1650 240"/>
+    <path d="M1000 700C1250 560 1500 640 1650 560"/>
+  </svg>
+  <div class="obj" data-use="tpl-sheet" style="left:1080px;top:230px;--r:-7deg;--s:.46"></div>
+  <div class="obj" data-use="tpl-form" style="left:1650px;top:240px;--r:8deg;--s:.4"></div>
+  <div class="obj" data-use="tpl-chat" style="left:1000px;top:700px;--r:-3deg;--s:.5"></div>
+  <div class="obj" data-use="tpl-call" style="left:1600px;top:880px;--r:4deg;--s:.5"></div>
+  <div class="obj" data-use="tpl-mail" style="left:1180px;top:930px;--r:-5deg;--s:.6"></div>
+  <div class="obj" data-use="tpl-sticky" style="left:1760px;top:760px;--r:26deg;--s:.72;opacity:.35;filter:blur(3px)"></div>
+  <div class="obj" data-use="tpl-sheet" style="left:1400px;top:1050px;--r:18deg;--s:.34;opacity:.3;filter:blur(3px)"></div>
+  <span class="err abs" style="left:1130px;top:300px"><svg class="ic"><use href="#i-warn"/></svg>#REF!</span>
+  <span class="err abs" style="left:1520px;top:390px"><svg class="ic"><use href="#i-warn"/></svg>Absence non saisie</span>
+  <span class="err abs" style="left:1060px;top:600px"><svg class="ic"><use href="#i-warn"/></svg>Doublon</span>
+  <span class="err abs" style="left:1260px;top:830px"><svg class="ic"><use href="#i-warn"/></svg>Montant erroné</span>
+  <div class="col" style="top:330px">
+    <p class="ld gray">Des informations se perdent.</p>
+    <p class="h1" style="margin-top:22px">Des erreurs se&nbsp;glissent.</p>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K04 · still at 00:13.0 · scene 00:11.0–00:13.9</div>
+  <h2>Things break</h2>
+  <blockquote>Des informations se perdent. Des erreurs se glissent.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>“Se perdent” (11.48 s): two cards lose their wires and fall out of frame with a slow spin (ease-in, 700 ms).</li>
+    <li>“Erreurs” (12.62 s): four red error pills pop on, 80 ms apart, each with a two-frame jitter.</li>
+    <li>The clock from K03 shrinks away as the errors land.</li>
+  </ul>
+</aside>
+</article>
+
+<!-- ═════════════ K05 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K05" data-tone="dark" data-converge="960,540">
+  <svg class="trails" width="1920" height="1080" viewBox="0 0 1920 1080"></svg>
+  <div class="obj" data-trail="300" data-use="tpl-sheet" style="left:400px;top:230px;--r:-14deg;--s:.34"></div>
+  <div class="obj" data-trail="300" data-use="tpl-form" style="left:1500px;top:190px;--r:16deg;--s:.3"></div>
+  <div class="obj" data-trail="300" data-use="tpl-chat" style="left:330px;top:820px;--r:-8deg;--s:.36"></div>
+  <div class="obj" data-trail="300" data-use="tpl-call" style="left:1540px;top:860px;--r:10deg;--s:.36"></div>
+  <div class="obj" data-trail="240" data-use="tpl-sticky" style="left:760px;top:150px;--r:-6deg;--s:.46;opacity:.85"></div>
+  <div class="obj" data-trail="240" data-use="tpl-mail" style="left:1180px;top:960px;--r:8deg;--s:.4;opacity:.85"></div>
+  <div class="obj" data-trail="180" data-use="tpl-sheet" style="left:700px;top:430px;--r:20deg;--s:.2;opacity:.55"></div>
+  <div class="obj" data-trail="180" data-use="tpl-chat" style="left:1240px;top:650px;--r:-10deg;--s:.2;opacity:.5"></div>
+  <i class="ripple" style="--z:640px;opacity:.1"></i>
+  <i class="ripple" style="--z:460px;opacity:.22"></i>
+  <i class="ripple" style="--z:310px;opacity:.45"></i>
+  <i class="hero-sq" style="left:870px;top:450px;width:180px;height:180px"></i>
+</section></div>
+<aside class="notes">
+  <div class="tc">K05 · still at 00:14.2 · scene 00:13.9–00:14.8</div>
+  <h2>The square lands</h2>
+  <blockquote>Nous sommes…</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>At 13.90 s a lime square, the module from the Vectra mark, drops into the centre and sends out square ripples.</li>
+    <li>Every object gets pulled into it along its speed lines (500 ms, ease-in), shrinking and dimming as it goes. Then the frame goes quiet.</li>
+    <li>Sound: a soft low hit when the square lands (music pass later).</li>
+  </ul>
+</aside>
+</article>
+
+<!-- ═════════════ K06 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K06" data-tone="dark">
+  <i class="abs" style="left:40px;top:180px;width:560px;height:480px;background:radial-gradient(closest-side,rgba(217,255,65,.10),rgba(217,255,65,0))"></i>
+  <svg class="mark" style="left:144px;top:322px;height:196px;width:235px;color:var(--lime)"><use href="#mark"/></svg>
+  <div class="abs" style="left:463px;top:334px">
+    <div class="wm" style="font-size:128px">VECTRASTUDIO</div>
+    <div class="wm-sub" style="font-size:38px">By Timgroup</div>
+  </div>
+  <p class="abs ld gray" style="left:144px;top:640px;font-size:60px">Un studio suisse qui crée des logiciels.</p>
+</section></div>
+<aside class="notes">
+  <div class="tc">K06 · still at 00:16.8 · scene 00:14.8–00:17.7</div>
+  <h2>Vectra</h2>
+  <blockquote>…Vectra, un studio suisse qui crée des logiciels.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>On “Vectra” (14.80 s) the square slides into its place in the mark, and the diagonal stroke draws out of it at the logo’s own angle (400 ms).</li>
+    <li>The wordmark wipes in from behind the mark, left to right.</li>
+    <li>The line rises word by word from “un studio” (15.58 s).</li>
+  </ul>
+  <h4>Design note</h4>
+  <ul><li>Same lockup as the site header. “By Timgroup” moves from grey-500 to grey-400 so it stays readable on a phone.</li></ul>
+</aside>
+</article>
+
+<!-- ═════════════ K07 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K07" data-tone="dark">
+  <svg class="trails" width="1920" height="1080" viewBox="0 0 1920 1080"></svg>
+  <svg class="abs" width="1920" height="1080" viewBox="0 0 1920 1080" style="left:0;top:0">
+    <rect x="900" y="180" width="880" height="660" fill="#181C21" fill-opacity=".55" stroke="#D9FF41" stroke-width="4" stroke-dasharray="2500 3100"/>
+  </svg>
+  <i class="head" style="left:889px;top:749px"></i>
+  <div class="slot full" style="left:930px;top:210px;width:398px;height:288px">
+    <div class="tl">Présences<i class="ck sm" style="margin:-6px -8px 0 0"><svg><use href="#i-check"/></svg></i></div>
+    <div class="rw"><span class="av" style="width:36px;height:36px"></span><s style="width:52%"></s></div>
+    <div class="rw"><span class="av" style="width:36px;height:36px"></span><s style="width:64%"></s></div>
+    <div class="rw"><span class="av" style="width:36px;height:36px"></span><s style="width:44%"></s></div>
+  </div>
+  <div class="slot" style="left:1352px;top:210px;width:398px;height:288px">Formulaires</div>
+  <div class="slot" style="left:930px;top:522px;width:398px;height:288px">Messages</div>
+  <div class="slot" style="left:1352px;top:522px;width:398px;height:288px">Notifications</div>
+  <div class="obj" data-trail="260" data-to="1551,354" data-use="tpl-form" style="left:1640px;top:300px;--r:9deg;--s:.44"></div>
+  <div class="obj" data-trail="300" data-to="1129,666" data-use="tpl-chat" style="left:780px;top:940px;--r:-6deg;--s:.44"></div>
+  <div class="obj" data-trail="260" data-to="1551,666" data-use="tpl-call" style="left:1800px;top:1010px;--r:8deg;--s:.46"></div>
+  <div class="col" style="top:330px">
+    <p class="ld gray">Nous remplaçons tout ça</p>
+    <p class="h1" style="margin-top:22px">par <span class="lime">un seul système.</span></p>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K07 · still at 00:19.4 · scene 00:17.7–00:20.3</div>
+  <h2>One system</h2>
+  <blockquote>Nous remplaçons tout ça par un seul système…</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>From 17.76 s a lime line draws the outline of one window (1.2 s). The glowing head leads the stroke.</li>
+    <li>The old objects fly back in and snap into the slots. Each one turns into a clean module the moment it lands (150 ms flash, then 1.04 → 1).</li>
+    <li>“Un seul système” (18.74 s) turns lime as the last slot fills.</li>
+  </ul>
+</aside>
+</article>
+
+<!-- ═════════════ K08 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K08" data-tone="dark">
+  <div class="obj drag" data-use="tpl-system" style="left:1340px;top:540px;--s:.92"></div>
+  <svg class="cur" style="left:1300px;top:672px"><use href="#cursor"/></svg>
+  <div class="col" style="top:300px">
+    <p class="ld gray">Un seul système.</p>
+    <p class="d2 lime" style="margin-top:14px">Simple.</p>
+    <p class="ld" style="margin-top:26px">Pensé pour votre façon de&nbsp;travailler.</p>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K08 · still at 00:22.2 · scene 00:20.3–00:23.0</div>
+  <h2>Simple, and built around you</h2>
+  <blockquote>…simple, pensé pour la façon dont vous travaillez vraiment.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>“Simple” (20.28 s): the outline settles into the finished window and the numbers count up (96 %).</li>
+    <li>“Pensé pour…” (21.06 s): a cursor picks up the Messages tile, and the grid makes room for it with a spring.</li>
+    <li>This window is the hero prop. It comes back in K12 and K13.</li>
+  </ul>
+</aside>
+</article>
+
+<!-- ═════════════ K09 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K09" data-tone="light">
+  <span class="badge" style="left:144px;top:176px">Écoles</span>
+  <div class="col" style="top:282px;width:690px">
+    <p class="h2">Absences, notes, messages aux parents&nbsp;:</p>
+    <p class="h1" style="margin-top:22px"><span class="hl">tout au même endroit.</span></p>
+  </div>
+  <div class="card w sh abs" style="left:900px;top:120px;width:620px">
+    <div class="ch"><b>Présences · 7B</b><span>Mardi 15 sept.</span></div>
+    <div class="rows">
+      <div class="r"><span class="av">LM</span><span class="nm">Léa Martin</span><span class="st">Présente</span></div>
+      <div class="r"><span class="av">NF</span><span class="nm">Noah Favre</span><span class="st ab">Absent</span></div>
+      <div class="r"><span class="av">ER</span><span class="nm">Emma Rochat</span><span class="st">Présente</span></div>
+      <div class="r"><span class="av">LB</span><span class="nm">Luca Bianchi</span><span class="st">Présent</span></div>
+    </div>
+  </div>
+  <div class="card w sh abs" style="left:1400px;top:380px;width:400px">
+    <div class="ch"><b>Notes · Maths</b><span>7B</span></div>
+    <div style="padding:22px 28px 26px">
+      <div class="grade">5,5</div>
+      <div style="font-size:22px;color:var(--g600);margin-top:10px">Moyenne de la classe&nbsp;: 4,8</div>
+      <div class="bars l" style="margin-top:18px"><i style="height:40%"></i><i style="height:62%"></i><i style="height:55%"></i><i class="on" style="height:92%"></i><i style="height:70%"></i></div>
+    </div>
+  </div>
+  <div class="card sh abs" style="left:980px;top:690px;width:600px">
+    <div class="ch"><b>Message aux parents</b><span>7B</span></div>
+    <div style="padding:26px 28px 28px">
+      <p class="msg">Sortie au musée jeudi. Pensez au pique-nique&#8239;!</p>
+      <div class="sent"><i class="ck sm"><svg><use href="#i-check"/></svg></i>Envoyé à 22 familles</div>
+    </div>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K09 · still at 00:26.9 · scene 00:23.0–00:27.7</div>
+  <h2>Schools</h2>
+  <blockquote>Pour une école : les absences, les notes et les messages aux parents, tout au même endroit.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>In: a white band wipes across at 56°.</li>
+    <li>One card per word: absences (24.20 s), notes (25.06 s), messages (25.58 s), stacking down the brand diagonal.</li>
+    <li>Rows tick in, one pupil flips to “Absent”, the 5,5 counts up.</li>
+    <li>“Tout au même endroit” (26.72 s): the lime highlight draws left to right behind the words.</li>
+  </ul>
+  <h4>Design note</h4>
+  <ul><li>Swiss grading scale (5,5 out of 6). Names and figures are made up.</li></ul>
+</aside>
+</article>
+
+<!-- ═════════════ K10 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K10" data-tone="light">
+  <span class="badge" style="left:144px;top:176px">Centres sportifs · Communes</span>
+  <div class="col" style="top:282px;width:690px">
+    <p class="h2">Réservations en ligne,</p>
+    <p class="h1" style="margin-top:22px"><span class="hl">paiement intégré.</span></p>
+  </div>
+  <div class="card w sh abs" style="left:900px;top:120px;width:860px">
+    <div class="ch"><b>Salle omnisport</b><span>Semaine 38</span></div>
+    <div class="cg">
+      <div class="dh c0"></div><div class="dh">Lu 14</div><div class="dh">Ma 15</div><div class="dh">Me 16</div><div class="dh">Je 17</div><div class="dh">Ve 18</div>
+      <div class="hr c0">17:00</div><div><span class="bk">Unihockey</span></div><div></div><div><span class="bk">Gym seniors</span></div><div></div><div><span class="bk">Basket</span></div>
+      <div class="hr c0">18:00</div><div><span class="bk">Unihockey</span></div><div><span class="bk">Volley</span></div><div></div><div><span class="bk">Badminton</span></div><div></div>
+      <div class="hr c0">19:00</div><div></div><div><span class="bk new">Terrain 2</span></div><div><span class="bk">Judo</span></div><div><span class="bk">Badminton</span></div><div></div>
+      <div class="hr c0">20:00</div><div><span class="bk">Futsal</span></div><div></div><div></div><div></div><div><span class="bk">Volley</span></div>
+    </div>
+  </div>
+  <svg class="cur" style="left:1262px;top:500px"><use href="#cursor"/></svg>
+  <div class="card sh abs" style="left:1230px;top:600px;width:530px">
+    <div class="ch"><b>Paiement reçu</b><span>Terrain 2 · Ma 19:00</span></div>
+    <div style="padding:26px 28px 30px">
+      <div class="amt">CHF 40.–</div>
+      <div class="sent"><i class="ck sm"><svg><use href="#i-check"/></svg></i>Payé en ligne</div>
+    </div>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K10 · still at 00:31.8 · scene 00:27.7–00:32.6</div>
+  <h2>Sports centres and communes</h2>
+  <blockquote>Pour un centre sportif ou une commune : les réservations en ligne, avec le paiement intégré.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>The school cards slide off left and the calendar slides in. Booked slots drop into place in a quick wave (29.78 s).</li>
+    <li>The cursor clicks a free slot. It fills lime: “Terrain 2”.</li>
+    <li>“Paiement intégré” (31.02 s): the payment card flips up out of the slot. CHF 40.– and the check pop in.</li>
+  </ul>
+  <h4>Design note</h4>
+  <ul><li>Swiss price format (“CHF 40.–”) and real local sports (unihockey). No payment brand is shown, so we promise nothing about TWINT or cards.</li></ul>
+</aside>
+</article>
+
+<!-- ═════════════ K11 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K11" data-tone="light">
+  <span class="badge" style="left:144px;top:176px">Entreprises</span>
+  <div class="col" style="top:282px;width:690px">
+    <p class="h2">Les heures de travail…</p>
+    <p class="h1" style="margin-top:22px"><span class="hl">directement dans les salaires.</span></p>
+  </div>
+  <div class="card sh abs" style="left:900px;top:130px;width:440px">
+    <div class="ch"><b>Timbrage</b><span>Lundi 14 sept.</span></div>
+    <div style="padding:26px 30px 30px">
+      <div class="time">07:58</div>
+      <div class="sent" style="margin-top:14px"><i class="ck sm"><svg><use href="#i-check"/></svg></i>Entrée enregistrée</div>
+      <div class="bars" style="height:80px;margin-top:30px"><i class="on" style="height:84%"></i><i class="on" style="height:90%"></i><i class="on" style="height:78%"></i><i class="on" style="height:88%"></i><i style="height:40%"></i></div>
+      <div class="wl"><span>Lu</span><span>Ma</span><span>Me</span><span>Je</span><span>Ve</span></div>
+      <div style="margin-top:18px;font-size:26px;color:var(--lead)">Semaine&nbsp;: <b style="font-weight:500;color:#fff">41,5&nbsp;h</b></div>
+    </div>
+  </div>
+  <svg class="flow abs" width="1920" height="1080" viewBox="0 0 1920 1080" style="left:0;top:0">
+    <path d="M1340 300C1540 300 1570 380 1570 540"/>
+    <rect x="1532" y="371" width="30" height="30" fill="#1B2CF5" transform="rotate(8 1547 386)"/>
+  </svg>
+  <span class="pill blue" style="left:1400px;top:206px">Automatique</span>
+  <div class="card w sh abs" style="left:1320px;top:540px;width:500px">
+    <div class="ch"><b>Décompte de salaire</b><span>Septembre</span></div>
+    <div class="ln"><span>Heures normales</span><b>168,0&nbsp;h</b></div>
+    <div class="ln"><span>Heures supplémentaires</span><b>6,5&nbsp;h</b></div>
+    <div class="ln"><span>Vacances</span><b>1&nbsp;jour</b></div>
+    <div class="ln tot"><span>Salaire brut</span><b>CHF 6'240.–</b></div>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K11 · still at 00:35.8 · scene 00:32.6–00:36.7</div>
+  <h2>Employers</h2>
+  <blockquote>Pour une entreprise : les heures de travail qui passent directement dans les salaires.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>The timbrage card clocks in: the digits roll to 07:58 and the check pops (33.72 s).</li>
+    <li>“Directement” (35.08 s): a blue pulse runs down the line into the payslip. Blue is the site’s “process” colour.</li>
+    <li>The payslip rows fill top to bottom and the gross salary counts up.</li>
+  </ul>
+  <h4>Design note</h4>
+  <ul><li>“Timbrage”, “décompte de salaire” and CHF 6'240.– are the Swiss words and formats.</li></ul>
+</aside>
+</article>
+
+<!-- ═════════════ K12 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K12" data-tone="dark">
+  <div class="obj grey" data-use="tpl-system" style="left:1340px;top:540px;--s:.86"></div>
+  <span class="pill" style="left:925px;top:150px"><i class="dot off"></i>Utilisateurs actifs&nbsp;: 0</span>
+  <i class="seat" style="left:925px;top:900px"></i><i class="seat" style="left:1009px;top:900px"></i><i class="seat" style="left:1093px;top:900px"></i><i class="seat" style="left:1177px;top:900px"></i><i class="seat" style="left:1261px;top:900px"></i><i class="seat" style="left:1345px;top:900px"></i>
+  <div class="col" style="top:330px">
+    <p class="ld gray">Mais un logiciel ne sert à rien…</p>
+    <p class="h1" style="margin-top:22px">…si personne ne&nbsp;l’utilise.</p>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K12 · still at 00:39.4 · scene 00:36.7–00:40.1</div>
+  <h2>Nobody uses it</h2>
+  <blockquote>Mais un logiciel ne sert à rien si personne ne l’utilise.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>In: a dark band wipes back across.</li>
+    <li>The window drains to grey (600 ms). The seats around it stay empty and the counter drops to 0.</li>
+    <li>A slow 2 % push out makes it feel empty.</li>
+  </ul>
+</aside>
+</article>
+
+<!-- ═════════════ K13 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K13" data-tone="dark">
+  <div class="obj" data-use="tpl-system" style="left:1330px;top:530px;--s:.7"></div>
+  <div class="card sh abs" style="left:880px;top:100px;width:470px">
+    <div class="ch"><b>Vidéo · Prise en main</b><span>0:42</span></div>
+    <div class="thumb">
+      <i class="abs" style="left:40px;top:34px;width:180px;height:14px;background:var(--line)"></i>
+      <i class="abs" style="left:40px;top:62px;width:120px;height:14px;background:var(--line)"></i>
+      <i class="abs" style="left:40px;top:150px;width:386px;height:64px;border:2px solid var(--line)"></i>
+      <span class="play"><svg class="icf"><use href="#i-play"/></svg></span>
+    </div>
+    <div class="prog"><i style="width:38%"></i></div>
+  </div>
+  <div class="card w sh abs" style="left:1480px;top:330px;width:380px">
+    <div class="ch"><b>Guide</b><span>Étape 2 sur 3</span></div>
+    <ol class="steps">
+      <li><i>1</i>Ouvrir la classe</li>
+      <li class="on"><i>2</i>Saisir l’absence</li>
+      <li><i>3</i>Prévenir les parents</li>
+    </ol>
+  </div>
+  <div class="card sh abs" style="left:960px;top:780px;width:560px">
+    <div class="ch"><b>Formation d’équipe</b><span>Mardi · 09:00</span></div>
+    <div style="display:flex;gap:10px;padding:22px 26px 26px">
+      <span class="av lit">LM</span><span class="av lit">NF</span><span class="av lit">ER</span><span class="av lit">LB</span><span class="av">SB</span><span class="av">JP</span>
+    </div>
+  </div>
+  <div class="col" style="top:300px">
+    <p class="h1">Alors nous l’expliquons aussi.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:40px">
+      <span class="pill in"><svg class="ic"><use href="#i-video"/></svg>Vidéos courtes</span>
+      <span class="pill in"><svg class="ic"><use href="#i-doc"/></svg>Guides</span>
+      <span class="pill in"><svg class="ic"><use href="#i-users"/></svg>Formations</span>
+    </div>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K13 · still at 00:44.0 · scene 00:40.1–00:44.3</div>
+  <h2>We explain it</h2>
+  <blockquote>Alors nous l’expliquons aussi, avec de courtes vidéos, des guides et des formations.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>“Alors” (40.16 s): colour floods back into the window.</li>
+    <li>Video card on “vidéos” (42.14 s), guide on “guides” (43.32 s), training on “formations” (43.92 s). The matching pill on the left ticks on each time.</li>
+    <li>The empty seats fill with people and light up lime, one by one.</li>
+  </ul>
+</aside>
+</article>
+
+<!-- ═════════════ K14 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K14" data-tone="dark">
+  <svg class="mark" style="left:1180px;top:-150px;height:1380px;width:1101px;color:#171B20"><use href="#mark-stroke"/></svg>
+  <div class="abs" style="left:144px;top:318px;width:1640px">
+    <p class="d2">Nous créons le système.</p>
+    <p class="d2 lime" style="margin-top:30px">Puis nous donnons envie de&nbsp;l’utiliser<i class="sqdot"></i></p>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K14 · still at 00:48.0 · scene 00:44.3–00:48.5</div>
+  <h2>The line</h2>
+  <blockquote>Nous créons le système. Puis nous donnons envie de l’utiliser.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>Pure type, masks only. Line 1 rises at 44.34 s.</li>
+    <li>Line 2 rises in lime at 46.58 s. The full stop is the lime square. It lands last with a small bounce (47.70 s).</li>
+    <li>The giant V stroke behind drifts slowly (parallax).</li>
+  </ul>
+  <h4>Design note</h4>
+  <ul><li>This is your site’s hero line, so the film and the homepage say the same thing.</li></ul>
+</aside>
+</article>
+
+<!-- ═════════════ K15 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K15" data-tone="accent">
+  <p class="abs h2" style="left:144px;top:170px">Travailler avec nous, c’est simple.</p>
+  <ul class="checks" style="top:380px">
+    <li class="on now"><i><svg><use href="#i-check"/></svg></i>Le prix, connu dès le départ.</li>
+    <li><i></i>En direct avec l’équipe qui développe.</li>
+    <li><i></i>Vos données hébergées en Suisse.</li>
+    <li><i></i>Ce que nous créons est à vous.</li>
+    <li><i></i>Des semaines, pas des mois.</li>
+  </ul>
+  <div class="card w sh abs" style="left:1080px;top:350px;width:700px">
+    <div class="ch"><b>Votre devis</b><span>Jalons à prix fixe</span></div>
+    <div class="ms"><span class="no">01</span><span class="lb">Cadrage et architecture</span><svg class="ic"><use href="#i-lock"/></svg></div>
+    <div class="ms"><span class="no">02</span><span class="lb">Premier module</span><svg class="ic"><use href="#i-lock"/></svg></div>
+    <div class="ms"><span class="no">03</span><span class="lb">Mise en service et formation</span><svg class="ic"><use href="#i-lock"/></svg></div>
+  </div>
+  <div class="stamp" style="left:1200px;top:772px">Prix fixe</div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K15 · still at 00:51.8 · scene 00:48.5–00:52.2</div>
+  <h2>How we work: price</h2>
+  <blockquote>Travailler avec nous, c’est simple. Vous connaissez le prix dès le départ.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>In: a blue band wipes across at 56°. The title rises at 48.56 s, and the five promises appear faint, as a list to fill.</li>
+    <li>Promise 1 lights up at 50.42 s and its check square pops.</li>
+    <li>The quote card slides in from the right. The “Prix fixe” stamp slams down on “départ” (51.44 s) with a small shake.</li>
+  </ul>
+  <h4>Design note</h4>
+  <ul><li>No amounts on the quote, so the film never has to match a price list.</li></ul>
+</aside>
+</article>
+
+<!-- ═════════════ K16 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K16" data-tone="accent">
+  <p class="abs h2" style="left:144px;top:170px">Travailler avec nous, c’est simple.</p>
+  <ul class="checks" style="top:380px">
+    <li class="on"><i><svg><use href="#i-check"/></svg></i>Le prix, connu dès le départ.</li>
+    <li class="on"><i><svg><use href="#i-check"/></svg></i>En direct avec l’équipe qui développe.</li>
+    <li class="on now"><i><svg><use href="#i-check"/></svg></i>Vos données hébergées en Suisse.</li>
+    <li><i></i>Ce que nous créons est à vous.</li>
+    <li><i></i>Des semaines, pas des mois.</li>
+  </ul>
+  <div class="card w sh abs" style="left:1080px;top:350px;width:700px">
+    <div class="ch"><b>Vos données</b><span>Hébergées en Suisse</span></div>
+    <div class="host">
+      <div class="srv">
+        <div class="u"><i class="on"></i><i class="on"></i><i></i><s></s></div>
+        <div class="u"><i class="on"></i><i></i><i class="on"></i><s></s></div>
+        <div class="u"><i class="on"></i><i class="on"></i><i class="on"></i><s></s></div>
+      </div>
+      <div>
+        <div class="chb">CH</div>
+        <p class="f1">Centre de données à&nbsp;Genève</p>
+        <p class="f2"><svg class="ic"><use href="#i-shield"/></svg>Juridiction suisse</p>
+        <p class="f2"><svg class="ic"><use href="#i-lock"/></svg>Données chiffrées</p>
+      </div>
+    </div>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K16 · still at 00:56.8 · scene 00:52.2–00:57.4</div>
+  <h2>How we work: direct, and Swiss-hosted</h2>
+  <blockquote>Vous parlez directement à l’équipe qui développe votre système. Vos données sont hébergées en Suisse.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>Promise 2 at 52.24 s: the card shows the team as square avatars sliding in (between K15 and K16, not drawn).</li>
+    <li>Promise 3 at 55.32 s: the hosting card replaces it. The server lights blink on and the CH tag drops in.</li>
+  </ul>
+  <h4>Design note</h4>
+  <ul><li>“Genève” and “chiffrées” match what the site already says (Infomaniak, Geneva; encryption at rest). No Swiss flag: the text says it.</li></ul>
+</aside>
+</article>
+
+<!-- ═════════════ K17 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K17" data-tone="accent">
+  <p class="abs h2" style="left:144px;top:170px">Travailler avec nous, c’est simple.</p>
+  <ul class="checks" style="top:380px">
+    <li class="on"><i><svg><use href="#i-check"/></svg></i>Le prix, connu dès le départ.</li>
+    <li class="on"><i><svg><use href="#i-check"/></svg></i>En direct avec l’équipe qui développe.</li>
+    <li class="on"><i><svg><use href="#i-check"/></svg></i>Vos données hébergées en Suisse.</li>
+    <li class="on"><i><svg><use href="#i-check"/></svg></i>Ce que nous créons est à vous.</li>
+    <li class="on now"><i><svg><use href="#i-check"/></svg></i>Des semaines, pas des mois.</li>
+  </ul>
+  <div class="card w sh abs" style="left:1080px;top:370px;width:700px">
+    <div class="ch"><b>Premiers résultats</b><span>Planning</span></div>
+    <div class="tlw">
+      <div class="tlab">Semaines</div>
+      <div class="trk wk"><i>1</i><i>2</i><i>3</i><i>4</i><span class="flag"><svg class="ic" style="width:24px;height:24px"><use href="#i-check"/></svg>En service</span></div>
+      <div class="tlab" style="margin-top:56px">Mois</div>
+      <div class="trk mo"><i>Mois 1</i><i>Mois 2</i><i>Mois 3</i><b class="strike"></b></div>
+    </div>
+  </div>
+</section></div>
+<aside class="notes">
+  <div class="tc">K17 · still at 01:02.8 · scene 00:57.4–01:03.3</div>
+  <h2>How we work: yours, and fast</h2>
+  <blockquote>Ce que nous créons pour vous est à vous. Et les premiers résultats arrivent en quelques semaines, pas en quelques mois.</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>Promise 4 at 57.42 s: a key card slides across to “Vous” (between K16 and K17, not drawn).</li>
+    <li>Promise 5 at 59.68 s: the weeks track fills fast and the “En service” flag pops at its end.</li>
+    <li>On “mois” (62.62 s) the months track drains and a line strikes through it.</li>
+  </ul>
+  <h4>Design note</h4>
+  <ul><li>Four weeks on the track fits both numbers your site uses (3–4 and 3–5 weeks), with no promise of a date.</li></ul>
+</aside>
+</article>
+
+<!-- ═════════════ K18 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K18" data-tone="action">
+  <svg class="oi" viewBox="0 0 24 24" style="left:1300px;top:120px;width:150px;height:150px;transform:rotate(-8deg)"><use href="#i-grid"/></svg>
+  <svg class="oi" viewBox="0 0 24 24" style="left:1580px;top:170px;width:130px;height:130px;transform:rotate(7deg)"><use href="#i-form"/></svg>
+  <svg class="oi" viewBox="0 0 24 24" style="left:1330px;top:800px;width:140px;height:140px;transform:rotate(-5deg)"><use href="#i-chat"/></svg>
+  <svg class="oi" viewBox="0 0 24 24" style="left:1600px;top:760px;width:120px;height:120px;transform:rotate(9deg)"><use href="#i-phone-o"/></svg>
+  <p class="abs d1" style="left:144px;top:380px;width:1640px;font-size:134px;line-height:1.04">Qu’est-ce qui ralentit votre&nbsp;équipe&#8239;?</p>
+</section></div>
+<aside class="notes">
+  <div class="tc">K18 · still at 01:04.6 · scene 01:03.3–01:05.0</div>
+  <h2>The question</h2>
+  <blockquote>Qu’est-ce qui ralentit votre équipe&#8239;?</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>In: the lime band wipes across. It is the only lime band in the film, as on the site.</li>
+    <li>The question rises line by line (63.36 s).</li>
+    <li>The four objects from the opening float back in as outlines, a callback to 00:01.</li>
+  </ul>
+</aside>
+</article>
+
+<!-- ═════════════ K19 ═════════════ -->
+<article class="kf">
+<div class="stage"><section class="frame" id="K19" data-tone="dark">
+  <svg class="mark" style="left:144px;top:290px;height:150px;width:180px;color:var(--lime)"><use href="#mark"/></svg>
+  <div class="abs" style="left:388px;top:298px">
+    <div class="wm" style="font-size:98px">VECTRASTUDIO</div>
+    <div class="wm-sub" style="font-size:30px">By Timgroup</div>
+  </div>
+  <p class="abs h2" style="left:144px;top:560px">Parlez-nous-en.</p>
+  <span class="btn" style="left:144px;top:690px">vectrastudio.ch<svg class="ic"><use href="#i-arrow"/></svg></span>
+  <p class="abs" style="left:144px;top:900px;font-size:32px;color:var(--body)">Nous créons le système. Puis nous donnons envie de l’utiliser.</p>
+  <img class="abs" src="assets/timgroupe-white.png" alt="TIMGroupe Sàrl" style="left:1476px;top:884px;width:300px">
+</section></div>
+<aside class="notes">
+  <div class="tc">K19 · still at 01:08.0 · scene 01:05.0–01:10.5</div>
+  <h2>End card</h2>
+  <blockquote>Parlez-nous-en sur vectrastudio.ch</blockquote>
+  <h4>Motion</h4>
+  <ul>
+    <li>The lime band wipes off to dark. The mark builds again, square first, then the stroke.</li>
+    <li>The URL button slides up on “vectrastudio” (65.88 s), styled like the site’s main button.</li>
+    <li>Hold for 3 s after the voice ends (67.7 s). Nothing moves except a slow drift.</li>
+  </ul>
+</aside>
+</article>
+
+</main>
+
+<script>
+// Fill every [data-use] wrapper with its template.
+document.querySelectorAll('[data-use]').forEach(el => {
+  el.appendChild(document.getElementById(el.dataset.use).content.cloneNode(true));
+});
+
+// Speed lines: drawn behind each [data-trail] object, pointing away from where
+// it is heading (its own data-to, or the frame's data-converge point).
+document.querySelectorAll('.frame').forEach(fr => {
+  const svg = fr.querySelector('svg.trails');
+  if (!svg) return;
+  const conv = fr.dataset.converge && fr.dataset.converge.split(',').map(Number);
+  let n = 0, out = '';
+  fr.querySelectorAll('.obj[data-trail]').forEach(o => {
+    const x = parseFloat(o.style.left), y = parseFloat(o.style.top);
+    const [tx, ty] = o.dataset.to ? o.dataset.to.split(',').map(Number) : conv;
+    let dx = x - tx, dy = y - ty;
+    const d = Math.hypot(dx, dy); dx /= d; dy /= d;
+    const L = +o.dataset.trail;
+    [[-38, .75], [0, 1], [38, .6]].forEach(([off, k]) => {
+      const x1 = x - dy * off, y1 = y + dx * off;
+      const x2 = x1 + dx * L * k, y2 = y1 + dy * L * k;
+      const id = `${fr.id}t${n++}`;
+      out += `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}">`
+           + `<stop offset="0" stop-color="#D1D5DB" stop-opacity=".5"/><stop offset="1" stop-color="#D1D5DB" stop-opacity="0"/></linearGradient>`
+           + `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="url(#${id})" stroke-width="5"/>`;
+    });
+  });
+  svg.innerHTML = out;
+});
+
+const only = new URLSearchParams(location.search).get('frame');
+if (only) {
+  document.documentElement.classList.add('export');
+  document.querySelectorAll('article.kf').forEach(a => {
+    if (a.querySelector('.frame').id !== only) a.remove();
+  });
+} else {
+  const fit = () => document.querySelectorAll('.stage').forEach(st => {
+    const s = st.clientWidth / 1920;
+    st.style.height = `${1080 * s}px`;
+    st.firstElementChild.style.transform = `scale(${s})`;
+  });
+  addEventListener('resize', fit);
+  fit();
+}
+</script>
+</body>
+</html>

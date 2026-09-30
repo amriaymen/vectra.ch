@@ -27,8 +27,8 @@
 }
 
 :root {
-  --color-background: #121519;
-  --color-primary: #D9FF41;
+  --color-background: #f4f0e8;
+  --color-primary: #d63a08;
 }
 
 /*
@@ -37,7 +37,7 @@
  * Every band declares what each ROLE means inside it; components ask for the
  * role and never for a value. Section stamps `data-tone` on the band element,
  * and because custom properties inherit, every descendant — including shared
- * leaves like Badge and HeroMedia — resolves correctly with no prop threading.
+ * leaves like Badge — resolves correctly with no prop threading.
  *
  * Channel triplets, not hex, so Tailwind's `<alpha-value>` can compose:
  * `border-band-line/60` must keep its 60%. See tailwind.config.js.
@@ -66,7 +66,7 @@
   --band-bg: 255 255 255;
   --band-card: 255 255 255;
   --band-chip: 243 244 246; /* gray-100 */
-  --band-inset: 249 250 251; /* gray-50 — matches DecisionMatrix's header row */
+  --band-inset: 249 250 251; /* gray-50 */
   --band-line: 229 231 235; /* gray-200 */
   --band-line-strong: 156 163 175; /* gray-400 */
   --band-fg: 18 21 25;
@@ -126,12 +126,12 @@ html {
    * not less.
    */
   scroll-padding-top: 6rem;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
   background-color: var(--color-background);
-  color: #F8FAFC;
+  color: #15130f;
   font-family: 'TT Firs Neue Trl Regular', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
 }
@@ -156,35 +156,14 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #121519;
+  background: #f4f0e8;
 }
 ::-webkit-scrollbar-thumb {
-  background: #374151;
+  background: #15130f;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D9FF41;
-}
-
-/*
- * Scroll reveal — progressive enhancement.
- *
- * The hidden state applies ONLY inside `.reveal-ready`, a class added by a tiny
- * inline script in the layout. No JS means no class means everything is visible:
- * without this gate, a JS failure would leave every section permanently
- * invisible. Uses `opacity`, never `display:none`, so the text is in the DOM for
- * crawlers either way.
- */
-.reveal-ready [data-reveal] {
-  opacity: 0;
-  transform: translateY(12px);
-  transition:
-    opacity 500ms ease-out,
-    transform 500ms ease-out;
-}
-.reveal-ready [data-reveal].is-visible {
-  opacity: 1;
-  transform: none;
+  background: #d63a08;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -197,11 +176,5 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-  /* Never start hidden when motion is unwanted — no fade, no travel. */
-  .reveal-ready [data-reveal] {
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
 }
