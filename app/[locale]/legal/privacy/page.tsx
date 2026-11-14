@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import site from '../../../site/site.module.css';
-import { SiteFooter, SiteHeader } from '../../../site/Shell';
-import { getCopy } from '../../../site/copy';
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
 import Section from '../../../components/Section';
 import { COMPANY, HOSTING, LOCALES, SITE_URL, SUBPROCESSORS, getContent, isLocale, languageAlternates, type Locale } from '../../../data';
 
@@ -50,9 +49,9 @@ export default function PrivacyPage({ params }: { params: { locale: string } }) 
   const t = getContent(locale);
 
   return (
-    <div className={`${site.page} ${site.legacy}`}>
-      <SiteHeader locale={locale} copy={getCopy(locale)} path="/legal/privacy" />
-      <main className={site.legalMain}>
+    <>
+      <Header t={t} locale={locale} />
+      <main className="py-12 md:py-20">
         <Section>
           <div className="max-w-3xl space-y-8">
             <div>
@@ -147,7 +146,7 @@ export default function PrivacyPage({ params }: { params: { locale: string } }) 
           </div>
         </Section>
       </main>
-      <SiteFooter locale={locale} copy={getCopy(locale)} path="/legal/privacy" />
-    </div>
+      <Footer t={t} />
+    </>
   );
 }

@@ -9,8 +9,8 @@ export interface FaqItem {
 }
 
 /**
- * Reusable accordion. Takes its items as a prop so each department page
- * carries a distinct set.
+ * Reusable accordion. Takes its items as a prop so hub and service pages can
+ * each carry a distinct set — the homepage passes `t.faqs.items`.
  *
  * Answers are always rendered and hidden with the `hidden` attribute, so every
  * one is in the served HTML for crawlers and assistive tech.
@@ -19,13 +19,10 @@ export default function Faq({
   items,
   title,
   id = 'faqs',
-  ruled = false,
 }: {
   items: FaqItem[];
   title: string;
   id?: string;
-  /** Set when the band above is also dark: two same-tone neighbours need a rule. */
-  ruled?: boolean;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   if (items.length === 0) return null;
@@ -34,7 +31,7 @@ export default function Faq({
     // Dark, not light: Faq is followed by the lime CtaBanner on every page that
     // uses it. Lime on white measures 1.15:1 — the band dissolved into the FAQ
     // and the page's one call to action lost its edge. On dark it is 15.98:1.
-    <Section id={id} className={ruled ? 'border-t border-band-line' : ''}>
+    <Section id={id}>
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16">
         <div>
           <h2 className="text-3xl leading-tight tracking-tight md:text-4xl">{title}</h2>
